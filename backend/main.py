@@ -106,11 +106,23 @@ async def get_hotspots():
 async def get_hotspot_detail(zone_id: int):
     """
     Get detailed information for a specific hotspot zone.
+    Includes zone_classification and string-based recommendations.
     """
     for h in HOTSPOTS:
         if h["cluster_id"] == zone_id:
-            # Get zone recommendations
-            zone_recs = [r for r in RECOMMENDATIONS if r["zone_id"] == zone_id]
+            # Get zone recommendation object (new format)
+            zone_rec = None
+            for r in RECOMMENDATIONS:
+                if r["zone_id"] == zone_id:
+                    zone_rec = r
+                    break
+            
+            # Extract string recommendations list
+            rec_strings = []
+            zone_classification = h.get("zone_classification", "Moderate Zone")
+            if zone_rec:
+                rec_strings = zone_rec.get("recommendations", [])
+                zone_classification = zone_rec.get("zone_classification", zone_classification)
             
             return {
                 "zone_id": h["cluster_id"],
@@ -122,6 +134,8 @@ async def get_hotspot_detail(zone_id: int):
                 "density_rank": h["density_rank"],
                 "total_violations": h["total_violations"],
                 "violation_percentile": h["violation_percentile"],
+                "impact_percentile": h.get("impact_percentile", "P25"),
+                "zone_classification": zone_classification,
                 "police_station": h["police_station"],
                 "vehicle_distribution": h.get("vehicle_distribution", {}),
                 "top_locations": h.get("top_locations", []),
@@ -130,7 +144,7 @@ async def get_hotspot_detail(zone_id: int):
                 "avg_resolution_time": h.get("avg_resolution_time", 0),
                 "violation_types": h.get("violation_types", {}),
                 "top_vehicles": h.get("top_vehicles", []),
-                "recommendations": zone_recs,
+                "recommendations": rec_strings,
             }
     
     raise HTTPException(status_code=404, detail=f"Zone {zone_id} not found")
@@ -181,25 +195,26 @@ async def get_density_map():
 async def get_impact_map():
     """
     Get hotspots formatted for the Operational Impact Map.
-    Colored by Impact Score severity bands.
+    Colored by impact_percentile (adapts to actual data distribution).
     """
     if not HOTSPOTS:
         raise HTTPException(status_code=404, detail="No data available")
     
     result = []
     for h in HOTSPOTS:
-        score = h["impact_score"]
-        if score >= 75:
-            color = "#EF4444"    # Red
+        # Use impact_percentile for coloring (relative to data)
+        impact_pct = h.get("impact_percentile", "P25")
+        if impact_pct == "P90":
+            color = "#EF4444"    # Red - Critical
             severity = "Critical"
-        elif score >= 50:
-            color = "#F97316"    # Orange
+        elif impact_pct == "P75":
+            color = "#F97316"    # Orange - High
             severity = "High"
-        elif score >= 25:
-            color = "#EAB308"    # Yellow
+        elif impact_pct == "P50":
+            color = "#EAB308"    # Yellow - Moderate
             severity = "Moderate"
         else:
-            color = "#22C55E"    # Green
+            color = "#22C55E"    # Green - Low
             severity = "Low"
         
         result.append({
@@ -209,6 +224,7 @@ async def get_impact_map():
             "lon": h["center_lon"],
             "impact_score": h["impact_score"],
             "impact_rank": h["impact_rank"],
+            "impact_percentile": impact_pct,
             "color": color,
             "severity": severity,
         })

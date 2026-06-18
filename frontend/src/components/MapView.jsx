@@ -73,10 +73,11 @@ export default function MapView() {
       if (v > 50) return 10;
       return 7;
     } else {
-      const s = marker.impact_score || 0;
-      if (s >= 75) return 18;
-      if (s >= 50) return 14;
-      if (s >= 25) return 10;
+      // Use impact_percentile for sizing (adapts to data)
+      const pct = marker.impact_percentile || 'P25';
+      if (pct === 'P90') return 18;
+      if (pct === 'P75') return 14;
+      if (pct === 'P50') return 10;
       return 7;
     }
   };
@@ -90,10 +91,10 @@ export default function MapView() {
   ];
 
   const impactLegend = [
-    { color: '#EF4444', label: 'Critical (75-100)' },
-    { color: '#F97316', label: 'High (50-75)' },
-    { color: '#EAB308', label: 'Moderate (25-50)' },
-    { color: '#22C55E', label: 'Low (0-25)' },
+    { color: '#EF4444', label: 'Critical (P90+)' },
+    { color: '#F97316', label: 'High (P75-P90)' },
+    { color: '#EAB308', label: 'Moderate (P50-P75)' },
+    { color: '#22C55E', label: 'Low (<P50)' },
   ];
 
   const legend = mapMode === 'density' ? densityLegend : impactLegend;
