@@ -840,6 +840,224 @@ body {
 }
 
 /* ============================================================
+   Zone Recommendation Cards (new classification-based UI)
+   ============================================================ */
+.zone-rec-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.zone-rec-card:hover {
+  border-color: var(--border-light);
+  box-shadow: var(--shadow-sm);
+}
+
+.zone-rec-header {
+  padding: 16px;
+}
+
+.zone-rec-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.zone-rec-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+  min-width: 0;
+}
+
+.classification-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.zone-rec-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px;
+}
+
+.zone-rec-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 4px;
+  background: var(--bg-elevated);
+  border-radius: 6px;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.zone-rec-stat strong {
+  font-size: 13px;
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.zone-rec-actions {
+  padding: 0 16px 12px;
+}
+
+.zone-rec-actions-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 8px;
+}
+
+.zone-rec-action-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.zone-rec-check {
+  color: #22c55e;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+/* Explain Risk Button */
+.explain-risk-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: calc(100% - 32px);
+  margin: 0 16px 16px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(139,92,246,0.12), rgba(59,130,246,0.12));
+  border: 1px solid rgba(139,92,246,0.25);
+  color: #a78bfa;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-family);
+  transition: all var(--transition-normal);
+}
+
+.explain-risk-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(139,92,246,0.2), rgba(59,130,246,0.2));
+  border-color: rgba(139,92,246,0.4);
+  box-shadow: 0 0 16px rgba(139,92,246,0.15);
+}
+
+.explain-risk-btn:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+/* AI Explanation Panel */
+.ai-explanation {
+  margin: 0 16px 16px;
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(139,92,246,0.06);
+  border: 1px solid rgba(139,92,246,0.15);
+  animation: fadeIn 300ms ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 0;
+  justify-content: center;
+  color: var(--accent-purple);
+  font-size: 13px;
+}
+
+.ai-error {
+  color: var(--risk-high);
+  font-size: 13px;
+  padding: 8px 0;
+}
+
+.ai-section {
+  margin-bottom: 12px;
+}
+
+.ai-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.ai-section-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #a78bfa;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ai-section p {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.ai-factors {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.ai-factors li {
+  font-size: 12px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  padding: 1px 0;
+}
+
+.ai-powered-tag {
+  margin-top: 10px;
+  font-size: 10px;
+  color: rgba(167,139,250,0.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Spin animation for loader icons */
+.spin-icon {
+  animation: spin 1s linear infinite;
+}
+
+/* Dashboard grid for 5 classification cards on rec page */
+.rec-page .dashboard-grid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* ============================================================
    Loading & Empty States
    ============================================================ */
 .loading-state {

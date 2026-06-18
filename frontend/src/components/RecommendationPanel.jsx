@@ -1,8 +1,225 @@
 import React, { useEffect, useState } from 'react';
-import { getRecommendations } from '../utils/api';
-import { Shield, AlertTriangle, Eye, Wrench } from 'lucide-react';
+import { getRecommendations, explainZoneRisk } from '../utils/api';
+import {
+  Shield, AlertTriangle, Eye, Wrench, ChevronDown, ChevronUp,
+  Sparkles, Loader2, MapPin, TrendingUp, Hash
+} from 'lucide-react';
 
-const PRIORITY_ORDER = ['Critical', 'High', 'Medium', 'Low'];
+const CLASSIFICATION_CONFIG = {
+  'Critical Zone': {
+    color: '#ef4444',
+    bg: 'rgba(239,68,68,0.12)',
+    border: 'rgba(239,68,68,0.3)',
+    icon: '🔴',
+    description: 'Frequent violations + severe disruption',
+  },
+  'Frequent Violation Zone': {
+    color: '#f97316',
+    bg: 'rgba(249,115,22,0.12)',
+    border: 'rgba(249,115,22,0.3)',
+    icon: '🟠',
+    description: 'Many violations, lower operational impact',
+  },
+  'Hidden Risk Zone': {
+    color: '#eab308',
+    bg: 'rgba(234,179,8,0.12)',
+    border: 'rgba(234,179,8,0.3)',
+    icon: '🟡',
+    description: 'Few violations but high disruption — often overlooked',
+  },
+  'Moderate Zone': {
+    color: '#3b82f6',
+    bg: 'rgba(59,130,246,0.12)',
+    border: 'rgba(59,130,246,0.3)',
+    icon: '🔵',
+    description: 'Moderate risk, periodic monitoring needed',
+  },
+  'Stable Zone': {
+    color: '#22c55e',
+    bg: 'rgba(34,197,94,0.12)',
+    border: 'rgba(34,197,94,0.3)',
+    icon: '🟢',
+    description: 'Low priority, routine monitoring',
+  },
+};
+
+function ZoneRecCard({ rec }) {
+  const [expanded, setExpanded] = useState(false);
+  const [explanation, setExplanation] = useState(null);
+  const [explaining, setExplaining] = useState(false);
+  const [explainError, setExplainError] = useState(null);
+
+  const cls = rec.zone_classification || 'Moderate Zone';
+  const config = CLASSIFICATION_CONFIG[cls] || CLASSIFICATION_CONFIG['Moderate Zone'];
+
+  async function handleExplain() {
+    if (explanation) {
+      setExpanded(!expanded);
+      return;
+    }
+
+    setExplaining(true);
+    setExplainError(null);
+    setExpanded(true);
+
+    try {
+      const result = await explainZoneRisk(rec.zone_id);
+      setExplanation(result);
+    } catch (err) {
+      setExplainError(err.message);
+    } finally {
+      setExplaining(false);
+    }
+  }
+
+  return (
+    <div className="zone-rec-card" style={{ borderLeft: `3px solid ${config.color}` }}>
+      {/* Header */}
+      <div className="zone-rec-header">
+        <div className="zone-rec-title-row">
+          <div className="zone-rec-name">
+            <MapPin size={14} style={{ color: config.color, flexShrink: 0 }} />
+            {rec.zone_name}
+          </div>
+          <span
+            className="classification-badge"
+            style={{ background: config.bg, color: config.color, border: `1px solid ${config.border}` }}
+          >
+            {config.icon} {cls}
+          </span>
+        </div>
+
+        {/* Rank stats */}
+        <div className="zone-rec-stats">
+          <div className="zone-rec-stat">
+            <Hash size={12} />
+            <span>Density Rank</span>
+            <strong>#{rec.density_rank}</strong>
+          </div>
+          <div className="zone-rec-stat">
+            <TrendingUp size={12} />
+            <span>Impact Rank</span>
+            <strong>#{rec.impact_rank}</strong>
+          </div>
+          <div className="zone-rec-stat">
+            <AlertTriangle size={12} />
+            <span>Impact Score</span>
+            <strong>{rec.impact_score?.toFixed?.(1) ?? rec.impact_score}</strong>
+          </div>
+          <div className="zone-rec-stat">
+            <Eye size={12} />
+            <span>Violations</span>
+            <strong>{rec.total_violations?.toLocaleString?.() ?? rec.total_violations}</strong>
+          </div>
+        </div>
+      </div>
+
+      {/* Recommendations */}
+      <div className="zone-rec-actions">
+        <div className="zone-rec-actions-label">Rule Engine Recommendations</div>
+        {(rec.recommendations || []).map((r, i) => (
+          <div className="zone-rec-action-item" key={i}>
+            <span className="zone-rec-check">✓</span>
+            {r}
+          </div>
+        ))}
+      </div>
+
+      {/* Explain Risk Button */}
+      <button
+        className="explain-risk-btn"
+        onClick={handleExplain}
+        disabled={explaining}
+      >
+        {explaining ? (
+          <>
+            <Loader2 size={14} className="spin-icon" />
+            Generating AI Explanation...
+          </>
+        ) : explanation ? (
+          <>
+            <Sparkles size={14} />
+            {expanded ? 'Hide AI Explanation' : 'Show AI Explanation'}
+            {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
+          </>
+        ) : (
+          <>
+            <Sparkles size={14} />
+            Explain Risk
+          </>
+        )}
+      </button>
+
+      {/* AI Explanation */}
+      {expanded && (
+        <div className="ai-explanation">
+          {explaining && (
+            <div className="ai-loading">
+              <Loader2 size={20} className="spin-icon" />
+              <span>Gemini 2.5 Flash is analyzing this zone...</span>
+            </div>
+          )}
+
+          {explainError && (
+            <div className="ai-error">
+              ⚠ {explainError}
+            </div>
+          )}
+
+          {explanation && (
+            <>
+              <div className="ai-section">
+                <div className="ai-section-title">
+                  <Sparkles size={13} /> Risk Summary
+                </div>
+                <p>{explanation.risk_summary}</p>
+              </div>
+
+              {explanation.key_risk_factors?.length > 0 && (
+                <div className="ai-section">
+                  <div className="ai-section-title">Key Risk Factors</div>
+                  <ul className="ai-factors">
+                    {explanation.key_risk_factors.map((f, i) => (
+                      <li key={i}>{f}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {(rec.recommendations || []).length > 0 && (
+                <div className="ai-section">
+                  <div className="ai-section-title">Recommended Actions</div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+                    {rec.recommendations.map((r, i) => (
+                      <div key={i} className="zone-rec-action-item">
+                        <span className="zone-rec-check">✓</span>
+                        {r}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="ai-section">
+                <div className="ai-section-title">Recommendation Explanation</div>
+                <p>{explanation.recommendation_explanation}</p>
+              </div>
+
+              <div className="ai-section">
+                <div className="ai-section-title">Expected Benefit</div>
+                <p>{explanation.expected_benefit}</p>
+              </div>
+
+              <div className="ai-powered-tag">
+                <Sparkles size={11} /> Powered by Gemini 2.5 Flash
+              </div>
+            </>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
 
 export default function RecommendationPanel() {
   const [data, setData] = useState(null);
@@ -43,126 +260,87 @@ export default function RecommendationPanel() {
 
   if (!data) return null;
 
-  // Flatten and filter recommendations
-  let allRecs = data.all || [];
+  // Filter by classification
+  let filteredRecs = data.all || [];
   if (activeFilter !== 'All') {
-    allRecs = allRecs.filter(r => r.priority === activeFilter);
+    filteredRecs = filteredRecs.filter(r => r.zone_classification === activeFilter);
   }
 
-  // Add zone name from by_priority data
-  const recsWithZones = allRecs.map(rec => {
-    // Find zone name from the grouped data
-    for (const priority of PRIORITY_ORDER) {
-      const found = (data.by_priority[priority] || []).find(
-        r => r.zone_id === rec.zone_id && r.action === rec.action
-      );
-      if (found) return { ...rec, zone_name: found.zone_name };
-    }
-    return rec;
+  // Sort: Critical first, then by impact score descending
+  const priorityOrder = { Critical: 0, High: 1, Medium: 2, Low: 3 };
+  filteredRecs = [...filteredRecs].sort((a, b) => {
+    const pa = priorityOrder[a.priority] ?? 4;
+    const pb = priorityOrder[b.priority] ?? 4;
+    if (pa !== pb) return pa - pb;
+    return (b.impact_score || 0) - (a.impact_score || 0);
   });
 
-  // Count by priority
-  const counts = {
-    All: data.total || 0,
-    Critical: (data.by_priority?.Critical || []).length,
-    High: (data.by_priority?.High || []).length,
-    Medium: (data.by_priority?.Medium || []).length,
-    Low: (data.by_priority?.Low || []).length,
-  };
+  const counts = data.classification_counts || {};
+  const totalZones = data.total || 0;
 
-  const categoryIcons = {
-    Towing: '🚛',
-    Deployment: '👮',
-    Enforcement: '⚡',
-    Infrastructure: '🏗️',
-    Strategic: '🎯',
-    Patrol: '🔄',
-    Monitoring: '👁️',
-  };
+  // Classification filter buttons
+  const classifications = [
+    'All',
+    'Critical Zone',
+    'Hidden Risk Zone',
+    'Frequent Violation Zone',
+    'Moderate Zone',
+    'Stable Zone',
+  ];
 
   return (
     <div className="rec-page">
       <div className="rec-page-header">
         <h2>Recommendation Center</h2>
-        <p>AI-generated enforcement recommendations based on zone analytics</p>
+        <p>Zone classifications and rule-engine recommendations with AI-powered explanations</p>
       </div>
 
-      {/* Summary Stats */}
+      {/* Classification summary cards */}
       <div className="dashboard-grid" style={{ marginBottom: 20 }}>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'rgba(239,68,68,0.15)', color: '#ef4444' }}>
-            <AlertTriangle size={18} />
-          </div>
-          <div className="kpi-value">{counts.Critical}</div>
-          <div className="kpi-label">Critical Actions</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'rgba(249,115,22,0.15)', color: '#f97316' }}>
-            <Shield size={18} />
-          </div>
-          <div className="kpi-value">{counts.High}</div>
-          <div className="kpi-label">High Priority</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'rgba(234,179,8,0.15)', color: '#eab308' }}>
-            <Eye size={18} />
-          </div>
-          <div className="kpi-value">{counts.Medium}</div>
-          <div className="kpi-label">Medium Priority</div>
-        </div>
-        <div className="kpi-card">
-          <div className="kpi-icon" style={{ background: 'rgba(34,197,94,0.15)', color: '#22c55e' }}>
-            <Wrench size={18} />
-          </div>
-          <div className="kpi-value">{counts.Low}</div>
-          <div className="kpi-label">Low Priority</div>
-        </div>
-      </div>
-
-      {/* Filters */}
-      <div className="rec-filters">
-        {['All', ...PRIORITY_ORDER].map(filter => (
-          <button
-            key={filter}
-            className={`rec-filter-btn ${activeFilter === filter ? 'active' : ''}`}
-            onClick={() => setActiveFilter(filter)}
-            id={`filter-${filter.toLowerCase()}`}
+        {Object.entries(CLASSIFICATION_CONFIG).map(([cls, config]) => (
+          <div
+            className="kpi-card"
+            key={cls}
+            style={{ cursor: 'pointer', borderColor: activeFilter === cls ? config.color : undefined }}
+            onClick={() => setActiveFilter(activeFilter === cls ? 'All' : cls)}
           >
-            {filter} ({counts[filter] || 0})
-          </button>
-        ))}
-      </div>
-
-      {/* Recommendation Cards */}
-      <div className="rec-list">
-        {recsWithZones.map((rec, i) => (
-          <div className="rec-card" key={i}>
-            <div className="rec-header">
-              <span className="rec-action">
-                {categoryIcons[rec.category] || '📋'} {rec.action}
-              </span>
-              <span className={`rec-priority priority-${rec.priority.toLowerCase()}`}>
-                {rec.priority}
-              </span>
+            <div className="kpi-icon" style={{ background: config.bg, color: config.color }}>
+              <span style={{ fontSize: 18 }}>{config.icon}</span>
             </div>
-            <div className="rec-reason">{rec.reason}</div>
-            {rec.expected_benefit && (
-              <div className="rec-benefit">
-                ✓ {rec.expected_benefit}
-              </div>
-            )}
-            {rec.zone_name && (
-              <div className="rec-zone">
-                📍 {rec.zone_name}
-              </div>
-            )}
+            <div className="kpi-value">{counts[cls] || 0}</div>
+            <div className="kpi-label">{cls.replace(' Zone', '')}</div>
           </div>
         ))}
       </div>
 
-      {recsWithZones.length === 0 && (
+      {/* Filter buttons */}
+      <div className="rec-filters">
+        {classifications.map(cls => {
+          const config = CLASSIFICATION_CONFIG[cls];
+          const count = cls === 'All' ? totalZones : (counts[cls] || 0);
+          return (
+            <button
+              key={cls}
+              className={`rec-filter-btn ${activeFilter === cls ? 'active' : ''}`}
+              onClick={() => setActiveFilter(cls)}
+              style={activeFilter === cls && config ? { borderColor: config.color, color: config.color } : {}}
+            >
+              {config ? config.icon : '📋'} {cls.replace(' Zone', '')} ({count})
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Zone recommendation cards */}
+      <div className="rec-list">
+        {filteredRecs.map((rec) => (
+          <ZoneRecCard key={rec.zone_id} rec={rec} />
+        ))}
+      </div>
+
+      {filteredRecs.length === 0 && (
         <div className="empty-state">
-          <p>No recommendations found for the selected filter.</p>
+          <p>No zones found for the selected classification.</p>
         </div>
       )}
     </div>

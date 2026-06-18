@@ -300,32 +300,110 @@ async def get_analytics():
 
 @app.get("/api/recommendations")
 async def get_recommendations():
-    """Get all recommendations, grouped by priority."""
+    """
+    Get all zone recommendations with classifications.
+    Returns zone-level recommendation objects from the rule engine.
+    """
     if not RECOMMENDATIONS:
         raise HTTPException(status_code=404, detail="No recommendations available")
     
+    # Group by classification
+    by_classification = {}
+    for rec in RECOMMENDATIONS:
+        cls = rec.get("zone_classification", "Moderate Zone")
+        if cls not in by_classification:
+            by_classification[cls] = []
+        by_classification[cls].append(rec)
+    
     # Group by priority
-    grouped = {"Critical": [], "High": [], "Medium": [], "Low": []}
+    by_priority = {"Critical": [], "High": [], "Medium": [], "Low": []}
     for rec in RECOMMENDATIONS:
         priority = rec.get("priority", "Low")
-        if priority in grouped:
-            # Add zone name
-            zone_name = "Unknown Zone"
-            for h in HOTSPOTS:
-                if h["cluster_id"] == rec["zone_id"]:
-                    zone_name = h["zone_name"]
-                    break
-            
-            grouped[priority].append({
-                **rec,
-                "zone_name": zone_name,
-            })
+        if priority in by_priority:
+            by_priority[priority].append(rec)
+    
+    # Count classifications
+    classification_counts = {
+        cls: len(recs) for cls, recs in by_classification.items()
+    }
     
     return {
         "total": len(RECOMMENDATIONS),
-        "by_priority": grouped,
+        "by_classification": by_classification,
+        "by_priority": by_priority,
+        "classification_counts": classification_counts,
         "all": RECOMMENDATIONS,
     }
+
+
+@app.get("/api/recommendation/{zone_id}")
+async def get_zone_recommendation(zone_id: int):
+    """
+    Get recommendation detail for a specific zone.
+    Returns zone classification, rule-engine recommendations,
+    and cached AI explanation (if available).
+    """
+    # Find the zone recommendation
+    zone_rec = None
+    for rec in RECOMMENDATIONS:
+        if rec.get("zone_id") == zone_id:
+            zone_rec = rec
+            break
+    
+    if not zone_rec:
+        raise HTTPException(status_code=404, detail=f"No recommendation for zone {zone_id}")
+    
+    # Find zone details for extra context
+    zone_detail = None
+    for h in HOTSPOTS:
+        if h.get("cluster_id") == zone_id:
+            zone_detail = h
+            break
+    
+    result = {**zone_rec}
+    
+    # Add cached explanation if it exists
+    if zone_detail and "ai_explanation" in zone_detail:
+        result["ai_explanation"] = zone_detail["ai_explanation"]
+    
+    return result
+
+
+@app.post("/api/recommendation/{zone_id}/explain")
+async def explain_zone_risk(zone_id: int):
+    """
+    Trigger Gemini 2.5 Flash to generate an explanation for a zone.
+    The explanation is generated on-demand and cached in memory.
+    """
+    # Find the zone recommendation
+    zone_rec = None
+    for rec in RECOMMENDATIONS:
+        if rec.get("zone_id") == zone_id:
+            zone_rec = rec
+            break
+    
+    if not zone_rec:
+        raise HTTPException(status_code=404, detail=f"No recommendation for zone {zone_id}")
+    
+    # Check if already cached on the hotspot
+    for h in HOTSPOTS:
+        if h.get("cluster_id") == zone_id and "ai_explanation" in h:
+            return h["ai_explanation"]
+    
+    # Generate explanation via Gemini
+    try:
+        from gemini_engine import generate_explanation
+        explanation = generate_explanation(zone_rec)
+        
+        # Cache on the hotspot object in memory
+        for h in HOTSPOTS:
+            if h.get("cluster_id") == zone_id:
+                h["ai_explanation"] = explanation
+                break
+        
+        return explanation
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Explanation generation failed: {str(e)}")
 
 
 @app.post("/api/process")

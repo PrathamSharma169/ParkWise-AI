@@ -13,6 +13,14 @@ async function fetchJSON(url) {
   return res.json();
 }
 
+async function postJSON(url) {
+  const res = await fetch(`${API_BASE}${url}`, { method: 'POST' });
+  if (!res.ok) {
+    throw new Error(`API Error: ${res.status} ${res.statusText}`);
+  }
+  return res.json();
+}
+
 export async function getHotspots() {
   return fetchJSON('/hotspots');
 }
@@ -35,4 +43,12 @@ export async function getAnalytics() {
 
 export async function getRecommendations() {
   return fetchJSON('/recommendations');
+}
+
+export async function getZoneRecommendation(zoneId) {
+  return fetchJSON(`/recommendation/${zoneId}`);
+}
+
+export async function explainZoneRisk(zoneId) {
+  return postJSON(`/recommendation/${zoneId}/explain`);
 }

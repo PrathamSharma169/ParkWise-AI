@@ -1,135 +1,208 @@
 """
-Rule-based Recommendation Engine for ParkWise AI.
-Generates actionable enforcement recommendations based on zone analytics.
+ParkWise AI — Zone Classification Engine + Rule-Based Recommendation Engine
+
+Architecture:
+    Hotspot Data → Zone Classification → Rule Engine → Recommendations
+    (Gemini 2.5 Flash is called separately for explanations, NOT for decisions)
+
+Zone Classifications (using relative percentiles):
+    1. Critical Zone:           density ≥ P75 AND impact ≥ P75
+    2. Frequent Violation Zone: density ≥ P75 AND impact < P50
+    3. Hidden Risk Zone:        density < P50 AND impact ≥ P75
+    4. Stable Zone:             density < P50 AND impact < P50
+    5. Moderate Zone:           everything else (fallback)
 """
 
 
-def generate_recommendations(zone_data: dict) -> list:
+# ============================================================
+# Percentile rank ordering (for comparison operators)
+# ============================================================
+PERCENTILE_ORDER = {"P25": 0, "P50": 1, "P75": 2, "P90": 3}
+
+
+def _percentile_gte(p, threshold):
+    """Check if percentile p >= threshold (e.g. 'P90' >= 'P75')."""
+    return PERCENTILE_ORDER.get(p, 0) >= PERCENTILE_ORDER.get(threshold, 0)
+
+
+def _percentile_lt(p, threshold):
+    """Check if percentile p < threshold (e.g. 'P50' < 'P75')."""
+    return PERCENTILE_ORDER.get(p, 0) < PERCENTILE_ORDER.get(threshold, 0)
+
+
+# ============================================================
+# Zone Classification Engine
+# ============================================================
+
+def classify_zone(zone_data: dict) -> str:
     """
-    Generate recommendations for a parking hotspot zone.
-    
-    Args:
-        zone_data: Dictionary containing zone analytics:
-            - zone_id: int
-            - zone_name: str
-            - impact_score: float
-            - total_violations: int
-            - vehicle_impact_score: float  (normalized 0-1)
-            - junction_ratio: float  (0-1)
-            - avg_resolution_time: float  (hours)
-            - top_vehicle_type: str
-            - density_rank: int
-            - impact_rank: int
-    
-    Returns:
-        List of recommendation dictionaries.
+    Classify a hotspot zone based on density percentile and impact percentile.
+
+    Uses RELATIVE percentiles for both density and impact so that
+    classification adapts to the actual data distribution.
+
+    Returns one of:
+        'Critical Zone', 'Frequent Violation Zone', 'Hidden Risk Zone',
+        'Stable Zone', 'Moderate Zone'
     """
-    recommendations = []
-    zone_id = zone_data.get("zone_id")
-    impact_score = zone_data.get("impact_score", 0)
+    density_pct = zone_data.get("violation_percentile", "P25")
+    impact_pct = zone_data.get("impact_percentile", "P25")
+
+    # Classification 1: Critical Zone — high density + high impact
+    if _percentile_gte(density_pct, "P75") and _percentile_gte(impact_pct, "P75"):
+        return "Critical Zone"
+
+    # Classification 2: Frequent Violation Zone — high density + low impact
+    if _percentile_gte(density_pct, "P75") and _percentile_lt(impact_pct, "P50"):
+        return "Frequent Violation Zone"
+
+    # Classification 3: Hidden Risk Zone — low density + high impact
+    if _percentile_lt(density_pct, "P50") and _percentile_gte(impact_pct, "P75"):
+        return "Hidden Risk Zone"
+
+    # Classification 4: Stable Zone — low density + low impact
+    if _percentile_lt(density_pct, "P50") and _percentile_lt(impact_pct, "P50"):
+        return "Stable Zone"
+
+    # Fallback: Moderate Zone
+    return "Moderate Zone"
+
+
+# ============================================================
+# Rule Engine — classification-based recommendations
+# ============================================================
+
+_CLASSIFICATION_RULES = {
+    "Critical Zone": {
+        "priority": "Critical",
+        "recommendations": [
+            "Immediate Enforcement Priority",
+            "Increase Officer Presence",
+            "Increase Towing Operations",
+        ],
+    },
+    "Frequent Violation Zone": {
+        "priority": "High",
+        "recommendations": [
+            "Improve Parking Infrastructure",
+            "Install Additional Signage",
+            "Public Awareness Campaign",
+        ],
+    },
+    "Hidden Risk Zone": {
+        "priority": "Critical",
+        "recommendations": [
+            "Targeted Enforcement",
+            "Junction Monitoring",
+            "Dedicated Patrol Team",
+        ],
+    },
+    "Stable Zone": {
+        "priority": "Low",
+        "recommendations": [
+            "Routine Monitoring",
+        ],
+    },
+    "Moderate Zone": {
+        "priority": "Medium",
+        "recommendations": [
+            "Schedule Periodic Enforcement Patrols",
+            "Monitor Trend for Escalation",
+        ],
+    },
+}
+
+
+# ============================================================
+# Advanced Rules — additive recommendations
+# ============================================================
+
+def _apply_advanced_rules(zone_data: dict, recommendations: list):
+    """
+    Apply additional rule-engine checks and append extra
+    recommendations if conditions are met.  These supplement
+    (never replace) the classification-based recommendations.
+    """
     vehicle_impact = zone_data.get("vehicle_impact_score", 0)
     junction_ratio = zone_data.get("junction_ratio", 0)
     avg_resolution = zone_data.get("avg_resolution_time", 0)
     total_violations = zone_data.get("total_violations", 0)
-    density_rank = zone_data.get("density_rank", 999)
-    impact_rank = zone_data.get("impact_rank", 999)
-    top_vehicle = zone_data.get("top_vehicle_type", "UNKNOWN")
 
-    # --- Rule 1: High Vehicle Impact ---
+    # High Vehicle Impact (normalized score > 0.7  ≈ 70%)
     if vehicle_impact > 0.7:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Increase towing patrol frequency",
-            "reason": f"High concentration of large vehicles ({top_vehicle} dominant). "
-                      f"Vehicle impact score: {vehicle_impact:.2f}",
-            "priority": "Critical" if vehicle_impact > 0.85 else "High",
-            "expected_benefit": "Reduce road blockage by 40-60% during peak hours",
-            "category": "Towing"
-        })
+        recommendations.append("Increase Towing Frequency")
 
-    # --- Rule 2: High Junction Impact ---
-    if junction_ratio > 0.4:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Deploy traffic officers near junction",
-            "reason": f"{junction_ratio*100:.0f}% of violations occur near junctions, "
-                      f"causing intersection gridlock",
-            "priority": "Critical" if junction_ratio > 0.6 else "High",
-            "expected_benefit": "Improve junction throughput by 30-50%",
-            "category": "Deployment"
-        })
+    # High Junction Impact (ratio > 0.6  ≈ 60%)
+    if junction_ratio > 0.6:
+        recommendations.append("Deploy Officers Near Junction")
 
-    # --- Rule 3: Long Enforcement Time ---
+    # High Enforcement Difficulty (avg resolution > 24 hours)
     if avg_resolution > 24:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Assign dedicated enforcement team",
-            "reason": f"Average resolution time is {avg_resolution:.1f} hours. "
-                      f"Violations persist too long before action",
-            "priority": "Critical" if avg_resolution > 72 else "High",
-            "expected_benefit": "Reduce average resolution time by 60%",
-            "category": "Enforcement"
-        })
+        recommendations.append("Dedicated Response Team")
 
-    # --- Rule 4: Repeat Offender Zone ---
-    if total_violations > 200:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Install permanent no-parking barriers and signage",
-            "reason": f"Zone has {total_violations} recorded violations, "
-                      f"indicating chronic repeat offenses",
-            "priority": "High" if total_violations > 500 else "Medium",
-            "expected_benefit": "Deter repeat violations by 70% with physical barriers",
-            "category": "Infrastructure"
-        })
-
-    # --- Rule 5: Hidden High Impact Zone ---
-    if impact_rank <= 10 and density_rank > 20:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Prioritize for immediate enforcement review",
-            "reason": f"Hidden hotspot: Impact rank #{impact_rank} but density rank "
-                      f"#{density_rank}. This zone causes disproportionate disruption "
-                      f"relative to violation count",
-            "priority": "Critical",
-            "expected_benefit": "Address overlooked high-impact areas before they escalate",
-            "category": "Strategic"
-        })
-
-    # --- Rule 6: Overall Critical Zone ---
-    if impact_score >= 75:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Implement multi-modal enforcement strategy",
-            "reason": f"Impact score of {impact_score:.0f}/100 places this zone in "
-                      f"critical severity. Requires combined towing, officer deployment, "
-                      f"and infrastructure measures",
-            "priority": "Critical",
-            "expected_benefit": "Comprehensive reduction in parking violations and traffic disruption",
-            "category": "Strategic"
-        })
-
-    # --- Rule 7: Moderate Zone - Preventive ---
-    if 50 <= impact_score < 75 and not recommendations:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Schedule periodic enforcement patrols",
-            "reason": f"Moderate impact score ({impact_score:.0f}/100). "
-                      f"Regular monitoring can prevent escalation",
-            "priority": "Medium",
-            "expected_benefit": "Prevent zone from escalating to high-risk status",
-            "category": "Patrol"
-        })
-
-    # --- Rule 8: Low priority zones still get a recommendation ---
-    if not recommendations:
-        recommendations.append({
-            "zone_id": zone_id,
-            "action": "Continue routine monitoring",
-            "reason": f"Zone shows manageable violation levels (score: {impact_score:.0f}/100)",
-            "priority": "Low",
-            "expected_benefit": "Maintain current compliance levels",
-            "category": "Monitoring"
-        })
+    # Repeat Offender Zone
+    if total_violations > 500:
+        recommendations.append("Permanent Infrastructure Intervention")
 
     return recommendations
+
+
+# ============================================================
+# Public API
+# ============================================================
+
+def generate_zone_recommendation(zone_data: dict) -> dict:
+    """
+    Run the full classification + rule-engine pipeline for a single zone.
+
+    Args:
+        zone_data: dict with keys:
+            zone_id, zone_name, impact_score, total_violations,
+            violation_percentile, vehicle_impact_score, junction_ratio,
+            avg_resolution_time, density_rank, impact_rank,
+            top_locations (list)
+
+    Returns:
+        {
+            "zone_id": int,
+            "zone_name": str,
+            "zone_classification": str,
+            "density_rank": int,
+            "impact_rank": int,
+            "impact_score": float,
+            "total_violations": int,
+            "violation_percentile": str,
+            "priority": str,
+            "recommendations": [str, ...],
+            "top_roads": [str, ...],
+        }
+    """
+    classification = classify_zone(zone_data)
+    rule = _CLASSIFICATION_RULES[classification]
+
+    # Start with classification-based recommendations
+    recommendations = list(rule["recommendations"])
+
+    # Layer on advanced rules
+    _apply_advanced_rules(zone_data, recommendations)
+
+    # Extract top road names for Gemini prompt
+    top_roads = []
+    for loc in zone_data.get("top_locations", [])[:5]:
+        name = loc.get("name", "") if isinstance(loc, dict) else str(loc)
+        if name and name not in top_roads:
+            top_roads.append(name)
+
+    return {
+        "zone_id": zone_data.get("zone_id"),
+        "zone_name": zone_data.get("zone_name", "Unknown Zone"),
+        "zone_classification": classification,
+        "density_rank": zone_data.get("density_rank", 0),
+        "impact_rank": zone_data.get("impact_rank", 0),
+        "impact_score": zone_data.get("impact_score", 0),
+        "total_violations": zone_data.get("total_violations", 0),
+        "violation_percentile": zone_data.get("violation_percentile", "P25"),
+        "priority": rule["priority"],
+        "recommendations": recommendations,
+        "top_roads": top_roads,
+    }

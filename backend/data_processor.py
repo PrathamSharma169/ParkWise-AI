@@ -20,7 +20,7 @@ from collections import Counter
 
 from database import engine, init_db, SessionLocal
 from models import Hotspot, HotspotDetail, Recommendation
-from recommendations import generate_recommendations
+from recommendations import generate_zone_recommendation, classify_zone
 
 
 # ============================================================
@@ -378,6 +378,12 @@ def compute_impact_scores(clusters: list) -> list:
     p75 = np.percentile(violations, 75)
     p90 = np.percentile(violations, 90)
     
+    # Compute impact score percentiles for zone classification
+    ip25 = np.percentile(impact_scores, 25)
+    ip50 = np.percentile(impact_scores, 50)
+    ip75 = np.percentile(impact_scores, 75)
+    ip90 = np.percentile(impact_scores, 90)
+    
     for i, cluster in enumerate(clusters):
         cluster["impact_score"] = float(round(impact_scores[i], 1))
         cluster["vehicle_impact_score"] = float(norm_vehicle[i])
@@ -392,6 +398,17 @@ def compute_impact_scores(clusters: list) -> list:
             cluster["violation_percentile"] = "P50"
         else:
             cluster["violation_percentile"] = "P25"
+        
+        # Impact percentile (for zone classification)
+        s = impact_scores[i]
+        if s >= ip90:
+            cluster["impact_percentile"] = "P90"
+        elif s >= ip75:
+            cluster["impact_percentile"] = "P75"
+        elif s >= ip50:
+            cluster["impact_percentile"] = "P50"
+        else:
+            cluster["impact_percentile"] = "P25"
     
     # Sort and rank by impact score (descending)
     clusters.sort(key=lambda x: -x["impact_score"])
@@ -405,33 +422,56 @@ def compute_impact_scores(clusters: list) -> list:
     
     print(f"  Impact scores range: {min(c['impact_score'] for c in clusters):.1f} - "
           f"{max(c['impact_score'] for c in clusters):.1f}")
+    print(f"  Impact percentile thresholds: P25={ip25:.1f}, P50={ip50:.1f}, "
+          f"P75={ip75:.1f}, P90={ip90:.1f}")
     
     return clusters
 
 
 def generate_all_recommendations(clusters: list) -> list:
     """
-    Step 5: Generate recommendations for all clusters.
+    Step 5: Classify zones and generate rule-engine recommendations.
+    
+    Uses the Zone Classification Engine to categorize each zone, then
+    the Rule Engine to produce deterministic recommendations.
+    Gemini explanations are NOT generated here — they are on-demand via API.
     """
-    print("[5/6] Generating recommendations...")
+    print("[5/6] Classifying zones & generating recommendations...")
     
     all_recommendations = []
+    classification_counts = {}
+    
     for cluster in clusters:
-        zone_recs = generate_recommendations({
+        zone_data = {
             "zone_id": cluster["cluster_id"],
             "zone_name": cluster["zone_name"],
             "impact_score": cluster["impact_score"],
             "total_violations": cluster["total_violations"],
+            "violation_percentile": cluster.get("violation_percentile", "P25"),
+            "impact_percentile": cluster.get("impact_percentile", "P25"),
             "vehicle_impact_score": cluster.get("vehicle_impact_score", 0),
             "junction_ratio": cluster["junction_ratio"],
             "avg_resolution_time": cluster["avg_resolution_time"],
             "top_vehicle_type": cluster.get("top_vehicle_type", "UNKNOWN"),
             "density_rank": cluster.get("density_rank", 999),
             "impact_rank": cluster.get("impact_rank", 999),
-        })
-        all_recommendations.extend(zone_recs)
+            "top_locations": cluster.get("top_locations", []),
+        }
+        
+        zone_rec = generate_zone_recommendation(zone_data)
+        all_recommendations.append(zone_rec)
+        
+        # Store classification on the cluster for JSON output
+        cluster["zone_classification"] = zone_rec["zone_classification"]
+        
+        # Count classifications
+        cls = zone_rec["zone_classification"]
+        classification_counts[cls] = classification_counts.get(cls, 0) + 1
     
-    print(f"  Generated {len(all_recommendations)} recommendations")
+    print(f"  Generated recommendations for {len(all_recommendations)} zones")
+    for cls, count in sorted(classification_counts.items()):
+        print(f"    {cls}: {count}")
+    
     return all_recommendations
 
 
@@ -478,20 +518,23 @@ def save_to_database(clusters: list, recommendations: list):
             )
             db.add(detail)
         
-        # Save recommendations
-        for rec in recommendations:
-            recommendation = Recommendation(
-                zone_id=rec["zone_id"],
-                action=rec["action"],
-                reason=rec["reason"],
-                priority=rec["priority"],
-                expected_benefit=rec.get("expected_benefit", ""),
-                category=rec.get("category", "General"),
-            )
-            db.add(recommendation)
+        # Save recommendations (new format: one row per zone per recommendation)
+        rec_count = 0
+        for zone_rec in recommendations:
+            for rec_text in zone_rec.get("recommendations", []):
+                recommendation = Recommendation(
+                    zone_id=zone_rec["zone_id"],
+                    action=rec_text,
+                    reason=zone_rec.get("zone_classification", "Moderate Zone"),
+                    priority=zone_rec.get("priority", "Medium"),
+                    expected_benefit="",
+                    category=zone_rec.get("zone_classification", "General"),
+                )
+                db.add(recommendation)
+                rec_count += 1
         
         db.commit()
-        print(f"  Saved {len(clusters)} hotspots and {len(recommendations)} recommendations")
+        print(f"  Saved {len(clusters)} hotspots and {rec_count} recommendations")
         
     except Exception as e:
         db.rollback()

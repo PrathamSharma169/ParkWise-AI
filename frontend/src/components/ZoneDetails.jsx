@@ -1,9 +1,10 @@
-import React from 'react';
-import { X, MapPin, Clock, AlertTriangle, Car } from 'lucide-react';
+import React, { useState } from 'react';
+import { X, MapPin, Clock, AlertTriangle, Car, Sparkles, Loader2, ChevronDown, ChevronUp } from 'lucide-react';
 import {
   PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip,
   ResponsiveContainer, CartesianGrid
 } from 'recharts';
+import { explainZoneRisk } from '../utils/api';
 
 const VEHICLE_COLORS = {
   CAR: '#3b82f6',
@@ -23,9 +24,30 @@ function getSeverityInfo(score) {
 }
 
 export default function ZoneDetails({ zone, onClose }) {
+  const [explanation, setExplanation] = useState(null);
+  const [explaining, setExplaining] = useState(false);
+  const [showExplanation, setShowExplanation] = useState(false);
+
   if (!zone) return null;
 
   const severity = getSeverityInfo(zone.impact_score);
+
+  async function handleExplain() {
+    if (explanation) {
+      setShowExplanation(!showExplanation);
+      return;
+    }
+    setExplaining(true);
+    setShowExplanation(true);
+    try {
+      const result = await explainZoneRisk(zone.zone_id);
+      setExplanation(result);
+    } catch (err) {
+      console.error('Explain error:', err);
+    } finally {
+      setExplaining(false);
+    }
+  }
 
   // Prepare vehicle distribution pie data
   const vehicleData = Object.entries(zone.vehicle_distribution || {}).map(([name, value]) => ({
@@ -244,29 +266,153 @@ export default function ZoneDetails({ zone, onClose }) {
           </div>
         </div>
       )}
+      {/* Zone Classification & Recommendations */}
+      <div className="detail-section">
+        <h3>Intelligence</h3>
 
-      {/* Recommendations */}
-      {zone.recommendations && zone.recommendations.length > 0 && (
-        <div className="detail-section">
-          <h3>Recommendations</h3>
-          {zone.recommendations.map((rec, i) => (
-            <div className="rec-card" key={i}>
-              <div className="rec-header">
-                <span className="rec-action">{rec.action}</span>
-                <span className={`rec-priority priority-${rec.priority.toLowerCase()}`}>
-                  {rec.priority}
-                </span>
-              </div>
-              <div className="rec-reason">{rec.reason}</div>
-              {rec.expected_benefit && (
-                <div className="rec-benefit">
-                  ✓ {rec.expected_benefit}
+        {/* Classification badge */}
+        {zone.zone_classification && (
+          <div style={{
+            display: 'inline-block',
+            padding: '4px 12px',
+            borderRadius: 20,
+            fontSize: 12,
+            fontWeight: 600,
+            marginBottom: 12,
+            background: zone.zone_classification === 'Critical Zone' ? 'rgba(239,68,68,0.12)' :
+                         zone.zone_classification === 'Hidden Risk Zone' ? 'rgba(234,179,8,0.12)' :
+                         zone.zone_classification === 'Frequent Violation Zone' ? 'rgba(249,115,22,0.12)' :
+                         zone.zone_classification === 'Stable Zone' ? 'rgba(34,197,94,0.12)' :
+                         'rgba(59,130,246,0.12)',
+            color: zone.zone_classification === 'Critical Zone' ? '#ef4444' :
+                   zone.zone_classification === 'Hidden Risk Zone' ? '#eab308' :
+                   zone.zone_classification === 'Frequent Violation Zone' ? '#f97316' :
+                   zone.zone_classification === 'Stable Zone' ? '#22c55e' :
+                   '#3b82f6',
+          }}>
+            {zone.zone_classification}
+          </div>
+        )}
+
+        {/* Rule-engine recommendations */}
+        {zone.recommendations && zone.recommendations.length > 0 && (
+          <div style={{ marginBottom: 12 }}>
+            {zone.recommendations.map((rec, i) => {
+              const text = typeof rec === 'string' ? rec : rec.action;
+              return (
+                <div key={i} style={{
+                  display: 'flex', alignItems: 'center', gap: 8,
+                  padding: '6px 0', fontSize: 13, color: 'var(--text-secondary)',
+                }}>
+                  <span style={{ color: '#22c55e', flexShrink: 0 }}>✓</span>
+                  {text}
                 </div>
-              )}
+              );
+            })}
+          </div>
+        )}
+
+        {/* Explain Risk button */}
+        <button
+          onClick={handleExplain}
+          disabled={explaining}
+          style={{
+            display: 'flex', alignItems: 'center', gap: 6,
+            padding: '8px 16px', borderRadius: 8,
+            background: 'linear-gradient(135deg, rgba(139,92,246,0.15), rgba(59,130,246,0.15))',
+            border: '1px solid rgba(139,92,246,0.3)',
+            color: '#a78bfa', fontSize: 13, fontWeight: 600,
+            cursor: explaining ? 'wait' : 'pointer',
+            width: '100%', justifyContent: 'center',
+            transition: 'all 0.2s ease',
+          }}
+        >
+          {explaining ? (
+            <><Loader2 size={14} className="spin-icon" /> Generating...</>
+          ) : explanation ? (
+            <><Sparkles size={14} /> {showExplanation ? 'Hide' : 'Show'} AI Explanation</>
+          ) : (
+            <><Sparkles size={14} /> Explain Risk</>
+          )}
+        </button>
+
+        {/* AI Explanation */}
+        {showExplanation && explanation && (
+          <div style={{
+            marginTop: 12, padding: 14, borderRadius: 10,
+            background: 'rgba(139,92,246,0.08)',
+            border: '1px solid rgba(139,92,246,0.2)',
+          }}>
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', marginBottom: 8 }}>
+              <Sparkles size={12} style={{ marginRight: 4 }} />
+              AI Risk Summary
             </div>
-          ))}
-        </div>
-      )}
+            <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 10px 0' }}>
+              {explanation.risk_summary}
+            </p>
+
+            {explanation.key_risk_factors?.length > 0 && (
+              <>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', marginBottom: 6 }}>
+                  Key Risk Factors
+                </div>
+                <ul style={{ margin: '0 0 10px 0', paddingLeft: 16 }}>
+                  {explanation.key_risk_factors.map((f, i) => (
+                    <li key={i} style={{ fontSize: 12, color: 'var(--text-secondary)', lineHeight: 1.6 }}>{f}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {zone.recommendations && zone.recommendations.length > 0 && (
+              <>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', marginBottom: 6 }}>
+                  Recommended Actions
+                </div>
+                <div style={{ margin: '0 0 10px 0', display: 'flex', flexDirection: 'column', gap: 4 }}>
+                  {zone.recommendations.map((rec, i) => {
+                    const text = typeof rec === 'string' ? rec : rec.action;
+                    return (
+                      <div key={i} style={{
+                        display: 'flex', alignItems: 'center', gap: 8,
+                        fontSize: 12, color: 'var(--text-secondary)',
+                      }}>
+                        <span style={{ color: '#22c55e', flexShrink: 0 }}>✓</span>
+                        {text}
+                      </div>
+                    );
+                  })}
+                </div>
+              </>
+            )}
+
+            {explanation.recommendation_explanation && (
+              <>
+                <div style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', marginBottom: 6 }}>
+                  Recommendation Explanation
+                </div>
+                <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, margin: '0 0 10px 0' }}>
+                  {explanation.recommendation_explanation}
+                </p>
+              </>
+            )}
+
+            <div style={{ fontSize: 12, fontWeight: 600, color: '#a78bfa', marginBottom: 6 }}>
+              Expected Benefit
+            </div>
+            <p style={{ fontSize: 13, color: 'var(--text-secondary)', lineHeight: 1.6, margin: 0 }}>
+              {explanation.expected_benefit}
+            </p>
+
+            <div style={{
+              marginTop: 10, fontSize: 10, color: 'rgba(167,139,250,0.6)',
+              display: 'flex', alignItems: 'center', gap: 4,
+            }}>
+              <Sparkles size={10} /> Powered by Gemini 2.5 Flash
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
