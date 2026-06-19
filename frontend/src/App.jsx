@@ -3,6 +3,8 @@ import Sidebar from './components/Sidebar';
 import MapView from './components/MapView';
 import CityDashboard from './components/CityDashboard';
 import RecommendationPanel from './components/RecommendationPanel';
+import DateSelector from './components/DateSelector';
+import { getHotspots } from './utils/api';
 import { MapPin, BarChart3, Shield } from 'lucide-react';
 
 function AboutPage() {
@@ -177,25 +179,24 @@ function AboutPage() {
 export default function App() {
   const [activePage, setActivePage] = useState('map');
   const [headerInfo, setHeaderInfo] = useState({ zones: 0, violations: 0 });
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
 
   // Try to load basic stats for the header
   useEffect(() => {
     async function loadHeaderStats() {
       try {
-        const res = await fetch('/api/hotspots');
-        if (res.ok) {
-          const data = await res.json();
-          setHeaderInfo({
-            zones: data.length,
-            violations: data.reduce((sum, h) => sum + (h.total_violations || 0), 0),
-          });
-        }
+        const data = await getHotspots(startDate, endDate);
+        setHeaderInfo({
+          zones: data.length,
+          violations: data.reduce((sum, h) => sum + (h.total_violations || 0), 0),
+        });
       } catch (e) {
         // Backend not available yet
       }
     }
     loadHeaderStats();
-  }, []);
+  }, [startDate, endDate]);
 
   const pageTitles = {
     map: 'Parking Risk Maps',
@@ -229,11 +230,14 @@ export default function App() {
           </div>
         </header>
 
+        {/* Date Selector */}
+        <DateSelector onFilterChange={(start, end) => { setStartDate(start); setEndDate(end); }} />
+
         {/* Page Content */}
         <div className="page-content">
-          {activePage === 'map' && <MapView />}
-          {activePage === 'dashboard' && <CityDashboard />}
-          {activePage === 'recommendations' && <RecommendationPanel />}
+          {activePage === 'map' && <MapView startDate={startDate} endDate={endDate} />}
+          {activePage === 'dashboard' && <CityDashboard startDate={startDate} endDate={endDate} />}
+          {activePage === 'recommendations' && <RecommendationPanel startDate={startDate} endDate={endDate} />}
           {activePage === 'about' && <AboutPage />}
         </div>
       </div>

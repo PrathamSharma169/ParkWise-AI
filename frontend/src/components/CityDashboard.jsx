@@ -25,15 +25,16 @@ const VEHICLE_COLORS = {
   OTHERS: '#64748b',
 };
 
-export default function CityDashboard() {
+export default function CityDashboard({ startDate, endDate }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     async function load() {
+      setLoading(true);
       try {
-        const res = await getAnalytics();
+        const res = await getAnalytics(startDate, endDate);
         setData(res);
       } catch (err) {
         setError(err.message);
@@ -42,7 +43,7 @@ export default function CityDashboard() {
       }
     }
     load();
-  }, []);
+  }, [startDate, endDate]);
 
   if (loading) {
     return (

@@ -32,6 +32,7 @@ backend/data/
 
 # Pre-computed cluster labels (generated externally)
 backend/cluster_labels.json
+backend/cluster_labels_half.json
 
 # ============================================================
 # Node / Frontend

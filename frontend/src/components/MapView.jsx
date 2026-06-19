@@ -15,7 +15,7 @@ function FitBounds({ markers }) {
   return null;
 }
 
-export default function MapView() {
+export default function MapView({ startDate, endDate }) {
   const [mapMode, setMapMode] = useState('density'); // 'density' or 'impact'
   const [markers, setMarkers] = useState([]);
   const [selectedZone, setSelectedZone] = useState(null);
@@ -23,15 +23,15 @@ export default function MapView() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fetch markers based on map mode
+  // Fetch markers based on map mode and selected dates
   useEffect(() => {
     async function loadMarkers() {
       setLoading(true);
       setError(null);
       try {
         const data = mapMode === 'density'
-          ? await getDensityMap()
-          : await getImpactMap();
+          ? await getDensityMap(startDate, endDate)
+          : await getImpactMap(startDate, endDate);
         setMarkers(data);
       } catch (err) {
         setError(err.message);
@@ -41,9 +41,9 @@ export default function MapView() {
       }
     }
     loadMarkers();
-  }, [mapMode]);
+  }, [mapMode, startDate, endDate]);
 
-  // Fetch zone detail when a zone is selected
+  // Fetch zone detail when a zone is selected or date range changes
   useEffect(() => {
     if (selectedZone === null) {
       setZoneDetail(null);
@@ -51,14 +51,14 @@ export default function MapView() {
     }
     async function loadDetail() {
       try {
-        const data = await getHotspotDetail(selectedZone);
+        const data = await getHotspotDetail(selectedZone, startDate, endDate);
         setZoneDetail(data);
       } catch (err) {
         console.error('Failed to load zone detail:', err);
       }
     }
     loadDetail();
-  }, [selectedZone]);
+  }, [selectedZone, startDate, endDate]);
 
   const handleMarkerClick = (zoneId) => {
     setSelectedZone(zoneId);
@@ -225,6 +225,8 @@ export default function MapView() {
             setSelectedZone(null);
             setZoneDetail(null);
           }}
+          startDate={startDate}
+          endDate={endDate}
         />
       )}
     </div>

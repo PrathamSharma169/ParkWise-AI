@@ -23,7 +23,7 @@ function getSeverityInfo(score) {
   return { label: 'Low', color: '#22c55e', bg: 'rgba(34,197,94,0.15)' };
 }
 
-export default function ZoneDetails({ zone, onClose }) {
+export default function ZoneDetails({ zone, onClose, startDate, endDate }) {
   const [explanation, setExplanation] = useState(null);
   const [explaining, setExplaining] = useState(false);
   const [showExplanation, setShowExplanation] = useState(false);
@@ -40,7 +40,7 @@ export default function ZoneDetails({ zone, onClose }) {
     setExplaining(true);
     setShowExplanation(true);
     try {
-      const result = await explainZoneRisk(zone.zone_id);
+      const result = await explainZoneRisk(zone.zone_id, startDate, endDate);
       setExplanation(result);
     } catch (err) {
       console.error('Explain error:', err);

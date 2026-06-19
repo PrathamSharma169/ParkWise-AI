@@ -21,34 +21,46 @@ async function postJSON(url) {
   return res.json();
 }
 
-export async function getHotspots() {
-  return fetchJSON('/hotspots');
+function buildQuery(startDate, endDate) {
+  const params = new URLSearchParams();
+  if (startDate) params.append('start_date', startDate);
+  if (endDate) params.append('end_date', endDate);
+  const str = params.toString();
+  return str ? `?${str}` : '';
 }
 
-export async function getHotspotDetail(zoneId) {
-  return fetchJSON(`/hotspot/${zoneId}`);
+export async function getDateRange() {
+  return fetchJSON('/date-range');
 }
 
-export async function getDensityMap() {
-  return fetchJSON('/density-map');
+export async function getHotspots(startDate, endDate) {
+  return fetchJSON(`/hotspots${buildQuery(startDate, endDate)}`);
 }
 
-export async function getImpactMap() {
-  return fetchJSON('/impact-map');
+export async function getHotspotDetail(zoneId, startDate, endDate) {
+  return fetchJSON(`/hotspot/${zoneId}${buildQuery(startDate, endDate)}`);
 }
 
-export async function getAnalytics() {
-  return fetchJSON('/analytics');
+export async function getDensityMap(startDate, endDate) {
+  return fetchJSON(`/density-map${buildQuery(startDate, endDate)}`);
 }
 
-export async function getRecommendations() {
-  return fetchJSON('/recommendations');
+export async function getImpactMap(startDate, endDate) {
+  return fetchJSON(`/impact-map${buildQuery(startDate, endDate)}`);
 }
 
-export async function getZoneRecommendation(zoneId) {
-  return fetchJSON(`/recommendation/${zoneId}`);
+export async function getAnalytics(startDate, endDate) {
+  return fetchJSON(`/analytics${buildQuery(startDate, endDate)}`);
 }
 
-export async function explainZoneRisk(zoneId) {
-  return postJSON(`/recommendation/${zoneId}/explain`);
+export async function getRecommendations(startDate, endDate) {
+  return fetchJSON(`/recommendations${buildQuery(startDate, endDate)}`);
+}
+
+export async function getZoneRecommendation(zoneId, startDate, endDate) {
+  return fetchJSON(`/recommendation/${zoneId}${buildQuery(startDate, endDate)}`);
+}
+
+export async function explainZoneRisk(zoneId, startDate, endDate) {
+  return postJSON(`/recommendation/${zoneId}/explain${buildQuery(startDate, endDate)}`);
 }

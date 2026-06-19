@@ -6,6 +6,8 @@ Serves the processed parking violation data via REST APIs.
 
 import os
 import json
+import threading
+import pandas as pd
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
@@ -32,6 +34,14 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 HOTSPOTS = []
 RECOMMENDATIONS = []
 
+# In-memory dataframe loading and caching configuration
+CLEANED_DF = None
+DF_LOADED = False
+df_lock = threading.Lock()
+
+_ANALYTICS_CACHE = {}
+_CACHE_LOCK = threading.Lock()
+
 
 def load_data():
     """Load processed data from JSON files."""
@@ -53,10 +63,89 @@ def load_data():
         print(f"Loaded {len(RECOMMENDATIONS)} recommendations from JSON")
 
 
+def load_dataframe_in_background():
+    """Load the full dataset in a separate thread to keep startup instant."""
+    global CLEANED_DF, DF_LOADED
+    with df_lock:
+        if DF_LOADED:
+            return
+        try:
+            print("Loading full dataset in background...")
+            from data_processor import load_and_clean_data, load_cluster_labels
+            backend_dir = os.path.dirname(os.path.abspath(__file__))
+            csv_path = os.path.join(os.path.dirname(backend_dir), "sample.csv")
+            cluster_json_path = os.path.join(backend_dir, "cluster_labels.json")
+            
+            df = load_and_clean_data(csv_path)
+            df = load_cluster_labels(df, cluster_json_path)
+            CLEANED_DF = df
+            DF_LOADED = True
+            print("Dataset loaded successfully in memory!")
+        except Exception as e:
+            print(f"Error loading dataset: {e}")
+
+
+def get_filtered_data(start_date: str = None, end_date: str = None):
+    """
+    Get hotspots and recommendations filtered by date range.
+    If no dates are provided, return the full precomputed data.
+    Uses thread-safe cache to avoid redundant evaluations.
+    """
+    global CLEANED_DF, DF_LOADED
+    
+    cache_key = (start_date, end_date)
+    
+    with _CACHE_LOCK:
+        if cache_key in _ANALYTICS_CACHE:
+            return _ANALYTICS_CACHE[cache_key]
+            
+    # Default behavior: full dataset
+    if not start_date and not end_date:
+        return HOTSPOTS, RECOMMENDATIONS
+        
+    if not DF_LOADED:
+        load_dataframe_in_background()
+        
+    if CLEANED_DF is None:
+        print("Warning: CLEANED_DF not loaded. Falling back to full precomputed dataset.")
+        return HOTSPOTS, RECOMMENDATIONS
+        
+    try:
+        # Convert date inputs to UTC tz-aware datetime
+        start = pd.to_datetime(start_date, utc=True) if start_date else CLEANED_DF["created_datetime"].min()
+        if end_date:
+            end = pd.to_datetime(end_date, utc=True) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
+        else:
+            end = CLEANED_DF["created_datetime"].max()
+            
+        filtered_df = CLEANED_DF[(CLEANED_DF["created_datetime"] >= start) & (CLEANED_DF["created_datetime"] <= end)]
+        
+        if filtered_df.empty:
+            result = ([], [])
+        else:
+            from data_processor import compute_cluster_analytics, compute_impact_scores, generate_all_recommendations
+            clusters = compute_cluster_analytics(filtered_df)
+            clusters = compute_impact_scores(clusters)
+            recs = generate_all_recommendations(clusters)
+            result = (clusters, recs)
+            
+        with _CACHE_LOCK:
+            if len(_ANALYTICS_CACHE) > 100:
+                _ANALYTICS_CACHE.clear()
+            _ANALYTICS_CACHE[cache_key] = result
+            
+        return result
+    except Exception as e:
+        print(f"Error filtering data: {e}")
+        return HOTSPOTS, RECOMMENDATIONS
+
+
 @app.on_event("startup")
 async def startup():
     """Load data on application startup."""
     load_data()
+    # Load full dataframe in a background daemon thread
+    threading.Thread(target=load_dataframe_in_background, daemon=True).start()
 
 
 # ============================================================
@@ -74,18 +163,50 @@ async def root():
     }
 
 
+@app.get("/api/date-range")
+async def get_date_range():
+    """
+    Get the minimum and maximum dates available in the dataset.
+    """
+    global CLEANED_DF, DF_LOADED
+    if not DF_LOADED:
+        load_dataframe_in_background()
+        
+    if CLEANED_DF is None:
+        # If dataset could not be loaded, return a sensible default range
+        return {
+            "min_date": "2023-11-01",
+            "max_date": "2024-04-30",
+        }
+        
+    try:
+        min_date = CLEANED_DF["created_datetime"].min()
+        max_date = CLEANED_DF["created_datetime"].max()
+        return {
+            "min_date": min_date.strftime("%Y-%m-%d") if not pd.isnull(min_date) else "2023-11-01",
+            "max_date": max_date.strftime("%Y-%m-%d") if not pd.isnull(max_date) else "2024-04-30",
+        }
+    except Exception as e:
+        print(f"Error computing date range: {e}")
+        return {
+            "min_date": "2023-11-01",
+            "max_date": "2024-04-30",
+        }
+
+
 @app.get("/api/hotspots")
-async def get_hotspots():
+async def get_hotspots(start_date: str = None, end_date: str = None):
     """
     Get all parking hotspots with coordinates and scores.
     Used for both density and impact map rendering.
     """
-    if not HOTSPOTS:
-        raise HTTPException(status_code=404, detail="No hotspot data available. Run data processor first.")
+    hotspots, _ = get_filtered_data(start_date, end_date)
+    if not hotspots:
+        return []
     
     # Return simplified list for map rendering
     result = []
-    for h in HOTSPOTS:
+    for h in hotspots:
         result.append({
             "zone_id": h["cluster_id"],
             "zone_name": h["zone_name"],
@@ -103,16 +224,17 @@ async def get_hotspots():
 
 
 @app.get("/api/hotspot/{zone_id}")
-async def get_hotspot_detail(zone_id: int):
+async def get_hotspot_detail(zone_id: int, start_date: str = None, end_date: str = None):
     """
     Get detailed information for a specific hotspot zone.
     Includes zone_classification and string-based recommendations.
     """
-    for h in HOTSPOTS:
+    hotspots, recommendations = get_filtered_data(start_date, end_date)
+    for h in hotspots:
         if h["cluster_id"] == zone_id:
             # Get zone recommendation object (new format)
             zone_rec = None
-            for r in RECOMMENDATIONS:
+            for r in recommendations:
                 if r["zone_id"] == zone_id:
                     zone_rec = r
                     break
@@ -151,16 +273,17 @@ async def get_hotspot_detail(zone_id: int):
 
 
 @app.get("/api/density-map")
-async def get_density_map():
+async def get_density_map(start_date: str = None, end_date: str = None):
     """
     Get hotspots formatted for the Violation Density Map.
     Colored by violation count percentiles.
     """
-    if not HOTSPOTS:
-        raise HTTPException(status_code=404, detail="No data available")
+    hotspots, _ = get_filtered_data(start_date, end_date)
+    if not hotspots:
+        return []
     
     result = []
-    for h in HOTSPOTS:
+    for h in hotspots:
         # Color based on percentile
         percentile = h.get("violation_percentile", "P25")
         if percentile == "P90":
@@ -192,16 +315,17 @@ async def get_density_map():
 
 
 @app.get("/api/impact-map")
-async def get_impact_map():
+async def get_impact_map(start_date: str = None, end_date: str = None):
     """
     Get hotspots formatted for the Operational Impact Map.
     Colored by impact_percentile (adapts to actual data distribution).
     """
-    if not HOTSPOTS:
-        raise HTTPException(status_code=404, detail="No data available")
+    hotspots, _ = get_filtered_data(start_date, end_date)
+    if not hotspots:
+        return []
     
     result = []
-    for h in HOTSPOTS:
+    for h in hotspots:
         # Use impact_percentile for coloring (relative to data)
         impact_pct = h.get("impact_percentile", "P25")
         if impact_pct == "P90":
@@ -233,19 +357,35 @@ async def get_impact_map():
 
 
 @app.get("/api/analytics")
-async def get_analytics():
+async def get_analytics(start_date: str = None, end_date: str = None):
     """
     Get city-wide analytics summary.
     """
-    if not HOTSPOTS:
-        raise HTTPException(status_code=404, detail="No data available")
+    hotspots, _ = get_filtered_data(start_date, end_date)
+    if not hotspots:
+        return {
+            "total_zones": 0,
+            "total_violations": 0,
+            "avg_impact_score": 0.0,
+            "severity_distribution": {
+                "critical": 0,
+                "high": 0,
+                "moderate": 0,
+                "low": 0,
+            },
+            "top_impact_zones": [],
+            "top_density_zones": [],
+            "overlooked_zones": [],
+            "police_stations": [],
+            "vehicle_distribution": {},
+        }
     
-    total_zones = len(HOTSPOTS)
-    total_violations = sum(h["total_violations"] for h in HOTSPOTS)
-    avg_impact = sum(h["impact_score"] for h in HOTSPOTS) / total_zones if total_zones > 0 else 0
+    total_zones = len(hotspots)
+    total_violations = sum(h["total_violations"] for h in hotspots)
+    avg_impact = sum(h["impact_score"] for h in hotspots) / total_zones if total_zones > 0 else 0
     
     # Top 10 by impact
-    sorted_by_impact = sorted(HOTSPOTS, key=lambda x: -x["impact_score"])[:10]
+    sorted_by_impact = sorted(hotspots, key=lambda x: -x["impact_score"])[:10]
     top_impact = [
         {"zone_name": h["zone_name"], "impact_score": h["impact_score"],
          "impact_rank": h["impact_rank"], "zone_id": h["cluster_id"]}
@@ -253,7 +393,7 @@ async def get_analytics():
     ]
     
     # Top 10 by density
-    sorted_by_density = sorted(HOTSPOTS, key=lambda x: -x["total_violations"])[:10]
+    sorted_by_density = sorted(hotspots, key=lambda x: -x["total_violations"])[:10]
     top_density = [
         {"zone_name": h["zone_name"], "total_violations": h["total_violations"],
          "density_rank": h["density_rank"], "zone_id": h["cluster_id"]}
@@ -262,7 +402,7 @@ async def get_analytics():
     
     # Most overlooked zones (high impact rank, low density rank)
     overlooked = []
-    for h in HOTSPOTS:
+    for h in hotspots:
         if h["impact_rank"] <= 15 and h["density_rank"] > 20:
             overlooked.append({
                 "zone_name": h["zone_name"],
@@ -275,7 +415,7 @@ async def get_analytics():
     
     # Police station distribution
     station_counts = {}
-    for h in HOTSPOTS:
+    for h in hotspots:
         station = h.get("police_station", "Unknown")
         station_counts[station] = station_counts.get(station, 0) + 1
     
@@ -285,14 +425,14 @@ async def get_analytics():
     ]
     
     # Severity distribution
-    critical = sum(1 for h in HOTSPOTS if h["impact_score"] >= 75)
-    high = sum(1 for h in HOTSPOTS if 50 <= h["impact_score"] < 75)
-    moderate = sum(1 for h in HOTSPOTS if 25 <= h["impact_score"] < 50)
-    low = sum(1 for h in HOTSPOTS if h["impact_score"] < 25)
+    critical = sum(1 for h in hotspots if h["impact_score"] >= 75)
+    high = sum(1 for h in hotspots if 50 <= h["impact_score"] < 75)
+    moderate = sum(1 for h in hotspots if 25 <= h["impact_score"] < 50)
+    low = sum(1 for h in hotspots if h["impact_score"] < 25)
     
     # Aggregate vehicle distribution
     all_vehicles = {}
-    for h in HOTSPOTS:
+    for h in hotspots:
         for vtype, count in h.get("vehicle_distribution", {}).items():
             all_vehicles[vtype] = all_vehicles.get(vtype, 0) + count
     
@@ -315,17 +455,24 @@ async def get_analytics():
 
 
 @app.get("/api/recommendations")
-async def get_recommendations():
+async def get_recommendations(start_date: str = None, end_date: str = None):
     """
     Get all zone recommendations with classifications.
     Returns zone-level recommendation objects from the rule engine.
     """
-    if not RECOMMENDATIONS:
-        raise HTTPException(status_code=404, detail="No recommendations available")
+    _, recommendations = get_filtered_data(start_date, end_date)
+    if not recommendations:
+        return {
+            "total": 0,
+            "by_classification": {},
+            "by_priority": {"Critical": [], "High": [], "Medium": [], "Low": []},
+            "classification_counts": {},
+            "all": [],
+        }
     
     # Group by classification
     by_classification = {}
-    for rec in RECOMMENDATIONS:
+    for rec in recommendations:
         cls = rec.get("zone_classification", "Moderate Zone")
         if cls not in by_classification:
             by_classification[cls] = []
@@ -333,7 +480,7 @@ async def get_recommendations():
     
     # Group by priority
     by_priority = {"Critical": [], "High": [], "Medium": [], "Low": []}
-    for rec in RECOMMENDATIONS:
+    for rec in recommendations:
         priority = rec.get("priority", "Low")
         if priority in by_priority:
             by_priority[priority].append(rec)
@@ -344,24 +491,25 @@ async def get_recommendations():
     }
     
     return {
-        "total": len(RECOMMENDATIONS),
+        "total": len(recommendations),
         "by_classification": by_classification,
         "by_priority": by_priority,
         "classification_counts": classification_counts,
-        "all": RECOMMENDATIONS,
+        "all": recommendations,
     }
 
 
 @app.get("/api/recommendation/{zone_id}")
-async def get_zone_recommendation(zone_id: int):
+async def get_zone_recommendation(zone_id: int, start_date: str = None, end_date: str = None):
     """
     Get recommendation detail for a specific zone.
     Returns zone classification, rule-engine recommendations,
     and cached AI explanation (if available).
     """
+    hotspots, recommendations = get_filtered_data(start_date, end_date)
     # Find the zone recommendation
     zone_rec = None
-    for rec in RECOMMENDATIONS:
+    for rec in recommendations:
         if rec.get("zone_id") == zone_id:
             zone_rec = rec
             break
@@ -371,7 +519,7 @@ async def get_zone_recommendation(zone_id: int):
     
     # Find zone details for extra context
     zone_detail = None
-    for h in HOTSPOTS:
+    for h in hotspots:
         if h.get("cluster_id") == zone_id:
             zone_detail = h
             break
@@ -386,14 +534,15 @@ async def get_zone_recommendation(zone_id: int):
 
 
 @app.post("/api/recommendation/{zone_id}/explain")
-async def explain_zone_risk(zone_id: int):
+async def explain_zone_risk(zone_id: int, start_date: str = None, end_date: str = None):
     """
     Trigger Gemini 2.5 Flash to generate an explanation for a zone.
     The explanation is generated on-demand and cached in memory.
     """
+    hotspots, recommendations = get_filtered_data(start_date, end_date)
     # Find the zone recommendation
     zone_rec = None
-    for rec in RECOMMENDATIONS:
+    for rec in recommendations:
         if rec.get("zone_id") == zone_id:
             zone_rec = rec
             break
@@ -402,7 +551,7 @@ async def explain_zone_risk(zone_id: int):
         raise HTTPException(status_code=404, detail=f"No recommendation for zone {zone_id}")
     
     # Check if already cached on the hotspot
-    for h in HOTSPOTS:
+    for h in hotspots:
         if h.get("cluster_id") == zone_id and "ai_explanation" in h:
             return h["ai_explanation"]
     
@@ -412,7 +561,7 @@ async def explain_zone_risk(zone_id: int):
         explanation = generate_explanation(zone_rec)
         
         # Cache on the hotspot object in memory
-        for h in HOTSPOTS:
+        for h in hotspots:
             if h.get("cluster_id") == zone_id:
                 h["ai_explanation"] = explanation
                 break
@@ -429,6 +578,15 @@ async def trigger_processing():
         from data_processor import run_pipeline
         clusters, recommendations = run_pipeline()
         load_data()  # Reload the fresh data
+        
+        # Clear cache and reload DataFrame background loader
+        with _CACHE_LOCK:
+            _ANALYTICS_CACHE.clear()
+        global DF_LOADED
+        with df_lock:
+            DF_LOADED = False
+        threading.Thread(target=load_dataframe_in_background, daemon=True).start()
+        
         return {
             "status": "success",
             "zones_processed": len(clusters),

@@ -43,7 +43,7 @@ const CLASSIFICATION_CONFIG = {
   },
 };
 
-function ZoneRecCard({ rec }) {
+function ZoneRecCard({ rec, startDate, endDate }) {
   const [expanded, setExpanded] = useState(false);
   const [explanation, setExplanation] = useState(null);
   const [explaining, setExplaining] = useState(false);
@@ -63,7 +63,7 @@ function ZoneRecCard({ rec }) {
     setExpanded(true);
 
     try {
-      const result = await explainZoneRisk(rec.zone_id);
+      const result = await explainZoneRisk(rec.zone_id, startDate, endDate);
       setExplanation(result);
     } catch (err) {
       setExplainError(err.message);
@@ -221,7 +221,7 @@ function ZoneRecCard({ rec }) {
   );
 }
 
-export default function RecommendationPanel() {
+export default function RecommendationPanel({ startDate, endDate }) {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -229,8 +229,9 @@ export default function RecommendationPanel() {
 
   useEffect(() => {
     async function load() {
+      setLoading(true);
       try {
-        const res = await getRecommendations();
+        const res = await getRecommendations(startDate, endDate);
         setData(res);
       } catch (err) {
         setError(err.message);
@@ -239,7 +240,7 @@ export default function RecommendationPanel() {
       }
     }
     load();
-  }, []);
+  }, [startDate, endDate]);
 
   if (loading) {
     return (
@@ -334,7 +335,7 @@ export default function RecommendationPanel() {
       {/* Zone recommendation cards */}
       <div className="rec-list">
         {filteredRecs.map((rec) => (
-          <ZoneRecCard key={rec.zone_id} rec={rec} />
+          <ZoneRecCard key={rec.zone_id} rec={rec} startDate={startDate} endDate={endDate} />
         ))}
       </div>
 
