@@ -1,0 +1,44 @@
+{
+  "summary": "Frontend redesign test for Namma Bengaluru complete. Landing page, multilingual hero animation, journey/emotion/features sections, both CTAs, TopNav (brand-home + 4 nav pills), Map (Density/Impact toggle, 40 markers, search filter, marker popup → field briefing), Field Briefing slideover with 24-hour rhythm bars, vehicle pills, hottest streets, jurisdiction, Gemini AI briefing (real response, ~884 chars Risk Summary/Key Risk Factors/etc.), Dashboard (4 KPI odometers, Top-10 lists, severity waffle 100 cells, police-station bar) and Action Center (5 classification cards with correct counts Critical=6, Frequent=1, Hidden Risk=3, Moderate=15, Stable=15, filter pills + classification-card toggles, inline AI briefings, case-file slide-over) all work. About page renders. brand-home returns to landing. ONE FUNCTIONAL BUG: dashboard 'Hourly Traffic Wave' chart shows all-zeros / Peak Hour 00:00 because /api/hotspots response omits hourly_distribution.",
+  "backend_issues": {
+    "critical": [],
+    "minor": [
+      {"endpoint": "/api/hotspots", "issue": "Response excludes 'hourly_distribution' field (seeded in data and returned by /api/hotspot/{id}, but stripped by the bulk endpoint at backend/main.py L88-100). Causes the City Pulse > The Traffic Wave chart on the dashboard to render all zeros and Peak Hour to show 00:00 with 0 violations. Fix: add 'hourly_distribution': h.get('hourly_distribution', {}) to the dict returned in the loop."}
+    ]
+  },
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "MapView popup", "issue": "Leaflet popup shows 'Violations' label with no numeric value next to it (Impact value renders correctly but Violations cell is blank). See screenshot 07_map_popup.", "selector": ".leaflet-popup-content", "priority": "LOW"}
+    ],
+    "integration_issues": [
+      {"flow": "Dashboard > Traffic Wave (hourly-wave)", "issue": "Shows 0 violations across all 24 hours and Peak Hour=00:00 because /api/hotspots doesn't return hourly_distribution. Backend bug (see backend_issues).", "affected_selectors": ["[data-testid='hourly-wave']"]}
+    ],
+    "design_issues": [
+      {"screen": "Dashboard charts", "issues": ["Recharts console warning still present: 'width(-1) and height(-1) of chart should be greater than 0' on initial mount (cosmetic, carried over from iteration_1)."]},
+      {"screen": "Anywhere rendering a list", "issues": ["React console warning: 'Encountered two children with the same key' — likely in a .map() (waffle cells, dispatch action list, or vehicle pills). Should be hunted down and given unique keys."]}
+    ]
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_parkwise_api.py (from iteration_1, still valid)"
+  ],
+  "action_items": [
+    "Add 'hourly_distribution' to /api/hotspots response payload so the dashboard Traffic Wave chart renders real hourly data and Peak Hour is correct (one-line fix in backend/main.py around L99).",
+    "Render the violations number inside the Leaflet map popup (the 'Violations' label currently has no value next to it).",
+    "Fix React 'duplicate key' warning — audit .map() calls in CityDashboard.jsx (waffle cells/severity legend) and RecommendationPanel.jsx (dispatch actions / vehicle pills) and ensure each child uses a unique key.",
+    "(Optional, carried) Give Recharts ResponsiveContainer parents an explicit min-height to silence the width(-1) height(-1) warnings."
+  ],
+  "critical_code_review_comments": [
+    "/api/hotspots and /api/hotspot/{id} return overlapping but inconsistent shapes (bulk endpoint strips hourly_distribution, zone_classification, top_roads, vehicle_breakdown). Frontend dashboard expects the rich shape from the bulk endpoint — either unify the response or have the dashboard fetch /analytics or /api/hotspot/{id} per zone.",
+    "CityDashboard.jsx aggregates hourly violations from hotspots in the browser; consider exposing an aggregated /api/analytics/hourly endpoint instead of computing it client-side (also avoids the current 'all zeros' silent failure when the field is missing).",
+    "Console error 'Encountered two children with the same key' indicates a missing/duplicated key prop in at least one list — should be fixed; React may drop or duplicate DOM nodes silently.",
+    "Map popup violations value is missing — the binding/template in MapView.jsx popup HTML appears to not interpolate total_violations correctly."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "95% (API shapes only — /api/hotspots missing one field that frontend reads)", "frontend": "95% (only Traffic Wave is visibly broken, all other 14 flows pass)"},
+  "test_credentials": "None required — no auth in app.",
+  "seed_data_creation": "Verified live: /api/recommendations classification_counts = {Critical Zone:6, Hidden Risk Zone:3, Moderate Zone:15, Stable Zone:15, Frequent Violation Zone:1} — all 5 categories present as expected.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 14 frontend flows from the review_request were exercised end-to-end with a Playwright run that drives Landing → CTA → Console → Map (toggle + search 'Koramangala' → 1/40) → marker popup → Open field briefing → Generate Briefing (real Gemini response observed) → Dashboard (all KPIs + waffle 100 cells + top10 lists render) → Action Center (filter critical-zone → 6 cards, filter all → 40, classification-card-hidden-risk-zone toggle → 3 cards, inline AI briefing returns content) → About → brand-home back to landing. The only visibly broken thing is the Traffic Wave hourly chart (root cause: /api/hotspots strips hourly_distribution). After main agent's fix, just refresh dashboard and verify hourly-wave area chart is non-zero and Peak Hour callout shows a real hour.",
+  "rca of the issue": "Dashboard Traffic Wave shows 0 violations / Peak Hour 00:00. Reproduction: open /, click CTA, navigate to City Pulse tab. Observed: 'The Traffic Wave' line stays flat on the x-axis and 'PEAK HOUR' chip reads '00:00 — 0 violations'. RCA: CityDashboard.jsx L168-186 reduces hourly_distribution across HOTSPOTS, but /api/hotspots in backend/main.py L88-100 only returns 10 keys and intentionally drops hourly_distribution. Since every h.hourly_distribution is undefined, the reduce produces an empty/zero series, and the peak-hour reducer falls back to the first entry (hour 0, 0 violations). Mitigation: add 'hourly_distribution': h.get('hourly_distribution', {}) to the dict appended in /api/hotspots (single-line backend fix). Backend already has the data (seed_data._hourly_distribution and /api/hotspot/{id} expose it)."
+}

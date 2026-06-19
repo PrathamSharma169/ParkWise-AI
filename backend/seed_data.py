@@ -168,19 +168,60 @@ def _violation_types(total: int, seed: int) -> dict:
 def _build_clusters() -> list:
     rnd = random.Random(42)
     clusters = []
+    # Indices designed to land in 'Frequent Violation Zone' (high density, low impact)
+    # — high violations but light vehicles & few junctions
+    FREQUENT_IDX = {3, 6, 9}
+    # Indices designed to land in 'Hidden Risk Zone' (low density, high impact)
+    # — relatively few violations but heavy vehicles + junctions
+    HIDDEN_IDX = {28, 32, 36}
+
     for idx, (zone_name, lat, lon, station, base_v) in enumerate(BENGALURU_ZONES):
         total = base_v + rnd.randint(-10, 10)
         seed = idx * 7
+
+        # Default vehicle distribution
         veh_dist = _vehicle_distribution(total, seed)
+
+        # Frequent Violation Zone — saturate with bikes (lowest weight=1)
+        if idx in FREQUENT_IDX:
+            veh_dist = {
+                "BIKE": int(total * 0.78),
+                "AUTO": int(total * 0.16),
+                "CAR": int(total * 0.04),
+                "MAXI CAB": 0, "BUS": 0, "TRUCK": 0,
+                "OTHERS": max(0, total - int(total * 0.98)),
+            }
+
+        # Hidden Risk Zone — saturate with trucks/buses (weight=5)
+        if idx in HIDDEN_IDX:
+            veh_dist = {
+                "TRUCK": int(total * 0.42),
+                "BUS":   int(total * 0.28),
+                "MAXI CAB": int(total * 0.14),
+                "CAR":   int(total * 0.10),
+                "BIKE":  int(total * 0.04),
+                "AUTO":  int(total * 0.02),
+                "OTHERS": 0,
+            }
+            # Boost junction proximity drastically
+            junction_ratio = round(rnd.uniform(0.78, 0.95), 3)
+        else:
+            junction_ratio = round(rnd.uniform(0.05, 0.78), 3)
+
+        # Frequent zones get very low junction ratio + fast resolution
+        if idx in FREQUENT_IDX:
+            junction_ratio = round(rnd.uniform(0.02, 0.18), 3)
+            avg_resolution = round(rnd.uniform(2.0, 8.0), 2)
+        elif idx in HIDDEN_IDX:
+            avg_resolution = round(rnd.uniform(52.0, 96.0), 2)
+        else:
+            avg_resolution = round(rnd.uniform(2.0, 72.0), 2)
 
         # avg weighted vehicle weight
         if total > 0:
             avg_w = sum(VEHICLE_WEIGHTS.get(v, 2) * c for v, c in veh_dist.items()) / total
         else:
             avg_w = 2.0
-
-        junction_ratio = round(rnd.uniform(0.05, 0.78), 3)
-        avg_resolution = round(rnd.uniform(2.0, 72.0), 2)
 
         clusters.append({
             "cluster_id": idx,

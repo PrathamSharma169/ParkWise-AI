@@ -1,116 +1,99 @@
-import React, { useState, useEffect } from 'react';
-import Sidebar from '@/components/Sidebar';
-import MapView from '@/components/MapView';
-import CityDashboard from '@/components/CityDashboard';
-import RecommendationPanel from '@/components/RecommendationPanel';
-import { MapPin, BarChart3 } from 'lucide-react';
-import { getHotspots } from '@/utils/api';
+import React, { useState } from "react";
+import LandingPage from "@/components/LandingPage";
+import TopNav from "@/components/TopNav";
+import MapView from "@/components/MapView";
+import CityDashboard from "@/components/CityDashboard";
+import RecommendationPanel from "@/components/RecommendationPanel";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sparkles, ShieldCheck, MapPin, Activity, Eye } from "lucide-react";
 
 function AboutPage() {
   return (
-    <div className="dashboard-page" style={{ maxWidth: 820 }} data-testid="about-page">
-      <div style={{ marginBottom: 32 }}>
-        <h2 style={{ fontSize: 28, fontWeight: 800, marginBottom: 8 }}>
-          ParkWise AI
-        </h2>
-        <p style={{
-          color: 'var(--text-secondary)',
-          fontSize: 16,
-          lineHeight: 1.6,
-        }}>
-          Parking Enforcement Intelligence Platform
+    <div className="page-shell" data-testid="about-page" style={{ maxWidth: 900 }}>
+      <div className="overline overline-red" style={{ marginBottom: 12 }}>◉ About the Console</div>
+      <h2 style={{ fontSize: 32, marginBottom: 14 }}>
+        Built for the men &amp; women who keep the city moving.
+      </h2>
+      <p style={{ color: "var(--text-secondary)", fontSize: 16, lineHeight: 1.65, marginBottom: 32, maxWidth: 760 }}>
+        Namma Bengaluru is a decision-support layer over Bengaluru City Traffic Police's
+        own violation data. We don't replace officer judgement — we sharpen it by surfacing
+        the right question at the right time.
+      </p>
+
+      <div className="card card-pad" style={{ marginBottom: 16 }}>
+        <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
+          <MapPin size={18} color="var(--primary)" />
+          <h3 style={{ fontSize: 18 }}>Map 1 · The Violation Density Map</h3>
+        </div>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+          Where parking violations happen most. Marker colour is bucketed by percentile
+          (P25 → P90) so the eye spots the loudest streets without reading numbers.
         </p>
       </div>
 
-      <div className="dashboard-card" style={{ marginBottom: 20 }}>
-        <div className="card-header">
-          <h3>Problem Statement</h3>
-        </div>
-        <div className="card-body">
-          <p style={{ color: 'var(--text-secondary)', lineHeight: 1.7, fontSize: 14 }}>
-            Parking violations are one of the major contributors to urban traffic disruption.
-            Current systems focus only on detecting violations after they occur. Our solution
-            identifies parking risk zones across Bengaluru using historical parking violation
-            data, prioritizes them based on operational impact, and recommends targeted
-            enforcement actions.
+      <div className="card" style={{ marginBottom: 16 }}>
+        <div className="hazard-stripe" />
+        <div className="card-pad">
+          <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
+            <Activity size={18} color="var(--signal-red)" />
+            <h3 style={{ fontSize: 18 }}>Map 2 · The Operational Impact Map</h3>
+          </div>
+          <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+            Which zone to fix first. A composite Impact Score (0–100) factoring violation
+            density (45%), vehicle weight mix (25%), junction proximity (15%) and
+            enforcement difficulty (15%). Hidden Risk zones — low density but high impact —
+            surface here.
           </p>
         </div>
       </div>
 
-      <div className="dashboard-card" style={{ marginBottom: 20 }}>
-        <div className="card-header">
-          <h3>Our Innovation: Dual Intelligence Maps</h3>
+      <div className="card card-pad" style={{ marginBottom: 16 }}>
+        <div style={{ display: "flex", gap: 12, alignItems: "center", marginBottom: 8 }}>
+          <Sparkles size={18} color="var(--auto-yellow-deep)" />
+          <h3 style={{ fontSize: 18 }}>Gemini-powered Field Briefings</h3>
         </div>
-        <div className="card-body">
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <div style={{
-              padding: 16,
-              background: 'var(--bg-elevated)',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--border-color)',
-            }}>
-              <h4 style={{ fontSize: 14, fontWeight: 600, marginBottom: 6, color: '#3b82f6' }}>
-                Map 1: Violation Density Map
-              </h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
-                Shows <strong style={{ color: 'var(--text-primary)' }}>where</strong> parking
-                violations occur most frequently. Colored by violation count percentiles
-                (P25/P50/P75/P90).
-              </p>
+        <p style={{ color: "var(--text-secondary)", fontSize: 14, lineHeight: 1.6, margin: 0 }}>
+          The LLM does not make decisions. The rule + classification engine does. Gemini 2.5
+          Flash only explains <em>why</em> a zone landed where it did and what the recommended
+          action achieves — written like a briefing note, not a chart caption.
+        </p>
+      </div>
+
+      <div className="card card-pad" style={{ marginBottom: 16, background: "var(--bg-sand)", borderColor: "var(--border-strong)" }}>
+        <div className="overline" style={{ marginBottom: 10 }}>◉ Technology Stack</div>
+        <div style={{
+          display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))",
+          gap: 10,
+        }}>
+          {[
+            ["Backend",         "Python · FastAPI"],
+            ["Clustering",      "DBSCAN · scikit-learn"],
+            ["Frontend",        "React · Recharts · Framer Motion"],
+            ["Mapping",         "Leaflet · OpenStreetMap"],
+            ["Briefing AI",     "Gemini 2.5 Flash"],
+            ["Decision Engine", "Rule + Classification"],
+          ].map(([k, v]) => (
+            <div key={k}>
+              <div style={{
+                fontFamily: "var(--font-mono)", fontSize: 10.5, letterSpacing: "0.16em",
+                textTransform: "uppercase", color: "var(--text-muted)", marginBottom: 4,
+              }}>{k}</div>
+              <div style={{ fontSize: 13.5, fontWeight: 600, color: "var(--text-primary)" }}>{v}</div>
             </div>
-            <div style={{
-              padding: 16,
-              background: 'var(--bg-elevated)',
-              borderRadius: 'var(--radius-sm)',
-              border: '1px solid var(--border-color)',
-            }}>
-              <h4 style={{ fontSize: 14, fontWeight: 600, marginBottom: 6, color: '#f97316' }}>
-                Map 2: Operational Impact Map
-              </h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: 13, lineHeight: 1.6 }}>
-                Shows <strong style={{ color: 'var(--text-primary)' }}>which</strong> zones
-                authorities should prioritize first. Uses a composite Impact Score (0–100)
-                based on violation density (45%), vehicle impact (25%), junction proximity
-                (15%), and enforcement difficulty (15%).
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 
-      <div className="dashboard-card">
-        <div className="card-header">
-          <h3>Technology Stack</h3>
-        </div>
-        <div className="card-body">
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: 12,
-          }}>
-            {[
-              { label: 'Backend', value: 'Python + FastAPI' },
-              { label: 'Clustering', value: 'DBSCAN (scikit-learn)' },
-              { label: 'Frontend', value: 'React + Recharts' },
-              { label: 'Maps', value: 'Leaflet + OpenStreetMap' },
-              { label: 'AI Engine', value: 'Gemini 2.5 Flash' },
-              { label: 'Recommendation', value: 'Rule + Classification Engine' },
-            ].map(item => (
-              <div key={item.label} style={{
-                padding: 12,
-                background: 'var(--bg-elevated)',
-                borderRadius: 8,
-                border: '1px solid var(--border-color)',
-              }}>
-                <div style={{ fontSize: 11, color: 'var(--text-muted)', marginBottom: 4 }}>
-                  {item.label}
-                </div>
-                <div style={{ fontSize: 13, fontWeight: 600, color: 'var(--text-primary)' }}>
-                  {item.value}
-                </div>
-              </div>
-            ))}
-          </div>
+      <div style={{
+        marginTop: 32, padding: "20px 24px",
+        background: "var(--primary-dark)", color: "var(--text-on-dark)",
+        borderRadius: "var(--r-lg)",
+        display: "flex", alignItems: "center", gap: 14,
+      }}>
+        <ShieldCheck size={24} color="var(--auto-yellow)" />
+        <div style={{ fontSize: 13.5, lineHeight: 1.55 }}>
+          For the Bengaluru City Traffic Police only. The recommendations on this console
+          are advisory — final dispatch decisions remain with the officer on duty.
         </div>
       </div>
     </div>
@@ -118,62 +101,38 @@ function AboutPage() {
 }
 
 export default function App() {
-  const [activePage, setActivePage] = useState('map');
-  const [headerInfo, setHeaderInfo] = useState({ zones: 0, violations: 0 });
+  const [entered, setEntered] = useState(false);
+  const [activePage, setActivePage] = useState("map");
 
-  useEffect(() => {
-    async function loadHeaderStats() {
-      try {
-        const data = await getHotspots();
-        setHeaderInfo({
-          zones: data.length,
-          violations: data.reduce((sum, h) => sum + (h.total_violations || 0), 0),
-        });
-      } catch (e) {
-        /* backend not reachable yet */
-      }
-    }
-    loadHeaderStats();
-  }, []);
-
-  const pageTitles = {
-    map: 'Parking Risk Maps',
-    dashboard: 'City Intelligence Dashboard',
-    recommendations: 'Recommendation Center',
-    about: 'About ParkWise AI',
-  };
+  if (!entered) {
+    return (
+      <div className="app-shell" data-testid="app-shell">
+        <LandingPage onEnter={() => setEntered(true)} />
+      </div>
+    );
+  }
 
   return (
-    <div className="app-layout" data-testid="app-layout">
-      <Sidebar activePage={activePage} onNavigate={setActivePage} />
-
-      <div className="main-content">
-        <header className="header" data-testid="app-header">
-          <div className="header-title">
-            <h1>{pageTitles[activePage]}</h1>
-            <span className="badge">Bengaluru</span>
-          </div>
-          <div className="header-stats">
-            <div className="header-stat" data-testid="header-zones">
-              <MapPin size={14} />
-              <span className="value">{headerInfo.zones}</span>
-              <span>Risk Zones</span>
-            </div>
-            <div className="header-stat" data-testid="header-violations">
-              <BarChart3 size={14} />
-              <span className="value">{headerInfo.violations.toLocaleString()}</span>
-              <span>Violations</span>
-            </div>
-          </div>
-        </header>
-
-        <div className="page-content">
-          {activePage === 'map' && <MapView />}
-          {activePage === 'dashboard' && <CityDashboard />}
-          {activePage === 'recommendations' && <RecommendationPanel />}
-          {activePage === 'about' && <AboutPage />}
-        </div>
-      </div>
+    <div className="app-shell" data-testid="app-shell">
+      <TopNav
+        activePage={activePage}
+        onNavigate={setActivePage}
+        onHome={() => setEntered(false)}
+      />
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activePage}
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.25 }}
+        >
+          {activePage === "map" && <MapView />}
+          {activePage === "dashboard" && <CityDashboard />}
+          {activePage === "recommendations" && <RecommendationPanel />}
+          {activePage === "about" && <AboutPage />}
+        </motion.div>
+      </AnimatePresence>
     </div>
   );
 }

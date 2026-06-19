@@ -93,216 +93,12 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 86.1,
-    "vehicle_impact_score": 0.82665067142804,
+    "impact_score": 69.1,
+    "vehicle_impact_score": 0.36081070360981793,
     "violation_percentile": "P90",
     "impact_percentile": "P90",
     "impact_rank": 1,
     "density_rank": 2,
-    "zone_classification": "Critical Zone"
-  },
-  {
-    "cluster_id": 6,
-    "center_lat": 12.92729731786694,
-    "center_lon": 77.59416228091455,
-    "zone_name": "Jayanagar - 11th Main Zone",
-    "total_violations": 422,
-    "vehicle_distribution": {
-      "CAR": 140,
-      "BIKE": 137,
-      "AUTO": 55,
-      "MAXI CAB": 23,
-      "BUS": 18,
-      "TRUCK": 17,
-      "OTHERS": 32
-    },
-    "avg_vehicle_weight": 2.3649289099526065,
-    "junction_ratio": 0.491,
-    "avg_resolution_time": 58.5,
-    "top_locations": [
-      {
-        "name": "18st Inner Ring Road, Jayanagar",
-        "count": 148
-      },
-      {
-        "name": "10st Cross Road, Jayanagar",
-        "count": 76
-      },
-      {
-        "name": "1st Inner Ring Road, Jayanagar",
-        "count": 48
-      },
-      {
-        "name": "23rd Inner Ring Road, Jayanagar",
-        "count": 48
-      }
-    ],
-    "hourly_distribution": {
-      "0": 3,
-      "1": 5,
-      "2": 3,
-      "3": 4,
-      "4": 4,
-      "5": 5,
-      "6": 4,
-      "7": 12,
-      "8": 25,
-      "9": 30,
-      "10": 29,
-      "11": 35,
-      "12": 15,
-      "13": 17,
-      "14": 15,
-      "15": 13,
-      "16": 17,
-      "17": 38,
-      "18": 32,
-      "19": 28,
-      "20": 34,
-      "21": 34,
-      "22": 5,
-      "23": 15
-    },
-    "police_station": "Jayanagar PS",
-    "violation_types": {
-      "JUNCTION PARKING": 67,
-      "WRONG PARKING": 44,
-      "NO PARKING ZONE": 83,
-      "OBSTRUCTING TRAFFIC": 51,
-      "DOUBLE PARKING": 110,
-      "FOOTPATH PARKING": 67
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 140
-      },
-      {
-        "type": "BIKE",
-        "count": 137
-      },
-      {
-        "type": "AUTO",
-        "count": 55
-      },
-      {
-        "type": "OTHERS",
-        "count": 32
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 23
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 75.6,
-    "vehicle_impact_score": 0.9682254840309413,
-    "violation_percentile": "P75",
-    "impact_percentile": "P90",
-    "impact_rank": 2,
-    "density_rank": 7,
-    "zone_classification": "Critical Zone"
-  },
-  {
-    "cluster_id": 9,
-    "center_lat": 12.849264836667553,
-    "center_lon": 77.6591012622504,
-    "zone_name": "Electronic City - Phase 1 Zone",
-    "total_violations": 353,
-    "vehicle_distribution": {
-      "CAR": 111,
-      "BIKE": 125,
-      "AUTO": 55,
-      "MAXI CAB": 21,
-      "BUS": 12,
-      "TRUCK": 15,
-      "OTHERS": 14
-    },
-    "avg_vehicle_weight": 2.308781869688385,
-    "junction_ratio": 0.769,
-    "avg_resolution_time": 61.87,
-    "top_locations": [
-      {
-        "name": "10nd Service Road, Electronic City",
-        "count": 142
-      },
-      {
-        "name": "15rd Inner Ring Road, Electronic City",
-        "count": 85
-      },
-      {
-        "name": "29nd Outer Ring Road, Electronic City",
-        "count": 38
-      },
-      {
-        "name": "15rd Inner Ring Road, Electronic City",
-        "count": 31
-      }
-    ],
-    "hourly_distribution": {
-      "0": 3,
-      "1": 4,
-      "2": 3,
-      "3": 4,
-      "4": 3,
-      "5": 4,
-      "6": 4,
-      "7": 11,
-      "8": 29,
-      "9": 23,
-      "10": 30,
-      "11": 28,
-      "12": 11,
-      "13": 15,
-      "14": 12,
-      "15": 14,
-      "16": 11,
-      "17": 31,
-      "18": 23,
-      "19": 24,
-      "20": 24,
-      "21": 23,
-      "22": 4,
-      "23": 15
-    },
-    "police_station": "Electronic City PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 56,
-      "NO PARKING ZONE": 104,
-      "JUNCTION PARKING": 90,
-      "DOUBLE PARKING": 42,
-      "FOOTPATH PARKING": 61,
-      "WRONG PARKING": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 125
-      },
-      {
-        "type": "CAR",
-        "count": 111
-      },
-      {
-        "type": "AUTO",
-        "count": 55
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 21
-      },
-      {
-        "type": "TRUCK",
-        "count": 15
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 74.5,
-    "vehicle_impact_score": 0.8489660209454482,
-    "violation_percentile": "P75",
-    "impact_percentile": "P90",
-    "impact_rank": 3,
-    "density_rank": 10,
     "zone_classification": "Critical Zone"
   },
   {
@@ -395,244 +191,134 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 72.2,
-    "vehicle_impact_score": 0.6131263939617825,
+    "impact_score": 62.2,
+    "vehicle_impact_score": 0.32625761870930053,
     "violation_percentile": "P90",
     "impact_percentile": "P90",
-    "impact_rank": 4,
+    "impact_rank": 2,
     "density_rank": 1,
     "zone_classification": "Critical Zone"
   },
   {
-    "cluster_id": 3,
-    "center_lat": 12.969292090462838,
-    "center_lon": 77.74778190708231,
-    "zone_name": "Whitefield - ITPL Main Road Zone",
-    "total_violations": 508,
+    "cluster_id": 28,
+    "center_lat": 13.030427061695294,
+    "center_lon": 77.63805760511521,
+    "zone_name": "Hennur - Banaswadi Main Road",
+    "total_violations": 57,
     "vehicle_distribution": {
-      "CAR": 146,
-      "BIKE": 204,
-      "AUTO": 74,
-      "MAXI CAB": 30,
-      "BUS": 18,
-      "TRUCK": 22,
-      "OTHERS": 14
-    },
-    "avg_vehicle_weight": 2.2401574803149606,
-    "junction_ratio": 0.562,
-    "avg_resolution_time": 31.37,
-    "top_locations": [
-      {
-        "name": "3st Junction Circle, Whitefield",
-        "count": 220
-      },
-      {
-        "name": "13rd Outer Ring Road, Whitefield",
-        "count": 86
-      },
-      {
-        "name": "9th Cross Road, Whitefield",
-        "count": 53
-      },
-      {
-        "name": "15st Inner Ring Road, Whitefield",
-        "count": 42
-      }
-    ],
-    "hourly_distribution": {
-      "0": 6,
-      "1": 4,
-      "2": 4,
-      "3": 6,
-      "4": 4,
-      "5": 4,
-      "6": 5,
-      "7": 13,
-      "8": 42,
-      "9": 32,
-      "10": 43,
-      "11": 33,
-      "12": 18,
-      "13": 21,
-      "14": 19,
-      "15": 21,
-      "16": 19,
-      "17": 32,
-      "18": 46,
-      "19": 41,
-      "20": 37,
-      "21": 35,
-      "22": 6,
-      "23": 17
-    },
-    "police_station": "Whitefield PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 70,
-      "FOOTPATH PARKING": 118,
-      "WRONG PARKING": 60,
-      "NO PARKING ZONE": 127,
-      "DOUBLE PARKING": 66,
-      "JUNCTION PARKING": 67
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 204
-      },
-      {
-        "type": "CAR",
-        "count": 146
-      },
-      {
-        "type": "AUTO",
-        "count": 74
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 30
-      },
-      {
-        "type": "TRUCK",
-        "count": 22
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 70.7,
-    "vehicle_impact_score": 0.7032039684359845,
-    "violation_percentile": "P90",
-    "impact_percentile": "P75",
-    "impact_rank": 5,
-    "density_rank": 4,
-    "zone_classification": "Critical Zone"
-  },
-  {
-    "cluster_id": 5,
-    "center_lat": 12.912527458433802,
-    "center_lon": 77.60606716376834,
-    "zone_name": "BTM Layout - 16th Main Zone",
-    "total_violations": 442,
-    "vehicle_distribution": {
-      "CAR": 143,
-      "BIKE": 180,
-      "AUTO": 66,
-      "MAXI CAB": 29,
-      "BUS": 16,
-      "TRUCK": 8,
+      "TRUCK": 23,
+      "BUS": 15,
+      "MAXI CAB": 7,
+      "CAR": 5,
+      "BIKE": 2,
+      "AUTO": 1,
       "OTHERS": 0
     },
-    "avg_vehicle_weight": 2.2104072398190047,
-    "junction_ratio": 0.749,
-    "avg_resolution_time": 25.56,
+    "avg_vehicle_weight": 4.157894736842105,
+    "junction_ratio": 0.919,
+    "avg_resolution_time": 95.03,
     "top_locations": [
       {
-        "name": "3st Inner Ring Road, BTM Layout",
-        "count": 195
+        "name": "23th Inner Ring Road, Hennur",
+        "count": 19
       },
       {
-        "name": "15st Service Road, BTM Layout",
-        "count": 113
+        "name": "16th Bypass Road, Hennur",
+        "count": 9
       },
       {
-        "name": "20rd Outer Ring Road, BTM Layout",
-        "count": 74
-      },
-      {
-        "name": "14th Bypass Road, BTM Layout",
-        "count": 38
-      },
-      {
-        "name": "29st Junction Circle, BTM Layout",
-        "count": 22
+        "name": "7th Service Road, Hennur",
+        "count": 6
       }
     ],
     "hourly_distribution": {
-      "0": 4,
-      "1": 5,
-      "2": 5,
-      "3": 5,
-      "4": 5,
-      "5": 5,
-      "6": 3,
-      "7": 13,
-      "8": 28,
-      "9": 34,
-      "10": 30,
-      "11": 32,
-      "12": 15,
-      "13": 16,
-      "14": 17,
-      "15": 18,
-      "16": 14,
-      "17": 38,
-      "18": 39,
-      "19": 32,
-      "20": 29,
-      "21": 34,
-      "22": 5,
-      "23": 16
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 1,
+      "8": 4,
+      "9": 4,
+      "10": 4,
+      "11": 4,
+      "12": 1,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 2,
+      "17": 4,
+      "18": 4,
+      "19": 4,
+      "20": 3,
+      "21": 3,
+      "22": 0,
+      "23": 13
     },
-    "police_station": "BTM Layout PS",
+    "police_station": "Banaswadi PS",
     "violation_types": {
-      "NO PARKING ZONE": 50,
-      "WRONG PARKING": 105,
-      "FOOTPATH PARKING": 77,
-      "OBSTRUCTING TRAFFIC": 97,
-      "DOUBLE PARKING": 59,
-      "JUNCTION PARKING": 54
+      "WRONG PARKING": 5,
+      "NO PARKING ZONE": 13,
+      "OBSTRUCTING TRAFFIC": 9,
+      "JUNCTION PARKING": 8,
+      "DOUBLE PARKING": 12,
+      "FOOTPATH PARKING": 10
     },
     "top_vehicles": [
       {
-        "type": "BIKE",
-        "count": 180
-      },
-      {
-        "type": "CAR",
-        "count": 143
-      },
-      {
-        "type": "AUTO",
-        "count": 66
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 29
+        "type": "TRUCK",
+        "count": 23
       },
       {
         "type": "BUS",
-        "count": 16
+        "count": 15
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 7
+      },
+      {
+        "type": "CAR",
+        "count": 5
+      },
+      {
+        "type": "BIKE",
+        "count": 2
       }
     ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 67.2,
-    "vehicle_impact_score": 0.6400127887849195,
-    "violation_percentile": "P75",
-    "impact_percentile": "P75",
-    "impact_rank": 6,
-    "density_rank": 6,
-    "zone_classification": "Critical Zone"
+    "top_vehicle_type": "TRUCK",
+    "impact_score": 58.7,
+    "vehicle_impact_score": 1.0,
+    "violation_percentile": "P25",
+    "impact_percentile": "P90",
+    "impact_rank": 3,
+    "density_rank": 29,
+    "zone_classification": "Hidden Risk Zone"
   },
   {
     "cluster_id": 4,
-    "center_lat": 12.910826143981534,
-    "center_lon": 77.64507871341672,
+    "center_lat": 12.908154794998119,
+    "center_lon": 77.65187213072207,
     "zone_name": "HSR Layout - 27th Main Zone",
-    "total_violations": 462,
+    "total_violations": 467,
     "vehicle_distribution": {
-      "CAR": 130,
-      "BIKE": 156,
-      "AUTO": 66,
+      "CAR": 132,
+      "BIKE": 157,
+      "AUTO": 67,
       "MAXI CAB": 25,
       "BUS": 16,
       "TRUCK": 18,
-      "OTHERS": 51
+      "OTHERS": 52
     },
-    "avg_vehicle_weight": 2.272727272727273,
-    "junction_ratio": 0.604,
-    "avg_resolution_time": 13.18,
+    "avg_vehicle_weight": 2.271948608137045,
+    "junction_ratio": 0.56,
+    "avg_resolution_time": 25.82,
     "top_locations": [
       {
         "name": "10st Junction Circle, HSR Layout",
-        "count": 203
+        "count": 205
       },
       {
         "name": "7rd Junction Circle, HSR Layout",
@@ -640,11 +326,11 @@
       },
       {
         "name": "21nd Outer Ring Road, HSR Layout",
-        "count": 79
+        "count": 80
       },
       {
         "name": "1nd Outer Ring Road, HSR Layout",
-        "count": 36
+        "count": 37
       },
       {
         "name": "30th Cross Road, HSR Layout",
@@ -658,50 +344,50 @@
       "3": 4,
       "4": 5,
       "5": 4,
-      "6": 4,
+      "6": 5,
       "7": 16,
-      "8": 28,
+      "8": 29,
       "9": 33,
       "10": 30,
       "11": 32,
       "12": 20,
-      "13": 15,
-      "14": 17,
+      "13": 16,
+      "14": 18,
       "15": 16,
       "16": 18,
-      "17": 36,
-      "18": 32,
-      "19": 36,
+      "17": 37,
+      "18": 33,
+      "19": 37,
       "20": 36,
       "21": 42,
       "22": 5,
-      "23": 19
+      "23": 17
     },
     "police_station": "HSR Layout PS",
     "violation_types": {
-      "FOOTPATH PARKING": 109,
+      "FOOTPATH PARKING": 110,
       "OBSTRUCTING TRAFFIC": 59,
-      "NO PARKING ZONE": 56,
-      "JUNCTION PARKING": 67,
-      "DOUBLE PARKING": 116,
-      "WRONG PARKING": 55
+      "NO PARKING ZONE": 57,
+      "JUNCTION PARKING": 68,
+      "DOUBLE PARKING": 117,
+      "WRONG PARKING": 56
     },
     "top_vehicles": [
       {
         "type": "BIKE",
-        "count": 156
+        "count": 157
       },
       {
         "type": "CAR",
-        "count": 130
+        "count": 132
       },
       {
         "type": "AUTO",
-        "count": 66
+        "count": 67
       },
       {
         "type": "OTHERS",
-        "count": 51
+        "count": 52
       },
       {
         "type": "MAXI CAB",
@@ -709,413 +395,115 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 65.9,
-    "vehicle_impact_score": 0.7723840345199575,
+    "impact_score": 54.5,
+    "vehicle_impact_score": 0.35176148436123245,
     "violation_percentile": "P75",
-    "impact_percentile": "P75",
-    "impact_rank": 7,
+    "impact_percentile": "P90",
+    "impact_rank": 4,
     "density_rank": 5,
     "zone_classification": "Critical Zone"
   },
   {
-    "cluster_id": 11,
-    "center_lat": 13.024414025095787,
-    "center_lon": 77.54134978288198,
-    "zone_name": "Yeshwanthpur - Tumkur Road Zone",
-    "total_violations": 309,
+    "cluster_id": 36,
+    "center_lat": 12.982004099143618,
+    "center_lon": 77.59056930814229,
+    "zone_name": "Cunningham Road - Junction Zone",
+    "total_violations": 18,
     "vehicle_distribution": {
-      "CAR": 107,
-      "BIKE": 111,
-      "AUTO": 39,
-      "MAXI CAB": 20,
-      "BUS": 10,
-      "TRUCK": 12,
-      "OTHERS": 10
+      "TRUCK": 7,
+      "BUS": 5,
+      "MAXI CAB": 2,
+      "CAR": 1,
+      "BIKE": 0,
+      "AUTO": 0,
+      "OTHERS": 0
     },
-    "avg_vehicle_weight": 2.3300970873786406,
-    "junction_ratio": 0.562,
-    "avg_resolution_time": 49.85,
+    "avg_vehicle_weight": 3.9444444444444446,
+    "junction_ratio": 0.913,
+    "avg_resolution_time": 87.53,
     "top_locations": [
       {
-        "name": "12nd Outer Ring Road, Yeshwanthpur",
-        "count": 112
+        "name": "9th Inner Ring Road, Cunningham Road",
+        "count": 8
       },
       {
-        "name": "23th Bypass Road, Yeshwanthpur",
-        "count": 53
+        "name": "1rd Cross Road, Cunningham Road",
+        "count": 4
       },
       {
-        "name": "1nd Service Road, Yeshwanthpur",
-        "count": 34
+        "name": "19nd Bypass Road, Cunningham Road",
+        "count": 2
+      },
+      {
+        "name": "3nd Junction Circle, Cunningham Road",
+        "count": 2
       }
     ],
     "hourly_distribution": {
-      "0": 3,
-      "1": 2,
-      "2": 3,
-      "3": 3,
-      "4": 3,
-      "5": 3,
-      "6": 2,
-      "7": 7,
-      "8": 23,
-      "9": 24,
-      "10": 19,
-      "11": 23,
-      "12": 10,
-      "13": 11,
-      "14": 12,
-      "15": 9,
-      "16": 9,
-      "17": 23,
-      "18": 29,
-      "19": 23,
-      "20": 27,
-      "21": 21,
-      "22": 3,
-      "23": 17
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 0,
+      "23": 9
     },
-    "police_station": "Yeshwanthpur PS",
+    "police_station": "Cubbon Park PS",
     "violation_types": {
-      "WRONG PARKING": 63,
-      "JUNCTION PARKING": 54,
-      "NO PARKING ZONE": 64,
-      "OBSTRUCTING TRAFFIC": 82,
-      "DOUBLE PARKING": 46,
-      "FOOTPATH PARKING": 0
+      "OBSTRUCTING TRAFFIC": 3,
+      "DOUBLE PARKING": 3,
+      "NO PARKING ZONE": 2,
+      "JUNCTION PARKING": 5,
+      "FOOTPATH PARKING": 3,
+      "WRONG PARKING": 2
     },
     "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 111
-      },
-      {
-        "type": "CAR",
-        "count": 107
-      },
-      {
-        "type": "AUTO",
-        "count": 39
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 20
-      },
       {
         "type": "TRUCK",
-        "count": 12
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 65.1,
-    "vehicle_impact_score": 0.8942407389951927,
-    "violation_percentile": "P50",
-    "impact_percentile": "P75",
-    "impact_rank": 8,
-    "density_rank": 12,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 8,
-    "center_lat": 12.954558243836557,
-    "center_lon": 77.69467898275651,
-    "zone_name": "Marathahalli - Outer Ring Road Zone",
-    "total_violations": 377,
-    "vehicle_distribution": {
-      "CAR": 137,
-      "BIKE": 145,
-      "AUTO": 52,
-      "MAXI CAB": 22,
-      "BUS": 16,
-      "TRUCK": 5,
-      "OTHERS": 0
-    },
-    "avg_vehicle_weight": 2.2625994694960214,
-    "junction_ratio": 0.471,
-    "avg_resolution_time": 51.32,
-    "top_locations": [
-      {
-        "name": "7nd Cross Road, Marathahalli",
-        "count": 121
-      },
-      {
-        "name": "13rd Outer Ring Road, Marathahalli",
-        "count": 95
-      },
-      {
-        "name": "29rd Junction Circle, Marathahalli",
-        "count": 64
-      },
-      {
-        "name": "20th Junction Circle, Marathahalli",
-        "count": 35
-      },
-      {
-        "name": "4st Inner Ring Road, Marathahalli",
-        "count": 31
-      }
-    ],
-    "hourly_distribution": {
-      "0": 3,
-      "1": 4,
-      "2": 3,
-      "3": 3,
-      "4": 4,
-      "5": 3,
-      "6": 4,
-      "7": 11,
-      "8": 30,
-      "9": 21,
-      "10": 28,
-      "11": 26,
-      "12": 13,
-      "13": 12,
-      "14": 15,
-      "15": 14,
-      "16": 14,
-      "17": 31,
-      "18": 29,
-      "19": 32,
-      "20": 30,
-      "21": 29,
-      "22": 3,
-      "23": 15
-    },
-    "police_station": "Marathahalli PS",
-    "violation_types": {
-      "JUNCTION PARKING": 101,
-      "FOOTPATH PARKING": 91,
-      "OBSTRUCTING TRAFFIC": 88,
-      "DOUBLE PARKING": 38,
-      "WRONG PARKING": 59,
-      "NO PARKING ZONE": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 145
-      },
-      {
-        "type": "CAR",
-        "count": 137
-      },
-      {
-        "type": "AUTO",
-        "count": 52
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 22
+        "count": 7
       },
       {
         "type": "BUS",
-        "count": 16
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 64.8,
-    "vehicle_impact_score": 0.7508720123383672,
-    "violation_percentile": "P75",
-    "impact_percentile": "P75",
-    "impact_rank": 9,
-    "density_rank": 9,
-    "zone_classification": "Critical Zone"
-  },
-  {
-    "cluster_id": 10,
-    "center_lat": 13.034101809671167,
-    "center_lon": 77.5940950703077,
-    "zone_name": "Hebbal - Bellary Road Zone",
-    "total_violations": 336,
-    "vehicle_distribution": {
-      "CAR": 120,
-      "BIKE": 119,
-      "AUTO": 46,
-      "MAXI CAB": 17,
-      "BUS": 15,
-      "TRUCK": 12,
-      "OTHERS": 7
-    },
-    "avg_vehicle_weight": 2.3452380952380953,
-    "junction_ratio": 0.514,
-    "avg_resolution_time": 27.54,
-    "top_locations": [
-      {
-        "name": "20nd Junction Circle, Hebbal",
-        "count": 129
-      },
-      {
-        "name": "20rd Inner Ring Road, Hebbal",
-        "count": 63
-      },
-      {
-        "name": "22nd Bypass Road, Hebbal",
-        "count": 57
-      }
-    ],
-    "hourly_distribution": {
-      "0": 3,
-      "1": 4,
-      "2": 3,
-      "3": 4,
-      "4": 4,
-      "5": 4,
-      "6": 3,
-      "7": 9,
-      "8": 21,
-      "9": 22,
-      "10": 21,
-      "11": 28,
-      "12": 12,
-      "13": 14,
-      "14": 14,
-      "15": 12,
-      "16": 11,
-      "17": 27,
-      "18": 23,
-      "19": 30,
-      "20": 25,
-      "21": 24,
-      "22": 4,
-      "23": 14
-    },
-    "police_station": "Hebbal PS",
-    "violation_types": {
-      "NO PARKING ZONE": 64,
-      "OBSTRUCTING TRAFFIC": 73,
-      "JUNCTION PARKING": 66,
-      "DOUBLE PARKING": 68,
-      "WRONG PARKING": 47,
-      "FOOTPATH PARKING": 18
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 120
-      },
-      {
-        "type": "BIKE",
-        "count": 119
-      },
-      {
-        "type": "AUTO",
-        "count": 46
+        "count": 5
       },
       {
         "type": "MAXI CAB",
-        "count": 17
-      },
-      {
-        "type": "BUS",
-        "count": 15
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 61.8,
-    "vehicle_impact_score": 0.9264010890224488,
-    "violation_percentile": "P50",
-    "impact_percentile": "P75",
-    "impact_rank": 10,
-    "density_rank": 11,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 15,
-    "center_lat": 12.96277914270719,
-    "center_lon": 77.63572626544054,
-    "zone_name": "Domlur - Inner Ring Road Zone",
-    "total_violations": 220,
-    "vehicle_distribution": {
-      "CAR": 78,
-      "BIKE": 79,
-      "AUTO": 33,
-      "MAXI CAB": 14,
-      "BUS": 8,
-      "TRUCK": 8,
-      "OTHERS": 0
-    },
-    "avg_vehicle_weight": 2.340909090909091,
-    "junction_ratio": 0.717,
-    "avg_resolution_time": 41.7,
-    "top_locations": [
-      {
-        "name": "19th Inner Ring Road, Domlur",
-        "count": 90
-      },
-      {
-        "name": "5th Service Road, Domlur",
-        "count": 56
-      },
-      {
-        "name": "4rd Junction Circle, Domlur",
-        "count": 27
-      }
-    ],
-    "hourly_distribution": {
-      "0": 2,
-      "1": 2,
-      "2": 1,
-      "3": 2,
-      "4": 2,
-      "5": 2,
-      "6": 2,
-      "7": 7,
-      "8": 14,
-      "9": 19,
-      "10": 15,
-      "11": 16,
-      "12": 8,
-      "13": 8,
-      "14": 9,
-      "15": 7,
-      "16": 8,
-      "17": 15,
-      "18": 16,
-      "19": 18,
-      "20": 15,
-      "21": 16,
-      "22": 2,
-      "23": 14
-    },
-    "police_station": "Domlur PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 38,
-      "JUNCTION PARKING": 64,
-      "FOOTPATH PARKING": 35,
-      "DOUBLE PARKING": 29,
-      "WRONG PARKING": 53,
-      "NO PARKING ZONE": 1
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 79
+        "count": 2
       },
       {
         "type": "CAR",
-        "count": 78
+        "count": 1
       },
       {
-        "type": "AUTO",
-        "count": 33
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 14
-      },
-      {
-        "type": "BUS",
-        "count": 8
+        "type": "BIKE",
+        "count": 0
       }
     ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 60.8,
-    "vehicle_impact_score": 0.917206040992449,
-    "violation_percentile": "P50",
-    "impact_percentile": "P50",
-    "impact_rank": 11,
-    "density_rank": 16,
-    "zone_classification": "Moderate Zone"
+    "top_vehicle_type": "TRUCK",
+    "impact_score": 52.6,
+    "vehicle_impact_score": 0.9266327396098389,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 5,
+    "density_rank": 39,
+    "zone_classification": "Hidden Risk Zone"
   },
   {
     "cluster_id": 2,
@@ -1211,546 +599,44 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 60.1,
-    "vehicle_impact_score": 0.6898826091016195,
+    "impact_score": 50.6,
+    "vehicle_impact_score": 0.3386785202097788,
     "violation_percentile": "P90",
-    "impact_percentile": "P50",
-    "impact_rank": 12,
+    "impact_percentile": "P75",
+    "impact_rank": 6,
     "density_rank": 3,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 21,
-    "center_lat": 12.90331481021943,
-    "center_lon": 77.5877072181936,
-    "zone_name": "JP Nagar - 24th Main Zone",
-    "total_violations": 119,
-    "vehicle_distribution": {
-      "CAR": 39,
-      "BIKE": 40,
-      "AUTO": 18,
-      "MAXI CAB": 7,
-      "BUS": 4,
-      "TRUCK": 4,
-      "OTHERS": 7
-    },
-    "avg_vehicle_weight": 2.310924369747899,
-    "junction_ratio": 0.759,
-    "avg_resolution_time": 62.25,
-    "top_locations": [
-      {
-        "name": "9th Main Road, JP Nagar",
-        "count": 40
-      },
-      {
-        "name": "1nd Main Road, JP Nagar",
-        "count": 25
-      },
-      {
-        "name": "2st Outer Ring Road, JP Nagar",
-        "count": 14
-      }
-    ],
-    "hourly_distribution": {
-      "0": 1,
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 1,
-      "6": 1,
-      "7": 2,
-      "8": 8,
-      "9": 7,
-      "10": 7,
-      "11": 9,
-      "12": 4,
-      "13": 4,
-      "14": 4,
-      "15": 4,
-      "16": 3,
-      "17": 8,
-      "18": 10,
-      "19": 7,
-      "20": 10,
-      "21": 11,
-      "22": 1,
-      "23": 13
-    },
-    "police_station": "JP Nagar PS",
-    "violation_types": {
-      "JUNCTION PARKING": 31,
-      "OBSTRUCTING TRAFFIC": 15,
-      "WRONG PARKING": 21,
-      "NO PARKING ZONE": 31,
-      "DOUBLE PARKING": 18,
-      "FOOTPATH PARKING": 3
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 40
-      },
-      {
-        "type": "CAR",
-        "count": 39
-      },
-      {
-        "type": "AUTO",
-        "count": 18
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 7
-      },
-      {
-        "type": "OTHERS",
-        "count": 7
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 57.4,
-    "vehicle_impact_score": 0.8535168112552463,
-    "violation_percentile": "P25",
-    "impact_percentile": "P50",
-    "impact_rank": 13,
-    "density_rank": 22,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 17,
-    "center_lat": 12.985070138116523,
-    "center_lon": 77.62248433827294,
-    "zone_name": "Ulsoor - CMH Road Zone",
-    "total_violations": 179,
-    "vehicle_distribution": {
-      "CAR": 64,
-      "BIKE": 61,
-      "AUTO": 27,
-      "MAXI CAB": 10,
-      "BUS": 8,
-      "TRUCK": 7,
-      "OTHERS": 2
-    },
-    "avg_vehicle_weight": 2.3798882681564244,
-    "junction_ratio": 0.594,
-    "avg_resolution_time": 39.73,
-    "top_locations": [
-      {
-        "name": "19th Cross Road, Ulsoor",
-        "count": 79
-      },
-      {
-        "name": "20nd Cross Road, Ulsoor",
-        "count": 45
-      },
-      {
-        "name": "6th Service Road, Ulsoor",
-        "count": 19
-      }
-    ],
-    "hourly_distribution": {
-      "0": 2,
-      "1": 1,
-      "2": 2,
-      "3": 2,
-      "4": 2,
-      "5": 2,
-      "6": 1,
-      "7": 6,
-      "8": 12,
-      "9": 12,
-      "10": 12,
-      "11": 14,
-      "12": 7,
-      "13": 7,
-      "14": 6,
-      "15": 5,
-      "16": 6,
-      "17": 13,
-      "18": 14,
-      "19": 14,
-      "20": 12,
-      "21": 13,
-      "22": 2,
-      "23": 12
-    },
-    "police_station": "Ulsoor PS",
-    "violation_types": {
-      "DOUBLE PARKING": 45,
-      "JUNCTION PARKING": 34,
-      "WRONG PARKING": 47,
-      "FOOTPATH PARKING": 44,
-      "NO PARKING ZONE": 9,
-      "OBSTRUCTING TRAFFIC": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 64
-      },
-      {
-        "type": "BIKE",
-        "count": 61
-      },
-      {
-        "type": "AUTO",
-        "count": 27
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 10
-      },
-      {
-        "type": "BUS",
-        "count": 8
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 56.7,
-    "vehicle_impact_score": 1.0,
-    "violation_percentile": "P50",
-    "impact_percentile": "P50",
-    "impact_rank": 14,
-    "density_rank": 18,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 16,
-    "center_lat": 12.925488518525874,
-    "center_lon": 77.67484880166498,
-    "zone_name": "Sarjapur Road - Bellandur Zone",
-    "total_violations": 208,
-    "vehicle_distribution": {
-      "CAR": 66,
-      "BIKE": 82,
-      "AUTO": 30,
-      "MAXI CAB": 13,
-      "BUS": 9,
-      "TRUCK": 8,
-      "OTHERS": 0
-    },
-    "avg_vehicle_weight": 2.293269230769231,
-    "junction_ratio": 0.339,
-    "avg_resolution_time": 66.02,
-    "top_locations": [
-      {
-        "name": "4rd Inner Ring Road, Sarjapur Road",
-        "count": 93
-      },
-      {
-        "name": "21st Cross Road, Sarjapur Road",
-        "count": 35
-      },
-      {
-        "name": "22rd Inner Ring Road, Sarjapur Road",
-        "count": 30
-      }
-    ],
-    "hourly_distribution": {
-      "0": 1,
-      "1": 2,
-      "2": 2,
-      "3": 1,
-      "4": 2,
-      "5": 2,
-      "6": 2,
-      "7": 6,
-      "8": 13,
-      "9": 15,
-      "10": 14,
-      "11": 13,
-      "12": 7,
-      "13": 7,
-      "14": 7,
-      "15": 8,
-      "16": 8,
-      "17": 13,
-      "18": 15,
-      "19": 19,
-      "20": 18,
-      "21": 17,
-      "22": 2,
-      "23": 14
-    },
-    "police_station": "Bellandur PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 34,
-      "DOUBLE PARKING": 57,
-      "JUNCTION PARKING": 43,
-      "WRONG PARKING": 32,
-      "NO PARKING ZONE": 42,
-      "FOOTPATH PARKING": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 82
-      },
-      {
-        "type": "CAR",
-        "count": 66
-      },
-      {
-        "type": "AUTO",
-        "count": 30
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 13
-      },
-      {
-        "type": "BUS",
-        "count": 9
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 54.4,
-    "vehicle_impact_score": 0.8160163057007721,
-    "violation_percentile": "P50",
-    "impact_percentile": "P50",
-    "impact_rank": 15,
-    "density_rank": 17,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 13,
-    "center_lat": 13.022042827344153,
-    "center_lon": 77.59318313577593,
-    "zone_name": "RT Nagar - Bellary Road Zone",
-    "total_violations": 277,
-    "vehicle_distribution": {
-      "CAR": 77,
-      "BIKE": 94,
-      "AUTO": 40,
-      "MAXI CAB": 14,
-      "BUS": 12,
-      "TRUCK": 12,
-      "OTHERS": 28
-    },
-    "avg_vehicle_weight": 2.299638989169675,
-    "junction_ratio": 0.552,
-    "avg_resolution_time": 17.37,
-    "top_locations": [
-      {
-        "name": "24rd Inner Ring Road, RT Nagar",
-        "count": 136
-      },
-      {
-        "name": "12nd Main Road, RT Nagar",
-        "count": 48
-      },
-      {
-        "name": "26nd Main Road, RT Nagar",
-        "count": 39
-      },
-      {
-        "name": "18st Inner Ring Road, RT Nagar",
-        "count": 31
-      }
-    ],
-    "hourly_distribution": {
-      "0": 2,
-      "1": 3,
-      "2": 3,
-      "3": 3,
-      "4": 3,
-      "5": 3,
-      "6": 3,
-      "7": 8,
-      "8": 20,
-      "9": 19,
-      "10": 22,
-      "11": 23,
-      "12": 10,
-      "13": 10,
-      "14": 8,
-      "15": 11,
-      "16": 10,
-      "17": 22,
-      "18": 18,
-      "19": 22,
-      "20": 22,
-      "21": 18,
-      "22": 2,
-      "23": 12
-    },
-    "police_station": "RT Nagar PS",
-    "violation_types": {
-      "DOUBLE PARKING": 51,
-      "FOOTPATH PARKING": 28,
-      "JUNCTION PARKING": 55,
-      "WRONG PARKING": 80,
-      "NO PARKING ZONE": 51,
-      "OBSTRUCTING TRAFFIC": 12
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 94
-      },
-      {
-        "type": "CAR",
-        "count": 77
-      },
-      {
-        "type": "AUTO",
-        "count": 40
-      },
-      {
-        "type": "OTHERS",
-        "count": 28
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 14
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 53.6,
-    "vehicle_impact_score": 0.8295460298544662,
-    "violation_percentile": "P50",
-    "impact_percentile": "P50",
-    "impact_rank": 16,
-    "density_rank": 14,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 19,
-    "center_lat": 12.964328413193483,
-    "center_lon": 77.53559982001723,
-    "zone_name": "Vijayanagar - Magadi Road Zone",
-    "total_violations": 137,
-    "vehicle_distribution": {
-      "CAR": 43,
-      "BIKE": 51,
-      "AUTO": 20,
-      "MAXI CAB": 8,
-      "BUS": 5,
-      "TRUCK": 5,
-      "OTHERS": 5
-    },
-    "avg_vehicle_weight": 2.2773722627737225,
-    "junction_ratio": 0.602,
-    "avg_resolution_time": 62.28,
-    "top_locations": [
-      {
-        "name": "21rd Service Road, Vijayanagar",
-        "count": 56
-      },
-      {
-        "name": "23st Junction Circle, Vijayanagar",
-        "count": 27
-      },
-      {
-        "name": "19nd Main Road, Vijayanagar",
-        "count": 17
-      },
-      {
-        "name": "12rd Service Road, Vijayanagar",
-        "count": 16
-      },
-      {
-        "name": "19rd Service Road, Vijayanagar",
-        "count": 13
-      }
-    ],
-    "hourly_distribution": {
-      "0": 1,
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 1,
-      "6": 1,
-      "7": 4,
-      "8": 8,
-      "9": 9,
-      "10": 9,
-      "11": 8,
-      "12": 5,
-      "13": 4,
-      "14": 4,
-      "15": 4,
-      "16": 4,
-      "17": 12,
-      "18": 11,
-      "19": 9,
-      "20": 12,
-      "21": 11,
-      "22": 1,
-      "23": 15
-    },
-    "police_station": "Vijayanagar PS",
-    "violation_types": {
-      "JUNCTION PARKING": 34,
-      "FOOTPATH PARKING": 25,
-      "NO PARKING ZONE": 17,
-      "WRONG PARKING": 31,
-      "DOUBLE PARKING": 14,
-      "OBSTRUCTING TRAFFIC": 16
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 51
-      },
-      {
-        "type": "CAR",
-        "count": 43
-      },
-      {
-        "type": "AUTO",
-        "count": 20
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 8
-      },
-      {
-        "type": "BUS",
-        "count": 5
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 53.4,
-    "vehicle_impact_score": 0.7822502539390074,
-    "violation_percentile": "P50",
-    "impact_percentile": "P50",
-    "impact_rank": 17,
-    "density_rank": 20,
-    "zone_classification": "Moderate Zone"
+    "zone_classification": "Critical Zone"
   },
   {
     "cluster_id": 7,
-    "center_lat": 12.926186397994943,
-    "center_lon": 77.61935451747937,
+    "center_lat": 12.928754517479367,
+    "center_lon": 77.61411635026167,
     "zone_name": "Madiwala - Hosur Road Zone",
-    "total_violations": 400,
+    "total_violations": 405,
     "vehicle_distribution": {
-      "CAR": 111,
-      "BIKE": 148,
-      "AUTO": 49,
-      "MAXI CAB": 25,
+      "CAR": 112,
+      "BIKE": 149,
+      "AUTO": 50,
+      "MAXI CAB": 26,
       "BUS": 16,
-      "TRUCK": 13,
+      "TRUCK": 14,
       "OTHERS": 38
     },
-    "avg_vehicle_weight": 2.25,
-    "junction_ratio": 0.108,
-    "avg_resolution_time": 22.52,
+    "avg_vehicle_weight": 2.259259259259259,
+    "junction_ratio": 0.264,
+    "avg_resolution_time": 46.0,
     "top_locations": [
       {
         "name": "17nd Junction Circle, Madiwala",
-        "count": 145
+        "count": 147
       },
       {
         "name": "27rd Cross Road, Madiwala",
-        "count": 100
+        "count": 101
       },
       {
         "name": "18th Outer Ring Road, Madiwala",
-        "count": 61
+        "count": 62
       }
     ],
     "hourly_distribution": {
@@ -1765,7 +651,7 @@
       "8": 30,
       "9": 23,
       "10": 24,
-      "11": 31,
+      "11": 32,
       "12": 16,
       "13": 13,
       "14": 12,
@@ -1773,33 +659,33 @@
       "16": 13,
       "17": 32,
       "18": 32,
-      "19": 32,
+      "19": 33,
       "20": 36,
-      "21": 36,
+      "21": 37,
       "22": 4,
-      "23": 14
+      "23": 16
     },
     "police_station": "Madiwala PS",
     "violation_types": {
-      "OBSTRUCTING TRAFFIC": 42,
+      "OBSTRUCTING TRAFFIC": 43,
       "JUNCTION PARKING": 51,
-      "NO PARKING ZONE": 118,
-      "DOUBLE PARKING": 103,
+      "NO PARKING ZONE": 120,
+      "DOUBLE PARKING": 105,
       "WRONG PARKING": 86,
       "FOOTPATH PARKING": 0
     },
     "top_vehicles": [
       {
         "type": "BIKE",
-        "count": 148
+        "count": 149
       },
       {
         "type": "CAR",
-        "count": 111
+        "count": 112
       },
       {
         "type": "AUTO",
-        "count": 49
+        "count": 50
       },
       {
         "type": "OTHERS",
@@ -1807,44 +693,354 @@
       },
       {
         "type": "MAXI CAB",
-        "count": 25
+        "count": 26
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 51.2,
-    "vehicle_impact_score": 0.7241100323624597,
+    "impact_score": 47.9,
+    "vehicle_impact_score": 0.3473998938811235,
     "violation_percentile": "P75",
-    "impact_percentile": "P50",
-    "impact_rank": 18,
+    "impact_percentile": "P75",
+    "impact_rank": 7,
     "density_rank": 8,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 13,
+    "center_lat": 13.021090480719641,
+    "center_lon": 77.58582100243905,
+    "zone_name": "RT Nagar - Bellary Road Zone",
+    "total_violations": 267,
+    "vehicle_distribution": {
+      "CAR": 74,
+      "BIKE": 91,
+      "AUTO": 39,
+      "MAXI CAB": 14,
+      "BUS": 12,
+      "TRUCK": 11,
+      "OTHERS": 26
+    },
+    "avg_vehicle_weight": 2.299625468164794,
+    "junction_ratio": 0.665,
+    "avg_resolution_time": 56.32,
+    "top_locations": [
+      {
+        "name": "24rd Inner Ring Road, RT Nagar",
+        "count": 131
+      },
+      {
+        "name": "12nd Main Road, RT Nagar",
+        "count": 46
+      },
+      {
+        "name": "26nd Main Road, RT Nagar",
+        "count": 38
+      },
+      {
+        "name": "18st Inner Ring Road, RT Nagar",
+        "count": 30
+      }
+    ],
+    "hourly_distribution": {
+      "0": 2,
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 3,
+      "5": 3,
+      "6": 3,
+      "7": 8,
+      "8": 19,
+      "9": 18,
+      "10": 21,
+      "11": 22,
+      "12": 9,
+      "13": 9,
+      "14": 7,
+      "15": 10,
+      "16": 9,
+      "17": 21,
+      "18": 18,
+      "19": 21,
+      "20": 21,
+      "21": 17,
+      "22": 2,
+      "23": 18
+    },
+    "police_station": "RT Nagar PS",
+    "violation_types": {
+      "DOUBLE PARKING": 49,
+      "FOOTPATH PARKING": 27,
+      "JUNCTION PARKING": 53,
+      "WRONG PARKING": 77,
+      "NO PARKING ZONE": 49,
+      "OBSTRUCTING TRAFFIC": 12
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 91
+      },
+      {
+        "type": "CAR",
+        "count": 74
+      },
+      {
+        "type": "AUTO",
+        "count": 39
+      },
+      {
+        "type": "OTHERS",
+        "count": 26
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 14
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 47.1,
+    "vehicle_impact_score": 0.36127459101303744,
+    "violation_percentile": "P50",
+    "impact_percentile": "P75",
+    "impact_rank": 8,
+    "density_rank": 14,
     "zone_classification": "Moderate Zone"
   },
   {
-    "cluster_id": 12,
-    "center_lat": 12.923694554417576,
-    "center_lon": 77.55169523350636,
-    "zone_name": "Banashankari - Kanakapura Road Zone",
-    "total_violations": 296,
+    "cluster_id": 32,
+    "center_lat": 12.95801034260007,
+    "center_lon": 77.60193921522425,
+    "zone_name": "Richmond Town - Richmond Road",
+    "total_violations": 27,
     "vehicle_distribution": {
-      "CAR": 101,
-      "BIKE": 126,
+      "TRUCK": 11,
+      "BUS": 7,
+      "MAXI CAB": 3,
+      "CAR": 2,
+      "BIKE": 1,
+      "AUTO": 0,
+      "OTHERS": 0
+    },
+    "avg_vehicle_weight": 4.037037037037037,
+    "junction_ratio": 0.822,
+    "avg_resolution_time": 54.82,
+    "top_locations": [
+      {
+        "name": "28st Main Road, Richmond Town",
+        "count": 9
+      },
+      {
+        "name": "13th Service Road, Richmond Town",
+        "count": 6
+      },
+      {
+        "name": "18rd Bypass Road, Richmond Town",
+        "count": 4
+      },
+      {
+        "name": "12st Inner Ring Road, Richmond Town",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 0,
+      "16": 0,
+      "17": 1,
+      "18": 2,
+      "19": 2,
+      "20": 1,
+      "21": 1,
+      "22": 0,
+      "23": 13
+    },
+    "police_station": "Cubbon Park PS",
+    "violation_types": {
+      "OBSTRUCTING TRAFFIC": 6,
+      "JUNCTION PARKING": 4,
+      "NO PARKING ZONE": 6,
+      "WRONG PARKING": 4,
+      "FOOTPATH PARKING": 6,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "TRUCK",
+        "count": 11
+      },
+      {
+        "type": "BUS",
+        "count": 7
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 3
+      },
+      {
+        "type": "CAR",
+        "count": 2
+      },
+      {
+        "type": "BIKE",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "TRUCK",
+    "impact_score": 47.0,
+    "vehicle_impact_score": 0.9584587201443837,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 9,
+    "density_rank": 34,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 5,
+    "center_lat": 12.915189793804847,
+    "center_lon": 77.60853955722479,
+    "zone_name": "BTM Layout - 16th Main Zone",
+    "total_violations": 446,
+    "vehicle_distribution": {
+      "CAR": 144,
+      "BIKE": 182,
+      "AUTO": 67,
+      "MAXI CAB": 29,
+      "BUS": 16,
+      "TRUCK": 8,
+      "OTHERS": 0
+    },
+    "avg_vehicle_weight": 2.2062780269058297,
+    "junction_ratio": 0.125,
+    "avg_resolution_time": 28.59,
+    "top_locations": [
+      {
+        "name": "3st Inner Ring Road, BTM Layout",
+        "count": 197
+      },
+      {
+        "name": "15st Service Road, BTM Layout",
+        "count": 114
+      },
+      {
+        "name": "20rd Outer Ring Road, BTM Layout",
+        "count": 74
+      },
+      {
+        "name": "14th Bypass Road, BTM Layout",
+        "count": 38
+      },
+      {
+        "name": "29st Junction Circle, BTM Layout",
+        "count": 23
+      }
+    ],
+    "hourly_distribution": {
+      "0": 4,
+      "1": 5,
+      "2": 5,
+      "3": 5,
+      "4": 5,
+      "5": 5,
+      "6": 3,
+      "7": 13,
+      "8": 28,
+      "9": 34,
+      "10": 30,
+      "11": 32,
+      "12": 16,
+      "13": 16,
+      "14": 17,
+      "15": 18,
+      "16": 14,
+      "17": 39,
+      "18": 40,
+      "19": 33,
+      "20": 29,
+      "21": 34,
+      "22": 5,
+      "23": 16
+    },
+    "police_station": "BTM Layout PS",
+    "violation_types": {
+      "NO PARKING ZONE": 50,
+      "WRONG PARKING": 106,
+      "FOOTPATH PARKING": 78,
+      "OBSTRUCTING TRAFFIC": 98,
+      "DOUBLE PARKING": 59,
+      "JUNCTION PARKING": 55
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 182
+      },
+      {
+        "type": "CAR",
+        "count": 144
+      },
+      {
+        "type": "AUTO",
+        "count": 67
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 29
+      },
+      {
+        "type": "BUS",
+        "count": 16
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 45.1,
+    "vehicle_impact_score": 0.329189153449698,
+    "violation_percentile": "P75",
+    "impact_percentile": "P75",
+    "impact_rank": 10,
+    "density_rank": 6,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 12,
+    "center_lat": 12.92629999759854,
+    "center_lon": 77.54736949743776,
+    "zone_name": "Banashankari - Kanakapura Road Zone",
+    "total_violations": 293,
+    "vehicle_distribution": {
+      "CAR": 100,
+      "BIKE": 125,
       "AUTO": 35,
-      "MAXI CAB": 15,
+      "MAXI CAB": 14,
       "BUS": 13,
       "TRUCK": 6,
       "OTHERS": 0
     },
-    "avg_vehicle_weight": 2.2094594594594597,
-    "junction_ratio": 0.582,
-    "avg_resolution_time": 13.44,
+    "avg_vehicle_weight": 2.204778156996587,
+    "junction_ratio": 0.327,
+    "avg_resolution_time": 71.27,
     "top_locations": [
       {
         "name": "27rd Inner Ring Road, Banashankari",
-        "count": 137
+        "count": 136
       },
       {
         "name": "3rd Junction Circle, Banashankari",
-        "count": 71
+        "count": 70
       },
       {
         "name": "13st Junction Circle, Banashankari",
@@ -1860,17 +1056,17 @@
       "5": 3,
       "6": 3,
       "7": 9,
-      "8": 22,
+      "8": 21,
       "9": 22,
       "10": 21,
       "11": 24,
       "12": 9,
       "13": 11,
-      "14": 11,
+      "14": 10,
       "15": 10,
       "16": 10,
       "17": 18,
-      "18": 24,
+      "18": 23,
       "19": 22,
       "20": 24,
       "21": 22,
@@ -1880,20 +1076,20 @@
     "police_station": "Banashankari PS",
     "violation_types": {
       "DOUBLE PARKING": 67,
-      "FOOTPATH PARKING": 71,
-      "OBSTRUCTING TRAFFIC": 81,
-      "WRONG PARKING": 77,
+      "FOOTPATH PARKING": 70,
+      "OBSTRUCTING TRAFFIC": 80,
+      "WRONG PARKING": 76,
       "JUNCTION PARKING": 0,
       "NO PARKING ZONE": 0
     },
     "top_vehicles": [
       {
         "type": "BIKE",
-        "count": 126
+        "count": 125
       },
       {
         "type": "CAR",
-        "count": 101
+        "count": 100
       },
       {
         "type": "AUTO",
@@ -1901,7 +1097,7 @@
       },
       {
         "type": "MAXI CAB",
-        "count": 15
+        "count": 14
       },
       {
         "type": "BUS",
@@ -1909,48 +1105,2382 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 50.0,
-    "vehicle_impact_score": 0.637999650135573,
+    "impact_score": 44.5,
+    "vehicle_impact_score": 0.3286736172799102,
     "violation_percentile": "P50",
     "impact_percentile": "P50",
-    "impact_rank": 19,
+    "impact_rank": 11,
     "density_rank": 13,
     "zone_classification": "Moderate Zone"
   },
   {
-    "cluster_id": 26,
-    "center_lat": 12.90598605708029,
-    "center_lon": 77.6150186772532,
-    "zone_name": "Bommanahalli - Hosur Road Zone",
-    "total_violations": 74,
+    "cluster_id": 8,
+    "center_lat": 12.956378982756515,
+    "center_lon": 77.69529387963603,
+    "zone_name": "Marathahalli - Outer Ring Road Zone",
+    "total_violations": 372,
     "vehicle_distribution": {
-      "CAR": 23,
-      "BIKE": 25,
-      "AUTO": 11,
-      "MAXI CAB": 4,
-      "BUS": 2,
-      "TRUCK": 3,
-      "OTHERS": 6
+      "CAR": 135,
+      "BIKE": 143,
+      "AUTO": 51,
+      "MAXI CAB": 22,
+      "BUS": 16,
+      "TRUCK": 5,
+      "OTHERS": 0
     },
-    "avg_vehicle_weight": 2.2837837837837838,
-    "junction_ratio": 0.721,
-    "avg_resolution_time": 43.93,
+    "avg_vehicle_weight": 2.2661290322580645,
+    "junction_ratio": 0.564,
+    "avg_resolution_time": 5.21,
     "top_locations": [
       {
-        "name": "8rd Main Road, Bommanahalli",
-        "count": 28
+        "name": "7nd Cross Road, Marathahalli",
+        "count": 120
       },
       {
-        "name": "30nd Junction Circle, Bommanahalli",
+        "name": "13rd Outer Ring Road, Marathahalli",
+        "count": 94
+      },
+      {
+        "name": "29rd Junction Circle, Marathahalli",
+        "count": 63
+      },
+      {
+        "name": "20th Junction Circle, Marathahalli",
+        "count": 34
+      },
+      {
+        "name": "4st Inner Ring Road, Marathahalli",
+        "count": 30
+      }
+    ],
+    "hourly_distribution": {
+      "0": 3,
+      "1": 4,
+      "2": 3,
+      "3": 3,
+      "4": 4,
+      "5": 3,
+      "6": 4,
+      "7": 10,
+      "8": 30,
+      "9": 21,
+      "10": 28,
+      "11": 26,
+      "12": 13,
+      "13": 12,
+      "14": 15,
+      "15": 13,
+      "16": 14,
+      "17": 30,
+      "18": 29,
+      "19": 32,
+      "20": 29,
+      "21": 29,
+      "22": 3,
+      "23": 14
+    },
+    "police_station": "Marathahalli PS",
+    "violation_types": {
+      "JUNCTION PARKING": 100,
+      "FOOTPATH PARKING": 90,
+      "OBSTRUCTING TRAFFIC": 87,
+      "DOUBLE PARKING": 37,
+      "WRONG PARKING": 58,
+      "NO PARKING ZONE": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 143
+      },
+      {
+        "type": "CAR",
+        "count": 135
+      },
+      {
+        "type": "AUTO",
+        "count": 51
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 22
+      },
+      {
+        "type": "BUS",
+        "count": 16
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 44.2,
+    "vehicle_impact_score": 0.3497611763078801,
+    "violation_percentile": "P75",
+    "impact_percentile": "P50",
+    "impact_rank": 12,
+    "density_rank": 9,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 11,
+    "center_lat": 13.029041398770298,
+    "center_lon": 77.53744810925151,
+    "zone_name": "Yeshwanthpur - Tumkur Road Zone",
+    "total_violations": 321,
+    "vehicle_distribution": {
+      "CAR": 111,
+      "BIKE": 115,
+      "AUTO": 41,
+      "MAXI CAB": 21,
+      "BUS": 11,
+      "TRUCK": 12,
+      "OTHERS": 10
+    },
+    "avg_vehicle_weight": 2.3333333333333335,
+    "junction_ratio": 0.102,
+    "avg_resolution_time": 46.45,
+    "top_locations": [
+      {
+        "name": "12nd Outer Ring Road, Yeshwanthpur",
+        "count": 116
+      },
+      {
+        "name": "23th Bypass Road, Yeshwanthpur",
+        "count": 55
+      },
+      {
+        "name": "1nd Service Road, Yeshwanthpur",
+        "count": 36
+      }
+    ],
+    "hourly_distribution": {
+      "0": 3,
+      "1": 2,
+      "2": 4,
+      "3": 3,
+      "4": 3,
+      "5": 3,
+      "6": 2,
+      "7": 7,
+      "8": 24,
+      "9": 25,
+      "10": 20,
+      "11": 24,
+      "12": 10,
+      "13": 11,
+      "14": 13,
+      "15": 10,
+      "16": 10,
+      "17": 24,
+      "18": 30,
+      "19": 24,
+      "20": 28,
+      "21": 22,
+      "22": 3,
+      "23": 16
+    },
+    "police_station": "Yeshwanthpur PS",
+    "violation_types": {
+      "WRONG PARKING": 66,
+      "JUNCTION PARKING": 56,
+      "NO PARKING ZONE": 67,
+      "OBSTRUCTING TRAFFIC": 86,
+      "DOUBLE PARKING": 46,
+      "FOOTPATH PARKING": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 115
+      },
+      {
+        "type": "CAR",
+        "count": 111
+      },
+      {
+        "type": "AUTO",
+        "count": 41
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 21
+      },
+      {
+        "type": "TRUCK",
+        "count": 12
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 39.5,
+    "vehicle_impact_score": 0.37286067830875946,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 13,
+    "density_rank": 12,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 10,
+    "center_lat": 13.03306977822049,
+    "center_lon": 77.60136654587711,
+    "zone_name": "Hebbal - Bellary Road Zone",
+    "total_violations": 327,
+    "vehicle_distribution": {
+      "CAR": 117,
+      "BIKE": 116,
+      "AUTO": 45,
+      "MAXI CAB": 17,
+      "BUS": 15,
+      "TRUCK": 11,
+      "OTHERS": 6
+    },
+    "avg_vehicle_weight": 2.345565749235474,
+    "junction_ratio": 0.32,
+    "avg_resolution_time": 16.67,
+    "top_locations": [
+      {
+        "name": "20nd Junction Circle, Hebbal",
+        "count": 125
+      },
+      {
+        "name": "20rd Inner Ring Road, Hebbal",
+        "count": 61
+      },
+      {
+        "name": "22nd Bypass Road, Hebbal",
+        "count": 55
+      }
+    ],
+    "hourly_distribution": {
+      "0": 3,
+      "1": 4,
+      "2": 3,
+      "3": 4,
+      "4": 4,
+      "5": 4,
+      "6": 3,
+      "7": 8,
+      "8": 20,
+      "9": 22,
+      "10": 20,
+      "11": 27,
+      "12": 12,
+      "13": 14,
+      "14": 14,
+      "15": 11,
+      "16": 11,
+      "17": 26,
+      "18": 22,
+      "19": 29,
+      "20": 24,
+      "21": 24,
+      "22": 4,
+      "23": 14
+    },
+    "police_station": "Hebbal PS",
+    "violation_types": {
+      "NO PARKING ZONE": 62,
+      "OBSTRUCTING TRAFFIC": 71,
+      "JUNCTION PARKING": 64,
+      "DOUBLE PARKING": 66,
+      "WRONG PARKING": 45,
+      "FOOTPATH PARKING": 19
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 117
+      },
+      {
+        "type": "BIKE",
+        "count": 116
+      },
+      {
+        "type": "AUTO",
+        "count": 45
+      },
+      {
+        "type": "MAXI CAB",
         "count": 17
       },
       {
-        "name": "22st Inner Ring Road, Bommanahalli",
+        "type": "BUS",
+        "count": 15
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 39.1,
+    "vehicle_impact_score": 0.3770652115169928,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 14,
+    "density_rank": 11,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 20,
+    "center_lat": 12.946310783776136,
+    "center_lon": 77.57670779702234,
+    "zone_name": "Basavanagudi - Bull Temple Road",
+    "total_violations": 141,
+    "vehicle_distribution": {
+      "CAR": 48,
+      "BIKE": 47,
+      "AUTO": 18,
+      "MAXI CAB": 8,
+      "BUS": 4,
+      "TRUCK": 6,
+      "OTHERS": 10
+    },
+    "avg_vehicle_weight": 2.3333333333333335,
+    "junction_ratio": 0.777,
+    "avg_resolution_time": 39.04,
+    "top_locations": [
+      {
+        "name": "22th Bypass Road, Basavanagudi",
+        "count": 49
+      },
+      {
+        "name": "12rd Service Road, Basavanagudi",
+        "count": 34
+      },
+      {
+        "name": "2st Service Road, Basavanagudi",
+        "count": 17
+      },
+      {
+        "name": "18nd Inner Ring Road, Basavanagudi",
+        "count": 17
+      },
+      {
+        "name": "28st Inner Ring Road, Basavanagudi",
+        "count": 11
+      }
+    ],
+    "hourly_distribution": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 4,
+      "8": 11,
+      "9": 11,
+      "10": 9,
+      "11": 9,
+      "12": 4,
+      "13": 5,
+      "14": 5,
+      "15": 4,
+      "16": 5,
+      "17": 10,
+      "18": 10,
+      "19": 12,
+      "20": 10,
+      "21": 11,
+      "22": 1,
+      "23": 13
+    },
+    "police_station": "Basavanagudi PS",
+    "violation_types": {
+      "JUNCTION PARKING": 20,
+      "FOOTPATH PARKING": 34,
+      "DOUBLE PARKING": 28,
+      "OBSTRUCTING TRAFFIC": 30,
+      "WRONG PARKING": 29,
+      "NO PARKING ZONE": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 48
+      },
+      {
+        "type": "BIKE",
+        "count": 47
+      },
+      {
+        "type": "AUTO",
+        "count": 18
+      },
+      {
+        "type": "OTHERS",
+        "count": 10
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 37.3,
+    "vehicle_impact_score": 0.37286067830875946,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 15,
+    "density_rank": 21,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 3,
+    "center_lat": 12.967581907082305,
+    "center_lon": 77.75369300320793,
+    "zone_name": "Whitefield - ITPL Main Road Zone",
+    "total_violations": 508,
+    "vehicle_distribution": {
+      "BIKE": 396,
+      "AUTO": 81,
+      "CAR": 20,
+      "MAXI CAB": 0,
+      "BUS": 0,
+      "TRUCK": 0,
+      "OTHERS": 11
+    },
+    "avg_vehicle_weight": 1.2598425196850394,
+    "junction_ratio": 0.087,
+    "avg_resolution_time": 4.7,
+    "top_locations": [
+      {
+        "name": "3st Junction Circle, Whitefield",
+        "count": 220
+      },
+      {
+        "name": "13rd Outer Ring Road, Whitefield",
+        "count": 86
+      },
+      {
+        "name": "9th Cross Road, Whitefield",
+        "count": 53
+      },
+      {
+        "name": "15st Inner Ring Road, Whitefield",
+        "count": 42
+      }
+    ],
+    "hourly_distribution": {
+      "0": 6,
+      "1": 4,
+      "2": 4,
+      "3": 6,
+      "4": 4,
+      "5": 4,
+      "6": 5,
+      "7": 13,
+      "8": 42,
+      "9": 32,
+      "10": 43,
+      "11": 33,
+      "12": 18,
+      "13": 21,
+      "14": 19,
+      "15": 21,
+      "16": 19,
+      "17": 32,
+      "18": 46,
+      "19": 41,
+      "20": 37,
+      "21": 35,
+      "22": 6,
+      "23": 17
+    },
+    "police_station": "Whitefield PS",
+    "violation_types": {
+      "OBSTRUCTING TRAFFIC": 70,
+      "FOOTPATH PARKING": 118,
+      "WRONG PARKING": 60,
+      "NO PARKING ZONE": 127,
+      "DOUBLE PARKING": 66,
+      "JUNCTION PARKING": 67
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 396
+      },
+      {
+        "type": "AUTO",
+        "count": 81
+      },
+      {
+        "type": "CAR",
+        "count": 20
+      },
+      {
+        "type": "OTHERS",
+        "count": 11
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 0
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 36.8,
+    "vehicle_impact_score": 0.003879782725580279,
+    "violation_percentile": "P90",
+    "impact_percentile": "P50",
+    "impact_rank": 16,
+    "density_rank": 4,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 23,
+    "center_lat": 13.001476816746043,
+    "center_lon": 77.61386410822799,
+    "zone_name": "Cox Town - Wheeler Road Zone",
+    "total_violations": 94,
+    "vehicle_distribution": {
+      "CAR": 30,
+      "BIKE": 36,
+      "AUTO": 12,
+      "MAXI CAB": 6,
+      "BUS": 3,
+      "TRUCK": 3,
+      "OTHERS": 4
+    },
+    "avg_vehicle_weight": 2.25531914893617,
+    "junction_ratio": 0.759,
+    "avg_resolution_time": 55.34,
+    "top_locations": [
+      {
+        "name": "15nd Inner Ring Road, Cox Town",
+        "count": 38
+      },
+      {
+        "name": "10nd Junction Circle, Cox Town",
+        "count": 18
+      },
+      {
+        "name": "27nd Service Road, Cox Town",
+        "count": 10
+      },
+      {
+        "name": "2st Inner Ring Road, Cox Town",
+        "count": 9
+      },
+      {
+        "name": "30st Main Road, Cox Town",
+        "count": 7
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 1,
+      "2": 0,
+      "3": 0,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 2,
+      "8": 6,
+      "9": 5,
+      "10": 6,
+      "11": 6,
+      "12": 3,
+      "13": 2,
+      "14": 3,
+      "15": 3,
+      "16": 3,
+      "17": 6,
+      "18": 6,
+      "19": 7,
+      "20": 9,
+      "21": 8,
+      "22": 1,
+      "23": 14
+    },
+    "police_station": "Cox Town PS",
+    "violation_types": {
+      "JUNCTION PARKING": 20,
+      "DOUBLE PARKING": 11,
+      "NO PARKING ZONE": 17,
+      "OBSTRUCTING TRAFFIC": 9,
+      "FOOTPATH PARKING": 25,
+      "WRONG PARKING": 12
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 36
+      },
+      {
+        "type": "CAR",
+        "count": 30
+      },
+      {
+        "type": "AUTO",
+        "count": 12
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 6
+      },
+      {
+        "type": "OTHERS",
+        "count": 4
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 35.6,
+    "vehicle_impact_score": 0.34604559683710034,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 17,
+    "density_rank": 25,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 17,
+    "center_lat": 12.981219964437136,
+    "center_lon": 77.62817325777989,
+    "zone_name": "Ulsoor - CMH Road Zone",
+    "total_violations": 190,
+    "vehicle_distribution": {
+      "CAR": 68,
+      "BIKE": 65,
+      "AUTO": 28,
+      "MAXI CAB": 11,
+      "BUS": 8,
+      "TRUCK": 7,
+      "OTHERS": 3
+    },
+    "avg_vehicle_weight": 2.3684210526315788,
+    "junction_ratio": 0.363,
+    "avg_resolution_time": 42.85,
+    "top_locations": [
+      {
+        "name": "19th Cross Road, Ulsoor",
+        "count": 83
+      },
+      {
+        "name": "20nd Cross Road, Ulsoor",
+        "count": 47
+      },
+      {
+        "name": "6th Service Road, Ulsoor",
+        "count": 20
+      }
+    ],
+    "hourly_distribution": {
+      "0": 2,
+      "1": 1,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 1,
+      "7": 6,
+      "8": 12,
+      "9": 12,
+      "10": 13,
+      "11": 15,
+      "12": 8,
+      "13": 7,
+      "14": 6,
+      "15": 6,
+      "16": 6,
+      "17": 14,
+      "18": 15,
+      "19": 15,
+      "20": 13,
+      "21": 13,
+      "22": 2,
+      "23": 15
+    },
+    "police_station": "Ulsoor PS",
+    "violation_types": {
+      "DOUBLE PARKING": 47,
+      "JUNCTION PARKING": 36,
+      "WRONG PARKING": 50,
+      "FOOTPATH PARKING": 46,
+      "NO PARKING ZONE": 11,
+      "OBSTRUCTING TRAFFIC": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 68
+      },
+      {
+        "type": "BIKE",
+        "count": 65
+      },
+      {
+        "type": "AUTO",
+        "count": 28
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 11
+      },
+      {
+        "type": "BUS",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 34.4,
+    "vehicle_impact_score": 0.38492104987974474,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 18,
+    "density_rank": 18,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 15,
+    "center_lat": 12.964446831538867,
+    "center_lon": 77.640028518702,
+    "zone_name": "Domlur - Inner Ring Road Zone",
+    "total_violations": 224,
+    "vehicle_distribution": {
+      "CAR": 79,
+      "BIKE": 81,
+      "AUTO": 34,
+      "MAXI CAB": 15,
+      "BUS": 8,
+      "TRUCK": 7,
+      "OTHERS": 0
+    },
+    "avg_vehicle_weight": 2.325892857142857,
+    "junction_ratio": 0.205,
+    "avg_resolution_time": 36.95,
+    "top_locations": [
+      {
+        "name": "19th Inner Ring Road, Domlur",
+        "count": 92
+      },
+      {
+        "name": "5th Service Road, Domlur",
+        "count": 57
+      },
+      {
+        "name": "4rd Junction Circle, Domlur",
+        "count": 27
+      }
+    ],
+    "hourly_distribution": {
+      "0": 2,
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 7,
+      "8": 14,
+      "9": 19,
+      "10": 15,
+      "11": 16,
+      "12": 8,
+      "13": 9,
+      "14": 9,
+      "15": 7,
+      "16": 8,
+      "17": 15,
+      "18": 16,
+      "19": 18,
+      "20": 15,
+      "21": 17,
+      "22": 2,
+      "23": 15
+    },
+    "police_station": "Domlur PS",
+    "violation_types": {
+      "OBSTRUCTING TRAFFIC": 39,
+      "JUNCTION PARKING": 65,
+      "FOOTPATH PARKING": 35,
+      "DOUBLE PARKING": 30,
+      "WRONG PARKING": 54,
+      "NO PARKING ZONE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 81
+      },
+      {
+        "type": "CAR",
+        "count": 79
+      },
+      {
+        "type": "AUTO",
+        "count": 34
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 15
+      },
+      {
+        "type": "BUS",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 32.7,
+    "vehicle_impact_score": 0.3703032334443764,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 19,
+    "density_rank": 16,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 6,
+    "center_lat": 12.929731157639795,
+    "center_lon": 77.59258534377209,
+    "zone_name": "Jayanagar - 11th Main Zone",
+    "total_violations": 419,
+    "vehicle_distribution": {
+      "BIKE": 326,
+      "AUTO": 67,
+      "CAR": 16,
+      "MAXI CAB": 0,
+      "BUS": 0,
+      "TRUCK": 0,
+      "OTHERS": 9
+    },
+    "avg_vehicle_weight": 1.2553699284009547,
+    "junction_ratio": 0.137,
+    "avg_resolution_time": 5.22,
+    "top_locations": [
+      {
+        "name": "18st Inner Ring Road, Jayanagar",
+        "count": 146
+      },
+      {
+        "name": "10st Cross Road, Jayanagar",
+        "count": 75
+      },
+      {
+        "name": "1st Inner Ring Road, Jayanagar",
+        "count": 48
+      },
+      {
+        "name": "23rd Inner Ring Road, Jayanagar",
+        "count": 47
+      }
+    ],
+    "hourly_distribution": {
+      "0": 3,
+      "1": 4,
+      "2": 3,
+      "3": 4,
+      "4": 4,
+      "5": 5,
+      "6": 4,
+      "7": 12,
+      "8": 24,
+      "9": 29,
+      "10": 29,
+      "11": 35,
+      "12": 15,
+      "13": 16,
+      "14": 15,
+      "15": 13,
+      "16": 17,
+      "17": 38,
+      "18": 32,
+      "19": 28,
+      "20": 34,
+      "21": 33,
+      "22": 5,
+      "23": 17
+    },
+    "police_station": "Jayanagar PS",
+    "violation_types": {
+      "JUNCTION PARKING": 67,
+      "WRONG PARKING": 43,
+      "NO PARKING ZONE": 82,
+      "OBSTRUCTING TRAFFIC": 51,
+      "DOUBLE PARKING": 109,
+      "FOOTPATH PARKING": 67
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 326
+      },
+      {
+        "type": "AUTO",
+        "count": 67
+      },
+      {
+        "type": "CAR",
+        "count": 16
+      },
+      {
+        "type": "OTHERS",
+        "count": 9
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 0
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 31.3,
+    "vehicle_impact_score": 0.0023424610116007613,
+    "violation_percentile": "P75",
+    "impact_percentile": "P50",
+    "impact_rank": 20,
+    "density_rank": 7,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 14,
+    "center_lat": 13.007731361241856,
+    "center_lon": 77.56507180051479,
+    "zone_name": "Malleshwaram - Sampige Road Zone",
+    "total_violations": 245,
+    "vehicle_distribution": {
+      "CAR": 75,
+      "BIKE": 102,
+      "AUTO": 32,
+      "MAXI CAB": 12,
+      "BUS": 9,
+      "TRUCK": 10,
+      "OTHERS": 5
+    },
+    "avg_vehicle_weight": 2.220408163265306,
+    "junction_ratio": 0.343,
+    "avg_resolution_time": 6.63,
+    "top_locations": [
+      {
+        "name": "15nd Outer Ring Road, Malleshwaram",
+        "count": 112
+      },
+      {
+        "name": "12th Bypass Road, Malleshwaram",
+        "count": 51
+      },
+      {
+        "name": "18st Main Road, Malleshwaram",
+        "count": 27
+      }
+    ],
+    "hourly_distribution": {
+      "0": 2,
+      "1": 2,
+      "2": 2,
+      "3": 2,
+      "4": 2,
+      "5": 2,
+      "6": 2,
+      "7": 7,
+      "8": 17,
+      "9": 20,
+      "10": 17,
+      "11": 16,
+      "12": 9,
+      "13": 7,
+      "14": 10,
+      "15": 8,
+      "16": 8,
+      "17": 20,
+      "18": 16,
+      "19": 20,
+      "20": 21,
+      "21": 18,
+      "22": 3,
+      "23": 14
+    },
+    "police_station": "Malleshwaram PS",
+    "violation_types": {
+      "DOUBLE PARKING": 57,
+      "WRONG PARKING": 35,
+      "JUNCTION PARKING": 35,
+      "FOOTPATH PARKING": 38,
+      "NO PARKING ZONE": 58,
+      "OBSTRUCTING TRAFFIC": 22
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 102
+      },
+      {
+        "type": "CAR",
+        "count": 75
+      },
+      {
+        "type": "AUTO",
+        "count": 32
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 12
+      },
+      {
+        "type": "TRUCK",
+        "count": 10
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 30.8,
+    "vehicle_impact_score": 0.3340459722527513,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 21,
+    "density_rank": 15,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 31,
+    "center_lat": 12.967681000839145,
+    "center_lon": 77.59737575841035,
+    "zone_name": "Lavelle Road - Vittal Mallya Road",
+    "total_violations": 40,
+    "vehicle_distribution": {
+      "CAR": 14,
+      "BIKE": 13,
+      "AUTO": 5,
+      "MAXI CAB": 2,
+      "BUS": 1,
+      "TRUCK": 1,
+      "OTHERS": 4
+    },
+    "avg_vehicle_weight": 2.275,
+    "junction_ratio": 0.776,
+    "avg_resolution_time": 47.49,
+    "top_locations": [
+      {
+        "name": "11st Bypass Road, Lavelle Road",
+        "count": 15
+      },
+      {
+        "name": "4rd Bypass Road, Lavelle Road",
         "count": 8
       },
       {
-        "name": "11nd Service Road, Bommanahalli",
+        "name": "16st Service Road, Lavelle Road",
+        "count": 4
+      },
+      {
+        "name": "26th Bypass Road, Lavelle Road",
+        "count": 3
+      },
+      {
+        "name": "5nd Cross Road, Lavelle Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 1,
+      "8": 2,
+      "9": 2,
+      "10": 2,
+      "11": 2,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 3,
+      "18": 2,
+      "19": 3,
+      "20": 2,
+      "21": 3,
+      "22": 0,
+      "23": 13
+    },
+    "police_station": "Cubbon Park PS",
+    "violation_types": {
+      "WRONG PARKING": 9,
+      "FOOTPATH PARKING": 7,
+      "DOUBLE PARKING": 5,
+      "OBSTRUCTING TRAFFIC": 6,
+      "NO PARKING ZONE": 7,
+      "JUNCTION PARKING": 6
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 14
+      },
+      {
+        "type": "BIKE",
+        "count": 13
+      },
+      {
+        "type": "AUTO",
+        "count": 5
+      },
+      {
+        "type": "OTHERS",
+        "count": 4
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 30.8,
+    "vehicle_impact_score": 0.3528103105719962,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 22,
+    "density_rank": 31,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 30,
+    "center_lat": 12.978098676320997,
+    "center_lon": 77.59502948972819,
+    "zone_name": "Cubbon Park - Kasturba Road Zone",
+    "total_violations": 37,
+    "vehicle_distribution": {
+      "CAR": 11,
+      "BIKE": 14,
+      "AUTO": 5,
+      "MAXI CAB": 2,
+      "BUS": 1,
+      "TRUCK": 1,
+      "OTHERS": 3
+    },
+    "avg_vehicle_weight": 2.189189189189189,
+    "junction_ratio": 0.728,
+    "avg_resolution_time": 54.87,
+    "top_locations": [
+      {
+        "name": "2st Inner Ring Road, Cubbon Park",
+        "count": 13
+      },
+      {
+        "name": "5st Cross Road, Cubbon Park",
+        "count": 6
+      },
+      {
+        "name": "25rd Cross Road, Cubbon Park",
+        "count": 5
+      },
+      {
+        "name": "25st Cross Road, Cubbon Park",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 2,
+      "9": 2,
+      "10": 2,
+      "11": 2,
+      "12": 1,
+      "13": 1,
+      "14": 1,
+      "15": 1,
+      "16": 1,
+      "17": 3,
+      "18": 2,
+      "19": 2,
+      "20": 3,
+      "21": 3,
+      "22": 0,
+      "23": 11
+    },
+    "police_station": "Cubbon Park PS",
+    "violation_types": {
+      "FOOTPATH PARKING": 5,
+      "WRONG PARKING": 7,
+      "OBSTRUCTING TRAFFIC": 10,
+      "JUNCTION PARKING": 4,
+      "DOUBLE PARKING": 6,
+      "NO PARKING ZONE": 5
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 14
+      },
+      {
+        "type": "CAR",
+        "count": 11
+      },
+      {
+        "type": "AUTO",
+        "count": 5
+      },
+      {
+        "type": "OTHERS",
+        "count": 3
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 30.2,
+    "vehicle_impact_score": 0.32331536807119776,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 23,
+    "density_rank": 33,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 25,
+    "center_lat": 13.10100353672195,
+    "center_lon": 77.59130571896128,
+    "zone_name": "Yelahanka - New Town Zone",
+    "total_violations": 71,
+    "vehicle_distribution": {
+      "CAR": 22,
+      "BIKE": 23,
+      "AUTO": 10,
+      "MAXI CAB": 4,
+      "BUS": 2,
+      "TRUCK": 3,
+      "OTHERS": 7
+    },
+    "avg_vehicle_weight": 2.3098591549295775,
+    "junction_ratio": 0.444,
+    "avg_resolution_time": 56.5,
+    "top_locations": [
+      {
+        "name": "14nd Outer Ring Road, Yelahanka",
+        "count": 32
+      },
+      {
+        "name": "13st Junction Circle, Yelahanka",
+        "count": 14
+      },
+      {
+        "name": "21rd Junction Circle, Yelahanka",
+        "count": 10
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 2,
+      "8": 4,
+      "9": 6,
+      "10": 4,
+      "11": 6,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 3,
+      "17": 5,
+      "18": 6,
+      "19": 4,
+      "20": 5,
+      "21": 5,
+      "22": 0,
+      "23": 13
+    },
+    "police_station": "Yelahanka PS",
+    "violation_types": {
+      "NO PARKING ZONE": 17,
+      "JUNCTION PARKING": 11,
+      "FOOTPATH PARKING": 17,
+      "DOUBLE PARKING": 21,
+      "OBSTRUCTING TRAFFIC": 5,
+      "WRONG PARKING": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 23
+      },
+      {
+        "type": "CAR",
+        "count": 22
+      },
+      {
+        "type": "AUTO",
+        "count": 10
+      },
+      {
+        "type": "OTHERS",
         "count": 7
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 4
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 28.9,
+    "vehicle_impact_score": 0.3647921198633819,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 24,
+    "density_rank": 26,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 19,
+    "center_lat": 12.968764090307321,
+    "center_lon": 77.53784767311674,
+    "zone_name": "Vijayanagar - Magadi Road Zone",
+    "total_violations": 155,
+    "vehicle_distribution": {
+      "CAR": 49,
+      "BIKE": 58,
+      "AUTO": 23,
+      "MAXI CAB": 10,
+      "BUS": 5,
+      "TRUCK": 6,
+      "OTHERS": 4
+    },
+    "avg_vehicle_weight": 2.2838709677419353,
+    "junction_ratio": 0.167,
+    "avg_resolution_time": 49.63,
+    "top_locations": [
+      {
+        "name": "21rd Service Road, Vijayanagar",
+        "count": 64
+      },
+      {
+        "name": "23st Junction Circle, Vijayanagar",
+        "count": 31
+      },
+      {
+        "name": "19nd Main Road, Vijayanagar",
+        "count": 20
+      },
+      {
+        "name": "12rd Service Road, Vijayanagar",
+        "count": 18
+      },
+      {
+        "name": "19rd Service Road, Vijayanagar",
+        "count": 15
+      }
+    ],
+    "hourly_distribution": {
+      "0": 1,
+      "1": 1,
+      "2": 2,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 4,
+      "8": 9,
+      "9": 10,
+      "10": 11,
+      "11": 10,
+      "12": 5,
+      "13": 5,
+      "14": 4,
+      "15": 5,
+      "16": 5,
+      "17": 13,
+      "18": 13,
+      "19": 11,
+      "20": 14,
+      "21": 13,
+      "22": 1,
+      "23": 14
+    },
+    "police_station": "Vijayanagar PS",
+    "violation_types": {
+      "JUNCTION PARKING": 39,
+      "FOOTPATH PARKING": 28,
+      "NO PARKING ZONE": 19,
+      "WRONG PARKING": 35,
+      "DOUBLE PARKING": 16,
+      "OBSTRUCTING TRAFFIC": 18
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 58
+      },
+      {
+        "type": "CAR",
+        "count": 49
+      },
+      {
+        "type": "AUTO",
+        "count": 23
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 10
+      },
+      {
+        "type": "TRUCK",
+        "count": 6
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 28.7,
+    "vehicle_impact_score": 0.3558594448361122,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 25,
+    "density_rank": 19,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 16,
+    "center_lat": 12.926513681341632,
+    "center_lon": 77.67482741608522,
+    "zone_name": "Sarjapur Road - Bellandur Zone",
+    "total_violations": 197,
+    "vehicle_distribution": {
+      "CAR": 62,
+      "BIKE": 78,
+      "AUTO": 28,
+      "MAXI CAB": 12,
+      "BUS": 8,
+      "TRUCK": 8,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 2.284263959390863,
+    "junction_ratio": 0.243,
+    "avg_resolution_time": 19.26,
+    "top_locations": [
+      {
+        "name": "4rd Inner Ring Road, Sarjapur Road",
+        "count": 88
+      },
+      {
+        "name": "21st Cross Road, Sarjapur Road",
+        "count": 34
+      },
+      {
+        "name": "22rd Inner Ring Road, Sarjapur Road",
+        "count": 28
+      }
+    ],
+    "hourly_distribution": {
+      "0": 1,
+      "1": 2,
+      "2": 2,
+      "3": 1,
+      "4": 2,
+      "5": 1,
+      "6": 2,
+      "7": 6,
+      "8": 13,
+      "9": 14,
+      "10": 14,
+      "11": 12,
+      "12": 6,
+      "13": 6,
+      "14": 7,
+      "15": 8,
+      "16": 7,
+      "17": 12,
+      "18": 14,
+      "19": 18,
+      "20": 17,
+      "21": 16,
+      "22": 2,
+      "23": 14
+    },
+    "police_station": "Bellandur PS",
+    "violation_types": {
+      "OBSTRUCTING TRAFFIC": 32,
+      "DOUBLE PARKING": 54,
+      "JUNCTION PARKING": 41,
+      "WRONG PARKING": 31,
+      "NO PARKING ZONE": 39,
+      "FOOTPATH PARKING": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 78
+      },
+      {
+        "type": "CAR",
+        "count": 62
+      },
+      {
+        "type": "AUTO",
+        "count": 28
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 12
+      },
+      {
+        "type": "BUS",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 28.1,
+    "vehicle_impact_score": 0.35599452415745747,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 26,
+    "density_rank": 17,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 18,
+    "center_lat": 13.002671163754247,
+    "center_lon": 77.5483964913035,
+    "zone_name": "Rajajinagar - West of Chord Road",
+    "total_violations": 155,
+    "vehicle_distribution": {
+      "CAR": 50,
+      "BIKE": 60,
+      "AUTO": 21,
+      "MAXI CAB": 9,
+      "BUS": 6,
+      "TRUCK": 6,
+      "OTHERS": 3
+    },
+    "avg_vehicle_weight": 2.2838709677419353,
+    "junction_ratio": 0.422,
+    "avg_resolution_time": 8.36,
+    "top_locations": [
+      {
+        "name": "17rd Outer Ring Road, Rajajinagar",
+        "count": 53
+      },
+      {
+        "name": "5rd Main Road, Rajajinagar",
+        "count": 34
+      },
+      {
+        "name": "21rd Service Road, Rajajinagar",
+        "count": 16
+      }
+    ],
+    "hourly_distribution": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 4,
+      "8": 11,
+      "9": 13,
+      "10": 10,
+      "11": 13,
+      "12": 5,
+      "13": 6,
+      "14": 6,
+      "15": 4,
+      "16": 6,
+      "17": 10,
+      "18": 10,
+      "19": 12,
+      "20": 14,
+      "21": 9,
+      "22": 1,
+      "23": 14
+    },
+    "police_station": "Rajajinagar PS",
+    "violation_types": {
+      "DOUBLE PARKING": 35,
+      "NO PARKING ZONE": 25,
+      "WRONG PARKING": 40,
+      "FOOTPATH PARKING": 18,
+      "JUNCTION PARKING": 32,
+      "OBSTRUCTING TRAFFIC": 5
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 60
+      },
+      {
+        "type": "CAR",
+        "count": 50
+      },
+      {
+        "type": "AUTO",
+        "count": 21
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 9
+      },
+      {
+        "type": "BUS",
+        "count": 6
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 26.4,
+    "vehicle_impact_score": 0.3558594448361122,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 27,
+    "density_rank": 20,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 9,
+    "center_lat": 12.845134103023684,
+    "center_lon": 77.66364110426642,
+    "zone_name": "Electronic City - Phase 1 Zone",
+    "total_violations": 346,
+    "vehicle_distribution": {
+      "BIKE": 269,
+      "AUTO": 55,
+      "CAR": 13,
+      "MAXI CAB": 0,
+      "BUS": 0,
+      "TRUCK": 0,
+      "OTHERS": 7
+    },
+    "avg_vehicle_weight": 1.2485549132947977,
+    "junction_ratio": 0.159,
+    "avg_resolution_time": 4.28,
+    "top_locations": [
+      {
+        "name": "10nd Service Road, Electronic City",
+        "count": 140
+      },
+      {
+        "name": "15rd Inner Ring Road, Electronic City",
+        "count": 83
+      },
+      {
+        "name": "29nd Outer Ring Road, Electronic City",
+        "count": 38
+      },
+      {
+        "name": "15rd Inner Ring Road, Electronic City",
+        "count": 30
+      }
+    ],
+    "hourly_distribution": {
+      "0": 3,
+      "1": 4,
+      "2": 3,
+      "3": 4,
+      "4": 3,
+      "5": 4,
+      "6": 4,
+      "7": 11,
+      "8": 29,
+      "9": 22,
+      "10": 29,
+      "11": 27,
+      "12": 11,
+      "13": 14,
+      "14": 12,
+      "15": 14,
+      "16": 10,
+      "17": 30,
+      "18": 23,
+      "19": 23,
+      "20": 24,
+      "21": 23,
+      "22": 4,
+      "23": 15
+    },
+    "police_station": "Electronic City PS",
+    "violation_types": {
+      "OBSTRUCTING TRAFFIC": 54,
+      "NO PARKING ZONE": 102,
+      "JUNCTION PARKING": 88,
+      "DOUBLE PARKING": 41,
+      "FOOTPATH PARKING": 61,
+      "WRONG PARKING": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 269
+      },
+      {
+        "type": "AUTO",
+        "count": 55
+      },
+      {
+        "type": "CAR",
+        "count": 13
+      },
+      {
+        "type": "OTHERS",
+        "count": 7
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 0
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 26.1,
+    "vehicle_impact_score": 0.0,
+    "violation_percentile": "P75",
+    "impact_percentile": "P25",
+    "impact_rank": 28,
+    "density_rank": 10,
+    "zone_classification": "Frequent Violation Zone"
+  },
+  {
+    "cluster_id": 21,
+    "center_lat": 12.912047884501291,
+    "center_lon": 77.58800877799591,
+    "zone_name": "JP Nagar - 24th Main Zone",
+    "total_violations": 111,
+    "vehicle_distribution": {
+      "CAR": 36,
+      "BIKE": 37,
+      "AUTO": 17,
+      "MAXI CAB": 6,
+      "BUS": 4,
+      "TRUCK": 4,
+      "OTHERS": 7
+    },
+    "avg_vehicle_weight": 2.315315315315315,
+    "junction_ratio": 0.547,
+    "avg_resolution_time": 10.02,
+    "top_locations": [
+      {
+        "name": "9th Main Road, JP Nagar",
+        "count": 38
+      },
+      {
+        "name": "1nd Main Road, JP Nagar",
+        "count": 23
+      },
+      {
+        "name": "2st Outer Ring Road, JP Nagar",
+        "count": 13
+      }
+    ],
+    "hourly_distribution": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 0,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 2,
+      "8": 8,
+      "9": 6,
+      "10": 7,
+      "11": 9,
+      "12": 4,
+      "13": 4,
+      "14": 3,
+      "15": 3,
+      "16": 3,
+      "17": 8,
+      "18": 9,
+      "19": 7,
+      "20": 10,
+      "21": 10,
+      "22": 1,
+      "23": 11
+    },
+    "police_station": "JP Nagar PS",
+    "violation_types": {
+      "JUNCTION PARKING": 29,
+      "OBSTRUCTING TRAFFIC": 14,
+      "WRONG PARKING": 20,
+      "NO PARKING ZONE": 29,
+      "DOUBLE PARKING": 17,
+      "FOOTPATH PARKING": 2
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 37
+      },
+      {
+        "type": "CAR",
+        "count": 36
+      },
+      {
+        "type": "AUTO",
+        "count": 17
+      },
+      {
+        "type": "OTHERS",
+        "count": 7
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 6
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 26.0,
+    "vehicle_impact_score": 0.36666751452906415,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 29,
+    "density_rank": 23,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 24,
+    "center_lat": 12.985789702114381,
+    "center_lon": 77.6020283926855,
+    "zone_name": "Shivajinagar - Commercial St Zone",
+    "total_violations": 97,
+    "vehicle_distribution": {
+      "CAR": 33,
+      "BIKE": 37,
+      "AUTO": 13,
+      "MAXI CAB": 5,
+      "BUS": 3,
+      "TRUCK": 4,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 2.2783505154639174,
+    "junction_ratio": 0.268,
+    "avg_resolution_time": 46.73,
+    "top_locations": [
+      {
+        "name": "19rd Junction Circle, Shivajinagar",
+        "count": 36
+      },
+      {
+        "name": "11rd Cross Road, Shivajinagar",
+        "count": 20
+      },
+      {
+        "name": "26st Cross Road, Shivajinagar",
+        "count": 12
+      },
+      {
+        "name": "10th Inner Ring Road, Shivajinagar",
+        "count": 8
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 1,
+      "2": 1,
+      "3": 0,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 2,
+      "8": 7,
+      "9": 8,
+      "10": 7,
+      "11": 6,
+      "12": 3,
+      "13": 3,
+      "14": 3,
+      "15": 3,
+      "16": 3,
+      "17": 7,
+      "18": 6,
+      "19": 9,
+      "20": 8,
+      "21": 7,
+      "22": 1,
+      "23": 9
+    },
+    "police_station": "Shivajinagar PS",
+    "violation_types": {
+      "FOOTPATH PARKING": 27,
+      "NO PARKING ZONE": 13,
+      "WRONG PARKING": 29,
+      "JUNCTION PARKING": 15,
+      "DOUBLE PARKING": 13,
+      "OBSTRUCTING TRAFFIC": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 37
+      },
+      {
+        "type": "CAR",
+        "count": 33
+      },
+      {
+        "type": "AUTO",
+        "count": 13
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 5
+      },
+      {
+        "type": "TRUCK",
+        "count": 4
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 25.7,
+    "vehicle_impact_score": 0.35396195172329775,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 30,
+    "density_rank": 24,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 29,
+    "center_lat": 12.989476737874183,
+    "center_lon": 77.71686593917482,
+    "zone_name": "Mahadevapura - ITPL Road Zone",
+    "total_violations": 52,
+    "vehicle_distribution": {
+      "CAR": 14,
+      "BIKE": 21,
+      "AUTO": 7,
+      "MAXI CAB": 2,
+      "BUS": 2,
+      "TRUCK": 2,
+      "OTHERS": 4
+    },
+    "avg_vehicle_weight": 2.173076923076923,
+    "junction_ratio": 0.741,
+    "avg_resolution_time": 13.56,
+    "top_locations": [
+      {
+        "name": "24st Outer Ring Road, Mahadevapura",
+        "count": 22
+      },
+      {
+        "name": "15nd Outer Ring Road, Mahadevapura",
+        "count": 13
+      },
+      {
+        "name": "17nd Junction Circle, Mahadevapura",
+        "count": 5
+      },
+      {
+        "name": "27nd Bypass Road, Mahadevapura",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 1,
+      "8": 4,
+      "9": 3,
+      "10": 3,
+      "11": 4,
+      "12": 2,
+      "13": 2,
+      "14": 2,
+      "15": 1,
+      "16": 1,
+      "17": 3,
+      "18": 3,
+      "19": 3,
+      "20": 4,
+      "21": 4,
+      "22": 0,
+      "23": 12
+    },
+    "police_station": "Mahadevapura PS",
+    "violation_types": {
+      "NO PARKING ZONE": 13,
+      "OBSTRUCTING TRAFFIC": 14,
+      "DOUBLE PARKING": 15,
+      "FOOTPATH PARKING": 7,
+      "JUNCTION PARKING": 3,
+      "WRONG PARKING": 0
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 21
+      },
+      {
+        "type": "CAR",
+        "count": 14
+      },
+      {
+        "type": "AUTO",
+        "count": 7
+      },
+      {
+        "type": "OTHERS",
+        "count": 4
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 24.6,
+    "vehicle_impact_score": 0.31777725046050875,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 31,
+    "density_rank": 30,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 22,
+    "center_lat": 13.001381577543446,
+    "center_lon": 77.60833245316101,
+    "zone_name": "Frazer Town - Mosque Road Zone",
+    "total_violations": 118,
+    "vehicle_distribution": {
+      "CAR": 34,
+      "BIKE": 50,
+      "AUTO": 15,
+      "MAXI CAB": 7,
+      "BUS": 4,
+      "TRUCK": 4,
+      "OTHERS": 4
+    },
+    "avg_vehicle_weight": 2.1864406779661016,
+    "junction_ratio": 0.298,
+    "avg_resolution_time": 22.55,
+    "top_locations": [
+      {
+        "name": "29nd Outer Ring Road, Frazer Town",
+        "count": 55
+      },
+      {
+        "name": "8nd Cross Road, Frazer Town",
+        "count": 28
+      },
+      {
+        "name": "24th Cross Road, Frazer Town",
+        "count": 15
+      },
+      {
+        "name": "3nd Cross Road, Frazer Town",
+        "count": 10
+      }
+    ],
+    "hourly_distribution": {
+      "0": 1,
+      "1": 1,
+      "2": 1,
+      "3": 1,
+      "4": 1,
+      "5": 1,
+      "6": 1,
+      "7": 3,
+      "8": 8,
+      "9": 7,
+      "10": 7,
+      "11": 9,
+      "12": 3,
+      "13": 3,
+      "14": 4,
+      "15": 3,
+      "16": 3,
+      "17": 9,
+      "18": 10,
+      "19": 9,
+      "20": 10,
+      "21": 9,
+      "22": 1,
+      "23": 13
+    },
+    "police_station": "Frazer Town PS",
+    "violation_types": {
+      "JUNCTION PARKING": 12,
+      "FOOTPATH PARKING": 19,
+      "WRONG PARKING": 19,
+      "NO PARKING ZONE": 15,
+      "DOUBLE PARKING": 16,
+      "OBSTRUCTING TRAFFIC": 37
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 50
+      },
+      {
+        "type": "CAR",
+        "count": 34
+      },
+      {
+        "type": "AUTO",
+        "count": 15
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 7
+      },
+      {
+        "type": "BUS",
+        "count": 4
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 23.0,
+    "vehicle_impact_score": 0.3223706481726002,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 32,
+    "density_rank": 22,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 38,
+    "center_lat": 12.907126212821021,
+    "center_lon": 77.48309302605395,
+    "zone_name": "Kengeri - Mysore Road Zone",
+    "total_violations": 26,
+    "vehicle_distribution": {
+      "CAR": 9,
+      "BIKE": 10,
+      "AUTO": 3,
+      "MAXI CAB": 1,
+      "BUS": 0,
+      "TRUCK": 1,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 2.1538461538461537,
+    "junction_ratio": 0.768,
+    "avg_resolution_time": 8.89,
+    "top_locations": [
+      {
+        "name": "11st Inner Ring Road, Kengeri",
+        "count": 12
+      },
+      {
+        "name": "4nd Junction Circle, Kengeri",
+        "count": 6
+      },
+      {
+        "name": "30rd Junction Circle, Kengeri",
+        "count": 3
+      },
+      {
+        "name": "23nd Main Road, Kengeri",
+        "count": 2
+      },
+      {
+        "name": "6th Cross Road, Kengeri",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 2,
+      "12": 1,
+      "13": 0,
+      "14": 0,
+      "15": 1,
+      "16": 0,
+      "17": 2,
+      "18": 2,
+      "19": 2,
+      "20": 2,
+      "21": 2,
+      "22": 0,
+      "23": 9
+    },
+    "police_station": "Kengeri PS",
+    "violation_types": {
+      "DOUBLE PARKING": 7,
+      "NO PARKING ZONE": 3,
+      "FOOTPATH PARKING": 4,
+      "OBSTRUCTING TRAFFIC": 5,
+      "JUNCTION PARKING": 2,
+      "WRONG PARKING": 5
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 10
+      },
+      {
+        "type": "CAR",
+        "count": 9
+      },
+      {
+        "type": "AUTO",
+        "count": 3
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 22.2,
+    "vehicle_impact_score": 0.3111672391187187,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 33,
+    "density_rank": 35,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 35,
+    "center_lat": 12.941523830751407,
+    "center_lon": 77.60716211649721,
+    "zone_name": "Adugodi - Audugodi Main Road",
+    "total_violations": 20,
+    "vehicle_distribution": {
+      "CAR": 5,
+      "BIKE": 7,
+      "AUTO": 2,
+      "MAXI CAB": 1,
+      "BUS": 0,
+      "TRUCK": 0,
+      "OTHERS": 5
+    },
+    "avg_vehicle_weight": 2.0,
+    "junction_ratio": 0.444,
+    "avg_resolution_time": 52.63,
+    "top_locations": [
+      {
+        "name": "1rd Service Road, Adugodi",
+        "count": 9
+      },
+      {
+        "name": "25st Junction Circle, Adugodi",
+        "count": 4
+      },
+      {
+        "name": "14st Cross Road, Adugodi",
+        "count": 2
+      },
+      {
+        "name": "29nd Service Road, Adugodi",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 0,
+      "23": 11
+    },
+    "police_station": "Audugodi PS",
+    "violation_types": {
+      "WRONG PARKING": 4,
+      "OBSTRUCTING TRAFFIC": 3,
+      "FOOTPATH PARKING": 5,
+      "NO PARKING ZONE": 4,
+      "JUNCTION PARKING": 3,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 7
+      },
+      {
+        "type": "CAR",
+        "count": 5
+      },
+      {
+        "type": "OTHERS",
+        "count": 5
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 21.8,
+    "vehicle_impact_score": 0.25828714838439815,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 34,
+    "density_rank": 37,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 26,
+    "center_lat": 12.90472980767181,
+    "center_lon": 77.62375321378943,
+    "zone_name": "Bommanahalli - Hosur Road Zone",
+    "total_violations": 68,
+    "vehicle_distribution": {
+      "CAR": 21,
+      "BIKE": 23,
+      "AUTO": 10,
+      "MAXI CAB": 3,
+      "BUS": 2,
+      "TRUCK": 2,
+      "OTHERS": 7
+    },
+    "avg_vehicle_weight": 2.235294117647059,
+    "junction_ratio": 0.407,
+    "avg_resolution_time": 9.83,
+    "top_locations": [
+      {
+        "name": "8rd Main Road, Bommanahalli",
+        "count": 26
+      },
+      {
+        "name": "30nd Junction Circle, Bommanahalli",
+        "count": 16
+      },
+      {
+        "name": "22st Inner Ring Road, Bommanahalli",
+        "count": 7
+      },
+      {
+        "name": "11nd Service Road, Bommanahalli",
+        "count": 6
       }
     ],
     "hourly_distribution": {
@@ -1963,84 +3493,190 @@
       "6": 0,
       "7": 1,
       "8": 5,
-      "9": 6,
-      "10": 4,
+      "9": 5,
+      "10": 3,
       "11": 5,
       "12": 2,
-      "13": 3,
-      "14": 3,
-      "15": 3,
-      "16": 2,
+      "13": 2,
+      "14": 2,
+      "15": 2,
+      "16": 1,
       "17": 4,
-      "18": 6,
+      "18": 5,
       "19": 5,
-      "20": 6,
+      "20": 5,
       "21": 6,
       "22": 0,
-      "23": 13
+      "23": 15
     },
     "police_station": "Bommanahalli PS",
     "violation_types": {
-      "JUNCTION PARKING": 14,
-      "FOOTPATH PARKING": 13,
-      "DOUBLE PARKING": 7,
-      "OBSTRUCTING TRAFFIC": 16,
-      "NO PARKING ZONE": 20,
+      "JUNCTION PARKING": 13,
+      "FOOTPATH PARKING": 12,
+      "DOUBLE PARKING": 6,
+      "OBSTRUCTING TRAFFIC": 14,
+      "NO PARKING ZONE": 19,
       "WRONG PARKING": 4
     },
     "top_vehicles": [
       {
         "type": "BIKE",
-        "count": 25
-      },
-      {
-        "type": "CAR",
         "count": 23
       },
       {
+        "type": "CAR",
+        "count": 21
+      },
+      {
         "type": "AUTO",
-        "count": 11
+        "count": 10
       },
       {
         "type": "OTHERS",
-        "count": 6
+        "count": 7
       },
       {
         "type": "MAXI CAB",
-        "count": 4
+        "count": 3
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 47.7,
-    "vehicle_impact_score": 0.795868684218199,
+    "impact_score": 19.6,
+    "vehicle_impact_score": 0.3391625812721826,
     "violation_percentile": "P25",
-    "impact_percentile": "P50",
-    "impact_rank": 20,
+    "impact_percentile": "P25",
+    "impact_rank": 35,
     "density_rank": 27,
-    "zone_classification": "Moderate Zone"
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 34,
+    "center_lat": 12.948180046343689,
+    "center_lon": 77.60008977778296,
+    "zone_name": "Wilson Garden - Hosur Road Zone",
+    "total_violations": 19,
+    "vehicle_distribution": {
+      "CAR": 6,
+      "BIKE": 6,
+      "AUTO": 2,
+      "MAXI CAB": 0,
+      "BUS": 0,
+      "TRUCK": 0,
+      "OTHERS": 5
+    },
+    "avg_vehicle_weight": 2.0,
+    "junction_ratio": 0.678,
+    "avg_resolution_time": 6.96,
+    "top_locations": [
+      {
+        "name": "2rd Main Road, Wilson Garden",
+        "count": 6
+      },
+      {
+        "name": "17rd Junction Circle, Wilson Garden",
+        "count": 3
+      },
+      {
+        "name": "8st Main Road, Wilson Garden",
+        "count": 2
+      },
+      {
+        "name": "10nd Outer Ring Road, Wilson Garden",
+        "count": 2
+      },
+      {
+        "name": "8st Cross Road, Wilson Garden",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 1,
+      "9": 1,
+      "10": 1,
+      "11": 1,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 1,
+      "18": 1,
+      "19": 1,
+      "20": 1,
+      "21": 1,
+      "22": 0,
+      "23": 10
+    },
+    "police_station": "Wilson Garden PS",
+    "violation_types": {
+      "FOOTPATH PARKING": 2,
+      "DOUBLE PARKING": 4,
+      "NO PARKING ZONE": 3,
+      "WRONG PARKING": 2,
+      "OBSTRUCTING TRAFFIC": 2,
+      "JUNCTION PARKING": 6
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 6
+      },
+      {
+        "type": "BIKE",
+        "count": 6
+      },
+      {
+        "type": "OTHERS",
+        "count": 5
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 0
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 18.4,
+    "vehicle_impact_score": 0.25828714838439815,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 36,
+    "density_rank": 38,
+    "zone_classification": "Stable Zone"
   },
   {
     "cluster_id": 27,
-    "center_lat": 12.997475141254027,
-    "center_lon": 77.69227925166494,
+    "center_lat": 13.00007356943689,
+    "center_lon": 77.69248757048292,
     "zone_name": "KR Puram - Old Madras Road Zone",
-    "total_violations": 60,
+    "total_violations": 58,
     "vehicle_distribution": {
-      "CAR": 19,
-      "BIKE": 24,
+      "CAR": 18,
+      "BIKE": 23,
       "AUTO": 7,
       "MAXI CAB": 3,
       "BUS": 2,
       "TRUCK": 2,
       "OTHERS": 3
     },
-    "avg_vehicle_weight": 2.216666666666667,
-    "junction_ratio": 0.691,
-    "avg_resolution_time": 60.22,
+    "avg_vehicle_weight": 2.2241379310344827,
+    "junction_ratio": 0.225,
+    "avg_resolution_time": 18.86,
     "top_locations": [
       {
         "name": "18nd Junction Circle, KR Puram",
-        "count": 28
+        "count": 27
       },
       {
         "name": "21th Junction Circle, KR Puram",
@@ -2078,8 +3714,8 @@
       "15": 1,
       "16": 1,
       "17": 5,
-      "18": 5,
-      "19": 4,
+      "18": 4,
+      "19": 3,
       "20": 4,
       "21": 5,
       "22": 0,
@@ -2087,21 +3723,21 @@
     },
     "police_station": "KR Puram PS",
     "violation_types": {
-      "DOUBLE PARKING": 17,
-      "OBSTRUCTING TRAFFIC": 10,
-      "NO PARKING ZONE": 11,
-      "WRONG PARKING": 14,
-      "JUNCTION PARKING": 8,
+      "DOUBLE PARKING": 16,
+      "OBSTRUCTING TRAFFIC": 9,
+      "NO PARKING ZONE": 10,
+      "WRONG PARKING": 13,
+      "JUNCTION PARKING": 10,
       "FOOTPATH PARKING": 0
     },
     "top_vehicles": [
       {
         "type": "BIKE",
-        "count": 24
+        "count": 23
       },
       {
         "type": "CAR",
-        "count": 19
+        "count": 18
       },
       {
         "type": "AUTO",
@@ -2117,1476 +3753,48 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 46.1,
-    "vehicle_impact_score": 0.653308162531464,
+    "impact_score": 17.0,
+    "vehicle_impact_score": 0.3353279702300893,
     "violation_percentile": "P25",
     "impact_percentile": "P25",
-    "impact_rank": 21,
+    "impact_rank": 37,
     "density_rank": 28,
     "zone_classification": "Stable Zone"
   },
   {
-    "cluster_id": 23,
-    "center_lat": 13.005158529403783,
-    "center_lon": 77.61543389050752,
-    "zone_name": "Cox Town - Wheeler Road Zone",
-    "total_violations": 91,
+    "cluster_id": 37,
+    "center_lat": 12.956938367483696,
+    "center_lon": 77.55534171187232,
+    "zone_name": "Chamrajpet - 4th Main Zone",
+    "total_violations": 21,
     "vehicle_distribution": {
-      "CAR": 29,
-      "BIKE": 35,
-      "AUTO": 11,
-      "MAXI CAB": 6,
-      "BUS": 3,
-      "TRUCK": 3,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.2637362637362637,
-    "junction_ratio": 0.381,
-    "avg_resolution_time": 68.77,
-    "top_locations": [
-      {
-        "name": "15nd Inner Ring Road, Cox Town",
-        "count": 37
-      },
-      {
-        "name": "10nd Junction Circle, Cox Town",
-        "count": 17
-      },
-      {
-        "name": "27nd Service Road, Cox Town",
-        "count": 10
-      },
-      {
-        "name": "2st Inner Ring Road, Cox Town",
-        "count": 8
-      },
-      {
-        "name": "30st Main Road, Cox Town",
-        "count": 7
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 1,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 1,
-      "6": 1,
-      "7": 2,
-      "8": 6,
-      "9": 5,
-      "10": 6,
-      "11": 6,
-      "12": 3,
-      "13": 2,
-      "14": 3,
-      "15": 3,
-      "16": 3,
-      "17": 6,
-      "18": 6,
-      "19": 7,
-      "20": 8,
-      "21": 8,
-      "22": 1,
-      "23": 13
-    },
-    "police_station": "Cox Town PS",
-    "violation_types": {
-      "JUNCTION PARKING": 20,
-      "DOUBLE PARKING": 11,
-      "NO PARKING ZONE": 16,
-      "OBSTRUCTING TRAFFIC": 9,
-      "FOOTPATH PARKING": 24,
-      "WRONG PARKING": 11
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 35
-      },
-      {
-        "type": "CAR",
-        "count": 29
-      },
-      {
-        "type": "AUTO",
-        "count": 11
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 6
-      },
-      {
-        "type": "OTHERS",
-        "count": 4
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 45.8,
-    "vehicle_impact_score": 0.753286627073035,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 22,
-    "density_rank": 25,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 20,
-    "center_lat": 12.94255888428361,
-    "center_lon": 77.57278049887785,
-    "zone_name": "Basavanagudi - Bull Temple Road",
-    "total_violations": 135,
-    "vehicle_distribution": {
-      "CAR": 46,
-      "BIKE": 45,
-      "AUTO": 17,
-      "MAXI CAB": 8,
-      "BUS": 4,
-      "TRUCK": 5,
-      "OTHERS": 10
-    },
-    "avg_vehicle_weight": 2.325925925925926,
-    "junction_ratio": 0.485,
-    "avg_resolution_time": 28.93,
-    "top_locations": [
-      {
-        "name": "22th Bypass Road, Basavanagudi",
-        "count": 47
-      },
-      {
-        "name": "12rd Service Road, Basavanagudi",
-        "count": 32
-      },
-      {
-        "name": "2st Service Road, Basavanagudi",
-        "count": 16
-      },
-      {
-        "name": "18nd Inner Ring Road, Basavanagudi",
-        "count": 16
-      },
-      {
-        "name": "28st Inner Ring Road, Basavanagudi",
-        "count": 11
-      }
-    ],
-    "hourly_distribution": {
-      "0": 1,
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 1,
-      "6": 1,
-      "7": 4,
-      "8": 10,
-      "9": 11,
-      "10": 9,
-      "11": 8,
-      "12": 4,
-      "13": 5,
-      "14": 5,
-      "15": 4,
-      "16": 5,
-      "17": 10,
-      "18": 9,
-      "19": 11,
-      "20": 9,
-      "21": 11,
-      "22": 1,
-      "23": 12
-    },
-    "police_station": "Basavanagudi PS",
-    "violation_types": {
-      "JUNCTION PARKING": 20,
-      "FOOTPATH PARKING": 33,
-      "DOUBLE PARKING": 26,
-      "OBSTRUCTING TRAFFIC": 28,
-      "WRONG PARKING": 28,
-      "NO PARKING ZONE": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 46
-      },
-      {
-        "type": "BIKE",
-        "count": 45
-      },
-      {
-        "type": "AUTO",
-        "count": 17
-      },
-      {
-        "type": "OTHERS",
-        "count": 10
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 8
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 45.7,
-    "vehicle_impact_score": 0.8853809580886176,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 23,
-    "density_rank": 21,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 24,
-    "center_lat": 12.980764108227977,
-    "center_lon": 77.60675300193567,
-    "zone_name": "Shivajinagar - Commercial St Zone",
-    "total_violations": 93,
-    "vehicle_distribution": {
-      "CAR": 31,
-      "BIKE": 35,
-      "AUTO": 12,
-      "MAXI CAB": 5,
-      "BUS": 3,
-      "TRUCK": 4,
-      "OTHERS": 3
-    },
-    "avg_vehicle_weight": 2.2903225806451615,
-    "junction_ratio": 0.606,
-    "avg_resolution_time": 37.54,
-    "top_locations": [
-      {
-        "name": "19rd Junction Circle, Shivajinagar",
-        "count": 35
-      },
-      {
-        "name": "11rd Cross Road, Shivajinagar",
-        "count": 20
-      },
-      {
-        "name": "26st Cross Road, Shivajinagar",
-        "count": 12
-      },
-      {
-        "name": "10th Inner Ring Road, Shivajinagar",
-        "count": 7
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 1,
-      "2": 1,
-      "3": 0,
-      "4": 1,
-      "5": 0,
-      "6": 1,
-      "7": 2,
-      "8": 7,
-      "9": 7,
-      "10": 7,
-      "11": 5,
-      "12": 3,
-      "13": 3,
-      "14": 2,
-      "15": 3,
-      "16": 3,
-      "17": 6,
-      "18": 6,
-      "19": 8,
-      "20": 7,
-      "21": 7,
-      "22": 1,
-      "23": 12
-    },
-    "police_station": "Shivajinagar PS",
-    "violation_types": {
-      "FOOTPATH PARKING": 26,
-      "NO PARKING ZONE": 12,
-      "WRONG PARKING": 27,
-      "JUNCTION PARKING": 15,
-      "DOUBLE PARKING": 12,
-      "OBSTRUCTING TRAFFIC": 1
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 35
-      },
-      {
-        "type": "CAR",
-        "count": 31
-      },
-      {
-        "type": "AUTO",
-        "count": 12
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 5
-      },
-      {
-        "type": "TRUCK",
-        "count": 4
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 45.4,
-    "vehicle_impact_score": 0.8097574555451167,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 24,
-    "density_rank": 24,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 22,
-    "center_lat": 13.00320175473031,
-    "center_lon": 77.61123500128647,
-    "zone_name": "Frazer Town - Mosque Road Zone",
-    "total_violations": 115,
-    "vehicle_distribution": {
-      "CAR": 33,
-      "BIKE": 49,
-      "AUTO": 15,
-      "MAXI CAB": 7,
-      "BUS": 4,
-      "TRUCK": 3,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.1652173913043478,
-    "junction_ratio": 0.598,
-    "avg_resolution_time": 55.8,
-    "top_locations": [
-      {
-        "name": "29nd Outer Ring Road, Frazer Town",
-        "count": 54
-      },
-      {
-        "name": "8nd Cross Road, Frazer Town",
-        "count": 28
-      },
-      {
-        "name": "24th Cross Road, Frazer Town",
-        "count": 14
-      },
-      {
-        "name": "3nd Cross Road, Frazer Town",
-        "count": 9
-      }
-    ],
-    "hourly_distribution": {
-      "0": 1,
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 1,
-      "6": 1,
-      "7": 3,
-      "8": 8,
-      "9": 7,
-      "10": 7,
-      "11": 9,
-      "12": 3,
-      "13": 3,
-      "14": 4,
-      "15": 3,
-      "16": 3,
-      "17": 9,
-      "18": 9,
-      "19": 9,
-      "20": 10,
-      "21": 9,
-      "22": 1,
-      "23": 11
-    },
-    "police_station": "Frazer Town PS",
-    "violation_types": {
-      "JUNCTION PARKING": 12,
-      "FOOTPATH PARKING": 19,
-      "WRONG PARKING": 18,
-      "NO PARKING ZONE": 14,
-      "DOUBLE PARKING": 15,
-      "OBSTRUCTING TRAFFIC": 37
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 49
-      },
-      {
-        "type": "CAR",
-        "count": 33
-      },
-      {
-        "type": "AUTO",
-        "count": 15
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 7
-      },
-      {
-        "type": "BUS",
-        "count": 4
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 44.3,
-    "vehicle_impact_score": 0.5440270156184044,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 25,
-    "density_rank": 23,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 18,
-    "center_lat": 13.01217537606495,
-    "center_lon": 77.55239526293677,
-    "zone_name": "Rajajinagar - West of Chord Road",
-    "total_violations": 169,
-    "vehicle_distribution": {
-      "CAR": 55,
-      "BIKE": 65,
-      "AUTO": 23,
-      "MAXI CAB": 10,
-      "BUS": 6,
-      "TRUCK": 6,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.272189349112426,
-    "junction_ratio": 0.342,
-    "avg_resolution_time": 17.35,
-    "top_locations": [
-      {
-        "name": "17rd Outer Ring Road, Rajajinagar",
-        "count": 57
-      },
-      {
-        "name": "5rd Main Road, Rajajinagar",
-        "count": 37
-      },
-      {
-        "name": "21rd Service Road, Rajajinagar",
-        "count": 18
-      }
-    ],
-    "hourly_distribution": {
-      "0": 1,
-      "1": 1,
-      "2": 1,
-      "3": 1,
-      "4": 1,
-      "5": 2,
-      "6": 1,
-      "7": 4,
-      "8": 13,
-      "9": 14,
-      "10": 11,
-      "11": 14,
-      "12": 5,
-      "13": 7,
-      "14": 6,
-      "15": 5,
-      "16": 7,
-      "17": 11,
-      "18": 11,
-      "19": 13,
-      "20": 15,
-      "21": 10,
-      "22": 2,
-      "23": 13
-    },
-    "police_station": "Rajajinagar PS",
-    "violation_types": {
-      "DOUBLE PARKING": 38,
-      "NO PARKING ZONE": 28,
-      "WRONG PARKING": 44,
-      "FOOTPATH PARKING": 20,
-      "JUNCTION PARKING": 35,
-      "OBSTRUCTING TRAFFIC": 4
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 65
-      },
-      {
-        "type": "CAR",
-        "count": 55
-      },
-      {
-        "type": "AUTO",
-        "count": 23
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 10
-      },
-      {
-        "type": "BUS",
-        "count": 6
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 39.5,
-    "vehicle_impact_score": 0.7712414545872354,
-    "violation_percentile": "P50",
-    "impact_percentile": "P25",
-    "impact_rank": 26,
-    "density_rank": 19,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 31,
-    "center_lat": 12.970016869596382,
-    "center_lon": 77.59593420502529,
-    "zone_name": "Lavelle Road - Vittal Mallya Road",
-    "total_violations": 34,
-    "vehicle_distribution": {
-      "CAR": 12,
-      "BIKE": 11,
-      "AUTO": 4,
+      "CAR": 5,
+      "BIKE": 8,
+      "AUTO": 2,
       "MAXI CAB": 1,
-      "BUS": 1,
-      "TRUCK": 1,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.264705882352941,
-    "junction_ratio": 0.57,
-    "avg_resolution_time": 29.93,
-    "top_locations": [
-      {
-        "name": "11st Bypass Road, Lavelle Road",
-        "count": 12
-      },
-      {
-        "name": "4rd Bypass Road, Lavelle Road",
-        "count": 6
-      },
-      {
-        "name": "16st Service Road, Lavelle Road",
-        "count": 3
-      },
-      {
-        "name": "26th Bypass Road, Lavelle Road",
-        "count": 3
-      },
-      {
-        "name": "5nd Cross Road, Lavelle Road",
-        "count": 2
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 1,
-      "8": 2,
-      "9": 2,
-      "10": 2,
-      "11": 2,
-      "12": 1,
-      "13": 1,
-      "14": 1,
-      "15": 1,
-      "16": 1,
-      "17": 2,
-      "18": 2,
-      "19": 3,
-      "20": 2,
-      "21": 2,
-      "22": 0,
-      "23": 9
-    },
-    "police_station": "Cubbon Park PS",
-    "violation_types": {
-      "WRONG PARKING": 8,
-      "FOOTPATH PARKING": 6,
-      "DOUBLE PARKING": 4,
-      "OBSTRUCTING TRAFFIC": 5,
-      "NO PARKING ZONE": 6,
-      "JUNCTION PARKING": 5
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 12
-      },
-      {
-        "type": "BIKE",
-        "count": 11
-      },
-      {
-        "type": "AUTO",
-        "count": 4
-      },
-      {
-        "type": "OTHERS",
-        "count": 4
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 1
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 37.2,
-    "vehicle_impact_score": 0.7553461514055462,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 27,
-    "density_rank": 34,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 25,
-    "center_lat": 13.099439138525911,
-    "center_lon": 77.59291549035753,
-    "zone_name": "Yelahanka - New Town Zone",
-    "total_violations": 86,
-    "vehicle_distribution": {
-      "CAR": 27,
-      "BIKE": 28,
-      "AUTO": 12,
-      "MAXI CAB": 5,
-      "BUS": 3,
-      "TRUCK": 3,
-      "OTHERS": 8
-    },
-    "avg_vehicle_weight": 2.313953488372093,
-    "junction_ratio": 0.421,
-    "avg_resolution_time": 15.92,
-    "top_locations": [
-      {
-        "name": "14nd Outer Ring Road, Yelahanka",
-        "count": 39
-      },
-      {
-        "name": "13st Junction Circle, Yelahanka",
-        "count": 17
-      },
-      {
-        "name": "21rd Junction Circle, Yelahanka",
-        "count": 13
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 1,
-      "2": 0,
-      "3": 0,
-      "4": 1,
-      "5": 0,
-      "6": 0,
-      "7": 2,
-      "8": 5,
-      "9": 7,
-      "10": 5,
-      "11": 7,
-      "12": 2,
-      "13": 2,
-      "14": 3,
-      "15": 3,
-      "16": 3,
-      "17": 6,
-      "18": 7,
-      "19": 5,
-      "20": 6,
-      "21": 6,
-      "22": 0,
-      "23": 15
-    },
-    "police_station": "Yelahanka PS",
-    "violation_types": {
-      "NO PARKING ZONE": 21,
-      "JUNCTION PARKING": 14,
-      "FOOTPATH PARKING": 21,
-      "DOUBLE PARKING": 25,
-      "OBSTRUCTING TRAFFIC": 5,
-      "WRONG PARKING": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 28
-      },
-      {
-        "type": "CAR",
-        "count": 27
-      },
-      {
-        "type": "AUTO",
-        "count": 12
-      },
-      {
-        "type": "OTHERS",
-        "count": 8
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 5
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 37.1,
-    "vehicle_impact_score": 0.8599508291312316,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 28,
-    "density_rank": 26,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 14,
-    "center_lat": 13.001754530480591,
-    "center_lon": 77.56207740875976,
-    "zone_name": "Malleshwaram - Sampige Road Zone",
-    "total_violations": 236,
-    "vehicle_distribution": {
-      "CAR": 72,
-      "BIKE": 98,
-      "AUTO": 31,
-      "MAXI CAB": 12,
-      "BUS": 9,
-      "TRUCK": 10,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.233050847457627,
-    "junction_ratio": 0.217,
-    "avg_resolution_time": 4.25,
-    "top_locations": [
-      {
-        "name": "15nd Outer Ring Road, Malleshwaram",
-        "count": 108
-      },
-      {
-        "name": "12th Bypass Road, Malleshwaram",
-        "count": 49
-      },
-      {
-        "name": "18st Main Road, Malleshwaram",
-        "count": 26
-      }
-    ],
-    "hourly_distribution": {
-      "0": 2,
-      "1": 2,
-      "2": 2,
-      "3": 2,
-      "4": 2,
-      "5": 2,
-      "6": 2,
-      "7": 7,
-      "8": 17,
-      "9": 19,
-      "10": 16,
-      "11": 16,
-      "12": 8,
-      "13": 7,
-      "14": 9,
-      "15": 8,
-      "16": 8,
-      "17": 19,
-      "18": 15,
-      "19": 19,
-      "20": 21,
-      "21": 17,
-      "22": 2,
-      "23": 14
-    },
-    "police_station": "Malleshwaram PS",
-    "violation_types": {
-      "DOUBLE PARKING": 54,
-      "WRONG PARKING": 33,
-      "JUNCTION PARKING": 34,
-      "FOOTPATH PARKING": 37,
-      "NO PARKING ZONE": 56,
-      "OBSTRUCTING TRAFFIC": 22
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 98
-      },
-      {
-        "type": "CAR",
-        "count": 72
-      },
-      {
-        "type": "AUTO",
-        "count": 31
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 12
-      },
-      {
-        "type": "TRUCK",
-        "count": 10
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 36.6,
-    "vehicle_impact_score": 0.6881090816009364,
-    "violation_percentile": "P50",
-    "impact_percentile": "P25",
-    "impact_rank": 29,
-    "density_rank": 15,
-    "zone_classification": "Moderate Zone"
-  },
-  {
-    "cluster_id": 28,
-    "center_lat": 13.029959904633165,
-    "center_lon": 77.63749212518469,
-    "zone_name": "Hennur - Banaswadi Main Road",
-    "total_violations": 60,
-    "vehicle_distribution": {
-      "CAR": 20,
-      "BIKE": 24,
-      "AUTO": 8,
-      "MAXI CAB": 3,
-      "BUS": 2,
-      "TRUCK": 2,
-      "OTHERS": 1
-    },
-    "avg_vehicle_weight": 2.2333333333333334,
-    "junction_ratio": 0.741,
-    "avg_resolution_time": 8.0,
-    "top_locations": [
-      {
-        "name": "23th Inner Ring Road, Hennur",
-        "count": 20
-      },
-      {
-        "name": "16th Bypass Road, Hennur",
-        "count": 9
-      },
-      {
-        "name": "7th Service Road, Hennur",
-        "count": 7
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 1,
-      "8": 5,
-      "9": 4,
-      "10": 4,
-      "11": 4,
-      "12": 1,
-      "13": 2,
-      "14": 2,
-      "15": 2,
-      "16": 2,
-      "17": 4,
-      "18": 4,
-      "19": 5,
-      "20": 4,
-      "21": 4,
-      "22": 0,
-      "23": 12
-    },
-    "police_station": "Banaswadi PS",
-    "violation_types": {
-      "WRONG PARKING": 6,
-      "NO PARKING ZONE": 14,
-      "OBSTRUCTING TRAFFIC": 10,
-      "JUNCTION PARKING": 8,
-      "DOUBLE PARKING": 12,
-      "FOOTPATH PARKING": 10
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 24
-      },
-      {
-        "type": "CAR",
-        "count": 20
-      },
-      {
-        "type": "AUTO",
-        "count": 8
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 3
-      },
-      {
-        "type": "BUS",
-        "count": 2
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 36.3,
-    "vehicle_impact_score": 0.6887090974469618,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 30,
-    "density_rank": 29,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 36,
-    "center_lat": 12.984829729429444,
-    "center_lon": 77.59367059961485,
-    "zone_name": "Cunningham Road - Junction Zone",
-    "total_violations": 29,
-    "vehicle_distribution": {
-      "CAR": 10,
-      "BIKE": 9,
-      "AUTO": 4,
-      "MAXI CAB": 1,
-      "BUS": 1,
-      "TRUCK": 1,
-      "OTHERS": 3
-    },
-    "avg_vehicle_weight": 2.310344827586207,
-    "junction_ratio": 0.471,
-    "avg_resolution_time": 19.01,
-    "top_locations": [
-      {
-        "name": "9th Inner Ring Road, Cunningham Road",
-        "count": 13
-      },
-      {
-        "name": "1rd Cross Road, Cunningham Road",
-        "count": 6
-      },
-      {
-        "name": "19nd Bypass Road, Cunningham Road",
-        "count": 3
-      },
-      {
-        "name": "3nd Junction Circle, Cunningham Road",
-        "count": 3
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 1,
-      "9": 1,
-      "10": 2,
-      "11": 1,
-      "12": 0,
-      "13": 0,
-      "14": 1,
-      "15": 1,
-      "16": 1,
-      "17": 1,
-      "18": 2,
-      "19": 2,
-      "20": 2,
-      "21": 2,
-      "22": 0,
-      "23": 12
-    },
-    "police_station": "Cubbon Park PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 5,
-      "DOUBLE PARKING": 6,
-      "NO PARKING ZONE": 4,
-      "JUNCTION PARKING": 8,
-      "FOOTPATH PARKING": 6,
-      "WRONG PARKING": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 10
-      },
-      {
-        "type": "BIKE",
-        "count": 9
-      },
-      {
-        "type": "AUTO",
-        "count": 4
-      },
-      {
-        "type": "OTHERS",
-        "count": 3
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 1
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 34.6,
-    "vehicle_impact_score": 0.8522858311944354,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 31,
-    "density_rank": 35,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 30,
-    "center_lat": 12.980843629060075,
-    "center_lon": 77.59718913493002,
-    "zone_name": "Cubbon Park - Kasturba Road Zone",
-    "total_violations": 39,
-    "vehicle_distribution": {
-      "CAR": 12,
-      "BIKE": 15,
-      "AUTO": 5,
-      "MAXI CAB": 2,
-      "BUS": 1,
-      "TRUCK": 1,
-      "OTHERS": 3
-    },
-    "avg_vehicle_weight": 2.1794871794871793,
-    "junction_ratio": 0.435,
-    "avg_resolution_time": 44.46,
-    "top_locations": [
-      {
-        "name": "2st Inner Ring Road, Cubbon Park",
-        "count": 14
-      },
-      {
-        "name": "5st Cross Road, Cubbon Park",
-        "count": 7
-      },
-      {
-        "name": "25rd Cross Road, Cubbon Park",
-        "count": 5
-      },
-      {
-        "name": "25st Cross Road, Cubbon Park",
-        "count": 3
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 1,
-      "8": 3,
-      "9": 2,
-      "10": 2,
-      "11": 2,
-      "12": 1,
-      "13": 1,
-      "14": 1,
-      "15": 1,
-      "16": 1,
-      "17": 3,
-      "18": 2,
-      "19": 2,
-      "20": 3,
-      "21": 3,
-      "22": 0,
-      "23": 11
-    },
-    "police_station": "Cubbon Park PS",
-    "violation_types": {
-      "FOOTPATH PARKING": 5,
-      "WRONG PARKING": 8,
-      "OBSTRUCTING TRAFFIC": 11,
-      "JUNCTION PARKING": 5,
-      "DOUBLE PARKING": 7,
-      "NO PARKING ZONE": 3
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 15
-      },
-      {
-        "type": "CAR",
-        "count": 12
-      },
-      {
-        "type": "AUTO",
-        "count": 5
-      },
-      {
-        "type": "OTHERS",
-        "count": 3
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 2
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 33.3,
-    "vehicle_impact_score": 0.5743368461815062,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 32,
-    "density_rank": 32,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 29,
-    "center_lat": 12.988952823780988,
-    "center_lon": 77.71629803593495,
-    "zone_name": "Mahadevapura - ITPL Road Zone",
-    "total_violations": 54,
-    "vehicle_distribution": {
-      "CAR": 15,
-      "BIKE": 22,
-      "AUTO": 7,
-      "MAXI CAB": 2,
-      "BUS": 2,
-      "TRUCK": 2,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.1666666666666665,
-    "junction_ratio": 0.609,
-    "avg_resolution_time": 10.99,
-    "top_locations": [
-      {
-        "name": "24st Outer Ring Road, Mahadevapura",
-        "count": 22
-      },
-      {
-        "name": "15nd Outer Ring Road, Mahadevapura",
-        "count": 13
-      },
-      {
-        "name": "17nd Junction Circle, Mahadevapura",
-        "count": 6
-      },
-      {
-        "name": "27nd Bypass Road, Mahadevapura",
-        "count": 4
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 1,
-      "8": 4,
-      "9": 3,
-      "10": 3,
-      "11": 4,
-      "12": 2,
-      "13": 2,
-      "14": 2,
-      "15": 1,
-      "16": 1,
-      "17": 4,
-      "18": 4,
-      "19": 3,
-      "20": 4,
-      "21": 4,
-      "22": 0,
-      "23": 12
-    },
-    "police_station": "Mahadevapura PS",
-    "violation_types": {
-      "NO PARKING ZONE": 14,
-      "OBSTRUCTING TRAFFIC": 15,
-      "DOUBLE PARKING": 15,
-      "FOOTPATH PARKING": 7,
-      "JUNCTION PARKING": 3,
-      "WRONG PARKING": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 22
-      },
-      {
-        "type": "CAR",
-        "count": 15
-      },
-      {
-        "type": "AUTO",
-        "count": 7
-      },
-      {
-        "type": "OTHERS",
-        "count": 4
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 2
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 30.1,
-    "vehicle_impact_score": 0.5471053577849693,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 33,
-    "density_rank": 30,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 38,
-    "center_lat": 12.90408417871152,
-    "center_lon": 77.48372621282103,
-    "zone_name": "Kengeri - Mysore Road Zone",
-    "total_violations": 7,
-    "vehicle_distribution": {
-      "CAR": 2,
-      "BIKE": 2,
-      "AUTO": 1,
-      "MAXI CAB": 0,
       "BUS": 0,
       "TRUCK": 0,
-      "OTHERS": 2
+      "OTHERS": 5
     },
-    "avg_vehicle_weight": 2.0,
-    "junction_ratio": 0.542,
-    "avg_resolution_time": 70.89,
+    "avg_vehicle_weight": 1.9523809523809523,
+    "junction_ratio": 0.309,
+    "avg_resolution_time": 30.78,
     "top_locations": [
       {
-        "name": "11st Inner Ring Road, Kengeri",
-        "count": 3
-      },
-      {
-        "name": "4nd Junction Circle, Kengeri",
-        "count": 1
-      },
-      {
-        "name": "30rd Junction Circle, Kengeri",
-        "count": 1
-      },
-      {
-        "name": "23nd Main Road, Kengeri",
-        "count": 1
-      },
-      {
-        "name": "6th Cross Road, Kengeri",
-        "count": 1
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 0,
-      "10": 0,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 0,
-      "18": 0,
-      "19": 0,
-      "20": 0,
-      "21": 0,
-      "22": 0,
-      "23": 7
-    },
-    "police_station": "Kengeri PS",
-    "violation_types": {
-      "DOUBLE PARKING": 2,
-      "NO PARKING ZONE": 0,
-      "FOOTPATH PARKING": 1,
-      "OBSTRUCTING TRAFFIC": 1,
-      "JUNCTION PARKING": 0,
-      "WRONG PARKING": 3
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 2
-      },
-      {
-        "type": "BIKE",
-        "count": 2
-      },
-      {
-        "type": "OTHERS",
-        "count": 2
-      },
-      {
-        "type": "AUTO",
-        "count": 1
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 0
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 29.7,
-    "vehicle_impact_score": 0.19309600862998916,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 34,
-    "density_rank": 40,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 32,
-    "center_lat": 12.958440258963263,
-    "center_lon": 77.59661034260007,
-    "zone_name": "Richmond Town - Richmond Road",
-    "total_violations": 40,
-    "vehicle_distribution": {
-      "CAR": 11,
-      "BIKE": 13,
-      "AUTO": 4,
-      "MAXI CAB": 2,
-      "BUS": 1,
-      "TRUCK": 1,
-      "OTHERS": 8
-    },
-    "avg_vehicle_weight": 2.2,
-    "junction_ratio": 0.38,
-    "avg_resolution_time": 19.35,
-    "top_locations": [
-      {
-        "name": "28st Main Road, Richmond Town",
-        "count": 13
-      },
-      {
-        "name": "13th Service Road, Richmond Town",
-        "count": 9
-      },
-      {
-        "name": "18rd Bypass Road, Richmond Town",
-        "count": 6
-      },
-      {
-        "name": "12st Inner Ring Road, Richmond Town",
-        "count": 3
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 1,
-      "8": 2,
-      "9": 2,
-      "10": 2,
-      "11": 2,
-      "12": 1,
-      "13": 1,
-      "14": 1,
-      "15": 1,
-      "16": 1,
-      "17": 2,
-      "18": 4,
-      "19": 3,
-      "20": 2,
-      "21": 2,
-      "22": 0,
-      "23": 13
-    },
-    "police_station": "Cubbon Park PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 9,
-      "JUNCTION PARKING": 7,
-      "NO PARKING ZONE": 10,
-      "WRONG PARKING": 6,
-      "FOOTPATH PARKING": 8,
-      "DOUBLE PARKING": 0
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 13
-      },
-      {
-        "type": "CAR",
-        "count": 11
-      },
-      {
-        "type": "OTHERS",
+        "name": "6st Main Road, Chamrajpet",
         "count": 8
       },
       {
-        "type": "AUTO",
+        "name": "19rd Bypass Road, Chamrajpet",
         "count": 4
       },
       {
-        "type": "MAXI CAB",
-        "count": 2
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 27.6,
-    "vehicle_impact_score": 0.6179072276159661,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 35,
-    "density_rank": 31,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 35,
-    "center_lat": 12.93402311848725,
-    "center_lon": 77.61075514240581,
-    "zone_name": "Adugodi - Audugodi Main Road",
-    "total_violations": 22,
-    "vehicle_distribution": {
-      "CAR": 6,
-      "BIKE": 8,
-      "AUTO": 3,
-      "MAXI CAB": 1,
-      "BUS": 1,
-      "TRUCK": 0,
-      "OTHERS": 3
-    },
-    "avg_vehicle_weight": 2.1363636363636362,
-    "junction_ratio": 0.538,
-    "avg_resolution_time": 17.0,
-    "top_locations": [
-      {
-        "name": "1rd Service Road, Adugodi",
-        "count": 10
-      },
-      {
-        "name": "25st Junction Circle, Adugodi",
-        "count": 4
-      },
-      {
-        "name": "14st Cross Road, Adugodi",
+        "name": "22rd Junction Circle, Chamrajpet",
         "count": 2
       },
       {
-        "name": "29nd Service Road, Adugodi",
-        "count": 2
+        "name": "8nd Outer Ring Road, Chamrajpet",
+        "count": 1
       }
     ],
     "hourly_distribution": {
@@ -3608,21 +3816,21 @@
       "15": 0,
       "16": 0,
       "17": 1,
-      "18": 2,
+      "18": 1,
       "19": 1,
       "20": 1,
       "21": 1,
       "22": 0,
       "23": 12
     },
-    "police_station": "Audugodi PS",
+    "police_station": "Chamrajpet PS",
     "violation_types": {
-      "WRONG PARKING": 5,
-      "OBSTRUCTING TRAFFIC": 3,
-      "FOOTPATH PARKING": 5,
-      "NO PARKING ZONE": 5,
-      "JUNCTION PARKING": 4,
-      "DOUBLE PARKING": 0
+      "WRONG PARKING": 3,
+      "JUNCTION PARKING": 3,
+      "NO PARKING ZONE": 3,
+      "DOUBLE PARKING": 2,
+      "OBSTRUCTING TRAFFIC": 4,
+      "FOOTPATH PARKING": 6
     },
     "top_vehicles": [
       {
@@ -3631,15 +3839,15 @@
       },
       {
         "type": "CAR",
-        "count": 6
-      },
-      {
-        "type": "AUTO",
-        "count": 3
+        "count": 5
       },
       {
         "type": "OTHERS",
-        "count": 3
+        "count": 5
+      },
+      {
+        "type": "AUTO",
+        "count": 2
       },
       {
         "type": "MAXI CAB",
@@ -3647,20 +3855,20 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 25.9,
-    "vehicle_impact_score": 0.48274002157497287,
+    "impact_score": 15.5,
+    "vehicle_impact_score": 0.24191950125234654,
     "violation_percentile": "P25",
     "impact_percentile": "P25",
-    "impact_rank": 36,
-    "density_rank": 37,
+    "impact_rank": 38,
+    "density_rank": 36,
     "zone_classification": "Stable Zone"
   },
   {
     "cluster_id": 33,
-    "center_lat": 13.004809930860091,
-    "center_lon": 77.58191102957271,
+    "center_lat": 13.010411029572701,
+    "center_lon": 77.57788941783812,
     "zone_name": "Sadashivanagar - Bellary Road",
-    "total_violations": 38,
+    "total_violations": 39,
     "vehicle_distribution": {
       "CAR": 13,
       "BIKE": 16,
@@ -3668,11 +3876,11 @@
       "MAXI CAB": 2,
       "BUS": 1,
       "TRUCK": 1,
-      "OTHERS": 0
+      "OTHERS": 1
     },
-    "avg_vehicle_weight": 2.1842105263157894,
-    "junction_ratio": 0.218,
-    "avg_resolution_time": 17.42,
+    "avg_vehicle_weight": 2.1794871794871793,
+    "junction_ratio": 0.211,
+    "avg_resolution_time": 6.97,
     "top_locations": [
       {
         "name": "21nd Junction Circle, Sadashivanagar",
@@ -3719,7 +3927,7 @@
       "20": 3,
       "21": 3,
       "22": 0,
-      "23": 10
+      "23": 11
     },
     "police_station": "Sadashivanagar PS",
     "violation_types": {
@@ -3727,7 +3935,7 @@
       "NO PARKING ZONE": 7,
       "OBSTRUCTING TRAFFIC": 10,
       "WRONG PARKING": 11,
-      "JUNCTION PARKING": 3,
+      "JUNCTION PARKING": 4,
       "FOOTPATH PARKING": 0
     },
     "top_vehicles": [
@@ -3753,251 +3961,43 @@
       }
     ],
     "top_vehicle_type": "BIKE",
-    "impact_score": 22.5,
-    "vehicle_impact_score": 0.584369499801283,
+    "impact_score": 13.0,
+    "vehicle_impact_score": 0.31998058757443876,
     "violation_percentile": "P25",
     "impact_percentile": "P25",
-    "impact_rank": 37,
-    "density_rank": 33,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 34,
-    "center_lat": 12.949104284890804,
-    "center_lon": 77.59854156119809,
-    "zone_name": "Wilson Garden - Hosur Road Zone",
-    "total_violations": 25,
-    "vehicle_distribution": {
-      "CAR": 8,
-      "BIKE": 8,
-      "AUTO": 3,
-      "MAXI CAB": 1,
-      "BUS": 0,
-      "TRUCK": 1,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 2.2,
-    "junction_ratio": 0.099,
-    "avg_resolution_time": 4.2,
-    "top_locations": [
-      {
-        "name": "2rd Main Road, Wilson Garden",
-        "count": 8
-      },
-      {
-        "name": "17rd Junction Circle, Wilson Garden",
-        "count": 4
-      },
-      {
-        "name": "8st Main Road, Wilson Garden",
-        "count": 3
-      },
-      {
-        "name": "10nd Outer Ring Road, Wilson Garden",
-        "count": 3
-      },
-      {
-        "name": "8st Cross Road, Wilson Garden",
-        "count": 1
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 1,
-      "9": 2,
-      "10": 1,
-      "11": 1,
-      "12": 0,
-      "13": 1,
-      "14": 0,
-      "15": 0,
-      "16": 1,
-      "17": 1,
-      "18": 2,
-      "19": 2,
-      "20": 2,
-      "21": 2,
-      "22": 0,
-      "23": 9
-    },
-    "police_station": "Wilson Garden PS",
-    "violation_types": {
-      "FOOTPATH PARKING": 3,
-      "DOUBLE PARKING": 5,
-      "NO PARKING ZONE": 5,
-      "WRONG PARKING": 3,
-      "OBSTRUCTING TRAFFIC": 3,
-      "JUNCTION PARKING": 6
-    },
-    "top_vehicles": [
-      {
-        "type": "CAR",
-        "count": 8
-      },
-      {
-        "type": "BIKE",
-        "count": 8
-      },
-      {
-        "type": "OTHERS",
-        "count": 4
-      },
-      {
-        "type": "AUTO",
-        "count": 3
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 1
-      }
-    ],
-    "top_vehicle_type": "CAR",
-    "impact_score": 16.8,
-    "vehicle_impact_score": 0.6179072276159661,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 38,
-    "density_rank": 36,
+    "impact_rank": 39,
+    "density_rank": 32,
     "zone_classification": "Stable Zone"
   },
   {
     "cluster_id": 39,
-    "center_lat": 13.025515900721418,
-    "center_lon": 77.5155628575391,
+    "center_lat": 13.028086135478333,
+    "center_lon": 77.51441881639833,
     "zone_name": "Peenya - Industrial Area Zone",
-    "total_violations": 14,
+    "total_violations": 7,
     "vehicle_distribution": {
-      "CAR": 4,
-      "BIKE": 5,
-      "AUTO": 1,
-      "MAXI CAB": 0,
-      "BUS": 0,
-      "TRUCK": 0,
-      "OTHERS": 4
-    },
-    "avg_vehicle_weight": 1.9285714285714286,
-    "junction_ratio": 0.634,
-    "avg_resolution_time": 9.65,
-    "top_locations": [
-      {
-        "name": "24rd Inner Ring Road, Peenya",
-        "count": 5
-      },
-      {
-        "name": "6rd Service Road, Peenya",
-        "count": 3
-      },
-      {
-        "name": "5rd Junction Circle, Peenya",
-        "count": 1
-      }
-    ],
-    "hourly_distribution": {
-      "0": 0,
-      "1": 0,
-      "2": 0,
-      "3": 0,
-      "4": 0,
-      "5": 0,
-      "6": 0,
-      "7": 0,
-      "8": 0,
-      "9": 1,
-      "10": 1,
-      "11": 0,
-      "12": 0,
-      "13": 0,
-      "14": 0,
-      "15": 0,
-      "16": 0,
-      "17": 1,
-      "18": 1,
-      "19": 1,
-      "20": 1,
-      "21": 0,
-      "22": 0,
-      "23": 8
-    },
-    "police_station": "Peenya PS",
-    "violation_types": {
-      "OBSTRUCTING TRAFFIC": 2,
-      "JUNCTION PARKING": 3,
-      "DOUBLE PARKING": 1,
-      "NO PARKING ZONE": 2,
-      "WRONG PARKING": 1,
-      "FOOTPATH PARKING": 5
-    },
-    "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 5
-      },
-      {
-        "type": "CAR",
-        "count": 4
-      },
-      {
-        "type": "OTHERS",
-        "count": 4
-      },
-      {
-        "type": "AUTO",
-        "count": 1
-      },
-      {
-        "type": "MAXI CAB",
-        "count": 0
-      }
-    ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 14.8,
-    "vehicle_impact_score": 0.041377716134997605,
-    "violation_percentile": "P25",
-    "impact_percentile": "P25",
-    "impact_rank": 39,
-    "density_rank": 38,
-    "zone_classification": "Stable Zone"
-  },
-  {
-    "cluster_id": 37,
-    "center_lat": 12.9525357862302,
-    "center_lon": 77.55947024668036,
-    "zone_name": "Chamrajpet - 4th Main Zone",
-    "total_violations": 11,
-    "vehicle_distribution": {
-      "CAR": 3,
-      "BIKE": 4,
-      "AUTO": 1,
+      "CAR": 2,
+      "BIKE": 2,
+      "AUTO": 0,
       "MAXI CAB": 0,
       "BUS": 0,
       "TRUCK": 0,
       "OTHERS": 3
     },
-    "avg_vehicle_weight": 1.9090909090909092,
-    "junction_ratio": 0.121,
-    "avg_resolution_time": 32.17,
+    "avg_vehicle_weight": 2.0,
+    "junction_ratio": 0.232,
+    "avg_resolution_time": 15.31,
     "top_locations": [
       {
-        "name": "6st Main Road, Chamrajpet",
-        "count": 4
-      },
-      {
-        "name": "19rd Bypass Road, Chamrajpet",
+        "name": "24rd Inner Ring Road, Peenya",
         "count": 2
       },
       {
-        "name": "22rd Junction Circle, Chamrajpet",
+        "name": "6rd Service Road, Peenya",
         "count": 1
       },
       {
-        "name": "8nd Outer Ring Road, Chamrajpet",
+        "name": "5rd Junction Circle, Peenya",
         "count": 1
       }
     ],
@@ -4025,46 +4025,46 @@
       "20": 0,
       "21": 0,
       "22": 0,
-      "23": 11
+      "23": 7
     },
-    "police_station": "Chamrajpet PS",
+    "police_station": "Peenya PS",
     "violation_types": {
-      "WRONG PARKING": 1,
+      "OBSTRUCTING TRAFFIC": 1,
       "JUNCTION PARKING": 1,
+      "DOUBLE PARKING": 0,
       "NO PARKING ZONE": 1,
-      "DOUBLE PARKING": 1,
-      "OBSTRUCTING TRAFFIC": 2,
-      "FOOTPATH PARKING": 5
+      "WRONG PARKING": 0,
+      "FOOTPATH PARKING": 4
     },
     "top_vehicles": [
-      {
-        "type": "BIKE",
-        "count": 4
-      },
-      {
-        "type": "CAR",
-        "count": 3
-      },
       {
         "type": "OTHERS",
         "count": 3
       },
       {
+        "type": "CAR",
+        "count": 2
+      },
+      {
+        "type": "BIKE",
+        "count": 2
+      },
+      {
         "type": "AUTO",
-        "count": 1
+        "count": 0
       },
       {
         "type": "MAXI CAB",
         "count": 0
       }
     ],
-    "top_vehicle_type": "BIKE",
-    "impact_score": 7.1,
-    "vehicle_impact_score": 0.0,
+    "top_vehicle_type": "OTHERS",
+    "impact_score": 10.9,
+    "vehicle_impact_score": 0.25828714838439815,
     "violation_percentile": "P25",
     "impact_percentile": "P25",
     "impact_rank": 40,
-    "density_rank": 39,
+    "density_rank": 40,
     "zone_classification": "Stable Zone"
   }
 ]
