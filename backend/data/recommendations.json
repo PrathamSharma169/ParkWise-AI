@@ -1,0 +1,891 @@
+[
+  {
+    "zone_id": 1,
+    "zone_name": "Indiranagar - 100 Feet Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 2,
+    "impact_rank": 1,
+    "impact_score": 86.1,
+    "total_violations": 580,
+    "violation_percentile": "P90",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Dedicated Response Team",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "12rd Inner Ring Road, Indiranagar",
+      "22st Junction Circle, Indiranagar",
+      "29st Outer Ring Road, Indiranagar",
+      "23st Inner Ring Road, Indiranagar"
+    ]
+  },
+  {
+    "zone_id": 6,
+    "zone_name": "Jayanagar - 11th Main Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 7,
+    "impact_rank": 2,
+    "impact_score": 75.6,
+    "total_violations": 422,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "18st Inner Ring Road, Jayanagar",
+      "10st Cross Road, Jayanagar",
+      "1st Inner Ring Road, Jayanagar",
+      "23rd Inner Ring Road, Jayanagar"
+    ]
+  },
+  {
+    "zone_id": 9,
+    "zone_name": "Electronic City - Phase 1 Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 10,
+    "impact_rank": 3,
+    "impact_score": 74.5,
+    "total_violations": 353,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "10nd Service Road, Electronic City",
+      "15rd Inner Ring Road, Electronic City",
+      "29nd Outer Ring Road, Electronic City"
+    ]
+  },
+  {
+    "zone_id": 0,
+    "zone_name": "Koramangala - 80 Feet Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 1,
+    "impact_rank": 4,
+    "impact_score": 72.2,
+    "total_violations": 622,
+    "violation_percentile": "P90",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Dedicated Response Team",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "3rd Main Road, Koramangala",
+      "26rd Bypass Road, Koramangala",
+      "20st Cross Road, Koramangala"
+    ]
+  },
+  {
+    "zone_id": 3,
+    "zone_name": "Whitefield - ITPL Main Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 4,
+    "impact_rank": 5,
+    "impact_score": 70.7,
+    "total_violations": 508,
+    "violation_percentile": "P90",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Dedicated Response Team",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "3st Junction Circle, Whitefield",
+      "13rd Outer Ring Road, Whitefield",
+      "9th Cross Road, Whitefield",
+      "15st Inner Ring Road, Whitefield"
+    ]
+  },
+  {
+    "zone_id": 5,
+    "zone_name": "BTM Layout - 16th Main Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 6,
+    "impact_rank": 6,
+    "impact_score": 67.2,
+    "total_violations": 442,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "3st Inner Ring Road, BTM Layout",
+      "15st Service Road, BTM Layout",
+      "20rd Outer Ring Road, BTM Layout",
+      "14th Bypass Road, BTM Layout",
+      "29st Junction Circle, BTM Layout"
+    ]
+  },
+  {
+    "zone_id": 4,
+    "zone_name": "HSR Layout - 27th Main Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 5,
+    "impact_rank": 7,
+    "impact_score": 65.9,
+    "total_violations": 462,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction"
+    ],
+    "top_roads": [
+      "10st Junction Circle, HSR Layout",
+      "7rd Junction Circle, HSR Layout",
+      "21nd Outer Ring Road, HSR Layout",
+      "1nd Outer Ring Road, HSR Layout",
+      "30th Cross Road, HSR Layout"
+    ]
+  },
+  {
+    "zone_id": 11,
+    "zone_name": "Yeshwanthpur - Tumkur Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 12,
+    "impact_rank": 8,
+    "impact_score": 65.1,
+    "total_violations": 309,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "12nd Outer Ring Road, Yeshwanthpur",
+      "23th Bypass Road, Yeshwanthpur",
+      "1nd Service Road, Yeshwanthpur"
+    ]
+  },
+  {
+    "zone_id": 8,
+    "zone_name": "Marathahalli - Outer Ring Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 9,
+    "impact_rank": 9,
+    "impact_score": 64.8,
+    "total_violations": 377,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "7nd Cross Road, Marathahalli",
+      "13rd Outer Ring Road, Marathahalli",
+      "29rd Junction Circle, Marathahalli",
+      "20th Junction Circle, Marathahalli",
+      "4st Inner Ring Road, Marathahalli"
+    ]
+  },
+  {
+    "zone_id": 10,
+    "zone_name": "Hebbal - Bellary Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 11,
+    "impact_rank": 10,
+    "impact_score": 61.8,
+    "total_violations": 336,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "20nd Junction Circle, Hebbal",
+      "20rd Inner Ring Road, Hebbal",
+      "22nd Bypass Road, Hebbal"
+    ]
+  },
+  {
+    "zone_id": 15,
+    "zone_name": "Domlur - Inner Ring Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 16,
+    "impact_rank": 11,
+    "impact_score": 60.8,
+    "total_violations": 220,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "19th Inner Ring Road, Domlur",
+      "5th Service Road, Domlur",
+      "4rd Junction Circle, Domlur"
+    ]
+  },
+  {
+    "zone_id": 2,
+    "zone_name": "MG Road - Brigade Junction Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 3,
+    "impact_rank": 12,
+    "impact_score": 60.1,
+    "total_violations": 543,
+    "violation_percentile": "P90",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "16rd Outer Ring Road, MG Road",
+      "1th Outer Ring Road, MG Road",
+      "9nd Bypass Road, MG Road",
+      "10rd Main Road, MG Road"
+    ]
+  },
+  {
+    "zone_id": 21,
+    "zone_name": "JP Nagar - 24th Main Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 22,
+    "impact_rank": 13,
+    "impact_score": 57.4,
+    "total_violations": 119,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "9th Main Road, JP Nagar",
+      "1nd Main Road, JP Nagar",
+      "2st Outer Ring Road, JP Nagar"
+    ]
+  },
+  {
+    "zone_id": 17,
+    "zone_name": "Ulsoor - CMH Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 18,
+    "impact_rank": 14,
+    "impact_score": 56.7,
+    "total_violations": 179,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "19th Cross Road, Ulsoor",
+      "20nd Cross Road, Ulsoor",
+      "6th Service Road, Ulsoor"
+    ]
+  },
+  {
+    "zone_id": 16,
+    "zone_name": "Sarjapur Road - Bellandur Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 17,
+    "impact_rank": 15,
+    "impact_score": 54.4,
+    "total_violations": 208,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "4rd Inner Ring Road, Sarjapur Road",
+      "21st Cross Road, Sarjapur Road",
+      "22rd Inner Ring Road, Sarjapur Road"
+    ]
+  },
+  {
+    "zone_id": 13,
+    "zone_name": "RT Nagar - Bellary Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 14,
+    "impact_rank": 16,
+    "impact_score": 53.6,
+    "total_violations": 277,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "24rd Inner Ring Road, RT Nagar",
+      "12nd Main Road, RT Nagar",
+      "26nd Main Road, RT Nagar",
+      "18st Inner Ring Road, RT Nagar"
+    ]
+  },
+  {
+    "zone_id": 19,
+    "zone_name": "Vijayanagar - Magadi Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 20,
+    "impact_rank": 17,
+    "impact_score": 53.4,
+    "total_violations": 137,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "21rd Service Road, Vijayanagar",
+      "23st Junction Circle, Vijayanagar",
+      "19nd Main Road, Vijayanagar",
+      "12rd Service Road, Vijayanagar",
+      "19rd Service Road, Vijayanagar"
+    ]
+  },
+  {
+    "zone_id": 7,
+    "zone_name": "Madiwala - Hosur Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 8,
+    "impact_rank": 18,
+    "impact_score": 51.2,
+    "total_violations": 400,
+    "violation_percentile": "P75",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "17nd Junction Circle, Madiwala",
+      "27rd Cross Road, Madiwala",
+      "18th Outer Ring Road, Madiwala"
+    ]
+  },
+  {
+    "zone_id": 12,
+    "zone_name": "Banashankari - Kanakapura Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 13,
+    "impact_rank": 19,
+    "impact_score": 50.0,
+    "total_violations": 296,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "27rd Inner Ring Road, Banashankari",
+      "3rd Junction Circle, Banashankari",
+      "13st Junction Circle, Banashankari"
+    ]
+  },
+  {
+    "zone_id": 26,
+    "zone_name": "Bommanahalli - Hosur Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 27,
+    "impact_rank": 20,
+    "impact_score": 47.7,
+    "total_violations": 74,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "8rd Main Road, Bommanahalli",
+      "30nd Junction Circle, Bommanahalli",
+      "22st Inner Ring Road, Bommanahalli",
+      "11nd Service Road, Bommanahalli"
+    ]
+  },
+  {
+    "zone_id": 27,
+    "zone_name": "KR Puram - Old Madras Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 28,
+    "impact_rank": 21,
+    "impact_score": 46.1,
+    "total_violations": 60,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "18nd Junction Circle, KR Puram",
+      "21th Junction Circle, KR Puram",
+      "29st Main Road, KR Puram",
+      "14rd Service Road, KR Puram",
+      "21nd Main Road, KR Puram"
+    ]
+  },
+  {
+    "zone_id": 23,
+    "zone_name": "Cox Town - Wheeler Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 25,
+    "impact_rank": 22,
+    "impact_score": 45.8,
+    "total_violations": 91,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "15nd Inner Ring Road, Cox Town",
+      "10nd Junction Circle, Cox Town",
+      "27nd Service Road, Cox Town",
+      "2st Inner Ring Road, Cox Town",
+      "30st Main Road, Cox Town"
+    ]
+  },
+  {
+    "zone_id": 20,
+    "zone_name": "Basavanagudi - Bull Temple Road",
+    "zone_classification": "Stable Zone",
+    "density_rank": 21,
+    "impact_rank": 23,
+    "impact_score": 45.7,
+    "total_violations": 135,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "22th Bypass Road, Basavanagudi",
+      "12rd Service Road, Basavanagudi",
+      "2st Service Road, Basavanagudi",
+      "18nd Inner Ring Road, Basavanagudi",
+      "28st Inner Ring Road, Basavanagudi"
+    ]
+  },
+  {
+    "zone_id": 24,
+    "zone_name": "Shivajinagar - Commercial St Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 24,
+    "impact_rank": 24,
+    "impact_score": 45.4,
+    "total_violations": 93,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Increase Towing Frequency",
+      "Deploy Officers Near Junction",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "19rd Junction Circle, Shivajinagar",
+      "11rd Cross Road, Shivajinagar",
+      "26st Cross Road, Shivajinagar",
+      "10th Inner Ring Road, Shivajinagar"
+    ]
+  },
+  {
+    "zone_id": 22,
+    "zone_name": "Frazer Town - Mosque Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 23,
+    "impact_rank": 25,
+    "impact_score": 44.3,
+    "total_violations": 115,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "29nd Outer Ring Road, Frazer Town",
+      "8nd Cross Road, Frazer Town",
+      "24th Cross Road, Frazer Town",
+      "3nd Cross Road, Frazer Town"
+    ]
+  },
+  {
+    "zone_id": 18,
+    "zone_name": "Rajajinagar - West of Chord Road",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 19,
+    "impact_rank": 26,
+    "impact_score": 39.5,
+    "total_violations": 169,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "17rd Outer Ring Road, Rajajinagar",
+      "5rd Main Road, Rajajinagar",
+      "21rd Service Road, Rajajinagar"
+    ]
+  },
+  {
+    "zone_id": 31,
+    "zone_name": "Lavelle Road - Vittal Mallya Road",
+    "zone_classification": "Stable Zone",
+    "density_rank": 34,
+    "impact_rank": 27,
+    "impact_score": 37.2,
+    "total_violations": 34,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Increase Towing Frequency",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "11st Bypass Road, Lavelle Road",
+      "4rd Bypass Road, Lavelle Road",
+      "16st Service Road, Lavelle Road",
+      "26th Bypass Road, Lavelle Road",
+      "5nd Cross Road, Lavelle Road"
+    ]
+  },
+  {
+    "zone_id": 25,
+    "zone_name": "Yelahanka - New Town Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 26,
+    "impact_rank": 28,
+    "impact_score": 37.1,
+    "total_violations": 86,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "14nd Outer Ring Road, Yelahanka",
+      "13st Junction Circle, Yelahanka",
+      "21rd Junction Circle, Yelahanka"
+    ]
+  },
+  {
+    "zone_id": 14,
+    "zone_name": "Malleshwaram - Sampige Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 15,
+    "impact_rank": 29,
+    "impact_score": 36.6,
+    "total_violations": 236,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "15nd Outer Ring Road, Malleshwaram",
+      "12th Bypass Road, Malleshwaram",
+      "18st Main Road, Malleshwaram"
+    ]
+  },
+  {
+    "zone_id": 28,
+    "zone_name": "Hennur - Banaswadi Main Road",
+    "zone_classification": "Stable Zone",
+    "density_rank": 29,
+    "impact_rank": 30,
+    "impact_score": 36.3,
+    "total_violations": 60,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Deploy Officers Near Junction"
+    ],
+    "top_roads": [
+      "23th Inner Ring Road, Hennur",
+      "16th Bypass Road, Hennur",
+      "7th Service Road, Hennur"
+    ]
+  },
+  {
+    "zone_id": 36,
+    "zone_name": "Cunningham Road - Junction Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 35,
+    "impact_rank": 31,
+    "impact_score": 34.6,
+    "total_violations": 29,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "9th Inner Ring Road, Cunningham Road",
+      "1rd Cross Road, Cunningham Road",
+      "19nd Bypass Road, Cunningham Road",
+      "3nd Junction Circle, Cunningham Road"
+    ]
+  },
+  {
+    "zone_id": 30,
+    "zone_name": "Cubbon Park - Kasturba Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 32,
+    "impact_rank": 32,
+    "impact_score": 33.3,
+    "total_violations": 39,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "2st Inner Ring Road, Cubbon Park",
+      "5st Cross Road, Cubbon Park",
+      "25rd Cross Road, Cubbon Park",
+      "25st Cross Road, Cubbon Park"
+    ]
+  },
+  {
+    "zone_id": 29,
+    "zone_name": "Mahadevapura - ITPL Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 30,
+    "impact_rank": 33,
+    "impact_score": 30.1,
+    "total_violations": 54,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Deploy Officers Near Junction"
+    ],
+    "top_roads": [
+      "24st Outer Ring Road, Mahadevapura",
+      "15nd Outer Ring Road, Mahadevapura",
+      "17nd Junction Circle, Mahadevapura",
+      "27nd Bypass Road, Mahadevapura"
+    ]
+  },
+  {
+    "zone_id": 38,
+    "zone_name": "Kengeri - Mysore Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 40,
+    "impact_rank": 34,
+    "impact_score": 29.7,
+    "total_violations": 7,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "11st Inner Ring Road, Kengeri",
+      "4nd Junction Circle, Kengeri",
+      "30rd Junction Circle, Kengeri",
+      "23nd Main Road, Kengeri",
+      "6th Cross Road, Kengeri"
+    ]
+  },
+  {
+    "zone_id": 32,
+    "zone_name": "Richmond Town - Richmond Road",
+    "zone_classification": "Stable Zone",
+    "density_rank": 31,
+    "impact_rank": 35,
+    "impact_score": 27.6,
+    "total_violations": 40,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "28st Main Road, Richmond Town",
+      "13th Service Road, Richmond Town",
+      "18rd Bypass Road, Richmond Town",
+      "12st Inner Ring Road, Richmond Town"
+    ]
+  },
+  {
+    "zone_id": 35,
+    "zone_name": "Adugodi - Audugodi Main Road",
+    "zone_classification": "Stable Zone",
+    "density_rank": 37,
+    "impact_rank": 36,
+    "impact_score": 25.9,
+    "total_violations": 22,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "1rd Service Road, Adugodi",
+      "25st Junction Circle, Adugodi",
+      "14st Cross Road, Adugodi",
+      "29nd Service Road, Adugodi"
+    ]
+  },
+  {
+    "zone_id": 33,
+    "zone_name": "Sadashivanagar - Bellary Road",
+    "zone_classification": "Stable Zone",
+    "density_rank": 33,
+    "impact_rank": 37,
+    "impact_score": 22.5,
+    "total_violations": 38,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "21nd Junction Circle, Sadashivanagar",
+      "28th Junction Circle, Sadashivanagar",
+      "27st Main Road, Sadashivanagar",
+      "23st Bypass Road, Sadashivanagar",
+      "8nd Bypass Road, Sadashivanagar"
+    ]
+  },
+  {
+    "zone_id": 34,
+    "zone_name": "Wilson Garden - Hosur Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 36,
+    "impact_rank": 38,
+    "impact_score": 16.8,
+    "total_violations": 25,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "2rd Main Road, Wilson Garden",
+      "17rd Junction Circle, Wilson Garden",
+      "8st Main Road, Wilson Garden",
+      "10nd Outer Ring Road, Wilson Garden",
+      "8st Cross Road, Wilson Garden"
+    ]
+  },
+  {
+    "zone_id": 39,
+    "zone_name": "Peenya - Industrial Area Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 38,
+    "impact_rank": 39,
+    "impact_score": 14.8,
+    "total_violations": 14,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Deploy Officers Near Junction"
+    ],
+    "top_roads": [
+      "24rd Inner Ring Road, Peenya",
+      "6rd Service Road, Peenya",
+      "5rd Junction Circle, Peenya"
+    ]
+  },
+  {
+    "zone_id": 37,
+    "zone_name": "Chamrajpet - 4th Main Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 39,
+    "impact_rank": 40,
+    "impact_score": 7.1,
+    "total_violations": 11,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring",
+      "Dedicated Response Team"
+    ],
+    "top_roads": [
+      "6st Main Road, Chamrajpet",
+      "19rd Bypass Road, Chamrajpet",
+      "22rd Junction Circle, Chamrajpet",
+      "8nd Outer Ring Road, Chamrajpet"
+    ]
+  }
+]
