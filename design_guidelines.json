@@ -1,0 +1,106 @@
+{
+  "theme": "Light",
+  "archetype": "Archetype 4 (Swiss & High-Contrast) + Archetype 1 (Organic & Earthy)",
+  "color_palette": {
+    "background": {
+      "default": "#F8F9FA",
+      "paper": "#FFFFFF",
+      "surface_alt": "#F3EFE0",
+      "description": "Warm Sand / Bone-white for heritage, trust, and approaching the city's organic feel."
+    },
+    "primary": {
+      "main": "#1B4332",
+      "light": "#2D6A4F",
+      "dark": "#081C15",
+      "description": "Cubbon Green - represents trust, city heritage, and authority. Use for main nav and major actions."
+    },
+    "secondary": {
+      "main": "#D90429",
+      "light": "#EF233C",
+      "description": "Signal Traffic Red - for high impact zones, critical alerts, and 'Deploy' actions."
+    },
+    "accent": {
+      "main": "#E9C46A",
+      "description": "Auto-rickshaw Yellow / Sandalwood - for moderate risk, highlighting features, and Gen-Z vibrancy."
+    },
+    "text": {
+      "primary": "#1A1D20",
+      "secondary": "#4A4D50",
+      "disabled": "#8C9298"
+    },
+    "status": {
+      "critical": "#D90429",
+      "warning": "#E9C46A",
+      "info": "#0077B6",
+      "success": "#2D6A4F"
+    }
+  },
+  "typography": {
+    "display": {
+      "family": "Outfit, Noto Sans, sans-serif",
+      "weights": [600, 700, 800],
+      "usage": "Hero headers, major numbers, KPIs. Bold, structured, modern."
+    },
+    "body": {
+      "family": "IBM Plex Sans, sans-serif",
+      "weights": [400, 500],
+      "usage": "Case files, dense data, recommendations, general UI text."
+    },
+    "multilingual_strategy": "For the animated 'Bengaluru' hero text, use a vertical rotating cylinder or cross-fade effect in Framer Motion where the script cycles seamlessly (Kannada -> English -> Hindi -> Tamil -> Telugu -> Urdu -> Malayalam). Ensure Noto Sans variants are loaded as fallbacks."
+  },
+  "layout_and_spacing": {
+    "grid_system": "Bento 'Control Room' Grid for dashboard (tight gap-4/6, strict hierarchy). Use Mode B from guidelines.",
+    "journey_flow": "Detect -> Analyse -> Decide -> Deploy -> Reflect. Implement a horizontal sticky step-rail in the dashboard acting as secondary navigation.",
+    "container_padding": "p-6 to p-8 for cards to prevent text collision. Mobile first: max-w-full to grid-cols-12 on desktop. Generous spacing for landing page."
+  },
+  "re_visualisation_of_stats": {
+    "Total_Violations": "Use an 'Odometer' style rolling number animation. Add a mini sparkline behind it showing the trend over the last 24h.",
+    "Top_10_Ranked_List": "Visual 'Danger Scales'. Each row has a progress bar where red signifies congestion density, along with a tiny spark-map (SVG) of the street layout instead of just text.",
+    "Severity_Distribution": "Avoid standard pies. Use a 'Waffle Chart' or a 'Bento Grid' layout where area size equals severity percentage, colored in Traffic Signal Red/Amber/Green.",
+    "Hourly_Violation_Distribution": "A continuous 'Traffic Wave' area chart with a gradient fill (React Recharts area chart with spline curve), overlaying sun/moon icons to signify time of day.",
+    "Density_Impact_Rank_Cards": "'Trading Card' / 'Case File' layout. Large typography for rank, accented by a 1px border. Use glassmorphism over a subtle map background snippet."
+  },
+  "zone_details_panel": {
+    "concept": "The 'Field Briefing' / Case File.",
+    "design": "Slide-over right panel or deep modal. Header looks like an official dispatch (use IBM Plex Mono for timestamps). Avoid chart dumps; use natural language generation (Gemini) presented as a 'Briefing Summary' with highlighted keywords. Vehicle distribution as inline badges with icons."
+  },
+  "motion_language": {
+    "micro_interactions": "Signal-light pulses for live markers on the Leaflet map (scale and opacity pulsing). Hover states lift cards slightly (-translate-y-1) with a soft shadow.",
+    "scroll_reveals": "Staggered fade-up for bento grid items using framer-motion (delay: i * 0.1).",
+    "hero_animation": "Sequential cross-fade for 'Bengaluru' in multiple scripts. Slow parallax on the hero background to give depth without distraction.",
+    "transitions": "Page routing should feel like shifting tabs in a control center (fast opacity crossfade, 0.2s)."
+  },
+  "iconography": {
+    "library": "lucide-react",
+    "style": "Stroke-width 1.5 or 2, crisp and technical.",
+    "custom_motifs": "Traffic light icons, Auto-rickshaw silhouettes, Police siren minimal icon. Use as SVGs where necessary."
+  },
+  "government_trust_signals": {
+    "emblem": "Use a minimal, monochromatic line-art version of the State Emblem or 'Department of Traffic' seal lockup in the header (opacity 60%).",
+    "classification_stripes": "Diagonal hazard stripes (tiny SVG pattern) on the top border of 'Critical Zone' cards.",
+    "typography": "Use uppercase tracking (tracking-[0.2em]) for overlines like 'OFFICIAL DISPATCH' or 'LIVE CITY FEED'."
+  },
+  "image_and_assets": {
+    "hero_background": {
+      "url": "https://images.pexels.com/photos/36997696/pexels-photo-36997696.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Chaotic traffic scene with auto rickshaws, to be used with a heavy dark overlay or crystal glassmorphism to show the 'stress' of traffic on the landing page."
+    },
+    "vidhana_soudha_context": {
+      "url": "https://images.unsplash.com/photo-1723137855145-5e75dbb402db?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NzR8MHwxfHNlYXJjaHwxfHxiYW5nYWxvcmUlMjB0cmFmZmljJTIwcG9saWNlfGVufDB8fHx8MTc4MTg5ODY1OHww&ixlib=rb-4.1.0&q=85",
+      "description": "City street with large building in background, ideal for the 'About/Mission' page or 'Reflect' step."
+    },
+    "police_officers": {
+      "url": "https://images.pexels.com/photos/13268079/pexels-photo-13268079.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "description": "Police officers on motorcycle in traffic. Great for 'Deploy' or 'Action' sections."
+    },
+    "auto_rickshaw_accent": {
+      "url": "https://images.unsplash.com/photo-1564291886459-a39ad7415125?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NjZ8MHwxfHNlYXJjaHwxfHxiZW5nYWx1cnUlMjBhdXRvJTIwcmlja3NoYXd8ZW58MHx8fHwxNzgxODk4NjU4fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Yellow auto rickshaw close-up, use for aesthetic break or card backgrounds."
+    },
+    "search_keywords_for_more": [
+      "bengaluru city traffic",
+      "bengaluru auto rickshaw",
+      "bangalore traffic police"
+    ]
+  }
+}
