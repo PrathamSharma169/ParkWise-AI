@@ -52,3 +52,5 @@ frontend/build/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+implementation.md
