@@ -1,49 +1,68 @@
-# ParkWise AI – PRD
+# Namma Bengaluru – PRD
+
+## Identity
+- **Product**: Namma Bengaluru (renamed from ParkWise AI)
+- **Tagline**: "Bengaluru City Traffic Police · Intelligence Console"
+- **Source repo**: https://github.com/TanmaySawankar390/ParkWise-AI
 
 ## Problem Statement
-User imported their GitHub repo (https://github.com/TanmaySawankar390/ParkWise-AI) and asked to connect it into this workspace and continue work. ParkWise AI is a **Parking Enforcement Intelligence Platform** for Bengaluru that:
-- Detects parking hotspots from violation data
-- Ranks zones by a custom Impact Score (45% density + 25% vehicle weight + 15% junction proximity + 15% enforcement difficulty)
-- Classifies zones (Critical / Frequent Violation / Hidden Risk / Moderate / Stable)
-- Generates rule-engine recommendations
-- Uses **Gemini 2.5 Flash** (via Emergent Universal LLM Key) to explain each zone on demand
+A traffic-congestion control + parking-violation intelligence layer over Bengaluru
+City Traffic Police data. The Traffic Police don't lack effort — they lack
+**where**, **when**, and **which-zone-first**. This console surfaces exactly that.
 
 ## Architecture
 - **Backend**: FastAPI (`/app/backend/main.py`), entry point `/app/backend/server.py`
-- **Persistence**: JSON files at `/app/backend/data/hotspots.json` + `recommendations.json` (auto-seeded by `seed_data.py` on first start; 40 realistic Bengaluru zones)
-- **AI**: `gemini_engine.py` → `emergentintegrations.LlmChat` + `gemini-2.5-flash` with deterministic fallback
-- **Frontend**: React (CRA + craco) + react-leaflet 4.2.1 + recharts + lucide-react
-- **Routing**: All backend APIs under `/api`; frontend uses `process.env.REACT_APP_BACKEND_URL`
+- **Persistence**: JSON files in `/app/backend/data/` (auto-seeded by `seed_data.py` — 40 realistic Bengaluru zones across 3 personas: Critical, Frequent Violation, Hidden Risk + standard zones)
+- **AI**: `gemini_engine.py` — Gemini 2.5 Flash via `emergentintegrations.LlmChat` (Emergent Universal Key) with deterministic fallback
+- **Frontend**: React (CRA + craco) + react-leaflet + recharts + framer-motion + lucide-react
+- **Routing**: All backend APIs `/api/*`; frontend uses `process.env.REACT_APP_BACKEND_URL`
 
-## Core API Surface (all `/api/...`)
-- `GET /hotspots` – list view
-- `GET /hotspot/{zone_id}` – detail (vehicle dist, hourly dist, top locations, recommendations)
-- `GET /density-map` / `GET /impact-map` – marker payloads with colours
-- `GET /analytics` – KPIs + Top-10 lists + severity distribution + police-station roll-up
-- `GET /recommendations` – grouped by classification + by priority
-- `GET /recommendation/{zone_id}` – single zone classification + actions
-- `POST /recommendation/{zone_id}/explain` – Gemini 2.5 Flash explanation (cached per zone in-memory)
+## Core API Surface (`/api/...`)
+- `GET /hotspots` – includes `hourly_distribution` (needed by dashboard)
+- `GET /hotspot/{zone_id}` – full case-file detail
+- `GET /density-map`, `GET /impact-map` – marker payloads
+- `GET /analytics` – KPIs, top-10 lists, severity buckets, police-station roll-up
+- `GET /recommendations` – grouped by classification + priority + `all` list
+- `GET /recommendation/{zone_id}` – single zone dispatch card
+- `POST /recommendation/{zone_id}/explain` – Gemini 2.5 Flash briefing (cached)
 
-## What's Been Implemented (Jan 2026)
-- [x] Cloned repo, ported into Emergent-compatible layout (server.py + CRA frontend)
-- [x] Seeded realistic dataset for 40 Bengaluru zones through the same impact-score / classification pipeline
-- [x] Wired Gemini 2.5 Flash via Emergent Universal LLM Key (`emergentintegrations.LlmChat`)
-- [x] Replaced direct `/api` fetch with `REACT_APP_BACKEND_URL` everywhere
-- [x] Added Leaflet CSS to `public/index.html`, disabled React StrictMode to avoid Leaflet "Map container is already initialized" error
-- [x] Dark-themed Maps page with Density / Impact toggle + ZoneDetails right panel
-- [x] City Intelligence Dashboard with KPIs, Top-10 lists, severity pie, vehicle bar, police-station bar
-- [x] Recommendation Center with 5 classification KPI cards, filters, AI-explain on each card
-- [x] Verified end-to-end by testing subagent (100% backend, 100% frontend)
+## Design Language
+- **Palette**: Cubbon Green (#1B4332) primary · Signal Red (#D90429) alerts · Auto-Rickshaw Yellow (#E9C46A) accent · warm Sand (#F8F6F0) canvas
+- **Typography**: Outfit (display) + IBM Plex Sans (body) + IBM Plex Mono (overlines/timestamps) + Noto Sans Kannada/Tamil/Telugu/Devanagari/Arabic/Malayalam (multilingual hero)
+- **Motion**: Framer-Motion cross-fade for the animated "Bengaluru" hero, signal-light pulses on map markers, staggered fade-up on grids
+- **Trust signals**: Diagonal hazard stripes on Critical cards, OFFICIAL DISPATCH overlines, ನ Kannada seal in brand mark
 
-## Backlog / Future Enhancements (P1/P2)
-- P1: Plug a real CSV upload + `data_processor.run_pipeline()` UI so the user can replace seed data with the live Bengaluru dataset
-- P1: Persist hotspots/recommendations to MongoDB so they survive restarts and scale beyond a single replica
-- P2: Fix Recharts initial-mount warnings by giving ResponsiveContainer parents explicit min-height/min-width
-- P2: Standardise `data-testid` across Sidebar / Map toggle / ZoneDetails (currently use `id="nav-*"`)
-- P2: Make `/api/recommendation/{id}/explain` truly async by awaiting LlmChat from FastAPI's event loop (currently runs in a worker thread)
-- P2: Adjust classification thresholds so the 'Frequent Violation' and 'Hidden Risk' buckets are populated with the current seed distribution
+## Pages Implemented
+- **Landing Page** (`LandingPage.jsx`): Animated multilingual `Bengaluru` hero (7 scripts on a 2.2s loop), live KPI ticker (Risk Zones, Violations, Critical, Hidden Risk), emotional Bengaluru-traffic story with photo, 5-step operational journey (Detect → Analyse → Decide → Deploy → Reflect with Kannada labels), dark "What officers see" features section, footer
+- **Top Nav** (`TopNav.jsx`): Sticky bar with brand lockup (animated multilingual title), 4 pill nav, live-feed chip
+- **Live City Map** (`MapView.jsx`): CartoDB light tiles, 40 markers, Density ↔ Impact toggle, search filter, pulsing markers, light-themed legend + popup → Field Briefing
+- **City Pulse** (`CityDashboard.jsx`): 4 odometer KPIs, two Top-10 danger-scale lists (with hazard stripe on Priority Watchlist), Waffle Chart for severity (100 squares = 100% of risk footprint), Traffic Wave area chart + Peak Hour callout, Police Station horizontal bar chart
+- **Action Center** (`RecommendationPanel.jsx`): 5 classification KPI cards, filter pills, per-zone case cards with metric strip + dispatch action checklist + inline Gemini AI briefing
+- **Field Briefing** (`ZoneDetails.jsx`): Right-side slide-over case file — OFFICIAL DISPATCH header with hazard stripe, classification badge, metric grid, on-demand AI briefing, recommended actions, 24-hour rhythm bars (red peaks), vehicle pills with emoji icons, hottest streets, jurisdiction
+- **About** (`App.js`): Mission, Map 1 vs Map 2, Gemini's role, tech stack
+
+## What's Been Implemented
+- [x] Renamed product to Namma Bengaluru, animated multilingual hero
+- [x] Landing page with emotional Bengaluru-cultural narrative
+- [x] 5-beat operational journey rail (with Kannada labels)
+- [x] Re-visualised KPIs (odometers, danger scales, waffle, traffic wave)
+- [x] Field Briefing case-file design for ZoneDetails
+- [x] Diversified seed data so all 5 classifications appear (Critical=6, Frequent=1, Hidden Risk=3, Moderate=15, Stable=15)
+- [x] Fixed `/api/hotspots` to include `hourly_distribution`
+- [x] Fixed map popup to conditionally render Impact / Violations per mode
+- [x] Fixed duplicate-key warning in danger-list rows
+- [x] Verified zero console errors across all pages
+- [x] Testing subagent: all 14 frontend flows pass (iteration_2)
+
+## Backlog / Future Enhancements
+- P1: CSV upload → `POST /api/process` to replace seed data with real Bengaluru dataset
+- P1: Persist hotspots + recommendations + cached AI briefings to MongoDB for multi-replica
+- P2: "Compare Two Zones" view with Gemini comparative narrative
+- P2: Time-of-day deployment recommendation that ties Traffic Wave peaks to Action Center cards
+- P2: Officer-attribution log per dispatch action
+- P2: Recharts ResponsiveContainer parents — explicit min-height to silence initial-mount warnings
 
 ## Next Action Items
-1. Decide on a real dataset path (CSV upload UI vs. paste-in-bucket)
-2. Migrate persistence to MongoDB if multi-user / multi-replica is in scope
-3. Tighten CORS and split routers in `main.py` once more endpoints are added
+1. Upload the live Bengaluru CSV via `POST /api/process`
+2. Decide MongoDB migration scope (multi-replica? multi-user?)
+3. Add "Compare Zones" view if desired

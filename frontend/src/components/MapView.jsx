@@ -157,20 +157,26 @@ export default function MapView() {
                     <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>
                       {m.zone_name}
                     </div>
-                    <div style={{
-                      display: "flex", justifyContent: "space-between",
-                      fontSize: 12, color: "var(--text-secondary)",
-                    }}>
-                      <span>Impact</span>
-                      <strong style={{ color: "var(--text-primary)" }}>{m.impact_score?.toFixed(1)}</strong>
-                    </div>
-                    <div style={{
-                      display: "flex", justifyContent: "space-between",
-                      fontSize: 12, color: "var(--text-secondary)", marginBottom: 10,
-                    }}>
-                      <span>Violations</span>
-                      <strong style={{ color: "var(--text-primary)" }}>{m.total_violations?.toLocaleString()}</strong>
-                    </div>
+                    {(m.impact_score !== undefined) && (
+                      <div style={{
+                        display: "flex", justifyContent: "space-between",
+                        fontSize: 12, color: "var(--text-secondary)",
+                      }}>
+                        <span>Impact</span>
+                        <strong style={{ color: "var(--text-primary)" }}>{m.impact_score.toFixed(1)}</strong>
+                      </div>
+                    )}
+                    {(m.violations !== undefined || m.total_violations !== undefined) && (
+                      <div style={{
+                        display: "flex", justifyContent: "space-between",
+                        fontSize: 12, color: "var(--text-secondary)", marginBottom: 10,
+                      }}>
+                        <span>Violations</span>
+                        <strong style={{ color: "var(--text-primary)" }}>
+                          {(m.violations ?? m.total_violations).toLocaleString()}
+                        </strong>
+                      </div>
+                    )}
                     <button
                       className="btn btn-primary"
                       style={{ padding: "8px 14px", fontSize: 12, width: "100%" }}

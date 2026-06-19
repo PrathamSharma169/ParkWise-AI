@@ -6,7 +6,7 @@ import {
 } from "lucide-react";
 import MultilingualBengaluru, { SCRIPTS } from "@/components/MultilingualBengaluru";
 import Odometer from "@/components/Odometer";
-import { getAnalytics } from "@/utils/api";
+import { getAnalytics, getRecommendations } from "@/utils/api";
 
 const JOURNEY_STEPS = [
   { id: 1, icon: Eye,     title: "Detect",  kn: "ಪತ್ತೆ",
@@ -26,14 +26,17 @@ export default function LandingPage({ onEnter }) {
   const [stats, setStats] = useState({ zones: 0, violations: 0, hidden: 0, critical: 0 });
 
   useEffect(() => {
-    getAnalytics().then((a) => {
-      setStats({
-        zones: a.total_zones || 0,
-        violations: a.total_violations || 0,
-        hidden: (a.overlooked_zones || []).length,
-        critical: (a.severity_distribution && a.severity_distribution.critical) || 0,
-      });
-    }).catch(() => {});
+    Promise.all([getAnalytics(), getRecommendations()])
+      .then(([a, r]) => {
+        const counts = r.classification_counts || {};
+        setStats({
+          zones: a.total_zones || 0,
+          violations: a.total_violations || 0,
+          hidden: counts["Hidden Risk Zone"] || 0,
+          critical: counts["Critical Zone"] || 0,
+        });
+      })
+      .catch(() => {});
   }, []);
 
   return (

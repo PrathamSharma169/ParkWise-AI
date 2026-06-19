@@ -75,7 +75,7 @@ function DangerList({ rows, valueKey, valueLabel, max }) {
       {rows.map((row, i) => {
         const pct = (row[valueKey] / ceiling) * 100;
         return (
-          <div className="danger-row" key={row.zone_id || i}>
+          <div className="danger-row" key={`${valueKey}-${row.zone_id ?? i}`}>
             <div className={`danger-rank ${i < 3 ? "top-3" : ""}`}>
               {String(i + 1).padStart(2, "0")}
             </div>
