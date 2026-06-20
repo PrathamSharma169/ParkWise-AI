@@ -65,3 +65,27 @@ export async function getZoneRecommendation(zoneId, startDate, endDate) {
 export async function explainZoneRisk(zoneId, startDate, endDate) {
   return postJSON(`/recommendation/${zoneId}/explain${buildQuery(startDate, endDate)}`);
 }
+
+export async function getTrendsMaxDate() {
+  return fetchJSON("/trends/max-date");
+}
+
+export async function compareTrends(zoneA, zoneB, startHour, endHour) {
+  return fetchJSON(`/trends/compare?zone_a=${zoneA}&zone_b=${zoneB}&start_hour=${startHour}&end_hour=${endHour}`);
+}
+
+export async function explainTrends(payload) {
+  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
+  const API_BASE = `${BACKEND_URL.replace(/\/$/, "")}/api`;
+  const res = await fetch(`${API_BASE}/trends/explain`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(payload)
+  });
+  if (!res.ok) {
+    throw new Error(`API Error: ${res.status} ${res.statusText}`);
+  }
+  return res.json();
+}

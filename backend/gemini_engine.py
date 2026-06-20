@@ -179,3 +179,147 @@ def _fallback_explanation(zone_rec: dict) -> dict:
         "recommendation_explanation": rec_explanation,
         "expected_benefit": expected_benefit,
     }
+
+
+# ============================================================
+# Trends Comparison Prompt Templates & Engine
+# ============================================================
+
+SYSTEM_PROMPT_TRENDS = """You are an urban traffic management and planning expert.
+You analyze parking violation hotspot comparisons and provide actionable recommendations.
+
+You will be given the metrics of two different parking risk zones during a specific time period on the peak violation date.
+Your goal is to compare the two zones and suggest targeted, actionable traffic enforcement and infrastructure measures.
+
+Consider:
+- Violation volume (which zone has more violations)
+- Vehicle types (e.g. high truck/bus presence requires towing; bikes require local wardens)
+- Junction proximity (higher ratio means intersection blocking risk, requiring physical barriers or dedicated officers)
+- Enforcement difficulty (resolution time)
+
+Output format: Return ONLY valid JSON with these exact keys:
+{
+  "comparison_summary": "...",
+  "zone_a_suggestions": ["...", "..."],
+  "zone_b_suggestions": ["...", "..."],
+  "joint_dispatch_strategy": "..."
+}
+Do not include markdown formatting, code fences, or any text outside the JSON object."""
+
+USER_PROMPT_TRENDS_TEMPLATE = """Compare the following two zones during the hours {start_hour}:00 to {end_hour}:00:
+
+ZONE A:
+Name: {zone_a_name}
+Total Violations in range: {zone_a_violations}
+Avg Vehicle Weight Index: {zone_a_vehicle_weight:.2f}
+Junction Ratio: {zone_a_junction_ratio:.1%}
+Avg Resolution Time: {zone_a_resolution_time:.1f} hours
+Top Road: {zone_a_top_road}
+
+ZONE B:
+Name: {zone_b_name}
+Total Violations in range: {zone_b_violations}
+Avg Vehicle Weight Index: {zone_b_vehicle_weight:.2f}
+Junction Ratio: {zone_b_junction_ratio:.1%}
+Avg Resolution Time: {zone_b_resolution_time:.1f} hours
+Top Road: {zone_b_top_road}
+
+Analyze these details and output suggestions based on the metrics."""
+
+
+def generate_trends_comparison(zone_a: dict, zone_b: dict, start_hour: int, end_hour: int) -> dict:
+    """
+    Generate an AI recommendation comparison between two zones.
+    """
+    if not GEMINI_API_KEY:
+        return _fallback_trends_comparison(zone_a, zone_b, start_hour, end_hour)
+
+    try:
+        import google.generativeai as genai
+        genai.configure(api_key=GEMINI_API_KEY)
+        model = genai.GenerativeModel(
+            model_name="gemini-2.5-flash",
+            system_instruction=SYSTEM_PROMPT_TRENDS,
+        )
+
+        prompt = USER_PROMPT_TRENDS_TEMPLATE.format(
+            start_hour=start_hour,
+            end_hour=end_hour,
+            zone_a_name=zone_a.get("zone_name", "Zone A"),
+            zone_a_violations=zone_a.get("total_violations", 0),
+            zone_a_vehicle_weight=zone_a.get("avg_vehicle_weight", 0.0),
+            zone_a_junction_ratio=zone_a.get("junction_ratio", 0.0),
+            zone_a_resolution_time=zone_a.get("avg_resolution_time", 0.0),
+            zone_a_top_road=zone_a.get("top_road", "N/A"),
+            zone_b_name=zone_b.get("zone_name", "Zone B"),
+            zone_b_violations=zone_b.get("total_violations", 0),
+            zone_b_vehicle_weight=zone_b.get("avg_vehicle_weight", 0.0),
+            zone_b_junction_ratio=zone_b.get("junction_ratio", 0.0),
+            zone_b_resolution_time=zone_b.get("avg_resolution_time", 0.0),
+            zone_b_top_road=zone_b.get("top_road", "N/A"),
+        )
+
+        response = model.generate_content(prompt)
+        text = (response.text or "").strip()
+
+        if text.startswith("```"):
+            lines = [l for l in text.split("\n") if not l.strip().startswith("```")]
+            text = "\n".join(lines).strip()
+
+        return json.loads(text)
+
+    except Exception as e:
+        print(f"[gemini-trends] Error generating trends comparison: {e}")
+        return _fallback_trends_comparison(zone_a, zone_b, start_hour, end_hour)
+
+
+def _fallback_trends_comparison(zone_a: dict, zone_b: dict, start_hour: int, end_hour: int) -> dict:
+    name_a = zone_a.get("zone_name", "Zone A")
+    name_b = zone_b.get("zone_name", "Zone B")
+    v_a = zone_a.get("total_violations", 0)
+    v_b = zone_b.get("total_violations", 0)
+
+    summary = (
+        f"Comparing {name_a} ({v_a:,} violations) with {name_b} ({v_b:,} violations) "
+        f"between {start_hour:02d}:00 and {end_hour:02d}:00. "
+    )
+    if v_a > v_b:
+        summary += f"{name_a} shows a higher volume of violation pressure than {name_b}."
+    elif v_b > v_a:
+        summary += f"{name_b} shows a higher volume of violation pressure than {name_a}."
+    else:
+        summary += f"Both zones exhibit identical violation counts during this period."
+
+    # Side A suggestions
+    sug_a = ["Deploy regular wardens to audit parking restrictions."]
+    if zone_a.get("avg_vehicle_weight", 0) > 2.5:
+        sug_a.append("Increase heavy towing truck presence to clear larger vehicle blockages.")
+    if zone_a.get("junction_ratio", 0) > 0.5:
+        sug_a.append("Install permanent bollards and yellow boxes near junctions to keep intersections clear.")
+    if zone_a.get("avg_resolution_time", 0) > 12:
+        sug_a.append("Establish a local sub-station team to reduce ticket clearance latency.")
+
+    # Side B suggestions
+    sug_b = ["Deploy regular wardens to audit parking restrictions."]
+    if zone_b.get("avg_vehicle_weight", 0) > 2.5:
+        sug_b.append("Increase heavy towing truck presence to clear larger vehicle blockages.")
+    if zone_b.get("junction_ratio", 0) > 0.5:
+        sug_b.append("Install permanent bollards and yellow boxes near junctions to keep intersections clear.")
+    if zone_b.get("avg_resolution_time", 0) > 12:
+        sug_b.append("Establish a local sub-station team to reduce ticket clearance latency.")
+
+    # Joint strategy
+    if v_a > v_b * 1.5:
+        joint = f"Prioritize main patrol deployment to {name_a} during these hours. Keep secondary sweeps for {name_b}."
+    elif v_b > v_a * 1.5:
+        joint = f"Prioritize main patrol deployment to {name_b} during these hours. Keep secondary sweeps for {name_a}."
+    else:
+        joint = "Distribute enforcement officers evenly between both zones, focusing on their respective peak hotspots."
+
+    return {
+        "comparison_summary": summary,
+        "zone_a_suggestions": sug_a,
+        "zone_b_suggestions": sug_b,
+        "joint_dispatch_strategy": joint,
+    }
+

@@ -587,6 +587,267 @@ async def trigger_processing():
         raise HTTPException(status_code=500, detail=str(e))
 
 
+@app.get("/api/trends/max-date")
+async def get_trends_max_date():
+    """
+    Get the maximum date available in the dataset.
+    """
+    global CLEANED_DF, DF_LOADED
+    if not DF_LOADED:
+        load_dataframe_in_background()
+        
+    if CLEANED_DF is None:
+        return {"max_date": "2024-04-08"}
+        
+    try:
+        max_date = CLEANED_DF["created_datetime"].max()
+        return {
+            "max_date": max_date.strftime("%Y-%m-%d") if not pd.isnull(max_date) else "2024-04-08"
+        }
+    except Exception as e:
+        print(f"Error computing trends max date: {e}")
+        return {"max_date": "2024-04-08"}
+
+
+@app.get("/api/check-raw-dates")
+async def check_raw_dates():
+    """Diagnostic endpoint to inspect raw dataset datetimes."""
+    try:
+        csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sample.csv")
+        df_raw = pd.read_csv(csv_path, low_memory=False)
+        df_raw["created_datetime"] = pd.to_datetime(df_raw["created_datetime"], errors="coerce")
+        raw_max = df_raw["created_datetime"].max()
+        raw_min = df_raw["created_datetime"].min()
+        raw_count = len(df_raw)
+        
+        cleaned_count = 0
+        cleaned_max = "N/A"
+        if CLEANED_DF is not None:
+            cleaned_count = len(CLEANED_DF)
+            c_max = CLEANED_DF["created_datetime"].max()
+            cleaned_max = c_max.strftime("%Y-%m-%d") if not pd.isnull(c_max) else "N/A"
+            
+        return {
+            "raw_total_rows": raw_count,
+            "raw_min_date": raw_min.strftime("%Y-%m-%d") if not pd.isnull(raw_min) else "N/A",
+            "raw_max_date": raw_max.strftime("%Y-%m-%d") if not pd.isnull(raw_max) else "N/A",
+            "cleaned_total_rows": cleaned_count,
+            "cleaned_max_date": cleaned_max,
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/trends/debug-dates")
+async def debug_dates():
+    """Detailed debugging for datetimes in raw and CLEANED_DF."""
+    try:
+        global CLEANED_DF
+        if CLEANED_DF is None:
+            return {"status": "CLEANED_DF is None"}
+            
+        # Inspect CLEANED_DF datetimes
+        c_min = CLEANED_DF["created_datetime"].min()
+        c_max = CLEANED_DF["created_datetime"].max()
+        
+        # Unique months and their counts in CLEANED_DF
+        months_counts = CLEANED_DF["created_datetime"].dt.to_period("M").value_counts().sort_index().to_dict()
+        months_counts = {str(k): int(v) for k, v in months_counts.items()}
+        
+        # Let's see the 10 latest dates
+        latest_dates = CLEANED_DF["created_datetime"].sort_values(ascending=False).head(10).dt.strftime("%Y-%m-%d %H:%M:%S").tolist()
+        
+        # Let's inspect the raw CSV created_datetime formats and month distributions
+        csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sample.csv")
+        df_raw = pd.read_csv(csv_path, low_memory=False)
+        
+        raw_str_max = df_raw["created_datetime"].dropna().max()
+        raw_str_min = df_raw["created_datetime"].dropna().min()
+        
+        df_raw["created_datetime_parsed"] = pd.to_datetime(df_raw["created_datetime"], errors="coerce")
+        raw_months = df_raw["created_datetime_parsed"].dt.to_period("M").value_counts().sort_index().to_dict()
+        raw_months = {str(k): int(v) for k, v in raw_months.items()}
+        
+        # Count parsing failures
+        failures = df_raw[df_raw["created_datetime"].notna() & df_raw["created_datetime_parsed"].isna()]
+        failure_sample = failures["created_datetime"].head(10).tolist()
+        
+        return {
+            "cleaned_min": str(c_min),
+            "cleaned_max": str(c_max),
+            "cleaned_months_distribution": months_counts,
+            "cleaned_latest_10_dates": latest_dates,
+            "raw_str_min": raw_str_min,
+            "raw_str_max": raw_str_max,
+            "raw_months_distribution": raw_months,
+            "raw_max_parsed": str(df_raw["created_datetime_parsed"].max()),
+            "parsing_failures_count": len(failures),
+            "parsing_failures_sample": failure_sample,
+        }
+    except Exception as e:
+        return {"error": str(e)}
+
+
+@app.get("/api/trends/compare")
+async def compare_zones_trends(zone_a: int, zone_b: int, start_hour: int, end_hour: int):
+    """
+    Filter data for Zone A and Zone B dynamically for the peak date and selected hour range.
+    """
+    global CLEANED_DF, DF_LOADED
+    if not DF_LOADED:
+        load_dataframe_in_background()
+        
+    if CLEANED_DF is None:
+        raise HTTPException(status_code=503, detail="Dataset not loaded yet. Please try again.")
+
+    try:
+        # Get max date
+        max_date = CLEANED_DF["created_datetime"].max()
+        if pd.isnull(max_date):
+            max_date_utc = pd.to_datetime("2024-04-08", utc=True)
+        else:
+            max_date_utc = pd.to_datetime(max_date, utc=True)
+
+        # Calculate exactly one calendar month prior (e.g. April 8 -> March 8)
+        start_date = max_date_utc - pd.DateOffset(months=1)
+        start_date_utc = pd.to_datetime(start_date, utc=True)
+
+        # Set bounds to start of start_date (00:00:00) and end of max_date (23:59:59)
+        start_bound = pd.to_datetime(start_date_utc.date(), utc=True)
+        end_bound = pd.to_datetime(max_date_utc.date(), utc=True) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
+
+        # Filter by date range (1 month)
+        df_period = CLEANED_DF[(CLEANED_DF["created_datetime"] >= start_bound) & (CLEANED_DF["created_datetime"] <= end_bound)]
+        
+        # Filter by hour range (inclusive)
+        df_filtered = df_period[(df_period["hour"] >= start_hour) & (df_period["hour"] <= end_hour)]
+
+        def get_zone_metrics(zone_id: int):
+            zone_df = df_filtered[df_filtered["cluster_id"] == zone_id]
+            
+            # Find zone name and static details from HOTSPOTS
+            zone_name = f"Zone {zone_id}"
+            static_impact_score = 0.0
+            for h in HOTSPOTS:
+                if h["cluster_id"] == zone_id:
+                    zone_name = h["zone_name"]
+                    static_impact_score = h["impact_score"]
+                    break
+            
+            if zone_df.empty:
+                return {
+                    "zone_id": zone_id,
+                    "zone_name": zone_name,
+                    "total_violations": 0,
+                    "avg_vehicle_weight": 0.0,
+                    "junction_ratio": 0.0,
+                    "avg_resolution_time": 0.0,
+                    "top_road": "N/A",
+                    "top_locations": [],
+                    "vehicle_distribution": {},
+                    "violation_types": {},
+                    "hourly_distribution": {},
+                    "impact_score": static_impact_score,
+                }
+            
+            total_violations = len(zone_df)
+            
+            # Vehicle weight mapping
+            from data_processor import VEHICLE_WEIGHTS
+            weights = zone_df["vehicle_type_clean"].map(VEHICLE_WEIGHTS).fillna(2)
+            avg_weight = weights.mean()
+            
+            # Junction ratio
+            junction_ratio = zone_df["is_junction"].mean()
+            
+            # Resolution hours
+            valid_res = zone_df["resolution_hours"].dropna()
+            avg_resolution = valid_res.mean() if len(valid_res) > 0 else 0.0
+            
+            # Top locations
+            loc_counts = zone_df["location"].value_counts()
+            top_road = loc_counts.index[0].split(",")[0].strip() if not loc_counts.empty else "N/A"
+            top_locations = [
+                {"name": loc.split(",")[0].strip(), "count": int(cnt)}
+                for loc, cnt in loc_counts.head(5).items() if loc
+            ]
+            
+            # Distributions
+            vehicle_dist = zone_df["vehicle_type_clean"].value_counts().to_dict()
+            hourly_dist = zone_df["hour"].value_counts().sort_index().to_dict()
+            hourly_dist = {str(int(float(k))): int(v) for k, v in hourly_dist.items()}
+            
+            violation_types = {}
+            for vt in zone_df["violation_type"].dropna():
+                try:
+                    types = json.loads(vt.replace('""', '"'))
+                    if isinstance(types, list):
+                        for t in types:
+                            clean_type = t.strip().strip('"')
+                            violation_types[clean_type] = violation_types.get(clean_type, 0) + 1
+                except Exception:
+                    pass
+            
+            # Format and sort for frontend top list
+            sorted_violations = sorted(violation_types.items(), key=lambda x: -x[1])
+            top_violation_types = [
+                {"type": k, "count": int(v)}
+                for k, v in sorted_violations[:5]
+            ]
+            
+            return {
+                "zone_id": zone_id,
+                "zone_name": zone_name,
+                "total_violations": total_violations,
+                "avg_vehicle_weight": float(avg_weight),
+                "junction_ratio": float(junction_ratio),
+                "avg_resolution_time": float(avg_resolution),
+                "top_road": top_road,
+                "top_locations": top_locations,
+                "vehicle_distribution": {k: int(v) for k, v in vehicle_dist.items()},
+                "violation_types": violation_types,
+                "top_violation_types": top_violation_types,
+                "hourly_distribution": hourly_dist,
+                "impact_score": static_impact_score,
+            }
+
+        metrics_a = get_zone_metrics(zone_a)
+        metrics_b = get_zone_metrics(zone_b)
+
+        return {
+            "max_date": max_date.strftime("%Y-%m-%d"),
+            "start_hour": start_hour,
+            "end_hour": end_hour,
+            "zone_a": metrics_a,
+            "zone_b": metrics_b,
+        }
+    except Exception as e:
+        print(f"Error computing dynamic trends comparison: {e}")
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/trends/explain")
+async def explain_trends_comparison(request: dict):
+    """
+    Call Gemini model to recommend actions based on dynamic comparison metrics.
+    """
+    zone_a = request.get("zone_a")
+    zone_b = request.get("zone_b")
+    start_hour = request.get("start_hour", 0)
+    end_hour = request.get("end_hour", 23)
+    
+    if not zone_a or not zone_b:
+        raise HTTPException(status_code=400, detail="Missing zone details in request body")
+        
+    try:
+        from gemini_engine import generate_trends_comparison
+        suggestions = generate_trends_comparison(zone_a, zone_b, start_hour, end_hour)
+        return suggestions
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+
