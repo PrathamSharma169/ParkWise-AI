@@ -1,86 +1,104 @@
-import React, { useState, useEffect } from 'react';
-import { getHotspots, getHotspotDetail, getDateRange } from '../utils/api';
-import MultiSelectDropdown from './MultiSelectDropdown';
+import React, { useState, useEffect } from "react";
+import { getHotspots, getHotspotDetail, getDateRange } from "@/utils/api";
+import MultiSelectDropdown from "./MultiSelectDropdown";
 import {
   BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  CartesianGrid, LineChart, Line, Legend
-} from 'recharts';
-import { TrendingUp, Clock, AlertTriangle, ShieldCheck, ArrowRight } from 'lucide-react';
+  CartesianGrid, LineChart, Line,
+} from "recharts";
+import {
+  TrendingUp, Clock, AlertTriangle, ShieldCheck, ArrowRight,
+  GitCompare, Calendar, LoaderCircle,
+} from "lucide-react";
 
-const VEHICLES = ['BIKE', 'CAR', 'AUTO', 'MAXI CAB', 'BUS', 'TRUCK', 'OTHERS'];
+const VEHICLES = ["BIKE", "CAR", "AUTO", "MAXI CAB", "BUS", "TRUCK", "OTHERS"];
+const SIDE_A_COLOR = "#1B4332";
+const SIDE_B_COLOR = "#C99A2E";
 
-const SIDE_A_COLOR = '#3b82f6';
-const SIDE_B_COLOR = '#a855f7';
+const PRESETS = [
+  { key: "all", label: "All time" },
+  { key: "nov23", label: "Nov 2023", start: "2023-11-01", end: "2023-11-30" },
+  { key: "dec23", label: "Dec 2023", start: "2023-12-01", end: "2023-12-31" },
+  { key: "mar24", label: "Mar 2024", start: "2024-03-01", end: "2024-03-31" },
+  { key: "apr24", label: "Apr 2024", start: "2024-04-01", end: "2024-04-30" },
+];
 
-function DateControls({ side, dateMode, setDateMode, singleDate, setSingleDate, startDate, setStartDate, endDate, setEndDate, preset, applyPreset, dateBounds }) {
-  const presets = [
-    { key: 'nov23', label: "Nov '23", start: '2023-11-01', end: '2023-11-30' },
-    { key: 'dec23', label: "Dec '23", start: '2023-12-01', end: '2023-12-31' },
-    { key: 'mar24', label: "Mar '24", start: '2024-03-01', end: '2024-03-31' },
-    { key: 'apr24', label: "Apr '24", start: '2024-04-01', end: '2024-04-30' },
-  ];
-
+function DateControls({
+  dateMode, setDateMode, singleDate, setSingleDate,
+  startDate, setStartDate, endDate, setEndDate,
+  preset, applyPreset, dateBounds, side,
+}) {
   return (
-    <div className="date-controls">
-      <div className="date-mode-tabs">
-        {['all', 'single', 'range'].map(mode => (
+    <div className="trends-date-controls">
+      <div className="nav-pills trends-date-controls__modes">
+        {[
+          { id: "all", label: "Full dataset", icon: Clock },
+          { id: "single", label: "Single day", icon: Calendar },
+          { id: "range", label: "Date range", icon: Calendar },
+        ].map(({ id, label, icon: Icon }) => (
           <button
-            key={mode}
-            className={`date-tab ${dateMode === mode ? 'date-tab--active' : ''}`}
-            onClick={() => setDateMode(mode)}
+            key={id}
+            type="button"
+            className={`nav-pill ${dateMode === id ? "active" : ""}`}
+            onClick={() => setDateMode(id)}
           >
-            {mode === 'all' ? 'All time' : mode === 'single' ? 'Single day' : 'Date range'}
+            <Icon size={13} />
+            {label}
           </button>
         ))}
       </div>
 
-      {dateMode === 'single' && (
-        <div className="date-input-row">
+      {dateMode === "single" && (
+        <div className="date-filter__inputs date-filter__inputs--single">
+          <label className="date-filter__label" htmlFor={`trends-single-${side}`}>Select date</label>
           <input
+            id={`trends-single-${side}`}
             type="date"
             value={singleDate}
             min={dateBounds.min}
             max={dateBounds.max}
             onChange={(e) => setSingleDate(e.target.value)}
-            className="date-input"
+            className="date-filter__input"
           />
         </div>
       )}
 
-      {dateMode === 'range' && (
-        <div className="date-input-row date-input-row--range">
-          <input
-            type="date"
-            value={startDate}
-            min={dateBounds.min}
-            max={dateBounds.max}
-            onChange={(e) => setStartDate(e.target.value)}
-            className="date-input"
-          />
-          <ArrowRight size={14} className="date-arrow" />
-          <input
-            type="date"
-            value={endDate}
-            min={dateBounds.min}
-            max={dateBounds.max}
-            onChange={(e) => setEndDate(e.target.value)}
-            className="date-input"
-          />
+      {dateMode === "range" && (
+        <div className="date-filter__inputs date-filter__inputs--range">
+          <div className="date-filter__field">
+            <label className="date-filter__label" htmlFor={`trends-from-${side}`}>From</label>
+            <input
+              id={`trends-from-${side}`}
+              type="date"
+              value={startDate}
+              min={dateBounds.min}
+              max={dateBounds.max}
+              onChange={(e) => setStartDate(e.target.value)}
+              className="date-filter__input"
+            />
+          </div>
+          <ArrowRight size={14} className="date-filter__sep" aria-hidden="true" />
+          <div className="date-filter__field">
+            <label className="date-filter__label" htmlFor={`trends-to-${side}`}>To</label>
+            <input
+              id={`trends-to-${side}`}
+              type="date"
+              value={endDate}
+              min={dateBounds.min}
+              max={dateBounds.max}
+              onChange={(e) => setEndDate(e.target.value)}
+              className="date-filter__input"
+            />
+          </div>
         </div>
       )}
 
-      <div className="preset-chips">
-        <button
-          className={`preset-chip ${preset === 'all' ? 'preset-chip--active' : ''}`}
-          onClick={() => applyPreset(side, 'all', null, null)}
-        >
-          All
-        </button>
-        {presets.map(p => (
+      <div className="date-filter__presets">
+        {PRESETS.map((p) => (
           <button
             key={p.key}
-            className={`preset-chip ${preset === p.key ? 'preset-chip--active' : ''}`}
-            onClick={() => applyPreset(side, p.key, p.start, p.end)}
+            type="button"
+            className={`date-preset ${preset === p.key ? "date-preset--active" : ""}`}
+            onClick={() => applyPreset(p.key, p.start, p.end)}
           >
             {p.label}
           </button>
@@ -90,43 +108,110 @@ function DateControls({ side, dateMode, setDateMode, singleDate, setSingleDate, 
   );
 }
 
-function CustomTooltip({ active, payload, label }) {
+function ChartTooltip({ active, payload, label }) {
   if (!active || !payload?.length) return null;
   return (
-    <div className="chart-tooltip">
-      <div className="chart-tooltip__label">{label}</div>
+    <div className="trends-tooltip">
+      <div className="trends-tooltip__label">{label}</div>
       {payload.map((p, i) => (
-        <div key={i} className="chart-tooltip__row">
-          <span className="chart-tooltip__dot" style={{ background: p.color }} />
-          <span className="chart-tooltip__name">{p.name}</span>
-          <span className="chart-tooltip__value">{(p.value || 0).toLocaleString()}</span>
+        <div key={i} className="trends-tooltip__row">
+          <span className="trends-tooltip__dot" style={{ background: p.color }} />
+          <span>{p.name}</span>
+          <strong>{(p.value || 0).toLocaleString()}</strong>
         </div>
       ))}
     </div>
   );
 }
 
+function ConfigPanel({
+  side, accent, accentClass, zoneOptions, selected, onSelect,
+  dateMode, setDateMode, singleDate, setSingleDate,
+  startDate, setStartDate, endDate, setEndDate,
+  preset, applyPreset, dateBounds, loading, data, error,
+}) {
+  return (
+    <div className={`card trends-config trends-config--${accentClass}`} data-testid={`trends-config-${side}`}>
+      <div className={`trends-config__stripe trends-config__stripe--${accentClass}`} />
+      <div className="card-pad">
+        <div className="trends-config__head">
+          <span className={`trends-side-badge trends-side-badge--${accentClass}`}>{side}</span>
+          <div>
+            <span className="overline">Comparison arm {side}</span>
+            <h3 className="trends-config__title">Configuration {side}</h3>
+          </div>
+        </div>
+
+        <div className="trends-field">
+          <label className="trends-field__label">Zones</label>
+          <MultiSelectDropdown
+            options={zoneOptions}
+            selected={selected}
+            onChange={onSelect}
+            placeholder="Select zones…"
+            accentColor={accent}
+          />
+        </div>
+
+        <div className="trends-field">
+          <label className="trends-field__label">Time period</label>
+          <DateControls
+            side={side}
+            dateMode={dateMode}
+            setDateMode={setDateMode}
+            singleDate={singleDate}
+            setSingleDate={setSingleDate}
+            startDate={startDate}
+            setStartDate={setStartDate}
+            endDate={endDate}
+            setEndDate={setEndDate}
+            preset={preset}
+            applyPreset={applyPreset}
+            dateBounds={dateBounds}
+          />
+        </div>
+
+        <div className="trends-config__foot">
+          {loading && (
+            <span className="trends-config__status">
+              <LoaderCircle size={13} className="spin" /> Fetching data…
+            </span>
+          )}
+          {!loading && data && (
+            <span className="trends-config__status trends-config__status--ok">
+              {data.zoneCount} zone{data.zoneCount > 1 ? "s" : ""} · {data.total_violations.toLocaleString()} violations
+            </span>
+          )}
+          {!loading && error && (
+            <span className="trends-config__status trends-config__status--err">{error}</span>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function TrendsDashboard() {
   const [zoneOptions, setZoneOptions] = useState([]);
-  const [dateBounds, setDateBounds] = useState({ min: '2023-11-01', max: '2024-04-30' });
+  const [dateBounds, setDateBounds] = useState({ min: "2023-11-01", max: "2024-04-30" });
   const [loadingOptions, setLoadingOptions] = useState(true);
 
   const [selectedA, setSelectedA] = useState([]);
-  const [dateModeA, setDateModeA] = useState('all');
-  const [singleDateA, setSingleDateA] = useState('');
-  const [startDateA, setStartDateA] = useState('');
-  const [endDateA, setEndDateA] = useState('');
-  const [presetA, setPresetA] = useState('all');
+  const [dateModeA, setDateModeA] = useState("all");
+  const [singleDateA, setSingleDateA] = useState("");
+  const [startDateA, setStartDateA] = useState("");
+  const [endDateA, setEndDateA] = useState("");
+  const [presetA, setPresetA] = useState("all");
   const [dataA, setDataA] = useState(null);
   const [loadingA, setLoadingA] = useState(false);
   const [errorA, setErrorA] = useState(null);
 
   const [selectedB, setSelectedB] = useState([]);
-  const [dateModeB, setDateModeB] = useState('all');
-  const [singleDateB, setSingleDateB] = useState('');
-  const [startDateB, setStartDateB] = useState('');
-  const [endDateB, setEndDateB] = useState('');
-  const [presetB, setPresetB] = useState('all');
+  const [dateModeB, setDateModeB] = useState("all");
+  const [singleDateB, setSingleDateB] = useState("");
+  const [startDateB, setStartDateB] = useState("");
+  const [endDateB, setEndDateB] = useState("");
+  const [presetB, setPresetB] = useState("all");
   const [dataB, setDataB] = useState(null);
   const [loadingB, setLoadingB] = useState(false);
   const [errorB, setErrorB] = useState(null);
@@ -135,7 +220,7 @@ export default function TrendsDashboard() {
     async function init() {
       try {
         const [hotspots, range] = await Promise.all([getHotspots(), getDateRange()]);
-        const opts = hotspots.map(h => ({ value: h.zone_id, label: h.zone_name }));
+        const opts = hotspots.map((h) => ({ value: h.zone_id, label: h.zone_name }));
         setZoneOptions(opts);
         setDateBounds({ min: range.min_date, max: range.max_date });
         if (opts.length > 0) {
@@ -149,7 +234,7 @@ export default function TrendsDashboard() {
         setStartDateB(range.min_date);
         setEndDateB(range.max_date);
       } catch (err) {
-        console.error('Failed to initialize trends dashboard:', err);
+        console.error("Failed to initialize trends dashboard:", err);
       } finally {
         setLoadingOptions(false);
       }
@@ -162,13 +247,17 @@ export default function TrendsDashboard() {
     setLoading(true);
     setError(null);
 
-    let startParam = null, endParam = null;
-    if (mode === 'single') { startParam = singleVal; endParam = singleVal; }
-    else if (mode === 'range') { startParam = startVal; endParam = endVal; }
+    let startParam = null;
+    let endParam = null;
+    if (mode === "single") { startParam = singleVal; endParam = singleVal; }
+    else if (mode === "range") { startParam = startVal; endParam = endVal; }
 
     try {
-      const results = (await Promise.all(zoneIds.map(id => getHotspotDetail(id, startParam, endParam)))).filter(r => r?.zone_id !== undefined);
-      if (!results.length) { setData(null); setError('No data for selected zones.'); return; }
+      const results = (await Promise.all(
+        zoneIds.map((id) => getHotspotDetail(id, startParam, endParam))
+      )).filter((r) => r?.zone_id !== undefined);
+
+      if (!results.length) { setData(null); setError("No data for selected zones."); return; }
 
       const totalViolations = results.reduce((s, z) => s + (z.total_violations || 0), 0);
       const avgImpact = results.reduce((s, z) => s + (z.impact_score || 0), 0) / results.length;
@@ -177,24 +266,29 @@ export default function TrendsDashboard() {
 
       const hourly = {};
       for (let h = 0; h < 24; h++) hourly[h] = 0;
-      results.forEach(z => Object.entries(z.hourly_distribution || {}).forEach(([hs, c]) => {
-        const hr = Math.floor(parseFloat(hs));
-        if (hr >= 0 && hr < 24) hourly[hr] += c;
-      }));
+      results.forEach((z) => {
+        Object.entries(z.hourly_distribution || {}).forEach(([hs, c]) => {
+          const hr = Math.floor(parseFloat(hs));
+          if (hr >= 0 && hr < 24) hourly[hr] += c;
+        });
+      });
 
       const vehicles = {};
-      VEHICLES.forEach(v => { vehicles[v] = 0; });
-      results.forEach(z => Object.entries(z.vehicle_distribution || {}).forEach(([vt, c]) => {
-        vehicles[VEHICLES.includes(vt) ? vt : 'OTHERS'] += c;
-      }));
+      VEHICLES.forEach((v) => { vehicles[v] = 0; });
+      results.forEach((z) => {
+        Object.entries(z.vehicle_distribution || {}).forEach(([vt, c]) => {
+          vehicles[VEHICLES.includes(vt) ? vt : "OTHERS"] += c;
+        });
+      });
 
       const violationTypes = {};
-      results.forEach(z => Object.entries(z.violation_types || {}).forEach(([vt, c]) => {
-        violationTypes[vt] = (violationTypes[vt] || 0) + c;
-      }));
+      results.forEach((z) => {
+        Object.entries(z.violation_types || {}).forEach(([vt, c]) => {
+          violationTypes[vt] = (violationTypes[vt] || 0) + c;
+        });
+      });
 
       setData({
-        names: results.map(r => r.zone_name).join(', '),
         zoneCount: results.length,
         total_violations: totalViolations,
         impact_score: parseFloat(avgImpact.toFixed(1)),
@@ -207,8 +301,9 @@ export default function TrendsDashboard() {
           .sort((a, b) => b.count - a.count)
           .slice(0, 5),
       });
-    } catch (err) {
-      setError('Failed to fetch data.'); setData(null);
+    } catch {
+      setError("Failed to fetch data.");
+      setData(null);
     } finally {
       setLoading(false);
     }
@@ -222,276 +317,228 @@ export default function TrendsDashboard() {
     loadAndAggregate(selectedB, dateModeB, singleDateB, startDateB, endDateB, setDataB, setLoadingB, setErrorB);
   }, [selectedB, dateModeB, singleDateB, startDateB, endDateB]);
 
-  const applyPreset = (side, presetName, start, end) => {
-    if (side === 'A') {
-      setPresetA(presetName);
-      setDateModeA(presetName === 'all' ? 'all' : 'range');
-      if (start) { setStartDateA(start); setEndDateA(end); }
-    } else {
-      setPresetB(presetName);
-      setDateModeB(presetName === 'all' ? 'all' : 'range');
-      if (start) { setStartDateB(start); setEndDateB(end); }
-    }
+  const makeApplyPreset = (side) => (presetName, start, end) => {
+    const setPreset = side === "A" ? setPresetA : setPresetB;
+    const setMode = side === "A" ? setDateModeA : setDateModeB;
+    const setStart = side === "A" ? setStartDateA : setStartDateB;
+    const setEnd = side === "A" ? setEndDateA : setEndDateB;
+
+    setPreset(presetName);
+    setMode(presetName === "all" ? "all" : "range");
+    if (start) { setStart(start); setEnd(end); }
   };
 
   const hourlyData = Array.from({ length: 24 }, (_, h) => ({
-    hour: `${h.toString().padStart(2, '0')}:00`,
-    'Side A': dataA ? (dataA.hourly_distribution[h] || 0) : 0,
-    'Side B': dataB ? (dataB.hourly_distribution[h] || 0) : 0,
+    hour: `${String(h).padStart(2, "0")}:00`,
+    "Side A": dataA ? (dataA.hourly_distribution[h] || 0) : 0,
+    "Side B": dataB ? (dataB.hourly_distribution[h] || 0) : 0,
   }));
 
-  const vehicleData = VEHICLES.map(v => ({
+  const vehicleData = VEHICLES.map((v) => ({
     name: v,
-    'Side A': dataA ? (dataA.vehicle_distribution[v] || 0) : 0,
-    'Side B': dataB ? (dataB.vehicle_distribution[v] || 0) : 0,
+    "Side A": dataA ? (dataA.vehicle_distribution[v] || 0) : 0,
+    "Side B": dataB ? (dataB.vehicle_distribution[v] || 0) : 0,
   }));
 
   const kpis = [
-    { icon: AlertTriangle, label: 'Total Violations', valA: dataA?.total_violations?.toLocaleString(), valB: dataB?.total_violations?.toLocaleString() },
-    { icon: TrendingUp, label: 'Avg Impact Score', valA: dataA?.impact_score, valB: dataB?.impact_score },
-    { icon: Clock, label: 'Resolution (hrs)', valA: dataA?.avg_resolution_time, valB: dataB?.avg_resolution_time },
-    { icon: ShieldCheck, label: 'Junction Proximity', valA: dataA ? `${(dataA.junction_ratio * 100).toFixed(1)}%` : null, valB: dataB ? `${(dataB.junction_ratio * 100).toFixed(1)}%` : null },
+    { icon: AlertTriangle, label: "Total violations", valA: dataA?.total_violations?.toLocaleString(), valB: dataB?.total_violations?.toLocaleString() },
+    { icon: TrendingUp, label: "Avg impact score", valA: dataA?.impact_score, valB: dataB?.impact_score },
+    { icon: Clock, label: "Resolution (hrs)", valA: dataA?.avg_resolution_time, valB: dataB?.avg_resolution_time },
+    { icon: ShieldCheck, label: "Junction proximity", valA: dataA ? `${(dataA.junction_ratio * 100).toFixed(1)}%` : null, valB: dataB ? `${(dataB.junction_ratio * 100).toFixed(1)}%` : null },
   ];
 
   if (loadingOptions) {
     return (
-      <div className="trends-loading">
-        <div className="trends-loading__spinner" />
-        <span>Loading comparison data…</span>
+      <div className="page-shell trends-page" data-testid="trends-page">
+        <div className="trends-loading">
+          <LoaderCircle size={24} className="spin" />
+          <span>Loading comparison workspace…</span>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="trends-page">
-
-      {/* Page Header */}
-      <div className="trends-header">
-        <div className="trends-header__text">
-          <h2>Zone Comparison</h2>
-          <p>Compare violation patterns, peak hours, and vehicle profiles across zones or time periods.</p>
+    <div className="page-shell trends-page" data-testid="trends-page">
+      <div className="section-head">
+        <div>
+          <span className="overline">◉ Trends &amp; comparison</span>
+          <h2 style={{ fontSize: 28, marginTop: 8 }}>Compare zones across time.</h2>
+          <p>
+            Stack two configurations — zones plus date windows — and read violation rhythm,
+            vehicle mix, and enforcement pressure side by side.
+          </p>
+        </div>
+        <div className="trends-legend-key">
+          <span><i style={{ background: SIDE_A_COLOR }} /> Arm A · Cubbon Green</span>
+          <span><i style={{ background: SIDE_B_COLOR }} /> Arm B · Sandalwood</span>
         </div>
       </div>
 
-      {/* Config Panels */}
-      <div className="config-grid">
-        {/* Side A */}
-        <div className="config-panel config-panel--a">
-          <div className="config-panel__stripe config-panel__stripe--a" />
-          <div className="config-panel__inner">
-            <div className="config-panel__label">
-              <span className="side-badge side-badge--a">A</span>
-              <span className="config-panel__title">Configuration A</span>
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Zones</label>
-              <MultiSelectDropdown
-                options={zoneOptions}
-                selected={selectedA}
-                onChange={setSelectedA}
-                placeholder="Select zones…"
-                accentColor={SIDE_A_COLOR}
-              />
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Time Period</label>
-              <DateControls
-                side="A"
-                dateMode={dateModeA}
-                setDateMode={(m) => { setDateModeA(m); if (m === 'all') setPresetA('all'); }}
-                singleDate={singleDateA}
-                setSingleDate={(v) => { setSingleDateA(v); setPresetA('custom'); }}
-                startDate={startDateA}
-                setStartDate={(v) => { setStartDateA(v); setPresetA('custom'); }}
-                endDate={endDateA}
-                setEndDate={(v) => { setEndDateA(v); setPresetA('custom'); }}
-                preset={presetA}
-                applyPreset={applyPreset}
-                dateBounds={dateBounds}
-              />
-            </div>
-
-            {selectedA.length > 0 && (
-              <div className="config-panel__summary">
-                {loadingA ? (
-                  <span className="summary-loading">Fetching data…</span>
-                ) : dataA ? (
-                  <span className="summary-text">{dataA.zoneCount} zone{dataA.zoneCount > 1 ? 's' : ''} · {dataA.total_violations.toLocaleString()} violations</span>
-                ) : errorA ? (
-                  <span className="summary-error">{errorA}</span>
-                ) : null}
-              </div>
-            )}
-          </div>
+      <div className="trends-config-grid stagger">
+        <ConfigPanel
+          side="A"
+          accent={SIDE_A_COLOR}
+          accentClass="a"
+          zoneOptions={zoneOptions}
+          selected={selectedA}
+          onSelect={setSelectedA}
+          dateMode={dateModeA}
+          setDateMode={(m) => { setDateModeA(m); if (m === "all") setPresetA("all"); else setPresetA("custom"); }}
+          singleDate={singleDateA}
+          setSingleDate={(v) => { setSingleDateA(v); setPresetA("custom"); }}
+          startDate={startDateA}
+          setStartDate={(v) => { setStartDateA(v); setPresetA("custom"); }}
+          endDate={endDateA}
+          setEndDate={(v) => { setEndDateA(v); setPresetA("custom"); }}
+          preset={presetA}
+          applyPreset={makeApplyPreset("A")}
+          dateBounds={dateBounds}
+          loading={loadingA}
+          data={dataA}
+          error={errorA}
+        />
+        <div className="trends-vs-badge" aria-hidden="true">
+          <GitCompare size={18} />
         </div>
-
-        {/* Side B */}
-        <div className="config-panel config-panel--b">
-          <div className="config-panel__stripe config-panel__stripe--b" />
-          <div className="config-panel__inner">
-            <div className="config-panel__label">
-              <span className="side-badge side-badge--b">B</span>
-              <span className="config-panel__title">Configuration B</span>
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Zones</label>
-              <MultiSelectDropdown
-                options={zoneOptions}
-                selected={selectedB}
-                onChange={setSelectedB}
-                placeholder="Select zones…"
-                accentColor={SIDE_B_COLOR}
-              />
-            </div>
-
-            <div className="field-group">
-              <label className="field-label">Time Period</label>
-              <DateControls
-                side="B"
-                dateMode={dateModeB}
-                setDateMode={(m) => { setDateModeB(m); if (m === 'all') setPresetB('all'); }}
-                singleDate={singleDateB}
-                setSingleDate={(v) => { setSingleDateB(v); setPresetB('custom'); }}
-                startDate={startDateB}
-                setStartDate={(v) => { setStartDateB(v); setPresetB('custom'); }}
-                endDate={endDateB}
-                setEndDate={(v) => { setEndDateB(v); setPresetB('custom'); }}
-                preset={presetB}
-                applyPreset={applyPreset}
-                dateBounds={dateBounds}
-              />
-            </div>
-
-            {selectedB.length > 0 && (
-              <div className="config-panel__summary">
-                {loadingB ? (
-                  <span className="summary-loading">Fetching data…</span>
-                ) : dataB ? (
-                  <span className="summary-text">{dataB.zoneCount} zone{dataB.zoneCount > 1 ? 's' : ''} · {dataB.total_violations.toLocaleString()} violations</span>
-                ) : errorB ? (
-                  <span className="summary-error">{errorB}</span>
-                ) : null}
-              </div>
-            )}
-          </div>
-        </div>
+        <ConfigPanel
+          side="B"
+          accent={SIDE_B_COLOR}
+          accentClass="b"
+          zoneOptions={zoneOptions}
+          selected={selectedB}
+          onSelect={setSelectedB}
+          dateMode={dateModeB}
+          setDateMode={(m) => { setDateModeB(m); if (m === "all") setPresetB("all"); else setPresetB("custom"); }}
+          singleDate={singleDateB}
+          setSingleDate={(v) => { setSingleDateB(v); setPresetB("custom"); }}
+          startDate={startDateB}
+          setStartDate={(v) => { setStartDateB(v); setPresetB("custom"); }}
+          endDate={endDateB}
+          setEndDate={(v) => { setEndDateB(v); setPresetB("custom"); }}
+          preset={presetB}
+          applyPreset={makeApplyPreset("B")}
+          dateBounds={dateBounds}
+          loading={loadingB}
+          data={dataB}
+          error={errorB}
+        />
       </div>
 
-      {/* KPI Comparison Bar */}
-      <div className="kpi-strip">
+      <div className="trends-kpi-grid stagger">
         {kpis.map(({ icon: Icon, label, valA, valB }, i) => (
-          <div key={i} className="kpi-item">
-            <div className="kpi-item__header">
-              <Icon size={13} />
+          <div key={i} className="card card-pad trends-kpi">
+            <div className="trends-kpi__label">
+              <Icon size={14} />
               <span>{label}</span>
             </div>
-            <div className="kpi-item__values">
-              <div className="kpi-val kpi-val--a">
-                {loadingA ? <span className="kpi-skeleton" /> : (valA ?? '—')}
+            <div className="trends-kpi__compare">
+              <div className="trends-kpi__val trends-kpi__val--a">
+                {loadingA ? "…" : (valA ?? "—")}
               </div>
-              <div className="kpi-vs">vs</div>
-              <div className="kpi-val kpi-val--b">
-                {loadingB ? <span className="kpi-skeleton" /> : (valB ?? '—')}
+              <span className="trends-kpi__vs">vs</span>
+              <div className="trends-kpi__val trends-kpi__val--b">
+                {loadingB ? "…" : (valB ?? "—")}
               </div>
-            </div>
-            <div className="kpi-item__labels">
-              <span style={{ color: SIDE_A_COLOR }}>A</span>
-              <span style={{ color: SIDE_B_COLOR }}>B</span>
             </div>
           </div>
         ))}
       </div>
 
-      {/* Charts */}
-      <div className="charts-row">
-        <div className="chart-card">
-          <div className="chart-card__header">
-            <h3>Hourly violation distribution</h3>
-            <div className="chart-legend">
-              <span className="legend-dot" style={{ background: SIDE_A_COLOR }} />A
-              <span className="legend-dot" style={{ background: SIDE_B_COLOR }} />B
+      <div className="trends-charts stagger">
+        <div className="card card-pad">
+          <div className="trends-chart-head">
+            <div>
+              <span className="overline">24-hour rhythm</span>
+              <h3>Hourly violation distribution</h3>
+            </div>
+            <div className="trends-chart-legend">
+              <span><i style={{ background: SIDE_A_COLOR }} />A</span>
+              <span><i style={{ background: SIDE_B_COLOR }} />B</span>
             </div>
           </div>
-          <div className="chart-card__body">
-            <ResponsiveContainer width="100%" height={240}>
-              <LineChart data={hourlyData} margin={{ top: 8, right: 16, left: -10, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                <XAxis dataKey="hour" tick={{ fontSize: 10, fill: 'var(--text-muted)' }} tickLine={false} interval={3} />
-                <YAxis tick={{ fontSize: 10, fill: 'var(--text-muted)' }} tickLine={false} axisLine={false} />
-                <Tooltip content={<CustomTooltip />} />
-                <Line type="monotone" dataKey="Side A" stroke={SIDE_A_COLOR} strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
-                <Line type="monotone" dataKey="Side B" stroke={SIDE_B_COLOR} strokeWidth={2} dot={false} activeDot={{ r: 4 }} />
+          <div className="trends-chart-body">
+            <ResponsiveContainer width="100%" height={260}>
+              <LineChart data={hourlyData} margin={{ top: 8, right: 12, left: -8, bottom: 0 }}>
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                <XAxis dataKey="hour" tick={{ fontSize: 10, fill: "var(--text-muted)", fontFamily: "var(--font-mono)" }} tickLine={false} interval={3} />
+                <YAxis tick={{ fontSize: 10, fill: "var(--text-muted)" }} tickLine={false} axisLine={false} />
+                <Tooltip content={<ChartTooltip />} />
+                <Line type="monotone" dataKey="Side A" stroke={SIDE_A_COLOR} strokeWidth={2.5} dot={false} activeDot={{ r: 4, fill: SIDE_A_COLOR }} />
+                <Line type="monotone" dataKey="Side B" stroke={SIDE_B_COLOR} strokeWidth={2.5} dot={false} activeDot={{ r: 4, fill: SIDE_B_COLOR }} />
               </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
 
-        <div className="chart-card">
-          <div className="chart-card__header">
-            <h3>Vehicle type breakdown</h3>
-            <div className="chart-legend">
-              <span className="legend-dot" style={{ background: SIDE_A_COLOR }} />A
-              <span className="legend-dot" style={{ background: SIDE_B_COLOR }} />B
+        <div className="card card-pad">
+          <div className="trends-chart-head">
+            <div>
+              <span className="overline">Fleet profile</span>
+              <h3>Vehicle type breakdown</h3>
+            </div>
+            <div className="trends-chart-legend">
+              <span><i style={{ background: SIDE_A_COLOR }} />A</span>
+              <span><i style={{ background: SIDE_B_COLOR }} />B</span>
             </div>
           </div>
-          <div className="chart-card__body">
-            <ResponsiveContainer width="100%" height={240}>
-              <BarChart data={vehicleData} margin={{ top: 8, right: 16, left: -10, bottom: 0 }} barGap={2}>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                <XAxis dataKey="name" tick={{ fontSize: 10, fill: 'var(--text-muted)' }} tickLine={false} />
-                <YAxis tick={{ fontSize: 10, fill: 'var(--text-muted)' }} tickLine={false} axisLine={false} />
-                <Tooltip content={<CustomTooltip />} />
-                <Bar dataKey="Side A" fill={SIDE_A_COLOR} radius={[3, 3, 0, 0]} maxBarSize={18} />
-                <Bar dataKey="Side B" fill={SIDE_B_COLOR} radius={[3, 3, 0, 0]} maxBarSize={18} />
+          <div className="trends-chart-body">
+            <ResponsiveContainer width="100%" height={260}>
+              <BarChart data={vehicleData} margin={{ top: 8, right: 12, left: -8, bottom: 0 }} barGap={3}>
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" vertical={false} />
+                <XAxis dataKey="name" tick={{ fontSize: 10, fill: "var(--text-muted)", fontFamily: "var(--font-mono)" }} tickLine={false} />
+                <YAxis tick={{ fontSize: 10, fill: "var(--text-muted)" }} tickLine={false} axisLine={false} />
+                <Tooltip content={<ChartTooltip />} />
+                <Bar dataKey="Side A" fill={SIDE_A_COLOR} radius={[4, 4, 0, 0]} maxBarSize={20} />
+                <Bar dataKey="Side B" fill={SIDE_B_COLOR} radius={[4, 4, 0, 0]} maxBarSize={20} />
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
       </div>
 
-      {/* Violation Type Lists */}
-      <div className="violation-lists">
-        {[{ data: dataA, loading: loadingA, error: errorA, color: SIDE_A_COLOR, label: 'A' },
-        { data: dataB, loading: loadingB, error: errorB, color: SIDE_B_COLOR, label: 'B' }].map(({ data, loading, error, color, label }) => (
-          <div key={label} className="violation-card">
-            <div className="violation-card__header">
-              <span className="side-badge" style={{ background: `${color}20`, color: color, border: `1px solid ${color}40` }}>{label}</span>
+      <div className="trends-violations stagger">
+        {[
+          { data: dataA, loading: loadingA, error: errorA, side: "A", accent: SIDE_A_COLOR, accentClass: "a" },
+          { data: dataB, loading: loadingB, error: errorB, side: "B", accent: SIDE_B_COLOR, accentClass: "b" },
+        ].map(({ data, loading, error, side, accent, accentClass }) => (
+          <div key={side} className="card card-pad">
+            <div className="trends-violations__head">
+              <span className={`trends-side-badge trends-side-badge--${accentClass}`}>{side}</span>
               <h3>Top violation categories</h3>
             </div>
-            <div className="violation-card__body">
-              {loading && <div className="violation-empty">Loading…</div>}
-              {error && <div className="violation-error">{error}</div>}
-              {!data && !loading && !error && (
-                <div className="violation-empty">Select zones to see categories</div>
-              )}
-              {data && (
-                <ol className="violation-list">
-                  {data.top_violation_types.map((v, i) => {
-                    const max = data.top_violation_types[0]?.count || 1;
-                    const pct = (v.count / max) * 100;
-                    return (
-                      <li key={i} className="violation-item">
-                        <div className="violation-item__top">
-                          <span className="violation-rank" style={{ color }}>{String(i + 1).padStart(2, '0')}</span>
-                          <span className="violation-name">{v.type}</span>
-                          <span className="violation-count" style={{ color }}>{v.count.toLocaleString()}</span>
-                        </div>
-                        <div className="violation-bar-track">
-                          <div className="violation-bar-fill" style={{ width: `${pct}%`, background: color }} />
-                        </div>
-                      </li>
-                    );
-                  })}
-                </ol>
-              )}
-            </div>
+            {loading && <p className="trends-empty">Loading categories…</p>}
+            {error && <p className="trends-empty trends-empty--err">{error}</p>}
+            {!data && !loading && !error && (
+              <p className="trends-empty">Select zones to see categories.</p>
+            )}
+            {data && (
+              <ol className="trends-violation-list">
+                {data.top_violation_types.map((v, i) => {
+                  const max = data.top_violation_types[0]?.count || 1;
+                  const pct = (v.count / max) * 100;
+                  return (
+                    <li key={i} className="trends-violation-item">
+                      <div className="trends-violation-item__top">
+                        <span className="trends-violation-rank" style={{ color: accent }}>
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="trends-violation-name">{v.type}</span>
+                        <span className="trends-violation-count" style={{ color: accent }}>
+                          {v.count.toLocaleString()}
+                        </span>
+                      </div>
+                      <div className="danger-bar-track">
+                        <div className="danger-bar-fill" style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${accent}, var(--signal-red))` }} />
+                      </div>
+                    </li>
+                  );
+                })}
+              </ol>
+            )}
           </div>
         ))}
       </div>
-
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, ChevronDown, X, Check } from 'lucide-react';
 
-export default function MultiSelectDropdown({ options, selected, onChange, placeholder = 'Select Zones', accentColor = '#3b82f6' }) {
+export default function MultiSelectDropdown({ options, selected, onChange, placeholder = 'Select Zones', accentColor = '#1B4332' }) {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const containerRef = useRef(null);

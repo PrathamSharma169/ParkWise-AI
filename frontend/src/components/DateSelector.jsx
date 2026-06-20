@@ -1,178 +1,213 @@
-import React, { useEffect, useState } from 'react';
-import { getDateRange } from '../utils/api';
-import { Calendar, Clock, ChevronRight } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from "react";
+import { getDateRange } from "@/utils/api";
+import { Calendar, Clock, ChevronRight, Filter, ChevronUp } from "lucide-react";
 
-export default function DateSelector({ onFilterChange }) {
-  const [bounds, setBounds] = useState({ min: '2023-11-01', max: '2024-04-30' });
-  const [filterMode, setFilterMode] = useState('all'); // 'all', 'single', 'range'
-  const [singleDate, setSingleDate] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [endDate, setEndDate] = useState('');
-  const [activePreset, setActivePreset] = useState('all');
+const PRESETS = [
+  { key: "all", label: "All time" },
+  { key: "nov23", label: "Nov 2023", start: "2023-11-01", end: "2023-11-30" },
+  { key: "dec23", label: "Dec 2023", start: "2023-12-01", end: "2023-12-31" },
+  { key: "mar24", label: "Mar 2024", start: "2024-03-01", end: "2024-03-31" },
+  { key: "apr24", label: "Apr 2024", start: "2024-04-01", end: "2024-04-30" },
+];
 
-  // Fetch date boundaries from dataset on mount
+function formatLabel(dateStr) {
+  if (!dateStr) return "";
+  return new Date(`${dateStr}T00:00:00`).toLocaleDateString("en-IN", {
+    day: "numeric",
+    month: "short",
+    year: "numeric",
+  });
+}
+
+export default function DateSelector({ onFilterChange, onCollapse }) {
+  const [bounds, setBounds] = useState({ min: "2023-11-01", max: "2024-04-30" });
+  const [filterMode, setFilterMode] = useState("all");
+  const [singleDate, setSingleDate] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const [activePreset, setActivePreset] = useState("all");
+
   useEffect(() => {
     async function loadBounds() {
       try {
         const range = await getDateRange();
-        setBounds({
-          min: range.min_date,
-          max: range.max_date,
-        });
-        
-        // Initialize inputs within limits
+        setBounds({ min: range.min_date, max: range.max_date });
         setSingleDate(range.min_date);
         setStartDate(range.min_date);
         setEndDate(range.max_date);
       } catch (e) {
-        console.error('Failed to load date boundaries:', e);
+        console.error("Failed to load date boundaries:", e);
       }
     }
     loadBounds();
   }, []);
 
-  // Propagate date selection changes back to ConsoleLayout
   useEffect(() => {
-    if (filterMode === 'all') {
+    if (filterMode === "all") {
       onFilterChange(null, null);
-    } else if (filterMode === 'single') {
-      if (singleDate) {
-        onFilterChange(singleDate, singleDate);
-      }
-    } else if (filterMode === 'range') {
-      if (startDate && endDate) {
-        onFilterChange(startDate, endDate);
-      }
+    } else if (filterMode === "single" && singleDate) {
+      onFilterChange(singleDate, singleDate);
+    } else if (filterMode === "range" && startDate && endDate) {
+      onFilterChange(startDate, endDate);
     }
   }, [filterMode, singleDate, startDate, endDate]);
 
-  const applyPreset = (presetName, start, end) => {
-    setActivePreset(presetName);
-    if (presetName === 'all') {
-      setFilterMode('all');
-    } else {
-      setFilterMode('range');
-      setStartDate(start);
-      setEndDate(end);
+  const applyPreset = (preset) => {
+    setActivePreset(preset.key);
+    if (preset.key === "all") {
+      setFilterMode("all");
+      return;
     }
+    setFilterMode("range");
+    setStartDate(preset.start);
+    setEndDate(preset.end);
   };
 
   const handleModeChange = (mode) => {
     setFilterMode(mode);
-    setActivePreset(mode === 'all' ? 'all' : 'custom');
+    setActivePreset(mode === "all" ? "all" : "custom");
   };
 
+  const activeSummary = useMemo(() => {
+    if (filterMode === "all") return "Full dataset · all recorded violations";
+    if (filterMode === "single" && singleDate) {
+      return `Single day · ${formatLabel(singleDate)}`;
+    }
+    if (filterMode === "range" && startDate && endDate) {
+      return `${formatLabel(startDate)} → ${formatLabel(endDate)}`;
+    }
+    return "Select a date range";
+  }, [filterMode, singleDate, startDate, endDate]);
+
   return (
-    <div className="date-selector-container">
-      {/* Mode Selectors */}
-      <div className="date-mode-toggle">
-        <button
-          className={`mode-btn ${filterMode === 'all' ? 'active' : ''}`}
-          onClick={() => handleModeChange('all')}
-        >
-          <Clock size={13} />
-          <span>Full Dataset</span>
-        </button>
-        <button
-          className={`mode-btn ${filterMode === 'single' ? 'active' : ''}`}
-          onClick={() => handleModeChange('single')}
-        >
-          <Calendar size={13} />
-          <span>Single Date</span>
-        </button>
-        <button
-          className={`mode-btn ${filterMode === 'range' ? 'active' : ''}`}
-          onClick={() => handleModeChange('range')}
-        >
-          <Calendar size={13} />
-          <span>Date Period</span>
-        </button>
+    <div className="date-filter" data-testid="date-filter">
+      <div className="date-filter__head">
+        <div className="date-filter__title">
+          <Filter size={14} strokeWidth={2.2} />
+          <div>
+            <span className="overline">Temporal filter</span>
+            <p className="date-filter__summary">{activeSummary}</p>
+          </div>
+        </div>
+
+        <div className="date-filter__head-actions">
+          {onCollapse && (
+            <button
+              type="button"
+              className="btn btn-ghost date-filter__collapse"
+              onClick={onCollapse}
+              data-testid="collapse-dates-btn"
+            >
+              Collapse
+              <ChevronUp size={14} />
+            </button>
+          )}
+          <div className="nav-pills date-filter__modes" role="tablist" aria-label="Date filter mode">
+            <button
+              type="button"
+              role="tab"
+              aria-selected={filterMode === "all"}
+              className={`nav-pill ${filterMode === "all" ? "active" : ""}`}
+              onClick={() => handleModeChange("all")}
+            >
+              <Clock size={14} />
+              Full dataset
+            </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={filterMode === "single"}
+            className={`nav-pill ${filterMode === "single" ? "active" : ""}`}
+            onClick={() => handleModeChange("single")}
+          >
+            <Calendar size={14} />
+            Single day
+          </button>
+          <button
+            type="button"
+            role="tab"
+            aria-selected={filterMode === "range"}
+            className={`nav-pill ${filterMode === "range" ? "active" : ""}`}
+            onClick={() => handleModeChange("range")}
+          >
+            <Calendar size={14} />
+            Date range
+          </button>
+          </div>
+        </div>
       </div>
 
-      {/* Dynamic Date Inputs based on Mode */}
-      {filterMode === 'single' && (
-        <div className="date-inputs-wrapper single-date-mode">
-          <label>Select Date:</label>
-          <input
-            type="date"
-            value={singleDate}
-            min={bounds.min}
-            max={bounds.max}
-            onChange={(e) => {
-              setSingleDate(e.target.value);
-              setActivePreset('custom');
-            }}
-            className="premium-date-input"
-          />
-        </div>
-      )}
+      <p className="date-filter__helper">
+        All maps, rankings, and severity colors recalculate for the selected period.
+      </p>
 
-      {filterMode === 'range' && (
-        <div className="date-inputs-wrapper range-date-mode">
-          <div className="date-input-field">
-            <label>From:</label>
+      <div className="date-filter__body">
+        {filterMode === "single" && (
+          <div className="date-filter__inputs date-filter__inputs--single">
+            <label className="date-filter__label" htmlFor="date-single">Select date</label>
             <input
+              id="date-single"
               type="date"
-              value={startDate}
+              value={singleDate}
               min={bounds.min}
               max={bounds.max}
               onChange={(e) => {
-                setStartDate(e.target.value);
-                setActivePreset('custom');
+                setSingleDate(e.target.value);
+                setActivePreset("custom");
               }}
-              className="premium-date-input"
+              className="date-filter__input"
             />
           </div>
-          <ChevronRight size={14} className="input-separator" />
-          <div className="date-input-field">
-            <label>To:</label>
-            <input
-              type="date"
-              value={endDate}
-              min={bounds.min}
-              max={bounds.max}
-              onChange={(e) => {
-                setEndDate(e.target.value);
-                setActivePreset('custom');
-              }}
-              className="premium-date-input"
-            />
-          </div>
-        </div>
-      )}
+        )}
 
-      {/* Preset Pills */}
-      <div className="date-presets-wrapper">
-        <button
-          className={`preset-pill ${activePreset === 'all' ? 'active' : ''}`}
-          onClick={() => applyPreset('all')}
-        >
-          All Time
-        </button>
-        <button
-          className={`preset-pill ${activePreset === 'nov23' ? 'active' : ''}`}
-          onClick={() => applyPreset('nov23', '2023-11-01', '2023-11-30')}
-        >
-          Nov 2023
-        </button>
-        <button
-          className={`preset-pill ${activePreset === 'dec23' ? 'active' : ''}`}
-          onClick={() => applyPreset('dec23', '2023-12-01', '2023-12-31')}
-        >
-          Dec 2023
-        </button>
-        <button
-          className={`preset-pill ${activePreset === 'mar24' ? 'active' : ''}`}
-          onClick={() => applyPreset('mar24', '2024-03-01', '2024-03-31')}
-        >
-          Mar 2024
-        </button>
-        <button
-          className={`preset-pill ${activePreset === 'apr24' ? 'active' : ''}`}
-          onClick={() => applyPreset('apr24', '2024-04-01', '2024-04-30')}
-        >
-          Apr 2024
-        </button>
+        {filterMode === "range" && (
+          <div className="date-filter__inputs date-filter__inputs--range">
+            <div className="date-filter__field">
+              <label className="date-filter__label" htmlFor="date-from">From</label>
+              <input
+                id="date-from"
+                type="date"
+                value={startDate}
+                min={bounds.min}
+                max={bounds.max}
+                onChange={(e) => {
+                  setStartDate(e.target.value);
+                  setActivePreset("custom");
+                }}
+                className="date-filter__input"
+              />
+            </div>
+            <ChevronRight size={14} className="date-filter__sep" aria-hidden="true" />
+            <div className="date-filter__field">
+              <label className="date-filter__label" htmlFor="date-to">To</label>
+              <input
+                id="date-to"
+                type="date"
+                value={endDate}
+                min={bounds.min}
+                max={bounds.max}
+                onChange={(e) => {
+                  setEndDate(e.target.value);
+                  setActivePreset("custom");
+                }}
+                className="date-filter__input"
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="date-filter__presets" role="group" aria-label="Quick presets">
+          {PRESETS.map((preset) => (
+            <button
+              key={preset.key}
+              type="button"
+              className={`date-preset ${activePreset === preset.key ? "date-preset--active" : ""}`}
+              onClick={() => applyPreset(preset)}
+            >
+              {preset.label}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -4,6 +4,8 @@ import {
   Filter, Sparkles, LoaderCircle, ChevronRight, ListChecks,
 } from "lucide-react";
 import { getRecommendations, explainZoneRisk, getHotspotDetail } from "@/utils/api";
+import TemporalScopeBanner from "@/components/TemporalScopeBanner";
+import { getRecommendationsHeadline, useConsoleScope } from "@/utils/useTemporalScope";
 import ZoneDetails from "@/components/ZoneDetails";
 
 const CLASSIFICATIONS = [
@@ -23,7 +25,7 @@ const META = {
   "Stable Zone":             { bg: "var(--signal-green)",     fg: "white", note: "Routine monitoring" },
 };
 
-function ZoneCard({ zone, onOpen }) {
+function ZoneCard({ zone, onOpen, startDate, endDate }) {
   const [ai, setAi] = useState(null);
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
@@ -36,7 +38,7 @@ function ZoneCard({ zone, onOpen }) {
     setLoading(true);
     setErr(null);
     try {
-      const r = await explainZoneRisk(zone.zone_id);
+      const r = await explainZoneRisk(zone.zone_id, startDate, endDate);
       setAi(r);
     } catch (e2) {
       setErr("Couldn't generate briefing right now.");
@@ -168,6 +170,7 @@ function ZoneCard({ zone, onOpen }) {
 }
 
 export default function RecommendationPanel({ startDate, endDate }) {
+  const { scopeMeta } = useConsoleScope();
   const [data, setData] = useState(null);
   const [filter, setFilter] = useState("all");
   const [openZoneId, setOpenZoneId] = useState(null);
@@ -175,8 +178,12 @@ export default function RecommendationPanel({ startDate, endDate }) {
   const [openLoading, setOpenLoading] = useState(false);
 
   useEffect(() => {
-    getRecommendations().then(setData).catch(() => {});
-  }, []);
+    let cancelled = false;
+    getRecommendations(startDate, endDate)
+      .then((res) => { if (!cancelled) setData(res); })
+      .catch(() => { if (!cancelled) setData(null); });
+    return () => { cancelled = true; };
+  }, [startDate, endDate]);
 
   const zones = useMemo(() => {
     if (!data) return [];
@@ -188,7 +195,7 @@ export default function RecommendationPanel({ startDate, endDate }) {
     setOpenZoneId(zoneId);
     setOpenLoading(true);
     try {
-      const d = await getHotspotDetail(zoneId);
+      const d = await getHotspotDetail(zoneId, startDate, endDate);
       setOpenDetail(d);
     } finally {
       setOpenLoading(false);
@@ -209,8 +216,9 @@ export default function RecommendationPanel({ startDate, endDate }) {
     <div className="page-shell" data-testid="recommendations-page">
       <div className="section-head">
         <div>
-          {/* <div className="overline overline-red">◉ Action Center · Dispatch Ready</div> */}
-          <h2 style={{ fontSize: 28, marginTop: 8 }}>{data.total} zones. One queue.</h2>
+          <h2 style={{ fontSize: 28, marginTop: 8 }}>
+            {getRecommendationsHeadline(data.total, scopeMeta)}
+          </h2>
           <p>Every zone arrives with a classification, dispatch-ready actions, and an AI briefing on tap.</p>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-muted)" }}>
@@ -218,7 +226,7 @@ export default function RecommendationPanel({ startDate, endDate }) {
         </div>
       </div>
 
-      {/* KPI strip */}
+      <TemporalScopeBanner scopeMeta={scopeMeta} />
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
@@ -295,7 +303,7 @@ export default function RecommendationPanel({ startDate, endDate }) {
         gap: 16,
       }} className="stagger" data-testid="zone-cards">
         {zones.map((z) => (
-          <ZoneCard key={z.zone_id} zone={z} onOpen={openCase} />
+          <ZoneCard key={z.zone_id} zone={z} onOpen={openCase} startDate={startDate} endDate={endDate} />
         ))}
         {zones.length === 0 && (
           <div className="card card-pad" style={{ gridColumn: "1 / -1", textAlign: "center" }}>
@@ -309,6 +317,8 @@ export default function RecommendationPanel({ startDate, endDate }) {
           detail={openDetail}
           loading={openLoading}
           onClose={() => { setOpenZoneId(null); setOpenDetail(null); }}
+          startDate={startDate}
+          endDate={endDate}
         />
       )}
     </div>

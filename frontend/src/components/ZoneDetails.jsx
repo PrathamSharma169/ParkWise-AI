@@ -4,6 +4,7 @@ import {
   AlertTriangle, FileText, Activity, ListChecks, Building2,
 } from "lucide-react";
 import { explainZoneRisk } from "@/utils/api";
+import { getBriefingScopeTag, getScopeRhythmLabel, useConsoleScope } from "@/utils/useTemporalScope";
 
 const VEHICLE_ICON = {
   CAR: "🚗", BIKE: "🏍️", AUTO: "🛺",
@@ -51,7 +52,10 @@ function MiniHourBars({ distribution = {} }) {
   );
 }
 
-export default function ZoneDetails({ detail, loading, onClose }) {
+export default function ZoneDetails({ detail, loading, onClose, startDate, endDate }) {
+  const { scopeMeta } = useConsoleScope();
+  const scopeTag = getBriefingScopeTag(scopeMeta);
+  const rhythmLabel = getScopeRhythmLabel(scopeMeta);
   const [ai, setAi] = useState(null);
   const [aiLoading, setAiLoading] = useState(false);
   const [aiError, setAiError] = useState(null);
@@ -66,7 +70,7 @@ export default function ZoneDetails({ detail, loading, onClose }) {
     setAiLoading(true);
     setAiError(null);
     try {
-      const r = await explainZoneRisk(detail.zone_id);
+      const r = await explainZoneRisk(detail.zone_id, startDate, endDate);
       setAi(r);
     } catch (e) {
       setAiError("Unable to generate AI briefing right now.");
@@ -107,7 +111,10 @@ export default function ZoneDetails({ detail, loading, onClose }) {
         <button className="briefing-close" onClick={onClose} data-testid="briefing-close" aria-label="close">
           <X size={16} />
         </button>
-        <span className="briefing-tag">◉ OFFICIAL DISPATCH · CASE FILE #{String(detail.zone_id).padStart(3, "0")}</span>
+        <span className="briefing-tag">
+          ◉ OFFICIAL DISPATCH · CASE FILE #{String(detail.zone_id).padStart(3, "0")}
+          {scopeTag ? ` · ${scopeTag}` : ""}
+        </span>
         <h2 className="briefing-title" data-testid="briefing-zone-name">{detail.zone_name}</h2>
 
         <div style={{
@@ -227,7 +234,7 @@ export default function ZoneDetails({ detail, loading, onClose }) {
         <div className="briefing-block">
           <div className="briefing-block-label" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Clock size={12} />
-            Violation Rhythm · 24-hour pattern
+            {rhythmLabel}
           </div>
           <MiniHourBars distribution={detail.hourly_distribution} />
           <div style={{ display: "flex", justifyContent: "space-between",

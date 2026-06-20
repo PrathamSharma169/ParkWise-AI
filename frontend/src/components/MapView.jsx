@@ -3,6 +3,8 @@ import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaf
 import { Activity, AlertTriangle, Search, X } from "lucide-react";
 import { getDensityMap, getImpactMap, getHotspotDetail } from "@/utils/api";
 import ZoneDetails from "@/components/ZoneDetails";
+import TemporalScopeBanner from "@/components/TemporalScopeBanner";
+import { getMapHeadline, useConsoleScope } from "@/utils/useTemporalScope";
 
 const BENGALURU_CENTER = [12.9716, 77.5946];
 
@@ -24,7 +26,8 @@ function severityColor(severity) {
   }[severity] || "#8C9298";
 }
 
-export default function MapView() {
+export default function MapView({ startDate, endDate }) {
+  const { scopeMeta } = useConsoleScope();
   const [mode, setMode] = useState("density"); // 'density' | 'impact'
   const [density, setDensity] = useState([]);
   const [impact, setImpact] = useState([]);
@@ -32,11 +35,46 @@ export default function MapView() {
   const [selected, setSelected] = useState(null);
   const [detail, setDetail] = useState(null);
   const [loadingDetail, setLoadingDetail] = useState(false);
+  const [loadingMaps, setLoadingMaps] = useState(true);
 
   useEffect(() => {
-    getDensityMap().then(setDensity).catch(() => {});
-    getImpactMap().then(setImpact).catch(() => {});
-  }, []);
+    let cancelled = false;
+    setLoadingMaps(true);
+    Promise.all([
+      getDensityMap(startDate, endDate),
+      getImpactMap(startDate, endDate),
+    ])
+      .then(([d, i]) => {
+        if (!cancelled) {
+          setDensity(d);
+          setImpact(i);
+        }
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setDensity([]);
+          setImpact([]);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setLoadingMaps(false);
+      });
+    return () => { cancelled = true; };
+  }, [startDate, endDate]);
+
+  useEffect(() => {
+    if (selected === null) {
+      setDetail(null);
+      return;
+    }
+    let cancelled = false;
+    setLoadingDetail(true);
+    getHotspotDetail(selected, startDate, endDate)
+      .then((d) => { if (!cancelled) setDetail(d); })
+      .catch(() => { if (!cancelled) setDetail(null); })
+      .finally(() => { if (!cancelled) setLoadingDetail(false); });
+    return () => { cancelled = true; };
+  }, [selected, startDate, endDate]);
 
   const markers = mode === "density" ? density : impact;
 
@@ -50,15 +88,6 @@ export default function MapView() {
 
   async function openZone(zoneId) {
     setSelected(zoneId);
-    setLoadingDetail(true);
-    try {
-      const d = await getHotspotDetail(zoneId);
-      setDetail(d);
-    } catch (e) {
-      setDetail(null);
-    } finally {
-      setLoadingDetail(false);
-    }
   }
 
   function closeZone() {
@@ -72,15 +101,20 @@ export default function MapView() {
       <div className="section-head">
         <div>
           <h2 style={{ fontSize: 28, marginTop: 8 }}>
-            {mode === "density"
-              ? "Where the city breaks down."
-              : "Which break down to fix first."}
+            {getMapHeadline(mode, scopeMeta)}
           </h2>
           <p>
             {mode === "density"
-              ? "Marker size and colour map to violation density percentile (P25 → P90)."
+              ? scopeMeta?.filtered
+                ? "Marker size and colour map to violation density percentile within the selected period (P25 → P90)."
+                : "Marker size and colour map to violation density percentile (P25 → P90)."
               : "Composite Impact Score — violation density, vehicle weight, junction risk and enforcement difficulty rolled into one rank."}
           </p>
+          {scopeMeta?.filtered && (
+            <p className="map-rebaseline-note">
+              Marker colors show percentile rank within {scopeMeta.shortLabel || "this period"}, not vs all-time.
+            </p>
+          )}
         </div>
 
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
@@ -113,8 +147,10 @@ export default function MapView() {
         </div>
       </div>
 
+      <TemporalScopeBanner scopeMeta={scopeMeta} />
+
       {/* Map */}
-      <div className="map-frame" data-testid="map-frame">
+      <div className={`map-frame ${loadingMaps ? "map-frame--loading" : ""}`} data-testid="map-frame">
         <MapContainer
           center={BENGALURU_CENTER}
           zoom={10.8}
@@ -140,9 +176,9 @@ export default function MapView() {
                 pathOptions={{
                   color,
                   fillColor: color,
-                  fillOpacity: 0.72,
+                  fillOpacity: loadingMaps ? 0.35 : 0.72,
                   weight: 2,
-                  className: "leaflet-marker-pulse",
+                  className: loadingMaps ? "leaflet-marker-loading" : "leaflet-marker-pulse",
                 }}
                 eventHandlers={{
                   click: () => openZone(m.zone_id),
@@ -224,11 +260,16 @@ export default function MapView() {
               <span style={{ color: "var(--text-secondary)" }}>{label}</span>
             </div>
           ))}
+          {scopeMeta?.filtered && (
+            <p className="map-legend-footnote">
+              Critical / High / Moderate / Low — relative to selected dates
+            </p>
+          )}
           <div style={{
             marginTop: 10, paddingTop: 10, borderTop: "1px solid var(--border)",
             fontSize: 11, color: "var(--text-muted)",
           }}>
-            {filteredMarkers.length} of {markers.length} zones shown
+            {loadingMaps ? "Updating for selected dates…" : `${filteredMarkers.length} of ${markers.length} zones shown`}
           </div>
         </div>
       </div>
@@ -239,6 +280,8 @@ export default function MapView() {
           detail={detail}
           loading={loadingDetail}
           onClose={closeZone}
+          startDate={startDate}
+          endDate={endDate}
         />
       )}
     </div>

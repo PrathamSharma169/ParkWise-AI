@@ -6,7 +6,9 @@ import {
   Activity, MapPin, TrendingUp, EyeOff, Sun, Moon, Building2,
 } from "lucide-react";
 import Odometer from "@/components/Odometer";
-import { getAnalytics, getHotspots } from "@/utils/api";
+import TemporalScopeBanner from "@/components/TemporalScopeBanner";
+import { getHotspots } from "@/utils/api";
+import { getDashboardHeadline, useConsoleScope } from "@/utils/useTemporalScope";
 
 const SEVERITY_PALETTE = {
   critical: "#D90429",
@@ -154,15 +156,20 @@ function PoliceStationBar({ data }) {
   );
 }
 
-export default function CityDashboard() {
-  const [analytics, setAnalytics] = useState(null);
+export default function CityDashboard({ startDate, endDate }) {
+  const { analytics, scopeMeta, scopeLoading } = useConsoleScope();
   const [hotspots, setHotspots] = useState([]);
+  const [loadingHotspots, setLoadingHotspots] = useState(true);
 
   useEffect(() => {
-    Promise.all([getAnalytics(), getHotspots()])
-      .then(([a, h]) => { setAnalytics(a); setHotspots(h); })
-      .catch(() => {});
-  }, []);
+    let cancelled = false;
+    setLoadingHotspots(true);
+    getHotspots(startDate, endDate)
+      .then((h) => { if (!cancelled) setHotspots(h); })
+      .catch(() => { if (!cancelled) setHotspots([]); })
+      .finally(() => { if (!cancelled) setLoadingHotspots(false); });
+    return () => { cancelled = true; };
+  }, [startDate, endDate]);
 
   // Aggregated hourly data
   const hourlyWaveData = useMemo(() => {
@@ -194,7 +201,7 @@ export default function CityDashboard() {
     }));
   }, [analytics]);
 
-  if (!analytics) {
+  if ((scopeLoading || loadingHotspots) && !analytics) {
     return (
       <div className="page-shell" data-testid="dashboard-loading">
         <p style={{ color: "var(--text-muted)" }}>Loading city pulse…</p>
@@ -202,17 +209,40 @@ export default function CityDashboard() {
     );
   }
 
+  if (!analytics) {
+    return (
+      <div className="page-shell" data-testid="dashboard-loading">
+        <p style={{ color: "var(--text-muted)" }}>Could not load city pulse data.</p>
+      </div>
+    );
+  }
+
   const sev = analytics.severity_distribution || {};
+  const filtered = scopeMeta?.filtered;
+
+  const kpiDeltas = {
+    "Risk Zones": filtered && scopeMeta?.baselineZones
+      ? `${analytics.total_zones} of ${scopeMeta.baselineZones} zones active in this period`
+      : "Clustered hotspots",
+    "Total Violations": filtered && scopeMeta?.violationDelta
+      ? `${scopeMeta.violationDelta} vs full dataset`
+      : "Mapped across the city",
+    "Avg Impact Score": filtered && scopeMeta?.impactDelta
+      ? `${scopeMeta.impactDelta} vs full dataset avg`
+      : "Composite score / 100",
+    "Hidden Hotspots": "Low density, high impact",
+  };
 
   return (
     <div className="page-shell" data-testid="dashboard-page">
       <div className="section-head">
         <div>
-          {/* <div className="overline">◉ City Pulse · Live across {analytics.total_zones} Zones</div> */}
-          <h2 style={{ fontSize: 28, marginTop: 8 }}>How Bengaluru is breathing today.</h2>
+          <h2 style={{ fontSize: 28, marginTop: 8 }}>{getDashboardHeadline(scopeMeta)}</h2>
           <p>A consolidated read-out of the city's parking-pressure footprint, ranked &amp; visualised.</p>
         </div>
       </div>
+
+      <TemporalScopeBanner scopeMeta={scopeMeta} />
 
       {/* KPI grid */}
       <div style={{
@@ -224,7 +254,7 @@ export default function CityDashboard() {
           {
             label: "Risk Zones",
             value: analytics.total_zones,
-            sub: "Clustered hotspots",
+            sub: kpiDeltas["Risk Zones"],
             icon: MapPin,
             color: "var(--primary)",
             tint: "var(--primary-tint)",
@@ -232,7 +262,7 @@ export default function CityDashboard() {
           {
             label: "Total Violations",
             value: analytics.total_violations,
-            sub: "Mapped across the city",
+            sub: kpiDeltas["Total Violations"],
             icon: Activity,
             color: "var(--signal-red)",
             tint: "var(--signal-red-tint)",
@@ -240,7 +270,7 @@ export default function CityDashboard() {
           {
             label: "Avg Impact Score",
             value: Number((analytics.avg_impact_score || 0).toFixed(1)),
-            sub: "Composite score / 100",
+            sub: kpiDeltas["Avg Impact Score"],
             icon: TrendingUp,
             color: "var(--auto-yellow-deep)",
             tint: "var(--auto-yellow-tint)",
@@ -249,7 +279,7 @@ export default function CityDashboard() {
           {
             label: "Hidden Hotspots",
             value: (analytics.overlooked_zones || []).length,
-            sub: "Low density, high impact",
+            sub: kpiDeltas["Hidden Hotspots"],
             icon: EyeOff,
             color: "var(--primary-light)",
             tint: "var(--primary-tint)",
@@ -271,7 +301,7 @@ export default function CityDashboard() {
               <div style={{ fontSize: 40, color: kpi.color, lineHeight: 1.05 }}>
                 <Odometer value={kpi.value} duration={1600} decimals={kpi.decimals || 0} />
               </div>
-              <div style={{ marginTop: 6, fontSize: 12.5, color: "var(--text-muted)" }}>
+              <div className={`kpi-sub ${filtered && kpi.label !== "Hidden Hotspots" ? "kpi-sub--delta" : ""}`}>
                 {kpi.sub}
               </div>
             </div>
