@@ -46,13 +46,10 @@ PERCENTILE_SEVERITY = {
 def severity_from_percentile(percentile: str) -> tuple[str, str]:
     """Map P90/P75/P50/P25 percentile band to severity label and color."""
     return PERCENTILE_SEVERITY.get(percentile, PERCENTILE_SEVERITY["P25"])
-# In-memory dataframe loading and caching configuration
-CLEANED_DF = None
-DF_LOADED = False
-df_lock = threading.Lock()
-
+# In-memory analytics cache (violations loaded from database on demand)
 _ANALYTICS_CACHE = {}
 _CACHE_LOCK = threading.Lock()
+_COMPUTE_LOCK = threading.Lock()
 
 
 def load_data():
@@ -75,26 +72,44 @@ def load_data():
         print(f"Loaded {len(RECOMMENDATIONS)} recommendations from JSON")
 
 
-def load_dataframe_in_background():
-    """Load the full dataset in a separate thread to keep startup instant."""
-    global CLEANED_DF, DF_LOADED
-    with df_lock:
-        if DF_LOADED:
-            return
-        try:
-            print("Loading full dataset in background...")
-            from data_processor import load_and_clean_data, load_cluster_labels
-            backend_dir = os.path.dirname(os.path.abspath(__file__))
-            csv_path = os.path.join(os.path.dirname(backend_dir), "sample.csv")
-            cluster_json_path = os.path.join(backend_dir, "cluster_labels.json")
-            
-            df = load_and_clean_data(csv_path)
-            df = load_cluster_labels(df, cluster_json_path)
-            CLEANED_DF = df
-            DF_LOADED = True
-            print("Dataset loaded successfully in memory!")
-        except Exception as e:
-            print(f"Error loading dataset: {e}")
+def init_violation_data():
+    """Initialize violation store and preload data into memory for fast filtering."""
+    try:
+        from violation_store import init_violation_store, load_violations_df_to_memory
+        if init_violation_store():
+            load_violations_df_to_memory()
+    except Exception as e:
+        print(f"Error initializing violation store: {e}")
+
+
+def _compute_filtered_data(start_date: str = None, end_date: str = None):
+    from violation_store import (
+        is_violation_store_ready,
+        is_violations_df_loaded,
+        load_violations_dataframe,
+        load_violations_df_to_memory,
+    )
+
+    if not is_violation_store_ready():
+        init_violation_data()
+
+    if not is_violation_store_ready():
+        print("Warning: violation store not ready. Falling back to full precomputed dataset.")
+        return HOTSPOTS, RECOMMENDATIONS
+
+    if not is_violations_df_loaded():
+        load_violations_df_to_memory()
+
+    filtered_df = load_violations_dataframe(start_date=start_date, end_date=end_date)
+
+    if filtered_df.empty:
+        return [], []
+
+    from data_processor import compute_cluster_analytics, compute_impact_scores, generate_all_recommendations
+    clusters = compute_cluster_analytics(filtered_df)
+    clusters = compute_impact_scores(clusters)
+    recs = generate_all_recommendations(clusters)
+    return clusters, recs
 
 
 def get_filtered_data(start_date: str = None, end_date: str = None):
@@ -103,50 +118,29 @@ def get_filtered_data(start_date: str = None, end_date: str = None):
     If no dates are provided, return the full precomputed data.
     Uses thread-safe cache to avoid redundant evaluations.
     """
-    global CLEANED_DF, DF_LOADED
-    
     cache_key = (start_date, end_date)
-    
+
     with _CACHE_LOCK:
         if cache_key in _ANALYTICS_CACHE:
             return _ANALYTICS_CACHE[cache_key]
-            
-    # Default behavior: full dataset
+
     if not start_date and not end_date:
         return HOTSPOTS, RECOMMENDATIONS
-        
-    if not DF_LOADED:
-        load_dataframe_in_background()
-        
-    if CLEANED_DF is None:
-        print("Warning: CLEANED_DF not loaded. Falling back to full precomputed dataset.")
-        return HOTSPOTS, RECOMMENDATIONS
-        
+
     try:
-        # Convert date inputs to UTC tz-aware datetime
-        start = pd.to_datetime(start_date, utc=True) if start_date else CLEANED_DF["created_datetime"].min()
-        if end_date:
-            end = pd.to_datetime(end_date, utc=True) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
-        else:
-            end = CLEANED_DF["created_datetime"].max()
-            
-        filtered_df = CLEANED_DF[(CLEANED_DF["created_datetime"] >= start) & (CLEANED_DF["created_datetime"] <= end)]
-        
-        if filtered_df.empty:
-            result = ([], [])
-        else:
-            from data_processor import compute_cluster_analytics, compute_impact_scores, generate_all_recommendations
-            clusters = compute_cluster_analytics(filtered_df)
-            clusters = compute_impact_scores(clusters)
-            recs = generate_all_recommendations(clusters)
-            result = (clusters, recs)
-            
-        with _CACHE_LOCK:
-            if len(_ANALYTICS_CACHE) > 100:
-                _ANALYTICS_CACHE.clear()
-            _ANALYTICS_CACHE[cache_key] = result
-            
-        return result
+        with _COMPUTE_LOCK:
+            with _CACHE_LOCK:
+                if cache_key in _ANALYTICS_CACHE:
+                    return _ANALYTICS_CACHE[cache_key]
+
+            result = _compute_filtered_data(start_date, end_date)
+
+            with _CACHE_LOCK:
+                if len(_ANALYTICS_CACHE) > 100:
+                    _ANALYTICS_CACHE.clear()
+                _ANALYTICS_CACHE[cache_key] = result
+
+            return result
     except Exception as e:
         print(f"Error filtering data: {e}")
         return HOTSPOTS, RECOMMENDATIONS
@@ -156,8 +150,7 @@ def get_filtered_data(start_date: str = None, end_date: str = None):
 async def startup():
     """Load data on application startup."""
     load_data()
-    # Load full dataframe in a background daemon thread
-    threading.Thread(target=load_dataframe_in_background, daemon=True).start()
+    threading.Thread(target=init_violation_data, daemon=True).start()
 
 
 # ============================================================
@@ -167,11 +160,17 @@ async def startup():
 @app.get("/")
 async def root():
     """Health check endpoint."""
+    from violation_store import violation_count, is_violations_df_loaded
+
+    db_count = violation_count()
     return {
         "service": "ParkWise AI",
         "status": "active",
         "total_hotspots": len(HOTSPOTS),
         "total_recommendations": len(RECOMMENDATIONS),
+        "violations_in_db": db_count,
+        "violation_store_ready": db_count > 0,
+        "violations_memory_loaded": is_violations_df_loaded(),
     }
 
 
@@ -180,23 +179,22 @@ async def get_date_range():
     """
     Get the minimum and maximum dates available in the dataset.
     """
-    global CLEANED_DF, DF_LOADED
-    if not DF_LOADED:
-        load_dataframe_in_background()
-        
-    if CLEANED_DF is None:
-        # If dataset could not be loaded, return a sensible default range
+    from violation_store import cached_date_bounds, get_date_bounds, init_violation_store
+
+    if not init_violation_store():
         return {
             "min_date": "2023-11-01",
             "max_date": "2024-04-30",
         }
-        
+
+    min_date, max_date = cached_date_bounds()
+    if min_date is None or max_date is None:
+        min_date, max_date = get_date_bounds()
+
     try:
-        min_date = CLEANED_DF["created_datetime"].min()
-        max_date = CLEANED_DF["created_datetime"].max()
         return {
-            "min_date": min_date.strftime("%Y-%m-%d") if not pd.isnull(min_date) else "2023-11-01",
-            "max_date": max_date.strftime("%Y-%m-%d") if not pd.isnull(max_date) else "2024-04-30",
+            "min_date": min_date.strftime("%Y-%m-%d") if min_date and not pd.isnull(min_date) else "2023-11-01",
+            "max_date": max_date.strftime("%Y-%m-%d") if max_date and not pd.isnull(max_date) else "2024-04-30",
         }
     except Exception as e:
         print(f"Error computing date range: {e}")
@@ -570,13 +568,15 @@ async def trigger_processing():
         clusters, recommendations = run_pipeline()
         load_data()  # Reload the fresh data
         
-        # Clear cache and reload DataFrame background loader
+        # Clear cache and reload violation store metadata
         with _CACHE_LOCK:
             _ANALYTICS_CACHE.clear()
-        global DF_LOADED
-        with df_lock:
-            DF_LOADED = False
-        threading.Thread(target=load_dataframe_in_background, daemon=True).start()
+        from violation_store import invalidate_violation_store_cache, init_violation_store, load_violations_df_to_memory
+        invalidate_violation_store_cache()
+        threading.Thread(
+            target=lambda: init_violation_store(force=True) and load_violations_df_to_memory(force=True),
+            daemon=True,
+        ).start()
         
         return {
             "status": "success",
@@ -592,17 +592,18 @@ async def get_trends_max_date():
     """
     Get the maximum date available in the dataset.
     """
-    global CLEANED_DF, DF_LOADED
-    if not DF_LOADED:
-        load_dataframe_in_background()
-        
-    if CLEANED_DF is None:
+    from violation_store import cached_date_bounds, get_date_bounds, init_violation_store
+
+    if not init_violation_store():
         return {"max_date": "2024-04-08"}
-        
+
+    _, max_date = cached_date_bounds()
+    if max_date is None:
+        _, max_date = get_date_bounds()
+
     try:
-        max_date = CLEANED_DF["created_datetime"].max()
         return {
-            "max_date": max_date.strftime("%Y-%m-%d") if not pd.isnull(max_date) else "2024-04-08"
+            "max_date": max_date.strftime("%Y-%m-%d") if max_date and not pd.isnull(max_date) else "2024-04-08"
         }
     except Exception as e:
         print(f"Error computing trends max date: {e}")
@@ -611,28 +612,21 @@ async def get_trends_max_date():
 
 @app.get("/api/check-raw-dates")
 async def check_raw_dates():
-    """Diagnostic endpoint to inspect raw dataset datetimes."""
+    """Diagnostic endpoint to inspect violation datetimes in the database."""
     try:
-        csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sample.csv")
-        df_raw = pd.read_csv(csv_path, low_memory=False)
-        df_raw["created_datetime"] = pd.to_datetime(df_raw["created_datetime"], errors="coerce")
-        raw_max = df_raw["created_datetime"].max()
-        raw_min = df_raw["created_datetime"].min()
-        raw_count = len(df_raw)
-        
-        cleaned_count = 0
-        cleaned_max = "N/A"
-        if CLEANED_DF is not None:
-            cleaned_count = len(CLEANED_DF)
-            c_max = CLEANED_DF["created_datetime"].max()
-            cleaned_max = c_max.strftime("%Y-%m-%d") if not pd.isnull(c_max) else "N/A"
-            
+        from violation_store import get_date_bounds, init_violation_store, violation_count
+
+        if not init_violation_store():
+            return {"error": "Violation store not ready. Run import_violations.py."}
+
+        min_dt, max_dt = get_date_bounds()
+        total = violation_count()
+
         return {
-            "raw_total_rows": raw_count,
-            "raw_min_date": raw_min.strftime("%Y-%m-%d") if not pd.isnull(raw_min) else "N/A",
-            "raw_max_date": raw_max.strftime("%Y-%m-%d") if not pd.isnull(raw_max) else "N/A",
-            "cleaned_total_rows": cleaned_count,
-            "cleaned_max_date": cleaned_max,
+            "source": "database",
+            "total_rows": total,
+            "min_date": min_dt.strftime("%Y-%m-%d") if min_dt and not pd.isnull(min_dt) else "N/A",
+            "max_date": max_dt.strftime("%Y-%m-%d") if max_dt and not pd.isnull(max_dt) else "N/A",
         }
     except Exception as e:
         return {"error": str(e)}
@@ -640,49 +634,21 @@ async def check_raw_dates():
 
 @app.get("/api/trends/debug-dates")
 async def debug_dates():
-    """Detailed debugging for datetimes in raw and CLEANED_DF."""
+    """Detailed debugging for datetimes in the violation database."""
     try:
-        global CLEANED_DF
-        if CLEANED_DF is None:
-            return {"status": "CLEANED_DF is None"}
-            
-        # Inspect CLEANED_DF datetimes
-        c_min = CLEANED_DF["created_datetime"].min()
-        c_max = CLEANED_DF["created_datetime"].max()
-        
-        # Unique months and their counts in CLEANED_DF
-        months_counts = CLEANED_DF["created_datetime"].dt.to_period("M").value_counts().sort_index().to_dict()
-        months_counts = {str(k): int(v) for k, v in months_counts.items()}
-        
-        # Let's see the 10 latest dates
-        latest_dates = CLEANED_DF["created_datetime"].sort_values(ascending=False).head(10).dt.strftime("%Y-%m-%d %H:%M:%S").tolist()
-        
-        # Let's inspect the raw CSV created_datetime formats and month distributions
-        csv_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "sample.csv")
-        df_raw = pd.read_csv(csv_path, low_memory=False)
-        
-        raw_str_max = df_raw["created_datetime"].dropna().max()
-        raw_str_min = df_raw["created_datetime"].dropna().min()
-        
-        df_raw["created_datetime_parsed"] = pd.to_datetime(df_raw["created_datetime"], errors="coerce")
-        raw_months = df_raw["created_datetime_parsed"].dt.to_period("M").value_counts().sort_index().to_dict()
-        raw_months = {str(k): int(v) for k, v in raw_months.items()}
-        
-        # Count parsing failures
-        failures = df_raw[df_raw["created_datetime"].notna() & df_raw["created_datetime_parsed"].isna()]
-        failure_sample = failures["created_datetime"].head(10).tolist()
-        
+        from violation_store import get_date_bounds, init_violation_store, violation_count
+
+        if not init_violation_store():
+            return {"status": "Violation store not ready"}
+
+        min_dt, max_dt = get_date_bounds()
+        total = violation_count()
+
         return {
-            "cleaned_min": str(c_min),
-            "cleaned_max": str(c_max),
-            "cleaned_months_distribution": months_counts,
-            "cleaned_latest_10_dates": latest_dates,
-            "raw_str_min": raw_str_min,
-            "raw_str_max": raw_str_max,
-            "raw_months_distribution": raw_months,
-            "raw_max_parsed": str(df_raw["created_datetime_parsed"].max()),
-            "parsing_failures_count": len(failures),
-            "parsing_failures_sample": failure_sample,
+            "source": "database",
+            "total_rows": total,
+            "min": str(min_dt),
+            "max": str(max_dt),
         }
     except Exception as e:
         return {"error": str(e)}
@@ -693,34 +659,40 @@ async def compare_zones_trends(zone_a: int, zone_b: int, start_hour: int, end_ho
     """
     Filter data for Zone A and Zone B dynamically for the peak date and selected hour range.
     """
-    global CLEANED_DF, DF_LOADED
-    if not DF_LOADED:
-        load_dataframe_in_background()
-        
-    if CLEANED_DF is None:
-        raise HTTPException(status_code=503, detail="Dataset not loaded yet. Please try again.")
+    from violation_store import init_violation_store, is_violations_df_loaded, load_violations_dataframe, load_violations_df_to_memory
+
+    if not init_violation_store():
+        raise HTTPException(
+            status_code=503,
+            detail="Violation database not ready. Run import_violations.py first.",
+        )
+
+    if not is_violations_df_loaded():
+        load_violations_df_to_memory()
 
     try:
-        # Get max date
-        max_date = CLEANED_DF["created_datetime"].max()
-        if pd.isnull(max_date):
+        from violation_store import cached_date_bounds, get_date_bounds
+
+        _, max_date = cached_date_bounds()
+        if max_date is None:
+            _, max_date = get_date_bounds()
+
+        if max_date is None or pd.isnull(max_date):
             max_date_utc = pd.to_datetime("2024-04-08", utc=True)
         else:
             max_date_utc = pd.to_datetime(max_date, utc=True)
 
-        # Calculate exactly one calendar month prior (e.g. April 8 -> March 8)
         start_date = max_date_utc - pd.DateOffset(months=1)
         start_date_utc = pd.to_datetime(start_date, utc=True)
+        start_bound = start_date_utc.date().isoformat()
+        end_bound = max_date_utc.date().isoformat()
 
-        # Set bounds to start of start_date (00:00:00) and end of max_date (23:59:59)
-        start_bound = pd.to_datetime(start_date_utc.date(), utc=True)
-        end_bound = pd.to_datetime(max_date_utc.date(), utc=True) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
-
-        # Filter by date range (1 month)
-        df_period = CLEANED_DF[(CLEANED_DF["created_datetime"] >= start_bound) & (CLEANED_DF["created_datetime"] <= end_bound)]
-        
-        # Filter by hour range (inclusive)
-        df_filtered = df_period[(df_period["hour"] >= start_hour) & (df_period["hour"] <= end_hour)]
+        df_filtered = load_violations_dataframe(
+            start_date=start_bound,
+            end_date=end_bound,
+            min_hour=start_hour,
+            max_hour=end_hour,
+        )
 
         def get_zone_metrics(zone_id: int):
             zone_df = df_filtered[df_filtered["cluster_id"] == zone_id]
@@ -815,7 +787,7 @@ async def compare_zones_trends(zone_a: int, zone_b: int, start_hour: int, end_ho
         metrics_b = get_zone_metrics(zone_b)
 
         return {
-            "max_date": max_date.strftime("%Y-%m-%d"),
+            "max_date": max_date_utc.strftime("%Y-%m-%d"),
             "start_hour": start_hour,
             "end_hour": end_hour,
             "zone_a": metrics_a,

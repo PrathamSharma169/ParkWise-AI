@@ -2,7 +2,7 @@
 SQLAlchemy models for ParkWise AI database tables.
 """
 
-from sqlalchemy import Column, Integer, String, Float, Text, JSON
+from sqlalchemy import Column, DateTime, Float, Index, Integer, String, Text, JSON
 from database import Base
 
 
@@ -47,3 +47,29 @@ class Recommendation(Base):
     priority = Column(String(20), nullable=False)     # Critical, High, Medium, Low
     expected_benefit = Column(Text)
     category = Column(String(50))                      # Towing, Deployment, Infrastructure, etc.
+
+
+class Violation(Base):
+    """Raw parking violation records used for date filtering and trends."""
+    __tablename__ = "violations"
+
+    id = Column(String(64), primary_key=True)
+    latitude = Column(Float, nullable=False)
+    longitude = Column(Float, nullable=False)
+    location = Column(Text, nullable=False, default="")
+    vehicle_type_clean = Column(String(32), nullable=False)
+    violation_type = Column(Text)
+    police_station = Column(String(255), nullable=False, default="Unknown")
+    junction_name = Column(String(255), nullable=False, default="No Junction")
+    created_datetime = Column(DateTime(timezone=True), nullable=False, index=True)
+    closed_datetime = Column(DateTime(timezone=True))
+    hour = Column(Integer, nullable=False, index=True)
+    day_of_week = Column(Integer, nullable=False)
+    month = Column(Integer, nullable=False)
+    resolution_hours = Column(Float)
+    is_junction = Column(Integer, nullable=False, default=0)
+    cluster_id = Column(Integer, nullable=False, index=True)
+
+    __table_args__ = (
+        Index("ix_violations_created_cluster", "created_datetime", "cluster_id"),
+    )

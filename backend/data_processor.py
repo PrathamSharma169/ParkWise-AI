@@ -587,7 +587,14 @@ def run_pipeline(csv_path: str = None, cluster_json_path: str = None):
     
     # Step 2: Load pre-computed cluster labels
     df = load_cluster_labels(df, cluster_json_path)
-    
+
+    try:
+        from violation_store import save_violations_from_dataframe
+        save_violations_from_dataframe(df, clear_existing=True)
+        print("  Saved violation rows to database")
+    except Exception as e:
+        print(f"  Warning: Failed to save violations to database ({e})")
+
     # Step 3: Compute cluster analytics
     clusters = compute_cluster_analytics(df)
     
