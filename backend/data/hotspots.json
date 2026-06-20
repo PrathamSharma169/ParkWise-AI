@@ -1,0 +1,5824 @@
+[
+  {
+    "cluster_id": 0,
+    "center_lat": 12.978599826620194,
+    "center_lon": 77.58144042877237,
+    "zone_name": "Tasker Town Zone",
+    "total_violations": 229872,
+    "vehicle_distribution": {
+      "BIKE": 110873,
+      "CAR": 69097,
+      "AUTO": 32711,
+      "TRUCK": 7446,
+      "MAXI CAB": 5308,
+      "OTHERS": 4437
+    },
+    "avg_vehicle_weight": 1.9616221201364237,
+    "junction_ratio": 0.6463510127375235,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Kamaraj Road",
+        "count": 3933
+      },
+      {
+        "name": "Dispensary Road",
+        "count": 2641
+      },
+      {
+        "name": "5th Main Road",
+        "count": 2583
+      },
+      {
+        "name": "Bellary Road",
+        "count": 2523
+      },
+      {
+        "name": "Main Guard Cross Road",
+        "count": 2521
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 16436,
+      "1.0": 12935,
+      "2.0": 19612,
+      "3.0": 21219,
+      "4.0": 24083,
+      "5.0": 27827,
+      "6.0": 21357,
+      "7.0": 10815,
+      "8.0": 6201,
+      "9.0": 2422,
+      "10.0": 361,
+      "11.0": 451,
+      "12.0": 186,
+      "13.0": 50,
+      "14.0": 6,
+      "15.0": 51,
+      "16.0": 326,
+      "17.0": 613,
+      "18.0": 1133,
+      "19.0": 7551,
+      "20.0": 8397,
+      "21.0": 14673,
+      "22.0": 16543,
+      "23.0": 16619
+    },
+    "police_station": "Upparpet",
+    "violation_types": {
+      "WRONG PARKING": 126635,
+      "PARKING NEAR ROAD CROSSING": 771,
+      "PARKING IN A MAIN ROAD": 10090,
+      "NO PARKING": 105867,
+      "DEFECTIVE NUMBER PLATE": 6154,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 894,
+      "DOUBLE PARKING": 1060,
+      "PARKING ON FOOTPATH": 1968,
+      "REFUSE TO GO FOR HIRE": 778,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 194,
+      "DEMANDING EXCESS FARE": 211,
+      "H T V PROHIBITED": 15,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 191,
+      "OBSTRUCTING DRIVER": 10,
+      "PARKING OTHER THAN BUS STOP": 22,
+      "USING BLACK FILM/OTHER MATERIALS": 77,
+      "WITHOUT SIDE MIRROR": 42,
+      "RIDER NOT WEARING HELMET": 2,
+      "2W/3W - USING MOBILE PHONE": 2,
+      "AGAINST ONE WAY/NO ENTRY": 3,
+      "VIOLATING LANE DISIPLINE": 2,
+      "FAIL TO USE SAFETY BELTS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 110873
+      },
+      {
+        "type": "CAR",
+        "count": 69097
+      },
+      {
+        "type": "AUTO",
+        "count": 32711
+      },
+      {
+        "type": "TRUCK",
+        "count": 7446
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 5308
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 70.4,
+    "vehicle_impact_score": 0.414237220981844,
+    "violation_percentile": "P90",
+    "impact_percentile": "P90",
+    "impact_rank": 1,
+    "density_rank": 1,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 5,
+    "center_lat": 13.185553419065474,
+    "center_lon": 77.68050595484722,
+    "zone_name": "Begur Chikkanahalli - Unnamed Road Zone",
+    "total_violations": 5040,
+    "vehicle_distribution": {
+      "CAR": 3615,
+      "MAXI CAB": 1350,
+      "TRUCK": 38,
+      "BIKE": 20,
+      "OTHERS": 14,
+      "AUTO": 3
+    },
+    "avg_vehicle_weight": 3.2716269841269843,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Unnamed Road",
+        "count": 3999
+      },
+      {
+        "name": "Unnamed Road",
+        "count": 463
+      },
+      {
+        "name": "Unnamed Road",
+        "count": 401
+      },
+      {
+        "name": "Beguru",
+        "count": 29
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 341,
+      "1.0": 91,
+      "2.0": 235,
+      "3.0": 218,
+      "4.0": 151,
+      "5.0": 322,
+      "6.0": 409,
+      "7.0": 394,
+      "8.0": 253,
+      "9.0": 139,
+      "10.0": 27,
+      "11.0": 23,
+      "12.0": 3,
+      "18.0": 18,
+      "19.0": 474,
+      "20.0": 268,
+      "21.0": 336,
+      "22.0": 543,
+      "23.0": 795
+    },
+    "police_station": "Chikkajala",
+    "violation_types": {
+      "NO PARKING": 3030,
+      "WRONG PARKING": 2028,
+      "PARKING IN A MAIN ROAD": 876,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 69,
+      "PARKING NEAR ROAD CROSSING": 68,
+      "USING BLACK FILM/OTHER MATERIALS": 79,
+      "DEFECTIVE NUMBER PLATE": 58,
+      "DOUBLE PARKING": 40,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 6
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 3615
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 1350
+      },
+      {
+        "type": "TRUCK",
+        "count": 38
+      },
+      {
+        "type": "BIKE",
+        "count": 20
+      },
+      {
+        "type": "OTHERS",
+        "count": 14
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 25.4,
+    "vehicle_impact_score": 0.9785470085470085,
+    "violation_percentile": "P90",
+    "impact_percentile": "P90",
+    "impact_rank": 2,
+    "density_rank": 3,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 26,
+    "center_lat": 13.068402450000002,
+    "center_lon": 77.44837054642858,
+    "zone_name": "Mumbai Bengaluru Highway Zone",
+    "total_violations": 28,
+    "vehicle_distribution": {
+      "TRUCK": 13,
+      "OTHERS": 7,
+      "BIKE": 4,
+      "AUTO": 2,
+      "CAR": 2
+    },
+    "avg_vehicle_weight": 3.3214285714285716,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Mumbai Bengaluru Highway",
+        "count": 12
+      },
+      {
+        "name": "Mumbai Bengaluru Highway",
+        "count": 11
+      },
+      {
+        "name": "Mumbai Bengaluru Highway",
+        "count": 3
+      },
+      {
+        "name": "Huskur Main Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 2,
+      "1.0": 7,
+      "2.0": 4,
+      "5.0": 4,
+      "7.0": 1,
+      "20.0": 5,
+      "21.0": 2,
+      "22.0": 2,
+      "23.0": 1
+    },
+    "police_station": "No Police Station",
+    "violation_types": {
+      "WRONG PARKING": 27,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 2,
+      "NO PARKING": 3
+    },
+    "top_vehicles": [
+      {
+        "type": "TRUCK",
+        "count": 13
+      },
+      {
+        "type": "OTHERS",
+        "count": 7
+      },
+      {
+        "type": "BIKE",
+        "count": 4
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      },
+      {
+        "type": "CAR",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "TRUCK",
+    "impact_score": 25.0,
+    "vehicle_impact_score": 1.0,
+    "violation_percentile": "P25",
+    "impact_percentile": "P90",
+    "impact_rank": 3,
+    "density_rank": 55,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 51,
+    "center_lat": 13.020920389552238,
+    "center_lon": 77.61499914626866,
+    "zone_name": "Sowkar Nagar - Dr Ambedkar Medical College Road Zone",
+    "total_violations": 67,
+    "vehicle_distribution": {
+      "TRUCK": 28,
+      "CAR": 18,
+      "BIKE": 16,
+      "AUTO": 4,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 3.283582089552239,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Dr Ambedkar Medical College Road",
+        "count": 15
+      },
+      {
+        "name": "Shampura Main Road",
+        "count": 11
+      },
+      {
+        "name": "Vinoba Nagar Main Road",
+        "count": 7
+      },
+      {
+        "name": "2nd Main Road",
+        "count": 6
+      },
+      {
+        "name": "Vinoba Nagar Main Road",
+        "count": 5
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 1,
+      "1.0": 26,
+      "2.0": 2,
+      "3.0": 2,
+      "4.0": 3,
+      "5.0": 9,
+      "7.0": 5,
+      "8.0": 3,
+      "21.0": 2,
+      "22.0": 4,
+      "23.0": 10
+    },
+    "police_station": "K.G. Halli",
+    "violation_types": {
+      "WRONG PARKING": 56,
+      "DEFECTIVE NUMBER PLATE": 2,
+      "NO PARKING": 13,
+      "PARKING IN A MAIN ROAD": 4
+    },
+    "top_vehicles": [
+      {
+        "type": "TRUCK",
+        "count": 28
+      },
+      {
+        "type": "CAR",
+        "count": 18
+      },
+      {
+        "type": "BIKE",
+        "count": 16
+      },
+      {
+        "type": "AUTO",
+        "count": 4
+      },
+      {
+        "type": "OTHERS",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "TRUCK",
+    "impact_score": 24.6,
+    "vehicle_impact_score": 0.9836969001148106,
+    "violation_percentile": "P25",
+    "impact_percentile": "P90",
+    "impact_rank": 4,
+    "density_rank": 42,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 16,
+    "center_lat": 13.191176985862432,
+    "center_lon": 77.6461534868254,
+    "zone_name": "Sadahalli Gate Junction - Bengaluru Bellary Road Zone",
+    "total_violations": 945,
+    "vehicle_distribution": {
+      "CAR": 700,
+      "MAXI CAB": 178,
+      "BIKE": 23,
+      "TRUCK": 19,
+      "OTHERS": 17,
+      "AUTO": 8
+    },
+    "avg_vehicle_weight": 3.1534391534391535,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Bengaluru Bellary Road",
+        "count": 588
+      },
+      {
+        "name": "Ronald Colaco Road",
+        "count": 292
+      },
+      {
+        "name": "Shettigere",
+        "count": 19
+      },
+      {
+        "name": "Drive Thru Road",
+        "count": 7
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 27,
+      "1.0": 42,
+      "2.0": 65,
+      "3.0": 49,
+      "4.0": 97,
+      "5.0": 45,
+      "6.0": 115,
+      "7.0": 66,
+      "8.0": 57,
+      "9.0": 12,
+      "18.0": 2,
+      "19.0": 101,
+      "20.0": 129,
+      "21.0": 48,
+      "22.0": 38,
+      "23.0": 52
+    },
+    "police_station": "Chikkajala",
+    "violation_types": {
+      "NO PARKING": 823,
+      "PARKING IN A MAIN ROAD": 330,
+      "WRONG PARKING": 129,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 3,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 6,
+      "DOUBLE PARKING": 2,
+      "DEFECTIVE NUMBER PLATE": 7,
+      "PARKING NEAR ROAD CROSSING": 8,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 7,
+      "PARKING ON FOOTPATH": 5
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 700
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 178
+      },
+      {
+        "type": "BIKE",
+        "count": 23
+      },
+      {
+        "type": "TRUCK",
+        "count": 19
+      },
+      {
+        "type": "OTHERS",
+        "count": 17
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 23.4,
+    "vehicle_impact_score": 0.9276353276353276,
+    "violation_percentile": "P75",
+    "impact_percentile": "P90",
+    "impact_rank": 5,
+    "density_rank": 8,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 36,
+    "center_lat": 13.197520871698114,
+    "center_lon": 77.7041561745283,
+    "zone_name": "Arisinakunte Zone",
+    "total_violations": 106,
+    "vehicle_distribution": {
+      "CAR": 101,
+      "BIKE": 4,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.9339622641509435,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Cargo Road",
+        "count": 30
+      },
+      {
+        "name": "Airport City Avenue",
+        "count": 21
+      },
+      {
+        "name": "Airport City Avenue",
+        "count": 13
+      },
+      {
+        "name": "Terminal 1 Departure Road",
+        "count": 12
+      },
+      {
+        "name": "Terminal 1 Departure Road",
+        "count": 8
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3,
+      "1.0": 5,
+      "2.0": 1,
+      "3.0": 13,
+      "4.0": 7,
+      "5.0": 29,
+      "6.0": 8,
+      "7.0": 5,
+      "8.0": 1,
+      "20.0": 11,
+      "21.0": 5,
+      "22.0": 5,
+      "23.0": 13
+    },
+    "police_station": "Devanahalli Airport",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 1,
+      "WRONG PARKING": 20,
+      "NO PARKING": 86,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 101
+      },
+      {
+        "type": "BIKE",
+        "count": 4
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 20.8,
+    "vehicle_impact_score": 0.8330914368650217,
+    "violation_percentile": "P50",
+    "impact_percentile": "P90",
+    "impact_rank": 6,
+    "density_rank": 32,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 1,
+    "center_lat": 12.960872059246185,
+    "center_lon": 77.69341064079912,
+    "zone_name": "Outer Ring Road Zone",
+    "total_violations": 40974,
+    "vehicle_distribution": {
+      "BIKE": 16158,
+      "CAR": 11460,
+      "AUTO": 6429,
+      "MAXI CAB": 3796,
+      "OTHERS": 2169,
+      "TRUCK": 962
+    },
+    "avg_vehicle_weight": 2.1410650656513885,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "New Horizon College Road",
+        "count": 3676
+      },
+      {
+        "name": "MBT Road",
+        "count": 2999
+      },
+      {
+        "name": "New Horizon College Road",
+        "count": 2330
+      },
+      {
+        "name": "Outer Ring Road",
+        "count": 940
+      },
+      {
+        "name": "Kadubeesanahalli Underpass",
+        "count": 861
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3533,
+      "1.0": 2807,
+      "2.0": 3683,
+      "3.0": 3150,
+      "4.0": 3314,
+      "5.0": 3388,
+      "6.0": 2505,
+      "7.0": 1201,
+      "8.0": 942,
+      "9.0": 389,
+      "10.0": 60,
+      "11.0": 60,
+      "12.0": 17,
+      "13.0": 6,
+      "14.0": 10,
+      "15.0": 14,
+      "16.0": 75,
+      "17.0": 196,
+      "18.0": 763,
+      "19.0": 2082,
+      "20.0": 2038,
+      "21.0": 2914,
+      "22.0": 3907,
+      "23.0": 3920
+    },
+    "police_station": "HAL Old Airport",
+    "violation_types": {
+      "NO PARKING": 18618,
+      "WRONG PARKING": 24547,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 1234,
+      "DOUBLE PARKING": 779,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 215,
+      "PARKING IN A MAIN ROAD": 10531,
+      "DEFECTIVE NUMBER PLATE": 956,
+      "PARKING ON FOOTPATH": 1230,
+      "PARKING NEAR ROAD CROSSING": 624,
+      "USING BLACK FILM/OTHER MATERIALS": 65,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 144,
+      "PARKING OTHER THAN BUS STOP": 205,
+      "DEMANDING EXCESS FARE": 13,
+      "REFUSE TO GO FOR HIRE": 79,
+      "WITHOUT SIDE MIRROR": 3,
+      "H T V PROHIBITED": 4,
+      "AGAINST ONE WAY/NO ENTRY": 3,
+      "FAIL TO USE SAFETY BELTS": 2,
+      "OBSTRUCTING DRIVER": 4,
+      "VIOLATING LANE DISIPLINE": 2,
+      "U TURN PROHIBITED": 1,
+      "STOPING ON WHITE/STOP LINE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 16158
+      },
+      {
+        "type": "CAR",
+        "count": 11460
+      },
+      {
+        "type": "AUTO",
+        "count": 6429
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 3796
+      },
+      {
+        "type": "OTHERS",
+        "count": 2169
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 20.3,
+    "vehicle_impact_score": 0.4915357205882904,
+    "violation_percentile": "P90",
+    "impact_percentile": "P90",
+    "impact_rank": 7,
+    "density_rank": 2,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 28,
+    "center_lat": 13.025938871428572,
+    "center_lon": 77.71988536666667,
+    "zone_name": "Kodandaram - MBT Road Zone",
+    "total_violations": 63,
+    "vehicle_distribution": {
+      "CAR": 23,
+      "BIKE": 15,
+      "TRUCK": 14,
+      "AUTO": 9,
+      "MAXI CAB": 1,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 2.8253968253968256,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "MBT Road",
+        "count": 26
+      },
+      {
+        "name": "Parvathi Nagar Main Road",
+        "count": 7
+      },
+      {
+        "name": "BNE MD 233",
+        "count": 7
+      },
+      {
+        "name": "Bhattarahalli Road",
+        "count": 7
+      },
+      {
+        "name": "Shri Hans Ashram Road",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3,
+      "1.0": 6,
+      "2.0": 5,
+      "3.0": 8,
+      "4.0": 1,
+      "5.0": 8,
+      "6.0": 4,
+      "7.0": 5,
+      "8.0": 2,
+      "18.0": 1,
+      "19.0": 2,
+      "20.0": 6,
+      "21.0": 4,
+      "22.0": 7,
+      "23.0": 1
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "WRONG PARKING": 17,
+      "NO PARKING": 46,
+      "DEFECTIVE NUMBER PLATE": 1,
+      "PARKING IN A MAIN ROAD": 1,
+      "H T V PROHIBITED": 2
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 23
+      },
+      {
+        "type": "BIKE",
+        "count": 15
+      },
+      {
+        "type": "TRUCK",
+        "count": 14
+      },
+      {
+        "type": "AUTO",
+        "count": 9
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 19.7,
+    "vehicle_impact_score": 0.7863247863247863,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 8,
+    "density_rank": 44,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 49,
+    "center_lat": 13.020606181238241,
+    "center_lon": 77.67636007809524,
+    "zone_name": "Kowdenahalli Extension - TC Palya Main Road Zone",
+    "total_violations": 21,
+    "vehicle_distribution": {
+      "CAR": 9,
+      "BIKE": 5,
+      "MAXI CAB": 3,
+      "AUTO": 2,
+      "TRUCK": 2
+    },
+    "avg_vehicle_weight": 2.761904761904762,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "TC Palya Main Road",
+        "count": 7
+      },
+      {
+        "name": "TC Palya Main Road",
+        "count": 6
+      },
+      {
+        "name": "Jayanthi Nagar Main Road",
+        "count": 2
+      },
+      {
+        "name": "1st A Cross Road",
+        "count": 1
+      },
+      {
+        "name": "Kalkere Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3,
+      "1.0": 1,
+      "3.0": 1,
+      "5.0": 3,
+      "6.0": 3,
+      "7.0": 2,
+      "8.0": 1,
+      "19.0": 1,
+      "21.0": 2,
+      "22.0": 2,
+      "23.0": 2
+    },
+    "police_station": "Banaswadi",
+    "violation_types": {
+      "NO PARKING": 10,
+      "WRONG PARKING": 15,
+      "DEFECTIVE NUMBER PLATE": 4,
+      "PARKING OTHER THAN BUS STOP": 1,
+      "PARKING IN A MAIN ROAD": 2,
+      "DOUBLE PARKING": 2,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 1,
+      "PARKING ON FOOTPATH": 1,
+      "REFUSE TO GO FOR HIRE": 1,
+      "PARKING NEAR ROAD CROSSING": 1,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 9
+      },
+      {
+        "type": "BIKE",
+        "count": 5
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 3
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      },
+      {
+        "type": "TRUCK",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 19.0,
+    "vehicle_impact_score": 0.7589743589743589,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 9,
+    "density_rank": 61,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 17,
+    "center_lat": 13.04583421885965,
+    "center_lon": 77.75027977368423,
+    "zone_name": "Subhams Antique City - MBT Road Zone",
+    "total_violations": 228,
+    "vehicle_distribution": {
+      "CAR": 89,
+      "BIKE": 50,
+      "TRUCK": 38,
+      "AUTO": 28,
+      "OTHERS": 15,
+      "MAXI CAB": 8
+    },
+    "avg_vehicle_weight": 2.741228070175439,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "1st Cross Road",
+        "count": 60
+      },
+      {
+        "name": "Konadasapura Cross Road",
+        "count": 57
+      },
+      {
+        "name": "MBT Road",
+        "count": 53
+      },
+      {
+        "name": "MBT Road",
+        "count": 31
+      },
+      {
+        "name": "Bommanahalli Road",
+        "count": 11
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 11,
+      "1.0": 12,
+      "2.0": 8,
+      "3.0": 8,
+      "4.0": 19,
+      "5.0": 21,
+      "6.0": 50,
+      "7.0": 24,
+      "8.0": 6,
+      "9.0": 4,
+      "10.0": 2,
+      "19.0": 3,
+      "20.0": 3,
+      "21.0": 12,
+      "22.0": 25,
+      "23.0": 20
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "NO PARKING": 160,
+      "WRONG PARKING": 81,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 41,
+      "PARKING NEAR ROAD CROSSING": 41,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 46,
+      "DEFECTIVE NUMBER PLATE": 4,
+      "PARKING IN A MAIN ROAD": 16,
+      "PARKING ON FOOTPATH": 4,
+      "DEMANDING EXCESS FARE": 1,
+      "FAIL TO USE SAFETY BELTS": 3,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 5
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 89
+      },
+      {
+        "type": "BIKE",
+        "count": 50
+      },
+      {
+        "type": "TRUCK",
+        "count": 38
+      },
+      {
+        "type": "AUTO",
+        "count": 28
+      },
+      {
+        "type": "OTHERS",
+        "count": 15
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 18.8,
+    "vehicle_impact_score": 0.7500674763832659,
+    "violation_percentile": "P75",
+    "impact_percentile": "P75",
+    "impact_rank": 10,
+    "density_rank": 15,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 2,
+    "center_lat": 12.873104884821311,
+    "center_lon": 77.54035339786063,
+    "zone_name": "Thalaghattapura - Konanakunte Main Road Zone",
+    "total_violations": 420,
+    "vehicle_distribution": {
+      "CAR": 263,
+      "AUTO": 59,
+      "BIKE": 58,
+      "MAXI CAB": 19,
+      "TRUCK": 18,
+      "OTHERS": 3
+    },
+    "avg_vehicle_weight": 2.7071428571428573,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Konanakunte Main Road",
+        "count": 40
+      },
+      {
+        "name": "Konanakunte Main Road",
+        "count": 40
+      },
+      {
+        "name": "Konanakunte Main Road",
+        "count": 34
+      },
+      {
+        "name": "Anjanapura Main Road",
+        "count": 23
+      },
+      {
+        "name": "Konanakunte Main Road",
+        "count": 22
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 26,
+      "1.0": 31,
+      "2.0": 10,
+      "3.0": 17,
+      "4.0": 40,
+      "5.0": 76,
+      "6.0": 82,
+      "7.0": 40,
+      "8.0": 9,
+      "9.0": 1,
+      "12.0": 2,
+      "20.0": 2,
+      "21.0": 33,
+      "22.0": 30,
+      "23.0": 21
+    },
+    "police_station": "Thalagattapura",
+    "violation_types": {
+      "WRONG PARKING": 248,
+      "PARKING NEAR ROAD CROSSING": 4,
+      "NO PARKING": 173,
+      "PARKING IN A MAIN ROAD": 52,
+      "DEFECTIVE NUMBER PLATE": 8,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 5,
+      "DOUBLE PARKING": 2,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 263
+      },
+      {
+        "type": "AUTO",
+        "count": 59
+      },
+      {
+        "type": "BIKE",
+        "count": 58
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 19
+      },
+      {
+        "type": "TRUCK",
+        "count": 18
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 18.5,
+    "vehicle_impact_score": 0.7353846153846154,
+    "violation_percentile": "P75",
+    "impact_percentile": "P75",
+    "impact_rank": 11,
+    "density_rank": 13,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 23,
+    "center_lat": 12.856337197349553,
+    "center_lon": 77.5889749404331,
+    "zone_name": "Anjanapura Upavalaya - Bannerghatta Main Road Zone",
+    "total_violations": 104,
+    "vehicle_distribution": {
+      "CAR": 44,
+      "BIKE": 29,
+      "TRUCK": 19,
+      "AUTO": 6,
+      "OTHERS": 5,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.7115384615384617,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 37
+      },
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 13
+      },
+      {
+        "name": "SH 87",
+        "count": 10
+      },
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 8
+      },
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 5
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3,
+      "1.0": 9,
+      "2.0": 7,
+      "3.0": 6,
+      "4.0": 11,
+      "5.0": 7,
+      "6.0": 14,
+      "7.0": 7,
+      "8.0": 7,
+      "19.0": 2,
+      "20.0": 6,
+      "21.0": 7,
+      "22.0": 12,
+      "23.0": 6
+    },
+    "police_station": "Hulimavu",
+    "violation_types": {
+      "WRONG PARKING": 34,
+      "NO PARKING": 70,
+      "PARKING IN A MAIN ROAD": 2,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 44
+      },
+      {
+        "type": "BIKE",
+        "count": 29
+      },
+      {
+        "type": "TRUCK",
+        "count": 19
+      },
+      {
+        "type": "AUTO",
+        "count": 6
+      },
+      {
+        "type": "OTHERS",
+        "count": 5
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 18.4,
+    "vehicle_impact_score": 0.7372781065088757,
+    "violation_percentile": "P50",
+    "impact_percentile": "P75",
+    "impact_rank": 12,
+    "density_rank": 33,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 31,
+    "center_lat": 13.018737369341935,
+    "center_lon": 77.70687961881757,
+    "zone_name": "Zero Tolerance Junction - MBT Road Zone",
+    "total_violations": 96,
+    "vehicle_distribution": {
+      "CAR": 37,
+      "BIKE": 24,
+      "OTHERS": 14,
+      "TRUCK": 11,
+      "MAXI CAB": 8,
+      "AUTO": 2
+    },
+    "avg_vehicle_weight": 2.6458333333333335,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "MBT Road",
+        "count": 20
+      },
+      {
+        "name": "Basavanapura Road",
+        "count": 11
+      },
+      {
+        "name": "TC Palya Main Road",
+        "count": 11
+      },
+      {
+        "name": "MBT Road",
+        "count": 9
+      },
+      {
+        "name": "MBT Road",
+        "count": 7
+      }
+    ],
+    "hourly_distribution": {
+      "1.0": 6,
+      "2.0": 3,
+      "3.0": 2,
+      "4.0": 6,
+      "5.0": 8,
+      "6.0": 21,
+      "7.0": 6,
+      "8.0": 5,
+      "9.0": 1,
+      "20.0": 14,
+      "21.0": 10,
+      "22.0": 4,
+      "23.0": 10
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "NO PARKING": 58,
+      "WRONG PARKING": 38,
+      "PARKING ON FOOTPATH": 1,
+      "PARKING IN A MAIN ROAD": 8,
+      "PARKING NEAR ROAD CROSSING": 7,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 2,
+      "DEFECTIVE NUMBER PLATE": 3
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 37
+      },
+      {
+        "type": "BIKE",
+        "count": 24
+      },
+      {
+        "type": "OTHERS",
+        "count": 14
+      },
+      {
+        "type": "TRUCK",
+        "count": 11
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 17.7,
+    "vehicle_impact_score": 0.708974358974359,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 13,
+    "density_rank": 34,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 48,
+    "center_lat": 12.887384870235461,
+    "center_lon": 77.7384770025872,
+    "zone_name": "Sarjapura Main Road Zone",
+    "total_violations": 20,
+    "vehicle_distribution": {
+      "AUTO": 9,
+      "CAR": 5,
+      "BIKE": 2,
+      "TRUCK": 2,
+      "OTHERS": 1,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.55,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Sarjapura Main Road",
+        "count": 19
+      },
+      {
+        "name": "Chandapura Dommasandra Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 2,
+      "1.0": 1,
+      "3.0": 5,
+      "5.0": 1,
+      "6.0": 1,
+      "19.0": 1,
+      "20.0": 3,
+      "23.0": 6
+    },
+    "police_station": "No Police Station",
+    "violation_types": {
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 13,
+      "PARKING IN A MAIN ROAD": 11,
+      "WRONG PARKING": 20,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 6,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 1,
+      "NO PARKING": 4,
+      "PARKING ON FOOTPATH": 2,
+      "DEFECTIVE NUMBER PLATE": 2,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "AUTO",
+        "count": 9
+      },
+      {
+        "type": "CAR",
+        "count": 5
+      },
+      {
+        "type": "BIKE",
+        "count": 2
+      },
+      {
+        "type": "TRUCK",
+        "count": 2
+      },
+      {
+        "type": "OTHERS",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "AUTO",
+    "impact_score": 16.7,
+    "vehicle_impact_score": 0.6676923076923076,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 14,
+    "density_rank": 63,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 35,
+    "center_lat": 12.900121532061702,
+    "center_lon": 77.64910887220442,
+    "zone_name": "Haralukunte Village - 27th Cross Road Zone",
+    "total_violations": 45,
+    "vehicle_distribution": {
+      "BIKE": 15,
+      "CAR": 12,
+      "MAXI CAB": 6,
+      "AUTO": 5,
+      "TRUCK": 5,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 2.533333333333333,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "27th Cross Road",
+        "count": 8
+      },
+      {
+        "name": "27th Main Road",
+        "count": 8
+      },
+      {
+        "name": "Hosapalya Main Road",
+        "count": 7
+      },
+      {
+        "name": "Somasundarapalya Main Road",
+        "count": 6
+      },
+      {
+        "name": "27th Cross Road",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "1.0": 5,
+      "2.0": 1,
+      "4.0": 4,
+      "5.0": 8,
+      "6.0": 9,
+      "7.0": 10,
+      "8.0": 3,
+      "21.0": 2,
+      "22.0": 2,
+      "23.0": 1
+    },
+    "police_station": "HSR Layout",
+    "violation_types": {
+      "WRONG PARKING": 25,
+      "PARKING IN A MAIN ROAD": 8,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 1,
+      "DEFECTIVE NUMBER PLATE": 1,
+      "NO PARKING": 20
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 15
+      },
+      {
+        "type": "CAR",
+        "count": 12
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 6
+      },
+      {
+        "type": "AUTO",
+        "count": 5
+      },
+      {
+        "type": "TRUCK",
+        "count": 5
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 16.5,
+    "vehicle_impact_score": 0.6605128205128205,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 15,
+    "density_rank": 51,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 12,
+    "center_lat": 13.05931152263158,
+    "center_lon": 77.65034776631579,
+    "zone_name": "Hennur Main Road Zone",
+    "total_violations": 190,
+    "vehicle_distribution": {
+      "CAR": 126,
+      "BIKE": 48,
+      "TRUCK": 7,
+      "OTHERS": 6,
+      "AUTO": 3
+    },
+    "avg_vehicle_weight": 2.5210526315789474,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Doddagubbi Road",
+        "count": 51
+      },
+      {
+        "name": "Byrathi Main Road",
+        "count": 21
+      },
+      {
+        "name": "Hennur Main Road",
+        "count": 15
+      },
+      {
+        "name": "Doddagubbi Road",
+        "count": 13
+      },
+      {
+        "name": "Hennur Main Road",
+        "count": 12
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 4,
+      "2.0": 14,
+      "3.0": 9,
+      "4.0": 11,
+      "5.0": 35,
+      "6.0": 40,
+      "7.0": 18,
+      "8.0": 5,
+      "19.0": 4,
+      "20.0": 14,
+      "21.0": 15,
+      "22.0": 14,
+      "23.0": 7
+    },
+    "police_station": "Hennuru",
+    "violation_types": {
+      "NO PARKING": 108,
+      "PARKING IN A MAIN ROAD": 6,
+      "WRONG PARKING": 83,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 126
+      },
+      {
+        "type": "BIKE",
+        "count": 48
+      },
+      {
+        "type": "TRUCK",
+        "count": 7
+      },
+      {
+        "type": "OTHERS",
+        "count": 6
+      },
+      {
+        "type": "AUTO",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 16.4,
+    "vehicle_impact_score": 0.6552226720647774,
+    "violation_percentile": "P75",
+    "impact_percentile": "P75",
+    "impact_rank": 16,
+    "density_rank": 17,
+    "zone_classification": "Critical Zone"
+  },
+  {
+    "cluster_id": 44,
+    "center_lat": 12.883555476636097,
+    "center_lon": 77.7523348948999,
+    "zone_name": "Dommansandra Circle - Varthur Main Road Zone",
+    "total_violations": 54,
+    "vehicle_distribution": {
+      "CAR": 26,
+      "OTHERS": 15,
+      "BIKE": 8,
+      "TRUCK": 3,
+      "AUTO": 2
+    },
+    "avg_vehicle_weight": 2.5,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Varthur Main Road",
+        "count": 26
+      },
+      {
+        "name": "Sarjapura Main Road",
+        "count": 21
+      },
+      {
+        "name": "ANK MD 6",
+        "count": 5
+      },
+      {
+        "name": "Sarjapura Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 2,
+      "1.0": 3,
+      "2.0": 2,
+      "3.0": 6,
+      "4.0": 3,
+      "5.0": 7,
+      "6.0": 3,
+      "7.0": 1,
+      "9.0": 1,
+      "19.0": 4,
+      "20.0": 4,
+      "21.0": 1,
+      "22.0": 9,
+      "23.0": 8
+    },
+    "police_station": "No Police Station",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 12,
+      "WRONG PARKING": 49,
+      "NO PARKING": 23,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 3,
+      "PARKING ON FOOTPATH": 1,
+      "DOUBLE PARKING": 2,
+      "DEFECTIVE NUMBER PLATE": 5,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 1,
+      "PARKING NEAR ROAD CROSSING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 26
+      },
+      {
+        "type": "OTHERS",
+        "count": 15
+      },
+      {
+        "type": "BIKE",
+        "count": 8
+      },
+      {
+        "type": "TRUCK",
+        "count": 3
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 16.2,
+    "vehicle_impact_score": 0.6461538461538461,
+    "violation_percentile": "P25",
+    "impact_percentile": "P75",
+    "impact_rank": 17,
+    "density_rank": 45,
+    "zone_classification": "Hidden Risk Zone"
+  },
+  {
+    "cluster_id": 47,
+    "center_lat": 13.081752168674948,
+    "center_lon": 77.54834442845946,
+    "zone_name": "Mohammad Sab Palya Circle - Hesarghatta Road Zone",
+    "total_violations": 54,
+    "vehicle_distribution": {
+      "CAR": 15,
+      "BIKE": 13,
+      "AUTO": 13,
+      "TRUCK": 8,
+      "OTHERS": 5
+    },
+    "avg_vehicle_weight": 2.4814814814814814,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Hesarghatta Road",
+        "count": 17
+      },
+      {
+        "name": "Singapura Main Road",
+        "count": 10
+      },
+      {
+        "name": "MS Palaya Circle",
+        "count": 8
+      },
+      {
+        "name": "Singapura Main Road",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 4,
+      "1.0": 1,
+      "2.0": 6,
+      "3.0": 3,
+      "4.0": 6,
+      "5.0": 5,
+      "6.0": 6,
+      "7.0": 2,
+      "8.0": 1,
+      "19.0": 3,
+      "20.0": 1,
+      "21.0": 6,
+      "22.0": 4,
+      "23.0": 6
+    },
+    "police_station": "Yelahanka",
+    "violation_types": {
+      "NO PARKING": 37,
+      "WRONG PARKING": 19,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 1,
+      "PARKING NEAR ROAD CROSSING": 1,
+      "PARKING IN A MAIN ROAD": 7,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 15
+      },
+      {
+        "type": "BIKE",
+        "count": 13
+      },
+      {
+        "type": "AUTO",
+        "count": 13
+      },
+      {
+        "type": "TRUCK",
+        "count": 8
+      },
+      {
+        "type": "OTHERS",
+        "count": 5
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 16.0,
+    "vehicle_impact_score": 0.6381766381766381,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 18,
+    "density_rank": 46,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 20,
+    "center_lat": 13.032100638507927,
+    "center_lon": 77.6312211403349,
+    "zone_name": "Rajath Greens - 5th Cross Road Zone",
+    "total_violations": 1411,
+    "vehicle_distribution": {
+      "BIKE": 534,
+      "CAR": 466,
+      "TRUCK": 207,
+      "OTHERS": 119,
+      "AUTO": 46,
+      "MAXI CAB": 39
+    },
+    "avg_vehicle_weight": 2.4472005669737773,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "5th Cross Road",
+        "count": 148
+      },
+      {
+        "name": "CMR Road",
+        "count": 131
+      },
+      {
+        "name": "5th Cross Road",
+        "count": 104
+      },
+      {
+        "name": "9th Main Road",
+        "count": 89
+      },
+      {
+        "name": "Thanisandra Main Road",
+        "count": 43
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 52,
+      "1.0": 65,
+      "2.0": 36,
+      "3.0": 48,
+      "4.0": 65,
+      "5.0": 144,
+      "6.0": 94,
+      "7.0": 96,
+      "8.0": 117,
+      "9.0": 8,
+      "10.0": 16,
+      "11.0": 17,
+      "18.0": 3,
+      "19.0": 7,
+      "20.0": 51,
+      "21.0": 275,
+      "22.0": 189,
+      "23.0": 128
+    },
+    "police_station": "K.G. Halli",
+    "violation_types": {
+      "NO PARKING": 980,
+      "WRONG PARKING": 440,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 6,
+      "DEFECTIVE NUMBER PLATE": 35,
+      "PARKING IN A MAIN ROAD": 40,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 3,
+      "PARKING ON FOOTPATH": 17,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1,
+      "PARKING NEAR ROAD CROSSING": 5,
+      "DOUBLE PARKING": 1,
+      "USING BLACK FILM/OTHER MATERIALS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 534
+      },
+      {
+        "type": "CAR",
+        "count": 466
+      },
+      {
+        "type": "TRUCK",
+        "count": 207
+      },
+      {
+        "type": "OTHERS",
+        "count": 119
+      },
+      {
+        "type": "AUTO",
+        "count": 46
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 15.9,
+    "vehicle_impact_score": 0.6234094750040886,
+    "violation_percentile": "P90",
+    "impact_percentile": "P50",
+    "impact_rank": 19,
+    "density_rank": 7,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 7,
+    "center_lat": 12.876049319999998,
+    "center_lon": 77.67099924875,
+    "zone_name": "Rayasandra Circle - Amrutha College Road Zone",
+    "total_violations": 80,
+    "vehicle_distribution": {
+      "BIKE": 31,
+      "CAR": 22,
+      "TRUCK": 12,
+      "AUTO": 9,
+      "MAXI CAB": 4,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 2.4375,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Amrutha College Road",
+        "count": 30
+      },
+      {
+        "name": "Hosa Road",
+        "count": 21
+      },
+      {
+        "name": "Rayasandra Main Road",
+        "count": 4
+      },
+      {
+        "name": "Amrutha College Road",
+        "count": 4
+      },
+      {
+        "name": "Hosa Road",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 2,
+      "1.0": 1,
+      "3.0": 5,
+      "4.0": 2,
+      "5.0": 12,
+      "6.0": 22,
+      "7.0": 16,
+      "8.0": 1,
+      "21.0": 8,
+      "22.0": 7,
+      "23.0": 4
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "WRONG PARKING": 74,
+      "PARKING IN A MAIN ROAD": 18,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 2,
+      "DEFECTIVE NUMBER PLATE": 8,
+      "DEMANDING EXCESS FARE": 1,
+      "NO PARKING": 9,
+      "PARKING NEAR ROAD CROSSING": 4
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 31
+      },
+      {
+        "type": "CAR",
+        "count": 22
+      },
+      {
+        "type": "TRUCK",
+        "count": 12
+      },
+      {
+        "type": "AUTO",
+        "count": 9
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 4
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 15.5,
+    "vehicle_impact_score": 0.6192307692307691,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 20,
+    "density_rank": 36,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 15,
+    "center_lat": 12.913057739224838,
+    "center_lon": 77.48214587690823,
+    "zone_name": "Kengeri Satellite Town Zone",
+    "total_violations": 143,
+    "vehicle_distribution": {
+      "CAR": 67,
+      "BIKE": 33,
+      "AUTO": 20,
+      "OTHERS": 14,
+      "TRUCK": 9
+    },
+    "avg_vehicle_weight": 2.4265734265734267,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Kengeri Magadi Road",
+        "count": 38
+      },
+      {
+        "name": "Kengeri Main Road",
+        "count": 38
+      },
+      {
+        "name": "Mysore Road",
+        "count": 17
+      },
+      {
+        "name": "Kommaghatta Road",
+        "count": 13
+      },
+      {
+        "name": "Bangalore-Mysore Road",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 21,
+      "1.0": 6,
+      "2.0": 5,
+      "3.0": 8,
+      "4.0": 11,
+      "5.0": 13,
+      "6.0": 17,
+      "7.0": 5,
+      "8.0": 2,
+      "9.0": 1,
+      "15.0": 1,
+      "21.0": 11,
+      "22.0": 16,
+      "23.0": 26
+    },
+    "police_station": "Kengeri",
+    "violation_types": {
+      "NO PARKING": 125,
+      "PARKING IN A MAIN ROAD": 43,
+      "WRONG PARKING": 25,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 4,
+      "DOUBLE PARKING": 3,
+      "PARKING ON FOOTPATH": 3,
+      "DEFECTIVE NUMBER PLATE": 3,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 1,
+      "REFUSE TO GO FOR HIRE": 1,
+      "DEMANDING EXCESS FARE": 1,
+      "USING BLACK FILM/OTHER MATERIALS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 67
+      },
+      {
+        "type": "BIKE",
+        "count": 33
+      },
+      {
+        "type": "AUTO",
+        "count": 20
+      },
+      {
+        "type": "OTHERS",
+        "count": 14
+      },
+      {
+        "type": "TRUCK",
+        "count": 9
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 15.4,
+    "vehicle_impact_score": 0.6145239376008607,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 21,
+    "density_rank": 22,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 45,
+    "center_lat": 13.245525337962965,
+    "center_lon": 77.71372584814814,
+    "zone_name": "Dr MD Nanjundaswamy Circle - Sulibele Road Zone",
+    "total_violations": 108,
+    "vehicle_distribution": {
+      "CAR": 66,
+      "BIKE": 30,
+      "AUTO": 6,
+      "MAXI CAB": 3,
+      "OTHERS": 2,
+      "TRUCK": 1
+    },
+    "avg_vehicle_weight": 2.4166666666666665,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Sulibele Road",
+        "count": 35
+      },
+      {
+        "name": "Bangalore Bellary Road",
+        "count": 22
+      },
+      {
+        "name": "Sulibele Road",
+        "count": 15
+      },
+      {
+        "name": "Bangalore Bellary Road",
+        "count": 13
+      },
+      {
+        "name": "Puttappana Gudi Veedhi",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 8,
+      "1.0": 10,
+      "2.0": 12,
+      "3.0": 4,
+      "4.0": 20,
+      "5.0": 6,
+      "6.0": 6,
+      "20.0": 3,
+      "21.0": 2,
+      "22.0": 19,
+      "23.0": 18
+    },
+    "police_station": "Devanahalli Airport",
+    "violation_types": {
+      "NO PARKING": 78,
+      "WRONG PARKING": 36,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 5,
+      "PARKING IN A MAIN ROAD": 7,
+      "DEFECTIVE NUMBER PLATE": 4
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 66
+      },
+      {
+        "type": "BIKE",
+        "count": 30
+      },
+      {
+        "type": "AUTO",
+        "count": 6
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 3
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 15.3,
+    "vehicle_impact_score": 0.6102564102564102,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 22,
+    "density_rank": 29,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 60,
+    "center_lat": 12.806900854347829,
+    "center_lon": 77.69798915434782,
+    "zone_name": "Bangaranna Khanavali - Hosur Road Zone",
+    "total_violations": 46,
+    "vehicle_distribution": {
+      "CAR": 32,
+      "BIKE": 13,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 2.4130434782608696,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Hosur Road",
+        "count": 33
+      },
+      {
+        "name": "Hosur Road",
+        "count": 7
+      },
+      {
+        "name": "Hosur Road",
+        "count": 5
+      },
+      {
+        "name": "Hennagara Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 1,
+      "2.0": 8,
+      "3.0": 10,
+      "5.0": 1,
+      "6.0": 1,
+      "8.0": 1,
+      "21.0": 5,
+      "23.0": 19
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "PARKING ON FOOTPATH": 20,
+      "WRONG PARKING": 27,
+      "NO PARKING": 42,
+      "PARKING IN A MAIN ROAD": 26,
+      "PARKING NEAR ROAD CROSSING": 7,
+      "DOUBLE PARKING": 7,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 32
+      },
+      {
+        "type": "BIKE",
+        "count": 13
+      },
+      {
+        "type": "OTHERS",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 15.2,
+    "vehicle_impact_score": 0.608695652173913,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 23,
+    "density_rank": 50,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 63,
+    "center_lat": 12.88997546097875,
+    "center_lon": 77.66991324370876,
+    "zone_name": "Choodasandra Circle - Silver County Road Zone",
+    "total_violations": 27,
+    "vehicle_distribution": {
+      "CAR": 14,
+      "BIKE": 7,
+      "AUTO": 3,
+      "OTHERS": 2,
+      "TRUCK": 1
+    },
+    "avg_vehicle_weight": 2.3703703703703702,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Silver County Road",
+        "count": 8
+      },
+      {
+        "name": "Silver County Road",
+        "count": 5
+      },
+      {
+        "name": "Amrutha College Road",
+        "count": 4
+      },
+      {
+        "name": "Silver County Road",
+        "count": 3
+      },
+      {
+        "name": "Silver County Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 4,
+      "1.0": 1,
+      "4.0": 1,
+      "6.0": 1,
+      "20.0": 3,
+      "21.0": 15,
+      "22.0": 1,
+      "23.0": 1
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 10,
+      "WRONG PARKING": 15,
+      "PARKING ON FOOTPATH": 1,
+      "NO PARKING": 13,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 14
+      },
+      {
+        "type": "BIKE",
+        "count": 7
+      },
+      {
+        "type": "AUTO",
+        "count": 3
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      },
+      {
+        "type": "TRUCK",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 14.8,
+    "vehicle_impact_score": 0.5903133903133903,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 24,
+    "density_rank": 57,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 8,
+    "center_lat": 13.010556021333334,
+    "center_lon": 77.50626233733334,
+    "zone_name": "M Ramaiah Layout - Rajgopal Nagar Main Road Zone",
+    "total_violations": 75,
+    "vehicle_distribution": {
+      "OTHERS": 26,
+      "AUTO": 18,
+      "CAR": 13,
+      "BIKE": 10,
+      "TRUCK": 8
+    },
+    "avg_vehicle_weight": 2.36,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Rajgopal Nagar Main Road",
+        "count": 26
+      },
+      {
+        "name": "Peenya 2nd Statge Bus Stop Road",
+        "count": 14
+      },
+      {
+        "name": "Handrihalli Main Road",
+        "count": 10
+      },
+      {
+        "name": "Hegganahalli Main Road",
+        "count": 5
+      },
+      {
+        "name": "3rd Main Road",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "1.0": 2,
+      "2.0": 5,
+      "3.0": 13,
+      "4.0": 1,
+      "5.0": 5,
+      "6.0": 12,
+      "7.0": 1,
+      "8.0": 1,
+      "18.0": 2,
+      "19.0": 3,
+      "20.0": 9,
+      "21.0": 6,
+      "22.0": 12,
+      "23.0": 3
+    },
+    "police_station": "Peenya",
+    "violation_types": {
+      "WRONG PARKING": 48,
+      "NO PARKING": 28,
+      "DEFECTIVE NUMBER PLATE": 1,
+      "PARKING ON FOOTPATH": 1,
+      "PARKING IN A MAIN ROAD": 3,
+      "USING BLACK FILM/OTHER MATERIALS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "OTHERS",
+        "count": 26
+      },
+      {
+        "type": "AUTO",
+        "count": 18
+      },
+      {
+        "type": "CAR",
+        "count": 13
+      },
+      {
+        "type": "BIKE",
+        "count": 10
+      },
+      {
+        "type": "TRUCK",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "OTHERS",
+    "impact_score": 14.7,
+    "vehicle_impact_score": 0.5858461538461538,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 25,
+    "density_rank": 39,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 9,
+    "center_lat": 13.00778576996677,
+    "center_lon": 77.75818068721725,
+    "zone_name": "Wynn Gate - Whitefield Main Road Zone",
+    "total_violations": 284,
+    "vehicle_distribution": {
+      "CAR": 164,
+      "BIKE": 91,
+      "AUTO": 11,
+      "TRUCK": 10,
+      "OTHERS": 8
+    },
+    "avg_vehicle_weight": 2.362676056338028,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Whitefield Main Road",
+        "count": 39
+      },
+      {
+        "name": "Whitefield Main Road",
+        "count": 35
+      },
+      {
+        "name": "3rd Main Road",
+        "count": 27
+      },
+      {
+        "name": "Whitefield Main Road",
+        "count": 25
+      },
+      {
+        "name": "Whitefield Main Road",
+        "count": 18
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 29,
+      "1.0": 22,
+      "2.0": 40,
+      "3.0": 13,
+      "4.0": 28,
+      "5.0": 37,
+      "6.0": 34,
+      "7.0": 12,
+      "8.0": 6,
+      "20.0": 1,
+      "21.0": 23,
+      "22.0": 24,
+      "23.0": 15
+    },
+    "police_station": "Mahadevapura",
+    "violation_types": {
+      "NO PARKING": 169,
+      "WRONG PARKING": 116,
+      "DEFECTIVE NUMBER PLATE": 4,
+      "PARKING ON FOOTPATH": 1,
+      "PARKING IN A MAIN ROAD": 6
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 164
+      },
+      {
+        "type": "BIKE",
+        "count": 91
+      },
+      {
+        "type": "AUTO",
+        "count": 11
+      },
+      {
+        "type": "TRUCK",
+        "count": 10
+      },
+      {
+        "type": "OTHERS",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 14.7,
+    "vehicle_impact_score": 0.5869989165763813,
+    "violation_percentile": "P75",
+    "impact_percentile": "P50",
+    "impact_rank": 26,
+    "density_rank": 14,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 62,
+    "center_lat": 13.014219662686568,
+    "center_lon": 77.49164872537312,
+    "zone_name": "Stage 2 - Thigalarapalya Main Road Zone",
+    "total_violations": 67,
+    "vehicle_distribution": {
+      "BIKE": 27,
+      "CAR": 20,
+      "AUTO": 12,
+      "TRUCK": 8
+    },
+    "avg_vehicle_weight": 2.253731343283582,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Thigalarapalya Main Road",
+        "count": 24
+      },
+      {
+        "name": "Thigalarapalya Main Road",
+        "count": 23
+      },
+      {
+        "name": "13th Cross Road",
+        "count": 4
+      },
+      {
+        "name": "Thigalarapalya Main Road",
+        "count": 3
+      },
+      {
+        "name": "Thigalarapalya Main Road",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 6,
+      "1.0": 1,
+      "4.0": 1,
+      "5.0": 16,
+      "6.0": 10,
+      "7.0": 17,
+      "20.0": 1,
+      "21.0": 12,
+      "22.0": 3
+    },
+    "police_station": "Kamakshipalya",
+    "violation_types": {
+      "WRONG PARKING": 66,
+      "NO PARKING": 1,
+      "PARKING IN A MAIN ROAD": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 27
+      },
+      {
+        "type": "CAR",
+        "count": 20
+      },
+      {
+        "type": "AUTO",
+        "count": 12
+      },
+      {
+        "type": "TRUCK",
+        "count": 8
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 13.5,
+    "vehicle_impact_score": 0.540068886337543,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 27,
+    "density_rank": 43,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 59,
+    "center_lat": 13.161279831034484,
+    "center_lon": 77.62652933448274,
+    "zone_name": "Vidyanagar Junction - Bengaluru Bellary Road Zone",
+    "total_violations": 29,
+    "vehicle_distribution": {
+      "CAR": 13,
+      "BIKE": 13,
+      "MAXI CAB": 2,
+      "TRUCK": 1
+    },
+    "avg_vehicle_weight": 2.2413793103448274,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Bengaluru Bellary Road",
+        "count": 26
+      },
+      {
+        "name": "Vidya Nagar Cross Road",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "3.0": 1,
+      "4.0": 3,
+      "5.0": 4,
+      "6.0": 2,
+      "8.0": 5,
+      "19.0": 3,
+      "20.0": 8,
+      "21.0": 3
+    },
+    "police_station": "Chikkajala",
+    "violation_types": {
+      "WRONG PARKING": 16,
+      "NO PARKING": 15,
+      "PARKING IN A MAIN ROAD": 8
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 13
+      },
+      {
+        "type": "BIKE",
+        "count": 13
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 2
+      },
+      {
+        "type": "TRUCK",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 13.4,
+    "vehicle_impact_score": 0.5347480106100795,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 28,
+    "density_rank": 54,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 10,
+    "center_lat": 13.051421373219815,
+    "center_lon": 77.54878197879258,
+    "zone_name": "Dr K Shivaramakarantha Circle - Rajatha Bhavana Road Zone",
+    "total_violations": 646,
+    "vehicle_distribution": {
+      "CAR": 319,
+      "BIKE": 234,
+      "OTHERS": 44,
+      "AUTO": 28,
+      "TRUCK": 18,
+      "MAXI CAB": 3
+    },
+    "avg_vehicle_weight": 2.2244582043343653,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Rajatha Bhavana Road",
+        "count": 129
+      },
+      {
+        "name": "Soniya Gandhi Road",
+        "count": 52
+      },
+      {
+        "name": "Rajatha Bhavana Road",
+        "count": 41
+      },
+      {
+        "name": "Hesarghatta Road",
+        "count": 40
+      },
+      {
+        "name": "Jalahalli Main Road",
+        "count": 36
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 35,
+      "1.0": 25,
+      "2.0": 46,
+      "3.0": 27,
+      "4.0": 52,
+      "5.0": 92,
+      "6.0": 70,
+      "7.0": 46,
+      "8.0": 21,
+      "9.0": 6,
+      "19.0": 6,
+      "20.0": 20,
+      "21.0": 65,
+      "22.0": 85,
+      "23.0": 50
+    },
+    "police_station": "Jalahalli",
+    "violation_types": {
+      "WRONG PARKING": 342,
+      "NO PARKING": 537,
+      "PARKING IN A MAIN ROAD": 121,
+      "DEFECTIVE NUMBER PLATE": 6,
+      "PARKING ON FOOTPATH": 62,
+      "USING BLACK FILM/OTHER MATERIALS": 1,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 2
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 319
+      },
+      {
+        "type": "BIKE",
+        "count": 234
+      },
+      {
+        "type": "OTHERS",
+        "count": 44
+      },
+      {
+        "type": "AUTO",
+        "count": 28
+      },
+      {
+        "type": "TRUCK",
+        "count": 18
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 13.3,
+    "vehicle_impact_score": 0.527458918790188,
+    "violation_percentile": "P75",
+    "impact_percentile": "P50",
+    "impact_rank": 29,
+    "density_rank": 11,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 33,
+    "center_lat": 12.942344895707889,
+    "center_lon": 77.49308611570973,
+    "zone_name": "Rajarajeshwari Layout - Kengeri Main Road Zone",
+    "total_violations": 151,
+    "vehicle_distribution": {
+      "CAR": 74,
+      "BIKE": 56,
+      "AUTO": 8,
+      "OTHERS": 7,
+      "TRUCK": 5,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.2317880794701987,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Kengeri Main Road",
+        "count": 25
+      },
+      {
+        "name": "Kengeri Main Road",
+        "count": 18
+      },
+      {
+        "name": "Kengeri Main Road",
+        "count": 11
+      },
+      {
+        "name": "Kengeri Main Road",
+        "count": 11
+      },
+      {
+        "name": "Kengeri Main Road",
+        "count": 8
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 6,
+      "1.0": 5,
+      "2.0": 4,
+      "3.0": 1,
+      "5.0": 40,
+      "6.0": 50,
+      "7.0": 4,
+      "20.0": 1,
+      "21.0": 7,
+      "22.0": 15,
+      "23.0": 18
+    },
+    "police_station": "Jnanabharathi",
+    "violation_types": {
+      "NO PARKING": 74,
+      "WRONG PARKING": 81,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 3,
+      "PARKING IN A MAIN ROAD": 10,
+      "PARKING ON FOOTPATH": 1,
+      "DEFECTIVE NUMBER PLATE": 5
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 74
+      },
+      {
+        "type": "BIKE",
+        "count": 56
+      },
+      {
+        "type": "AUTO",
+        "count": 8
+      },
+      {
+        "type": "OTHERS",
+        "count": 7
+      },
+      {
+        "type": "TRUCK",
+        "count": 5
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 13.3,
+    "vehicle_impact_score": 0.5306164034640856,
+    "violation_percentile": "P50",
+    "impact_percentile": "P50",
+    "impact_rank": 30,
+    "density_rank": 20,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 61,
+    "center_lat": 12.919249851931097,
+    "center_lon": 77.54212892901704,
+    "zone_name": "Thimmaraya Gowda Layout - Ittamadu Road Zone",
+    "total_violations": 27,
+    "vehicle_distribution": {
+      "AUTO": 9,
+      "BIKE": 7,
+      "CAR": 7,
+      "TRUCK": 2,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 2.2222222222222223,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Ittamadu Road",
+        "count": 18
+      },
+      {
+        "name": "15th Cross Road",
+        "count": 3
+      },
+      {
+        "name": "Arehalli Main Road",
+        "count": 2
+      },
+      {
+        "name": "Ittamadu",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3,
+      "6.0": 5,
+      "7.0": 10,
+      "8.0": 8,
+      "22.0": 1
+    },
+    "police_station": "Banashankari",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 15,
+      "WRONG PARKING": 26,
+      "NO PARKING": 3,
+      "PARKING NEAR ROAD CROSSING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "AUTO",
+        "count": 9
+      },
+      {
+        "type": "BIKE",
+        "count": 7
+      },
+      {
+        "type": "CAR",
+        "count": 7
+      },
+      {
+        "type": "TRUCK",
+        "count": 2
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "AUTO",
+    "impact_score": 13.2,
+    "vehicle_impact_score": 0.5264957264957265,
+    "violation_percentile": "P25",
+    "impact_percentile": "P50",
+    "impact_rank": 31,
+    "density_rank": 58,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 3,
+    "center_lat": 13.046798647854152,
+    "center_lon": 77.5076494912279,
+    "zone_name": "Mumbai Bengaluru Highway - Jalahalli Cross Junction Zone",
+    "total_violations": 2031,
+    "vehicle_distribution": {
+      "BIKE": 844,
+      "CAR": 569,
+      "AUTO": 229,
+      "TRUCK": 171,
+      "OTHERS": 165,
+      "MAXI CAB": 53
+    },
+    "avg_vehicle_weight": 2.169374692269818,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Chikka Banavara RS Road",
+        "count": 225
+      },
+      {
+        "name": "Mumbai Bengaluru Highway",
+        "count": 118
+      },
+      {
+        "name": "Mumbai Bengaluru Highway",
+        "count": 110
+      },
+      {
+        "name": "Jalahalli Cross Road",
+        "count": 101
+      },
+      {
+        "name": "Hesaraghatta Main Road",
+        "count": 83
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 125,
+      "1.0": 72,
+      "2.0": 73,
+      "3.0": 56,
+      "4.0": 123,
+      "5.0": 328,
+      "6.0": 289,
+      "7.0": 113,
+      "8.0": 30,
+      "9.0": 19,
+      "10.0": 5,
+      "17.0": 8,
+      "18.0": 17,
+      "19.0": 29,
+      "20.0": 166,
+      "21.0": 255,
+      "22.0": 214,
+      "23.0": 109
+    },
+    "police_station": "Peenya",
+    "violation_types": {
+      "WRONG PARKING": 1236,
+      "NO PARKING": 855,
+      "PARKING ON FOOTPATH": 44,
+      "PARKING IN A MAIN ROAD": 184,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 6,
+      "DEFECTIVE NUMBER PLATE": 126,
+      "REFUSE TO GO FOR HIRE": 13,
+      "DOUBLE PARKING": 31,
+      "USING BLACK FILM/OTHER MATERIALS": 17,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 25,
+      "PARKING NEAR ROAD CROSSING": 3,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 6,
+      "DEMANDING EXCESS FARE": 4,
+      "H T V PROHIBITED": 4,
+      "FAIL TO USE SAFETY BELTS": 1,
+      "JUMPING TRAFFIC SIGNAL": 1,
+      "WITHOUT SIDE MIRROR": 1,
+      "VIOLATING LANE DISIPLINE": 1,
+      "PARKING OTHER THAN BUS STOP": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 844
+      },
+      {
+        "type": "CAR",
+        "count": 569
+      },
+      {
+        "type": "AUTO",
+        "count": 229
+      },
+      {
+        "type": "TRUCK",
+        "count": 171
+      },
+      {
+        "type": "OTHERS",
+        "count": 165
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 13.0,
+    "vehicle_impact_score": 0.5037306366700753,
+    "violation_percentile": "P90",
+    "impact_percentile": "P50",
+    "impact_rank": 32,
+    "density_rank": 5,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 22,
+    "center_lat": 13.10330140316094,
+    "center_lon": 77.60134768205,
+    "zone_name": "Raitarasanthe - Jakkur Main Road Zone",
+    "total_violations": 2380,
+    "vehicle_distribution": {
+      "BIKE": 1186,
+      "CAR": 567,
+      "MAXI CAB": 290,
+      "AUTO": 136,
+      "TRUCK": 109,
+      "OTHERS": 92
+    },
+    "avg_vehicle_weight": 2.1210084033613446,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Jakkur Main Road",
+        "count": 519
+      },
+      {
+        "name": "Allalasandra Main Road",
+        "count": 231
+      },
+      {
+        "name": "3rd A Cross Road",
+        "count": 116
+      },
+      {
+        "name": "Jakkur Main Road",
+        "count": 110
+      },
+      {
+        "name": "Bellahali Main Road",
+        "count": 106
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 148,
+      "1.0": 44,
+      "2.0": 130,
+      "3.0": 136,
+      "4.0": 53,
+      "5.0": 196,
+      "6.0": 145,
+      "7.0": 92,
+      "8.0": 81,
+      "18.0": 7,
+      "19.0": 254,
+      "20.0": 315,
+      "21.0": 368,
+      "22.0": 253,
+      "23.0": 158
+    },
+    "police_station": "Yelahanka",
+    "violation_types": {
+      "WRONG PARKING": 1368,
+      "NO PARKING": 1025,
+      "PARKING IN A MAIN ROAD": 147,
+      "DEFECTIVE NUMBER PLATE": 87,
+      "PARKING NEAR ROAD CROSSING": 13,
+      "PARKING ON FOOTPATH": 7,
+      "DOUBLE PARKING": 5,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 5,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 5,
+      "USING BLACK FILM/OTHER MATERIALS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 1186
+      },
+      {
+        "type": "CAR",
+        "count": 567
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 290
+      },
+      {
+        "type": "AUTO",
+        "count": 136
+      },
+      {
+        "type": "TRUCK",
+        "count": 109
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 12.5,
+    "vehicle_impact_score": 0.48289592760180994,
+    "violation_percentile": "P90",
+    "impact_percentile": "P50",
+    "impact_rank": 33,
+    "density_rank": 4,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 56,
+    "center_lat": 12.983625182857143,
+    "center_lon": 77.67982720857142,
+    "zone_name": "Jagadaapura - Kaggadaspura Main Road Zone",
+    "total_violations": 35,
+    "vehicle_distribution": {
+      "BIKE": 15,
+      "AUTO": 10,
+      "CAR": 4,
+      "TRUCK": 4,
+      "MAXI CAB": 2
+    },
+    "avg_vehicle_weight": 2.142857142857143,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Kaggadaspura Main Road",
+        "count": 22
+      },
+      {
+        "name": "Mahadevapura Main Road",
+        "count": 5
+      },
+      {
+        "name": "Sangama Ward",
+        "count": 4
+      },
+      {
+        "name": "Kaggadaspura Main Road",
+        "count": 1
+      },
+      {
+        "name": "Nagappa Reddy Layout Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 2,
+      "1.0": 4,
+      "6.0": 2,
+      "7.0": 3,
+      "8.0": 2,
+      "9.0": 1,
+      "20.0": 1,
+      "21.0": 6,
+      "22.0": 10,
+      "23.0": 4
+    },
+    "police_station": "Banaswadi",
+    "violation_types": {
+      "WRONG PARKING": 31,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 21,
+      "DEFECTIVE NUMBER PLATE": 7,
+      "REFUSE TO GO FOR HIRE": 7,
+      "DOUBLE PARKING": 2,
+      "PARKING IN A MAIN ROAD": 4,
+      "NO PARKING": 4,
+      "PARKING NEAR ROAD CROSSING": 3,
+      "DEMANDING EXCESS FARE": 4,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1,
+      "PARKING ON FOOTPATH": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 15
+      },
+      {
+        "type": "AUTO",
+        "count": 10
+      },
+      {
+        "type": "CAR",
+        "count": 4
+      },
+      {
+        "type": "TRUCK",
+        "count": 4
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 12.3,
+    "vehicle_impact_score": 0.4923076923076922,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 34,
+    "density_rank": 53,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 39,
+    "center_lat": 13.055095842307695,
+    "center_lon": 77.53480323076923,
+    "zone_name": "Patel Shamanna Layout - Abbigere Main Road Zone",
+    "total_violations": 78,
+    "vehicle_distribution": {
+      "BIKE": 38,
+      "CAR": 18,
+      "AUTO": 8,
+      "TRUCK": 8,
+      "MAXI CAB": 3,
+      "OTHERS": 3
+    },
+    "avg_vehicle_weight": 2.128205128205128,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Abbigere Main Road",
+        "count": 40
+      },
+      {
+        "name": "SM Road",
+        "count": 27
+      },
+      {
+        "name": "Shettihalli",
+        "count": 2
+      },
+      {
+        "name": "SM Road",
+        "count": 1
+      },
+      {
+        "name": "HMT Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "3.0": 1,
+      "4.0": 3,
+      "5.0": 30,
+      "6.0": 17,
+      "7.0": 4,
+      "10.0": 1,
+      "20.0": 8,
+      "21.0": 10,
+      "22.0": 2,
+      "23.0": 2
+    },
+    "police_station": "Jalahalli",
+    "violation_types": {
+      "NO PARKING": 36,
+      "DEFECTIVE NUMBER PLATE": 1,
+      "WRONG PARKING": 43,
+      "H T V PROHIBITED": 1,
+      "OBSTRUCTING DRIVER": 1,
+      "AGAINST ONE WAY/NO ENTRY": 1,
+      "PARKING IN A MAIN ROAD": 2
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 38
+      },
+      {
+        "type": "CAR",
+        "count": 18
+      },
+      {
+        "type": "AUTO",
+        "count": 8
+      },
+      {
+        "type": "TRUCK",
+        "count": 8
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 12.2,
+    "vehicle_impact_score": 0.48599605522682443,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 35,
+    "density_rank": 37,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 37,
+    "center_lat": 13.072228874074076,
+    "center_lon": 77.60478148518517,
+    "zone_name": "Kempegowda Circle - KV Jairam Road Zone",
+    "total_violations": 27,
+    "vehicle_distribution": {
+      "CAR": 13,
+      "BIKE": 13,
+      "TRUCK": 1
+    },
+    "avg_vehicle_weight": 2.111111111111111,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "KV Jairam Road",
+        "count": 7
+      },
+      {
+        "name": "KV Jairam Road",
+        "count": 7
+      },
+      {
+        "name": "KV Jairam Road",
+        "count": 7
+      },
+      {
+        "name": "KV Jairam Road",
+        "count": 3
+      },
+      {
+        "name": "1st Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "3.0": 1,
+      "4.0": 1,
+      "5.0": 2,
+      "6.0": 7,
+      "7.0": 5,
+      "8.0": 5,
+      "9.0": 3,
+      "23.0": 3
+    },
+    "police_station": "Hebbala",
+    "violation_types": {
+      "NO PARKING": 14,
+      "WRONG PARKING": 22,
+      "PARKING IN A MAIN ROAD": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "CAR",
+        "count": 13
+      },
+      {
+        "type": "BIKE",
+        "count": 13
+      },
+      {
+        "type": "TRUCK",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "CAR",
+    "impact_score": 12.0,
+    "vehicle_impact_score": 0.4786324786324786,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 36,
+    "density_rank": 59,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 50,
+    "center_lat": 13.144014048387097,
+    "center_lon": 77.6179943107742,
+    "zone_name": "Hunasamaranahalli - Hosahalli Main Road Zone",
+    "total_violations": 155,
+    "vehicle_distribution": {
+      "BIKE": 78,
+      "CAR": 24,
+      "OTHERS": 22,
+      "TRUCK": 15,
+      "MAXI CAB": 11,
+      "AUTO": 5
+    },
+    "avg_vehicle_weight": 2.0838709677419356,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Hosahalli Main Road",
+        "count": 69
+      },
+      {
+        "name": "Bengaluru Bellary Road",
+        "count": 40
+      },
+      {
+        "name": "Bengaluru Bellary Road",
+        "count": 12
+      },
+      {
+        "name": "1st Main Road",
+        "count": 9
+      },
+      {
+        "name": "Bengaluru Bellary Road",
+        "count": 6
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 1,
+      "2.0": 30,
+      "4.0": 1,
+      "5.0": 4,
+      "6.0": 10,
+      "7.0": 22,
+      "8.0": 9,
+      "9.0": 10,
+      "19.0": 41,
+      "20.0": 5,
+      "21.0": 19,
+      "22.0": 2,
+      "23.0": 1
+    },
+    "police_station": "Chikkajala",
+    "violation_types": {
+      "WRONG PARKING": 45,
+      "NO PARKING": 116,
+      "PARKING IN A MAIN ROAD": 20,
+      "DEFECTIVE NUMBER PLATE": 7,
+      "PARKING ON FOOTPATH": 1,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 2,
+      "PARKING NEAR ROAD CROSSING": 5,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 2
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 78
+      },
+      {
+        "type": "CAR",
+        "count": 24
+      },
+      {
+        "type": "OTHERS",
+        "count": 22
+      },
+      {
+        "type": "TRUCK",
+        "count": 15
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 11
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.7,
+    "vehicle_impact_score": 0.4668982630272953,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 37,
+    "density_rank": 19,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 30,
+    "center_lat": 12.986421952023157,
+    "center_lon": 77.48089838485075,
+    "zone_name": "Byadrahalli - Magadi Main Road Zone",
+    "total_violations": 134,
+    "vehicle_distribution": {
+      "BIKE": 59,
+      "CAR": 49,
+      "AUTO": 17,
+      "TRUCK": 6,
+      "OTHERS": 2,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.074626865671642,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Magadi Main Road",
+        "count": 47
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 23
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 21
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 7
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 6
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 5,
+      "1.0": 5,
+      "2.0": 4,
+      "3.0": 5,
+      "5.0": 22,
+      "6.0": 39,
+      "7.0": 23,
+      "8.0": 4,
+      "9.0": 1,
+      "20.0": 4,
+      "21.0": 8,
+      "22.0": 7,
+      "23.0": 7
+    },
+    "police_station": "Kamakshipalya",
+    "violation_types": {
+      "WRONG PARKING": 81,
+      "PARKING IN A MAIN ROAD": 19,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1,
+      "NO PARKING": 53,
+      "DEFECTIVE NUMBER PLATE": 6,
+      "PARKING NEAR ROAD CROSSING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 59
+      },
+      {
+        "type": "CAR",
+        "count": 49
+      },
+      {
+        "type": "AUTO",
+        "count": 17
+      },
+      {
+        "type": "TRUCK",
+        "count": 6
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.6,
+    "vehicle_impact_score": 0.46291618828932257,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 38,
+    "density_rank": 25,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 52,
+    "center_lat": 12.872147414285715,
+    "center_lon": 77.56719048214283,
+    "zone_name": "Tippu Sultan Circle - Amruth Nagar Main Road Zone",
+    "total_violations": 28,
+    "vehicle_distribution": {
+      "BIKE": 11,
+      "AUTO": 7,
+      "CAR": 7,
+      "TRUCK": 2,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 2.0714285714285716,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Amruth Nagar Main Road",
+        "count": 9
+      },
+      {
+        "name": "1st Cross Road",
+        "count": 3
+      },
+      {
+        "name": "Anjanapura Main Road",
+        "count": 3
+      },
+      {
+        "name": "1st Cross Road",
+        "count": 3
+      },
+      {
+        "name": "Anjanapura Main Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "5.0": 5,
+      "6.0": 12,
+      "7.0": 3,
+      "8.0": 2,
+      "22.0": 2,
+      "23.0": 4
+    },
+    "police_station": "Thalagattapura",
+    "violation_types": {
+      "WRONG PARKING": 27,
+      "NO PARKING": 1,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 11
+      },
+      {
+        "type": "AUTO",
+        "count": 7
+      },
+      {
+        "type": "CAR",
+        "count": 7
+      },
+      {
+        "type": "TRUCK",
+        "count": 2
+      },
+      {
+        "type": "OTHERS",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.5,
+    "vehicle_impact_score": 0.46153846153846156,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 39,
+    "density_rank": 56,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 29,
+    "center_lat": 13.070481500000001,
+    "center_lon": 77.6311459,
+    "zone_name": "Thanisandra Main Road Zone",
+    "total_violations": 211,
+    "vehicle_distribution": {
+      "BIKE": 103,
+      "CAR": 81,
+      "AUTO": 12,
+      "MAXI CAB": 8,
+      "TRUCK": 6,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 2.056872037914692,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Thanisandra Main Road",
+        "count": 46
+      },
+      {
+        "name": "80 Feet Road",
+        "count": 39
+      },
+      {
+        "name": "80 Feet Road",
+        "count": 29
+      },
+      {
+        "name": "Thanisandra Main Road",
+        "count": 20
+      },
+      {
+        "name": "Thanisandra Main Road",
+        "count": 15
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 4,
+      "1.0": 17,
+      "2.0": 24,
+      "3.0": 11,
+      "4.0": 17,
+      "5.0": 25,
+      "6.0": 19,
+      "7.0": 10,
+      "8.0": 26,
+      "9.0": 3,
+      "20.0": 12,
+      "21.0": 12,
+      "22.0": 4,
+      "23.0": 27
+    },
+    "police_station": "Hennuru",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 66,
+      "WRONG PARKING": 52,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 4,
+      "NO PARKING": 174,
+      "PARKING ON FOOTPATH": 6,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 14,
+      "DEFECTIVE NUMBER PLATE": 16
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 103
+      },
+      {
+        "type": "CAR",
+        "count": 81
+      },
+      {
+        "type": "AUTO",
+        "count": 12
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 8
+      },
+      {
+        "type": "TRUCK",
+        "count": 6
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.4,
+    "vehicle_impact_score": 0.45526795479402116,
+    "violation_percentile": "P75",
+    "impact_percentile": "P25",
+    "impact_rank": 40,
+    "density_rank": 16,
+    "zone_classification": "Frequent Violation Zone"
+  },
+  {
+    "cluster_id": 19,
+    "center_lat": 13.03538446574074,
+    "center_lon": 77.73521127129628,
+    "zone_name": "Avalahalli South Taluka - MBT Road Zone",
+    "total_violations": 108,
+    "vehicle_distribution": {
+      "BIKE": 61,
+      "CAR": 29,
+      "TRUCK": 11,
+      "AUTO": 4,
+      "OTHERS": 2,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.0277777777777777,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "MBT Road",
+        "count": 66
+      },
+      {
+        "name": "Rampura Main Road",
+        "count": 24
+      },
+      {
+        "name": "MBT Road",
+        "count": 7
+      },
+      {
+        "name": "Chinnagenahalli Main Road",
+        "count": 4
+      },
+      {
+        "name": "Unnamed Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 10,
+      "1.0": 7,
+      "2.0": 1,
+      "3.0": 3,
+      "4.0": 1,
+      "5.0": 6,
+      "6.0": 17,
+      "7.0": 4,
+      "8.0": 3,
+      "20.0": 10,
+      "21.0": 38,
+      "22.0": 5,
+      "23.0": 3
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "NO PARKING": 86,
+      "WRONG PARKING": 27,
+      "PARKING ON FOOTPATH": 39,
+      "PARKING NEAR ROAD CROSSING": 33,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 4,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 27,
+      "DOUBLE PARKING": 1,
+      "PARKING IN A MAIN ROAD": 1,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 61
+      },
+      {
+        "type": "CAR",
+        "count": 29
+      },
+      {
+        "type": "TRUCK",
+        "count": 11
+      },
+      {
+        "type": "AUTO",
+        "count": 4
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.1,
+    "vehicle_impact_score": 0.44273504273504266,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 41,
+    "density_rank": 30,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 53,
+    "center_lat": 13.054378185185188,
+    "center_lon": 77.7631243675926,
+    "zone_name": "Brigade Golden Triangle - MBT Road Zone",
+    "total_violations": 108,
+    "vehicle_distribution": {
+      "BIKE": 65,
+      "CAR": 18,
+      "TRUCK": 16,
+      "OTHERS": 6,
+      "AUTO": 2,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 2.0277777777777777,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "MBT Road",
+        "count": 38
+      },
+      {
+        "name": "MBT Road",
+        "count": 26
+      },
+      {
+        "name": "MBT Road",
+        "count": 18
+      },
+      {
+        "name": "Whitefield Main Road",
+        "count": 10
+      },
+      {
+        "name": "MBT Road",
+        "count": 5
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 6,
+      "1.0": 2,
+      "2.0": 6,
+      "3.0": 5,
+      "4.0": 2,
+      "5.0": 49,
+      "6.0": 16,
+      "7.0": 5,
+      "8.0": 4,
+      "19.0": 1,
+      "20.0": 2,
+      "21.0": 7,
+      "22.0": 1,
+      "23.0": 2
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "PARKING ON FOOTPATH": 1,
+      "WRONG PARKING": 57,
+      "NO PARKING": 52,
+      "PARKING IN A MAIN ROAD": 26,
+      "DOUBLE PARKING": 4,
+      "PARKING NEAR ROAD CROSSING": 12,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 16,
+      "FAIL TO USE SAFETY BELTS": 1,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 2,
+      "DEFECTIVE NUMBER PLATE": 5,
+      "REFUSE TO GO FOR HIRE": 1,
+      "PARKING OTHER THAN BUS STOP": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 65
+      },
+      {
+        "type": "CAR",
+        "count": 18
+      },
+      {
+        "type": "TRUCK",
+        "count": 16
+      },
+      {
+        "type": "OTHERS",
+        "count": 6
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.1,
+    "vehicle_impact_score": 0.44273504273504266,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 42,
+    "density_rank": 31,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 46,
+    "center_lat": 13.116355864000003,
+    "center_lon": 77.578155866,
+    "zone_name": "Nagarjuna Meadows - Doddaballapur Main Road Zone",
+    "total_violations": 50,
+    "vehicle_distribution": {
+      "BIKE": 24,
+      "CAR": 19,
+      "AUTO": 5,
+      "TRUCK": 2
+    },
+    "avg_vehicle_weight": 2.02,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Doddaballapur Main Road",
+        "count": 21
+      },
+      {
+        "name": "Doddaballapur Main Road",
+        "count": 11
+      },
+      {
+        "name": "Doddaballapur Main Road",
+        "count": 5
+      },
+      {
+        "name": "Dodda Ballapur Main Road",
+        "count": 3
+      },
+      {
+        "name": "1st Main Road",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 3,
+      "3.0": 3,
+      "4.0": 3,
+      "6.0": 2,
+      "8.0": 3,
+      "20.0": 2,
+      "21.0": 20,
+      "22.0": 14
+    },
+    "police_station": "Yelahanka",
+    "violation_types": {
+      "NO PARKING": 40,
+      "WRONG PARKING": 14,
+      "PARKING NEAR ROAD CROSSING": 1,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 4,
+      "PARKING ON FOOTPATH": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 24
+      },
+      {
+        "type": "CAR",
+        "count": 19
+      },
+      {
+        "type": "AUTO",
+        "count": 5
+      },
+      {
+        "type": "TRUCK",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 11.0,
+    "vehicle_impact_score": 0.4393846153846154,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 43,
+    "density_rank": 49,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 24,
+    "center_lat": 12.896648908045979,
+    "center_lon": 77.72005069310345,
+    "zone_name": "Kodathi Gate - Sarjapura Main Road Zone",
+    "total_violations": 174,
+    "vehicle_distribution": {
+      "BIKE": 106,
+      "CAR": 31,
+      "TRUCK": 19,
+      "AUTO": 12,
+      "MAXI CAB": 6
+    },
+    "avg_vehicle_weight": 1.9655172413793103,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Sarjapura Main Road",
+        "count": 160
+      },
+      {
+        "name": "Kodathi Village Road",
+        "count": 7
+      },
+      {
+        "name": "Mullur Road",
+        "count": 3
+      },
+      {
+        "name": "BNE MD 17",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 21,
+      "1.0": 22,
+      "2.0": 11,
+      "3.0": 15,
+      "4.0": 18,
+      "5.0": 25,
+      "6.0": 16,
+      "7.0": 5,
+      "8.0": 5,
+      "9.0": 3,
+      "19.0": 6,
+      "20.0": 2,
+      "21.0": 1,
+      "22.0": 7,
+      "23.0": 17
+    },
+    "police_station": "Whitefield",
+    "violation_types": {
+      "NO PARKING": 47,
+      "WRONG PARKING": 132,
+      "DEFECTIVE NUMBER PLATE": 10,
+      "PARKING IN A MAIN ROAD": 7,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 10,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 10,
+      "PARKING ON FOOTPATH": 5,
+      "DOUBLE PARKING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 106
+      },
+      {
+        "type": "CAR",
+        "count": 31
+      },
+      {
+        "type": "TRUCK",
+        "count": 19
+      },
+      {
+        "type": "AUTO",
+        "count": 12
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 6
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 10.4,
+    "vehicle_impact_score": 0.41591511936339515,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 44,
+    "density_rank": 18,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 58,
+    "center_lat": 12.85517024591937,
+    "center_lon": 77.66390145306944,
+    "zone_name": "Nanjuda Reddy Layout - Hosur Road Zone",
+    "total_violations": 121,
+    "vehicle_distribution": {
+      "BIKE": 63,
+      "CAR": 33,
+      "AUTO": 11,
+      "TRUCK": 8,
+      "OTHERS": 6
+    },
+    "avg_vehicle_weight": 1.9504132231404958,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Hosur Road",
+        "count": 47
+      },
+      {
+        "name": "Hewlett Packard Avenue",
+        "count": 37
+      },
+      {
+        "name": "4th Cross Road",
+        "count": 15
+      },
+      {
+        "name": "Kaviraja Marga Road",
+        "count": 5
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 1,
+      "1.0": 13,
+      "2.0": 2,
+      "3.0": 14,
+      "4.0": 19,
+      "5.0": 14,
+      "6.0": 8,
+      "7.0": 1,
+      "8.0": 3,
+      "9.0": 5,
+      "10.0": 2,
+      "20.0": 17,
+      "21.0": 15,
+      "22.0": 6,
+      "23.0": 1
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "WRONG PARKING": 70,
+      "NO PARKING": 51,
+      "DEFECTIVE NUMBER PLATE": 3,
+      "PARKING IN A MAIN ROAD": 62,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 7,
+      "PARKING NEAR ROAD CROSSING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 63
+      },
+      {
+        "type": "CAR",
+        "count": 33
+      },
+      {
+        "type": "AUTO",
+        "count": 11
+      },
+      {
+        "type": "TRUCK",
+        "count": 8
+      },
+      {
+        "type": "OTHERS",
+        "count": 6
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 10.3,
+    "vehicle_impact_score": 0.4094087730451366,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 45,
+    "density_rank": 27,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 34,
+    "center_lat": 13.078038739622643,
+    "center_lon": 77.5587373037736,
+    "zone_name": "HMT Layout - Vidyaranyapura Main Road Zone",
+    "total_violations": 53,
+    "vehicle_distribution": {
+      "BIKE": 29,
+      "CAR": 24
+    },
+    "avg_vehicle_weight": 1.9056603773584906,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Vidyaranyapura Main Road",
+        "count": 10
+      },
+      {
+        "name": "Vidyaranyapura Main Road",
+        "count": 10
+      },
+      {
+        "name": "Vidyaranyapura Main Road",
+        "count": 8
+      },
+      {
+        "name": "Vidyaranyapura Main Road",
+        "count": 4
+      },
+      {
+        "name": "Vidyaranyapura Main Road",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "2.0": 1,
+      "4.0": 7,
+      "5.0": 6,
+      "6.0": 5,
+      "7.0": 6,
+      "8.0": 1,
+      "9.0": 1,
+      "20.0": 2,
+      "21.0": 10,
+      "22.0": 10,
+      "23.0": 4
+    },
+    "police_station": "Yelahanka",
+    "violation_types": {
+      "WRONG PARKING": 48,
+      "NO PARKING": 5,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 29
+      },
+      {
+        "type": "CAR",
+        "count": 24
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 9.8,
+    "vehicle_impact_score": 0.39013062409288823,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 46,
+    "density_rank": 47,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 4,
+    "center_lat": 12.841837397276576,
+    "center_lon": 77.64609126274091,
+    "zone_name": "Ajmera Annex - Neeladri Road Zone",
+    "total_violations": 1959,
+    "vehicle_distribution": {
+      "BIKE": 1266,
+      "CAR": 425,
+      "TRUCK": 157,
+      "AUTO": 60,
+      "MAXI CAB": 29,
+      "OTHERS": 22
+    },
+    "avg_vehicle_weight": 1.8407350689127107,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Neeladri Road",
+        "count": 631
+      },
+      {
+        "name": "Neeladri Road",
+        "count": 427
+      },
+      {
+        "name": "Neeladri Road",
+        "count": 272
+      },
+      {
+        "name": "Neeladri Road",
+        "count": 110
+      },
+      {
+        "name": "Neeladri Road",
+        "count": 97
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 95,
+      "1.0": 77,
+      "2.0": 34,
+      "3.0": 30,
+      "4.0": 67,
+      "5.0": 72,
+      "6.0": 320,
+      "7.0": 695,
+      "8.0": 371,
+      "9.0": 27,
+      "19.0": 4,
+      "20.0": 25,
+      "21.0": 40,
+      "22.0": 36,
+      "23.0": 66
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "WRONG PARKING": 1170,
+      "NO PARKING": 790,
+      "DOUBLE PARKING": 3,
+      "PARKING IN A MAIN ROAD": 15,
+      "PARKING ON FOOTPATH": 18,
+      "PARKING NEAR ROAD CROSSING": 1,
+      "DEFECTIVE NUMBER PLATE": 54
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 1266
+      },
+      {
+        "type": "CAR",
+        "count": 425
+      },
+      {
+        "type": "TRUCK",
+        "count": 157
+      },
+      {
+        "type": "AUTO",
+        "count": 60
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 29
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 9.4,
+    "vehicle_impact_score": 0.3621627989162446,
+    "violation_percentile": "P90",
+    "impact_percentile": "P25",
+    "impact_rank": 47,
+    "density_rank": 6,
+    "zone_classification": "Frequent Violation Zone"
+  },
+  {
+    "cluster_id": 14,
+    "center_lat": 13.00458033478261,
+    "center_lon": 77.71197179130434,
+    "zone_name": "Krishnappa Circle - Devasandra Main Road Zone",
+    "total_violations": 69,
+    "vehicle_distribution": {
+      "BIKE": 37,
+      "CAR": 14,
+      "AUTO": 12,
+      "TRUCK": 4,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 1.8405797101449275,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Basavanapura Road",
+        "count": 11
+      },
+      {
+        "name": "Hoodi Main Road",
+        "count": 8
+      },
+      {
+        "name": "Devasandra Main Road",
+        "count": 7
+      },
+      {
+        "name": "Basavanapura Road",
+        "count": 6
+      },
+      {
+        "name": "Kodigehalli Main Road",
+        "count": 6
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 12,
+      "1.0": 5,
+      "2.0": 7,
+      "3.0": 4,
+      "4.0": 4,
+      "5.0": 9,
+      "6.0": 7,
+      "7.0": 2,
+      "8.0": 3,
+      "9.0": 1,
+      "19.0": 1,
+      "21.0": 8,
+      "22.0": 3,
+      "23.0": 3
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 9,
+      "WRONG PARKING": 48,
+      "NO PARKING": 21
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 37
+      },
+      {
+        "type": "CAR",
+        "count": 14
+      },
+      {
+        "type": "AUTO",
+        "count": 12
+      },
+      {
+        "type": "TRUCK",
+        "count": 4
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 9.1,
+    "vehicle_impact_score": 0.3620958751393534,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 48,
+    "density_rank": 40,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 42,
+    "center_lat": 12.897715041161044,
+    "center_lon": 77.65871807879547,
+    "zone_name": "Birla Circle - Haralur Road Zone",
+    "total_violations": 142,
+    "vehicle_distribution": {
+      "BIKE": 91,
+      "CAR": 33,
+      "TRUCK": 9,
+      "AUTO": 4,
+      "OTHERS": 4,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 1.795774647887324,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Haralur Road",
+        "count": 49
+      },
+      {
+        "name": "Haralur Road",
+        "count": 27
+      },
+      {
+        "name": "Sri Dinne Anjaneya Swamy Temple Road",
+        "count": 18
+      },
+      {
+        "name": "Haralur Road",
+        "count": 11
+      },
+      {
+        "name": "Haralur Road",
+        "count": 7
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 10,
+      "1.0": 8,
+      "2.0": 7,
+      "3.0": 4,
+      "4.0": 14,
+      "5.0": 26,
+      "6.0": 31,
+      "7.0": 4,
+      "8.0": 7,
+      "19.0": 1,
+      "20.0": 12,
+      "21.0": 2,
+      "22.0": 3,
+      "23.0": 13
+    },
+    "police_station": "Bellandur",
+    "violation_types": {
+      "NO PARKING": 54,
+      "WRONG PARKING": 90,
+      "PARKING ON FOOTPATH": 1,
+      "DEFECTIVE NUMBER PLATE": 6,
+      "PARKING IN A MAIN ROAD": 16,
+      "DOUBLE PARKING": 1,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 1,
+      "WITHOUT SIDE MIRROR": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 91
+      },
+      {
+        "type": "CAR",
+        "count": 33
+      },
+      {
+        "type": "TRUCK",
+        "count": 9
+      },
+      {
+        "type": "AUTO",
+        "count": 4
+      },
+      {
+        "type": "OTHERS",
+        "count": 4
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 8.6,
+    "vehicle_impact_score": 0.342795232936078,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 49,
+    "density_rank": 23,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 25,
+    "center_lat": 12.999684534782606,
+    "center_lon": 77.48859882753625,
+    "zone_name": "Soundarya Layout - Andhrahalli Main Road Zone",
+    "total_violations": 69,
+    "vehicle_distribution": {
+      "BIKE": 41,
+      "CAR": 15,
+      "AUTO": 10,
+      "TRUCK": 3
+    },
+    "avg_vehicle_weight": 1.7536231884057971,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Andhrahalli Main Road",
+        "count": 42
+      },
+      {
+        "name": "1st Main Road",
+        "count": 11
+      },
+      {
+        "name": "Andhrahalli Main Road",
+        "count": 4
+      },
+      {
+        "name": "3rd Main Road",
+        "count": 3
+      },
+      {
+        "name": "Andhrahalli Main Road",
+        "count": 3
+      }
+    ],
+    "hourly_distribution": {
+      "3.0": 1,
+      "4.0": 3,
+      "5.0": 18,
+      "6.0": 26,
+      "7.0": 11,
+      "8.0": 1,
+      "21.0": 1,
+      "22.0": 8
+    },
+    "police_station": "Kamakshipalya",
+    "violation_types": {
+      "WRONG PARKING": 67,
+      "DEFECTIVE NUMBER PLATE": 2,
+      "PARKING IN A MAIN ROAD": 2,
+      "NO PARKING": 3
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 41
+      },
+      {
+        "type": "CAR",
+        "count": 15
+      },
+      {
+        "type": "AUTO",
+        "count": 10
+      },
+      {
+        "type": "TRUCK",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 8.1,
+    "vehicle_impact_score": 0.32463768115942027,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 50,
+    "density_rank": 41,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 21,
+    "center_lat": 13.084152074782608,
+    "center_lon": 77.63652351304347,
+    "zone_name": "Prisha Orchids - Munninarasimha Road Zone",
+    "total_violations": 115,
+    "vehicle_distribution": {
+      "BIKE": 72,
+      "AUTO": 21,
+      "MAXI CAB": 10,
+      "CAR": 9,
+      "TRUCK": 3
+    },
+    "avg_vehicle_weight": 1.7043478260869565,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Munninarasimha Road",
+        "count": 46
+      },
+      {
+        "name": "Thanisandra Main Road",
+        "count": 17
+      },
+      {
+        "name": "Munninarasimha Road",
+        "count": 8
+      },
+      {
+        "name": "Bhartiya City Road",
+        "count": 7
+      },
+      {
+        "name": "Thanisandra Main Road",
+        "count": 7
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 5,
+      "2.0": 2,
+      "3.0": 1,
+      "4.0": 1,
+      "5.0": 10,
+      "6.0": 9,
+      "7.0": 14,
+      "8.0": 20,
+      "21.0": 7,
+      "22.0": 31,
+      "23.0": 15
+    },
+    "police_station": "Hennuru",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 27,
+      "WRONG PARKING": 74,
+      "NO PARKING": 41,
+      "DEFECTIVE NUMBER PLATE": 12,
+      "PARKING ON FOOTPATH": 1,
+      "PARKING NEAR TRAFFIC LIGHT OR ZEBRA CROSS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 72
+      },
+      {
+        "type": "AUTO",
+        "count": 21
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 10
+      },
+      {
+        "type": "CAR",
+        "count": 9
+      },
+      {
+        "type": "TRUCK",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 7.6,
+    "vehicle_impact_score": 0.30341137123745815,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 51,
+    "density_rank": 28,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 41,
+    "center_lat": 13.068446358695654,
+    "center_lon": 77.53039395543477,
+    "zone_name": "Vymac Circle - Forest Region Road Zone",
+    "total_violations": 92,
+    "vehicle_distribution": {
+      "BIKE": 60,
+      "CAR": 14,
+      "OTHERS": 6,
+      "AUTO": 5,
+      "TRUCK": 5,
+      "MAXI CAB": 2
+    },
+    "avg_vehicle_weight": 1.7065217391304348,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Forest Region Road",
+        "count": 40
+      },
+      {
+        "name": "Lakshmipura Main Road",
+        "count": 16
+      },
+      {
+        "name": "Forest Region Road",
+        "count": 10
+      },
+      {
+        "name": "Lakshmipura Main Road",
+        "count": 9
+      },
+      {
+        "name": "Kammagondanahalli Main Road",
+        "count": 6
+      }
+    ],
+    "hourly_distribution": {
+      "4.0": 1,
+      "5.0": 11,
+      "6.0": 22,
+      "7.0": 20,
+      "8.0": 11,
+      "10.0": 1,
+      "20.0": 5,
+      "21.0": 15,
+      "22.0": 4,
+      "23.0": 2
+    },
+    "police_station": "Jalahalli",
+    "violation_types": {
+      "NO PARKING": 31,
+      "WRONG PARKING": 61,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 60
+      },
+      {
+        "type": "CAR",
+        "count": 14
+      },
+      {
+        "type": "OTHERS",
+        "count": 6
+      },
+      {
+        "type": "AUTO",
+        "count": 5
+      },
+      {
+        "type": "TRUCK",
+        "count": 5
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 7.6,
+    "vehicle_impact_score": 0.3043478260869565,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 52,
+    "density_rank": 35,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 64,
+    "center_lat": 12.84171474,
+    "center_lon": 77.663974945,
+    "zone_name": "KSSIDC Complex - 2nd Cross Road Zone",
+    "total_violations": 20,
+    "vehicle_distribution": {
+      "BIKE": 14,
+      "CAR": 3,
+      "OTHERS": 1,
+      "TRUCK": 1,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 1.7,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "2nd Cross Road",
+        "count": 7
+      },
+      {
+        "name": "1st Main Road",
+        "count": 4
+      },
+      {
+        "name": "4th A Cross Road",
+        "count": 4
+      },
+      {
+        "name": "4th Cross Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 4,
+      "1.0": 6,
+      "2.0": 2,
+      "3.0": 1,
+      "4.0": 1,
+      "5.0": 2,
+      "6.0": 1,
+      "23.0": 3
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "NO PARKING": 11,
+      "WRONG PARKING": 9,
+      "DEFECTIVE NUMBER PLATE": 1,
+      "PARKING ON FOOTPATH": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 14
+      },
+      {
+        "type": "CAR",
+        "count": 3
+      },
+      {
+        "type": "OTHERS",
+        "count": 1
+      },
+      {
+        "type": "TRUCK",
+        "count": 1
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 7.5,
+    "vehicle_impact_score": 0.3015384615384615,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 53,
+    "density_rank": 64,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 6,
+    "center_lat": 12.989579180317788,
+    "center_lon": 77.50320572840859,
+    "zone_name": "Hanumantharayan Palya - Magadi Main Road Zone",
+    "total_violations": 484,
+    "vehicle_distribution": {
+      "BIKE": 314,
+      "CAR": 106,
+      "AUTO": 44,
+      "TRUCK": 15,
+      "OTHERS": 5
+    },
+    "avg_vehicle_weight": 1.6632231404958677,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Magadi Main Road",
+        "count": 196
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 80
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 58
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 46
+      },
+      {
+        "name": "Magadi Main Road",
+        "count": 24
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 37,
+      "1.0": 39,
+      "2.0": 22,
+      "3.0": 12,
+      "4.0": 30,
+      "5.0": 110,
+      "6.0": 94,
+      "7.0": 30,
+      "8.0": 16,
+      "9.0": 5,
+      "19.0": 2,
+      "20.0": 5,
+      "21.0": 18,
+      "22.0": 29,
+      "23.0": 35
+    },
+    "police_station": "Kamakshipalya",
+    "violation_types": {
+      "WRONG PARKING": 175,
+      "NO PARKING": 327,
+      "DEFECTIVE NUMBER PLATE": 14,
+      "PARKING ON FOOTPATH": 7,
+      "PARKING IN A MAIN ROAD": 26,
+      "PARKING OTHER THAN BUS STOP": 1,
+      "PARKING NEAR ROAD CROSSING": 2,
+      "DOUBLE PARKING": 3,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 6,
+      "USING BLACK FILM/OTHER MATERIALS": 1,
+      "PARKING OPPOSITE TO ANOTHER PARKED VEHICLE": 3
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 314
+      },
+      {
+        "type": "CAR",
+        "count": 106
+      },
+      {
+        "type": "AUTO",
+        "count": 44
+      },
+      {
+        "type": "TRUCK",
+        "count": 15
+      },
+      {
+        "type": "OTHERS",
+        "count": 5
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 7.2,
+    "vehicle_impact_score": 0.28569612205975836,
+    "violation_percentile": "P75",
+    "impact_percentile": "P25",
+    "impact_rank": 54,
+    "density_rank": 12,
+    "zone_classification": "Frequent Violation Zone"
+  },
+  {
+    "cluster_id": 18,
+    "center_lat": 12.832402692479528,
+    "center_lon": 77.68119340683022,
+    "zone_name": "Salarpuria Sattva Alexandria Tech Park - Hosur Road Zone",
+    "total_violations": 782,
+    "vehicle_distribution": {
+      "BIKE": 517,
+      "CAR": 159,
+      "OTHERS": 59,
+      "TRUCK": 27,
+      "AUTO": 18,
+      "MAXI CAB": 2
+    },
+    "avg_vehicle_weight": 1.6508951406649617,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Hosur Road",
+        "count": 205
+      },
+      {
+        "name": "Hosur Road",
+        "count": 141
+      },
+      {
+        "name": "Hosur Road",
+        "count": 125
+      },
+      {
+        "name": "Hosur Road",
+        "count": 63
+      },
+      {
+        "name": "Hosur Road",
+        "count": 49
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 25,
+      "1.0": 36,
+      "2.0": 59,
+      "3.0": 80,
+      "4.0": 78,
+      "5.0": 75,
+      "6.0": 74,
+      "7.0": 27,
+      "8.0": 24,
+      "9.0": 26,
+      "10.0": 12,
+      "11.0": 23,
+      "12.0": 8,
+      "19.0": 8,
+      "20.0": 55,
+      "21.0": 68,
+      "22.0": 41,
+      "23.0": 63
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 232,
+      "WRONG PARKING": 456,
+      "NO PARKING": 390,
+      "PARKING ON FOOTPATH": 171,
+      "DEFECTIVE NUMBER PLATE": 47,
+      "PARKING NEAR ROAD CROSSING": 5,
+      "PARKING NEAR BUSTOP/SCHOOL/HOSPITAL ETC": 31,
+      "DOUBLE PARKING": 16,
+      "USING BLACK FILM/OTHER MATERIALS": 1,
+      "REFUSE TO GO FOR HIRE": 1,
+      "DEMANDING EXCESS FARE": 1,
+      "PARKING OTHER THAN BUS STOP": 9
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 517
+      },
+      {
+        "type": "CAR",
+        "count": 159
+      },
+      {
+        "type": "OTHERS",
+        "count": 59
+      },
+      {
+        "type": "TRUCK",
+        "count": 27
+      },
+      {
+        "type": "AUTO",
+        "count": 18
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 7.2,
+    "vehicle_impact_score": 0.2803855990556758,
+    "violation_percentile": "P75",
+    "impact_percentile": "P25",
+    "impact_rank": 55,
+    "density_rank": 10,
+    "zone_classification": "Frequent Violation Zone"
+  },
+  {
+    "cluster_id": 27,
+    "center_lat": 12.881890088501269,
+    "center_lon": 77.5967278453261,
+    "zone_name": "Bannerghatta Main Road Zone",
+    "total_violations": 871,
+    "vehicle_distribution": {
+      "BIKE": 598,
+      "CAR": 199,
+      "AUTO": 36,
+      "MAXI CAB": 17,
+      "TRUCK": 15,
+      "OTHERS": 6
+    },
+    "avg_vehicle_weight": 1.632606199770379,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Shri Ramalingeshwara Cave Temple Road",
+        "count": 165
+      },
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 103
+      },
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 86
+      },
+      {
+        "name": "Shri Ramalingeshwara Cave Temple Road",
+        "count": 73
+      },
+      {
+        "name": "Bannerghatta Main Road",
+        "count": 66
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 67,
+      "1.0": 120,
+      "2.0": 60,
+      "3.0": 50,
+      "4.0": 44,
+      "5.0": 59,
+      "6.0": 108,
+      "7.0": 95,
+      "8.0": 63,
+      "9.0": 1,
+      "18.0": 1,
+      "19.0": 21,
+      "20.0": 29,
+      "21.0": 32,
+      "22.0": 81,
+      "23.0": 40
+    },
+    "police_station": "Hulimavu",
+    "violation_types": {
+      "WRONG PARKING": 354,
+      "NO PARKING": 518,
+      "DEFECTIVE NUMBER PLATE": 20,
+      "PARKING IN A MAIN ROAD": 5,
+      "USING BLACK FILM/OTHER MATERIALS": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 598
+      },
+      {
+        "type": "CAR",
+        "count": 199
+      },
+      {
+        "type": "AUTO",
+        "count": 36
+      },
+      {
+        "type": "MAXI CAB",
+        "count": 17
+      },
+      {
+        "type": "TRUCK",
+        "count": 15
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 7.0,
+    "vehicle_impact_score": 0.2725072860549324,
+    "violation_percentile": "P75",
+    "impact_percentile": "P25",
+    "impact_rank": 56,
+    "density_rank": 9,
+    "zone_classification": "Frequent Violation Zone"
+  },
+  {
+    "cluster_id": 40,
+    "center_lat": 13.005956879832146,
+    "center_lon": 77.66149758051994,
+    "zone_name": "Kasturi Nagar - 2nd Main Road Zone",
+    "total_violations": 137,
+    "vehicle_distribution": {
+      "BIKE": 98,
+      "CAR": 26,
+      "OTHERS": 5,
+      "TRUCK": 4,
+      "AUTO": 3,
+      "MAXI CAB": 1
+    },
+    "avg_vehicle_weight": 1.5766423357664234,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "2nd Main Road",
+        "count": 71
+      },
+      {
+        "name": "5th Main Road",
+        "count": 13
+      },
+      {
+        "name": "2nd H Main Road",
+        "count": 9
+      },
+      {
+        "name": "Kasthuri Nagar Main Road",
+        "count": 5
+      },
+      {
+        "name": "MBT Road",
+        "count": 4
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 2,
+      "1.0": 7,
+      "2.0": 1,
+      "3.0": 4,
+      "4.0": 17,
+      "5.0": 22,
+      "6.0": 22,
+      "8.0": 3,
+      "20.0": 2,
+      "21.0": 4,
+      "22.0": 38,
+      "23.0": 15
+    },
+    "police_station": "Banaswadi",
+    "violation_types": {
+      "NO PARKING": 122,
+      "WRONG PARKING": 15,
+      "DEFECTIVE NUMBER PLATE": 5,
+      "PARKING ON FOOTPATH": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 98
+      },
+      {
+        "type": "CAR",
+        "count": 26
+      },
+      {
+        "type": "OTHERS",
+        "count": 5
+      },
+      {
+        "type": "TRUCK",
+        "count": 4
+      },
+      {
+        "type": "AUTO",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 6.2,
+    "vehicle_impact_score": 0.2483997754070747,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 57,
+    "density_rank": 24,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 55,
+    "center_lat": 12.877202683333334,
+    "center_lon": 77.61498078589746,
+    "zone_name": "Westend Avenue Zone",
+    "total_violations": 78,
+    "vehicle_distribution": {
+      "BIKE": 54,
+      "CAR": 21,
+      "AUTO": 3
+    },
+    "avg_vehicle_weight": 1.5769230769230769,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Westend Avenue",
+        "count": 28
+      },
+      {
+        "name": "Vishveswaraiah Road",
+        "count": 9
+      },
+      {
+        "name": "1st Main Road",
+        "count": 7
+      },
+      {
+        "name": "1st Main Road",
+        "count": 7
+      },
+      {
+        "name": "Westend Avenue",
+        "count": 5
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 7,
+      "1.0": 1,
+      "2.0": 2,
+      "3.0": 1,
+      "4.0": 2,
+      "5.0": 4,
+      "6.0": 21,
+      "7.0": 15,
+      "8.0": 5,
+      "9.0": 3,
+      "21.0": 4,
+      "22.0": 7,
+      "23.0": 6
+    },
+    "police_station": "Hulimavu",
+    "violation_types": {
+      "NO PARKING": 68,
+      "DEFECTIVE NUMBER PLATE": 2,
+      "WRONG PARKING": 10,
+      "PARKING NEAR ROAD CROSSING": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 54
+      },
+      {
+        "type": "CAR",
+        "count": 21
+      },
+      {
+        "type": "AUTO",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 6.2,
+    "vehicle_impact_score": 0.24852071005917156,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 58,
+    "density_rank": 38,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 57,
+    "center_lat": 13.071755327777778,
+    "center_lon": 77.50350499444444,
+    "zone_name": "Janapriya Nivas - Hesaraghatta Main Road Zone",
+    "total_violations": 18,
+    "vehicle_distribution": {
+      "BIKE": 14,
+      "CAR": 3,
+      "TRUCK": 1
+    },
+    "avg_vehicle_weight": 1.5555555555555556,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Hesaraghatta Main Road",
+        "count": 12
+      },
+      {
+        "name": "Hesaraghatta Main Road",
+        "count": 4
+      },
+      {
+        "name": "9th Main Road",
+        "count": 1
+      },
+      {
+        "name": "Hesaraghatta Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 6,
+      "4.0": 2,
+      "5.0": 1,
+      "7.0": 2,
+      "8.0": 1,
+      "23.0": 6
+    },
+    "police_station": "Chikkabanavara",
+    "violation_types": {
+      "WRONG PARKING": 3,
+      "NO PARKING": 15
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 14
+      },
+      {
+        "type": "CAR",
+        "count": 3
+      },
+      {
+        "type": "TRUCK",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 6.0,
+    "vehicle_impact_score": 0.2393162393162393,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 59,
+    "density_rank": 65,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 38,
+    "center_lat": 13.008323309523808,
+    "center_lon": 77.48431117142857,
+    "zone_name": "Andhrahalli - Andrahalli Main Road Zone",
+    "total_violations": 21,
+    "vehicle_distribution": {
+      "BIKE": 18,
+      "AUTO": 2,
+      "TRUCK": 1
+    },
+    "avg_vehicle_weight": 1.2857142857142858,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Andrahalli Main Road",
+        "count": 10
+      },
+      {
+        "name": "Andrahalli Main Road",
+        "count": 7
+      },
+      {
+        "name": "Andrahalli Main Road",
+        "count": 2
+      },
+      {
+        "name": "Andhrahalli Main Road",
+        "count": 1
+      },
+      {
+        "name": "Peenya Andhrahalli Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "6.0": 15,
+      "7.0": 6
+    },
+    "police_station": "Kamakshipalya",
+    "violation_types": {
+      "WRONG PARKING": 21,
+      "DEFECTIVE NUMBER PLATE": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 18
+      },
+      {
+        "type": "AUTO",
+        "count": 2
+      },
+      {
+        "type": "TRUCK",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 3.1,
+    "vehicle_impact_score": 0.12307692307692311,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 60,
+    "density_rank": 62,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 11,
+    "center_lat": 12.910814617948718,
+    "center_lon": 77.51345948974358,
+    "zone_name": "Subhash Chandrabose Nagar - Sri Sri Sri Tiruchi Mahaswamiji Road Zone",
+    "total_violations": 39,
+    "vehicle_distribution": {
+      "BIKE": 33,
+      "CAR": 5,
+      "AUTO": 1
+    },
+    "avg_vehicle_weight": 1.2820512820512822,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Sri Sri Sri Tiruchi Mahaswamiji Road",
+        "count": 17
+      },
+      {
+        "name": "Sri Sri Sri Tiruchi Mahaswamiji Road",
+        "count": 8
+      },
+      {
+        "name": "2nd Main Road",
+        "count": 3
+      },
+      {
+        "name": "2nd Cross Road",
+        "count": 2
+      },
+      {
+        "name": "2nd Main Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "1.0": 4,
+      "5.0": 21,
+      "6.0": 11,
+      "22.0": 2,
+      "23.0": 1
+    },
+    "police_station": "Kengeri",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 5,
+      "NO PARKING": 35,
+      "WRONG PARKING": 4
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 33
+      },
+      {
+        "type": "CAR",
+        "count": 5
+      },
+      {
+        "type": "AUTO",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 3.0,
+    "vehicle_impact_score": 0.12149901380670615,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 61,
+    "density_rank": 52,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 43,
+    "center_lat": 12.924581430434783,
+    "center_lon": 77.49790452173912,
+    "zone_name": "BDA Layout - Mysore Road Zone",
+    "total_violations": 23,
+    "vehicle_distribution": {
+      "BIKE": 19,
+      "CAR": 2,
+      "OTHERS": 2
+    },
+    "avg_vehicle_weight": 1.2608695652173914,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Mysore Road",
+        "count": 11
+      },
+      {
+        "name": "60 Feet Road",
+        "count": 5
+      },
+      {
+        "name": "Mysore Road",
+        "count": 4
+      },
+      {
+        "name": "Mysore Road",
+        "count": 1
+      },
+      {
+        "name": "4th Main Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "2.0": 8,
+      "5.0": 1,
+      "6.0": 1,
+      "7.0": 8,
+      "21.0": 3,
+      "22.0": 2
+    },
+    "police_station": "Kengeri",
+    "violation_types": {
+      "WRONG PARKING": 18,
+      "PARKING NEAR ROAD CROSSING": 1,
+      "DOUBLE PARKING": 11,
+      "PARKING IN A MAIN ROAD": 12,
+      "NO PARKING": 15
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 19
+      },
+      {
+        "type": "CAR",
+        "count": 2
+      },
+      {
+        "type": "OTHERS",
+        "count": 2
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 2.8,
+    "vehicle_impact_score": 0.11237458193979934,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 62,
+    "density_rank": 60,
+    "zone_classification": "Stable Zone"
+  },
+  {
+    "cluster_id": 32,
+    "center_lat": 13.00346237260274,
+    "center_lon": 77.72349733904109,
+    "zone_name": "Aryav Greenfields - Kodigehalli Main Road Zone",
+    "total_violations": 146,
+    "vehicle_distribution": {
+      "BIKE": 133,
+      "CAR": 6,
+      "TRUCK": 4,
+      "AUTO": 3
+    },
+    "avg_vehicle_weight": 1.2123287671232876,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Kodigehalli Main Road",
+        "count": 143
+      },
+      {
+        "name": "Kodigehalli Main Road",
+        "count": 2
+      }
+    ],
+    "hourly_distribution": {
+      "0.0": 29,
+      "1.0": 13,
+      "5.0": 1,
+      "20.0": 2,
+      "21.0": 11,
+      "22.0": 48,
+      "23.0": 42
+    },
+    "police_station": "K.R. Pura",
+    "violation_types": {
+      "PARKING IN A MAIN ROAD": 146,
+      "WRONG PARKING": 146
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 133
+      },
+      {
+        "type": "CAR",
+        "count": 6
+      },
+      {
+        "type": "TRUCK",
+        "count": 4
+      },
+      {
+        "type": "AUTO",
+        "count": 3
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 2.3,
+    "vehicle_impact_score": 0.09146469968387774,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 63,
+    "density_rank": 21,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 54,
+    "center_lat": 12.850752522131147,
+    "center_lon": 77.65746658114756,
+    "zone_name": "Salarpuria Infozone - Road Number 1 Zone",
+    "total_violations": 122,
+    "vehicle_distribution": {
+      "BIKE": 116,
+      "CAR": 5,
+      "OTHERS": 1
+    },
+    "avg_vehicle_weight": 1.0901639344262295,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Road Number 1",
+        "count": 102
+      },
+      {
+        "name": "Road Number 1",
+        "count": 14
+      },
+      {
+        "name": "Road Number 1",
+        "count": 5
+      },
+      {
+        "name": "Unnamed Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "1.0": 1,
+      "6.0": 74,
+      "7.0": 42,
+      "8.0": 5
+    },
+    "police_station": "Electronic City",
+    "violation_types": {
+      "NO PARKING": 1,
+      "WRONG PARKING": 121,
+      "DEFECTIVE NUMBER PLATE": 2
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 116
+      },
+      {
+        "type": "CAR",
+        "count": 5
+      },
+      {
+        "type": "OTHERS",
+        "count": 1
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 1.0,
+    "vehicle_impact_score": 0.038839848675914244,
+    "violation_percentile": "P50",
+    "impact_percentile": "P25",
+    "impact_rank": 64,
+    "density_rank": 26,
+    "zone_classification": "Moderate Zone"
+  },
+  {
+    "cluster_id": 13,
+    "center_lat": 12.917050117647063,
+    "center_lon": 77.50018557647059,
+    "zone_name": "Elegant Esplande - Global City Tech Park Road Zone",
+    "total_violations": 51,
+    "vehicle_distribution": {
+      "BIKE": 51
+    },
+    "avg_vehicle_weight": 1.0,
+    "junction_ratio": 0.0,
+    "avg_resolution_time": 0.0,
+    "top_locations": [
+      {
+        "name": "Global City Tech Park Road",
+        "count": 22
+      },
+      {
+        "name": "Global City Tech Park Road",
+        "count": 21
+      },
+      {
+        "name": "1st Cross Road",
+        "count": 5
+      },
+      {
+        "name": "Sattva Global City",
+        "count": 2
+      },
+      {
+        "name": "1st Cross Road",
+        "count": 1
+      }
+    ],
+    "hourly_distribution": {
+      "4.0": 11,
+      "5.0": 28,
+      "6.0": 12
+    },
+    "police_station": "Kengeri",
+    "violation_types": {
+      "WRONG PARKING": 7,
+      "NO PARKING": 44,
+      "PARKING IN A MAIN ROAD": 1
+    },
+    "top_vehicles": [
+      {
+        "type": "BIKE",
+        "count": 51
+      }
+    ],
+    "top_vehicle_type": "BIKE",
+    "impact_score": 0.0,
+    "vehicle_impact_score": 0.0,
+    "violation_percentile": "P25",
+    "impact_percentile": "P25",
+    "impact_rank": 65,
+    "density_rank": 48,
+    "zone_classification": "Stable Zone"
+  }
+]

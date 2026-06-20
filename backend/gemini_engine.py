@@ -1,12 +1,11 @@
 """
 ParkWise AI — Gemini 2.5 Flash Explanation Engine
 
-Purpose: Generate human-readable explanations for rule-engine recommendations.
-The LLM does NOT make decisions — it only explains decisions already made by the
-Zone Classification Engine + Rule Engine.
+Generates human-readable explanations for rule-engine recommendations
+using the Google Gemini API.
 
-Architecture:
-    Rule Engine Output  →  Gemini 2.5 Flash  →  Explanation
+The LLM does NOT make decisions — it only explains decisions already
+produced by the Zone Classification Engine + Rule Engine.
 """
 
 import os
@@ -15,11 +14,8 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
-# ============================================================
-# Prompts
-# ============================================================
 
 SYSTEM_PROMPT = """You are an urban traffic management expert.
 
@@ -44,6 +40,7 @@ Output format: Return ONLY valid JSON with these exact keys:
 }
 
 Do not include markdown formatting, code fences, or any text outside the JSON object."""
+
 
 USER_PROMPT_TEMPLATE = """Analyze the following hotspot.
 
@@ -84,66 +81,29 @@ Generate:
 Maximum 120 words."""
 
 
-# ============================================================
-# Gemini API Call
-# ============================================================
+def _call_gemini_sync(prompt: str) -> dict:
+    """Call Gemini synchronously and parse the JSON response."""
+    import google.generativeai as genai
 
-def _call_gemini(prompt: str) -> dict:
-    """
-    Call Gemini 2.5 Flash via the google-genai SDK.
-
-    Returns parsed JSON dict or raises an exception.
-    """
-    from google import genai
-
-    client = genai.Client(api_key=GEMINI_API_KEY)
-
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-        config={
-            "system_instruction": SYSTEM_PROMPT,
-            "temperature": 0.3,
-            "max_output_tokens": 500,
-        },
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel(
+        model_name="gemini-2.5-flash",
+        system_instruction=SYSTEM_PROMPT,
     )
+    response = model.generate_content(prompt)
+    text = (response.text or "").strip()
 
-    text = response.text.strip()
-
-    # Strip markdown code fences if present
     if text.startswith("```"):
-        lines = text.split("\n")
-        # Remove first and last lines (the fences)
-        lines = [l for l in lines if not l.strip().startswith("```")]
+        lines = [l for l in text.split("\n") if not l.strip().startswith("```")]
         text = "\n".join(lines).strip()
 
     return json.loads(text)
 
 
-# ============================================================
-# Public API
-# ============================================================
-
 def generate_explanation(zone_rec: dict) -> dict:
     """
     Generate an AI explanation for a zone's rule-engine recommendations.
-
-    Args:
-        zone_rec: Output of recommendations.generate_zone_recommendation()
-            Must contain: zone_name, zone_classification, density_rank,
-            violation_percentile, impact_score, impact_rank,
-            total_violations, top_roads, recommendations
-
-    Returns:
-        {
-            "risk_summary": str,
-            "key_risk_factors": [str, ...],
-            "recommendation_explanation": str,
-            "expected_benefit": str,
-        }
-
-    If the API key is missing or the call fails, returns a structured
-    fallback response.
+    Returns a deterministic fallback if the API key is missing or call fails.
     """
     if not GEMINI_API_KEY:
         return _fallback_explanation(zone_rec)
@@ -163,9 +123,8 @@ def generate_explanation(zone_rec: dict) -> dict:
             ),
         )
 
-        result = _call_gemini(prompt)
+        result = _call_gemini_sync(prompt)
 
-        # Validate expected keys
         return {
             "risk_summary": result.get("risk_summary", ""),
             "key_risk_factors": result.get("key_risk_factors", []),
@@ -174,15 +133,11 @@ def generate_explanation(zone_rec: dict) -> dict:
         }
 
     except Exception as e:
-        print(f"  [Gemini] Error generating explanation for "
-              f"{zone_rec.get('zone_name', '?')}: {e}")
+        print(f"[gemini] Error for {zone_rec.get('zone_name', '?')}: {e}")
         return _fallback_explanation(zone_rec)
 
 
 def _fallback_explanation(zone_rec: dict) -> dict:
-    """
-    Generate a deterministic fallback explanation when Gemini is unavailable.
-    """
     zone_name = zone_rec.get("zone_name", "This zone")
     classification = zone_rec.get("zone_classification", "Moderate Zone")
     impact_score = zone_rec.get("impact_score", 0)
@@ -207,9 +162,9 @@ def _fallback_explanation(zone_rec: dict) -> dict:
 
     rec_explanation = (
         f"The rule engine has generated recommendations based on the "
-        f"{classification} classification. "
-        f"Density rank #{density_rank} and impact rank #{impact_rank} "
-        f"inform the priority and type of interventions suggested."
+        f"{classification} classification. Density rank #{density_rank} and "
+        f"impact rank #{impact_rank} inform the priority and type of "
+        f"interventions suggested."
     )
 
     expected_benefit = (

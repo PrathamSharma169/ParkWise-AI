@@ -1,347 +1,315 @@
-import React, { useEffect, useState } from 'react';
-import { getRecommendations, explainZoneRisk } from '../utils/api';
+import React, { useEffect, useMemo, useState } from "react";
 import {
-  Shield, AlertTriangle, Eye, Wrench, ChevronDown, ChevronUp,
-  Sparkles, Loader2, MapPin, TrendingUp, Hash
-} from 'lucide-react';
+  AlertTriangle, ShieldCheck, Activity, EyeOff,
+  Filter, Sparkles, LoaderCircle, ChevronRight, ListChecks,
+} from "lucide-react";
+import { getRecommendations, explainZoneRisk, getHotspotDetail } from "@/utils/api";
+import ZoneDetails from "@/components/ZoneDetails";
 
-const CLASSIFICATION_CONFIG = {
-  'Critical Zone': {
-    color: '#ef4444',
-    bg: 'rgba(239,68,68,0.12)',
-    border: 'rgba(239,68,68,0.3)',
-    icon: '🔴',
-    description: 'Frequent violations + severe disruption',
-  },
-  'Frequent Violation Zone': {
-    color: '#f97316',
-    bg: 'rgba(249,115,22,0.12)',
-    border: 'rgba(249,115,22,0.3)',
-    icon: '🟠',
-    description: 'Many violations, lower operational impact',
-  },
-  'Hidden Risk Zone': {
-    color: '#eab308',
-    bg: 'rgba(234,179,8,0.12)',
-    border: 'rgba(234,179,8,0.3)',
-    icon: '🟡',
-    description: 'Few violations but high disruption — often overlooked',
-  },
-  'Moderate Zone': {
-    color: '#3b82f6',
-    bg: 'rgba(59,130,246,0.12)',
-    border: 'rgba(59,130,246,0.3)',
-    icon: '🔵',
-    description: 'Moderate risk, periodic monitoring needed',
-  },
-  'Stable Zone': {
-    color: '#22c55e',
-    bg: 'rgba(34,197,94,0.12)',
-    border: 'rgba(34,197,94,0.3)',
-    icon: '🟢',
-    description: 'Low priority, routine monitoring',
-  },
+const CLASSIFICATIONS = [
+  { id: "all",                          label: "All Zones",          color: "var(--text-primary)",  icon: ListChecks },
+  { id: "Critical Zone",                label: "Critical",           color: "var(--signal-red)",    icon: AlertTriangle },
+  { id: "Frequent Violation Zone",      label: "Frequent",           color: "var(--auto-yellow-deep)", icon: Activity },
+  { id: "Hidden Risk Zone",             label: "Hidden Risk",        color: "#7E22CE",              icon: EyeOff },
+  { id: "Moderate Zone",                label: "Moderate",           color: "var(--auto-yellow)",   icon: Activity },
+  { id: "Stable Zone",                  label: "Stable",             color: "var(--signal-green)",  icon: ShieldCheck },
+];
+
+const META = {
+  "Critical Zone":           { bg: "var(--signal-red)",       fg: "white", note: "Deploy immediately" },
+  "Frequent Violation Zone": { bg: "var(--auto-yellow-deep)", fg: "white", note: "Sustained patrol" },
+  "Hidden Risk Zone":        { bg: "#7E22CE",                 fg: "white", note: "Increase visibility" },
+  "Moderate Zone":           { bg: "var(--auto-yellow)",      fg: "var(--primary-dark)", note: "Scheduled review" },
+  "Stable Zone":             { bg: "var(--signal-green)",     fg: "white", note: "Routine monitoring" },
 };
 
-function ZoneRecCard({ rec }) {
-  const [expanded, setExpanded] = useState(false);
-  const [explanation, setExplanation] = useState(null);
-  const [explaining, setExplaining] = useState(false);
-  const [explainError, setExplainError] = useState(null);
+function ZoneCard({ zone, onOpen }) {
+  const [ai, setAi] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [err, setErr] = useState(null);
+  const meta = META[zone.zone_classification] || META["Moderate Zone"];
+  const isCritical = zone.zone_classification === "Critical Zone";
 
-  const cls = rec.zone_classification || 'Moderate Zone';
-  const config = CLASSIFICATION_CONFIG[cls] || CLASSIFICATION_CONFIG['Moderate Zone'];
-
-  async function handleExplain() {
-    if (explanation) {
-      setExpanded(!expanded);
-      return;
-    }
-
-    setExplaining(true);
-    setExplainError(null);
-    setExpanded(true);
-
+  async function fetchExplain(e) {
+    e.stopPropagation();
+    if (ai) return;
+    setLoading(true);
+    setErr(null);
     try {
-      const result = await explainZoneRisk(rec.zone_id);
-      setExplanation(result);
-    } catch (err) {
-      setExplainError(err.message);
+      const r = await explainZoneRisk(zone.zone_id);
+      setAi(r);
+    } catch (e2) {
+      setErr("Couldn't generate briefing right now.");
     } finally {
-      setExplaining(false);
+      setLoading(false);
     }
   }
 
   return (
-    <div className="zone-rec-card" style={{ borderLeft: `3px solid ${config.color}` }}>
-      {/* Header */}
-      <div className="zone-rec-header">
-        <div className="zone-rec-title-row">
-          <div className="zone-rec-name">
-            <MapPin size={14} style={{ color: config.color, flexShrink: 0 }} />
-            {rec.zone_name}
+    <div className="card" data-testid={`zone-card-${zone.zone_id}`}>
+      {isCritical && <div className="hazard-stripe" />}
+      <div className="card-pad">
+        {/* header */}
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 14, gap: 12 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
+            <span style={{
+              display: "inline-flex", alignItems: "center", gap: 6,
+              padding: "4px 10px", borderRadius: 999,
+              background: meta.bg, color: meta.fg,
+              fontFamily: "var(--font-display)", fontWeight: 600, fontSize: 11,
+              letterSpacing: "0.04em",
+              marginBottom: 10,
+            }} data-testid={`zone-classification-${zone.zone_id}`}>
+              {zone.zone_classification.replace(" Zone", "").toUpperCase()}
+            </span>
+            <h3 style={{ fontSize: 18, fontWeight: 700, lineHeight: 1.2, margin: 0 }}>
+              {zone.zone_name}
+            </h3>
+            <div className="overline" style={{ marginTop: 6 }}>
+              {meta.note}
+            </div>
           </div>
-          <span
-            className="classification-badge"
-            style={{ background: config.bg, color: config.color, border: `1px solid ${config.border}` }}
+          <button
+            onClick={() => onOpen(zone.zone_id)}
+            className="btn btn-ghost"
+            style={{ padding: "8px 12px", fontSize: 12 }}
+            data-testid={`open-case-file-${zone.zone_id}`}
           >
-            {config.icon} {cls}
-          </span>
+            Case file <ChevronRight size={13} />
+          </button>
         </div>
 
-        {/* Rank stats */}
-        <div className="zone-rec-stats">
-          <div className="zone-rec-stat">
-            <Hash size={12} />
-            <span>Density Rank</span>
-            <strong>#{rec.density_rank}</strong>
-          </div>
-          <div className="zone-rec-stat">
-            <TrendingUp size={12} />
-            <span>Impact Rank</span>
-            <strong>#{rec.impact_rank}</strong>
-          </div>
-          <div className="zone-rec-stat">
-            <AlertTriangle size={12} />
-            <span>Impact Score</span>
-            <strong>{rec.impact_score?.toFixed?.(1) ?? rec.impact_score}</strong>
-          </div>
-          <div className="zone-rec-stat">
-            <Eye size={12} />
-            <span>Violations</span>
-            <strong>{rec.total_violations?.toLocaleString?.() ?? rec.total_violations}</strong>
-          </div>
+        {/* metric strip */}
+        <div style={{
+          display: "grid", gridTemplateColumns: "repeat(4, 1fr)",
+          background: "var(--bg-sand)", borderRadius: "var(--r-md)",
+          padding: "12px 8px", marginBottom: 16, gap: 4,
+        }}>
+          {[
+            { label: "Impact",    value: zone.impact_score?.toFixed(1) },
+            { label: "Violations", value: zone.total_violations?.toLocaleString() },
+            { label: "Density #",  value: `#${zone.density_rank}` },
+            { label: "Impact #",   value: `#${zone.impact_rank}` },
+          ].map((m) => (
+            <div key={m.label} style={{ textAlign: "center" }}>
+              <div style={{
+                fontFamily: "var(--font-mono)", fontSize: 9.5,
+                letterSpacing: "0.16em", textTransform: "uppercase",
+                color: "var(--text-muted)", marginBottom: 3,
+              }}>{m.label}</div>
+              <div style={{
+                fontFamily: "var(--font-display)", fontWeight: 700, fontSize: 15,
+                color: "var(--text-primary)",
+              }}>{m.value}</div>
+            </div>
+          ))}
         </div>
-      </div>
 
-      {/* Recommendations */}
-      <div className="zone-rec-actions">
-        <div className="zone-rec-actions-label">Rule Engine Recommendations</div>
-        {(rec.recommendations || []).map((r, i) => (
-          <div className="zone-rec-action-item" key={i}>
-            <span className="zone-rec-check">✓</span>
-            {r}
+        {/* recommendations */}
+        {zone.recommendations?.length > 0 && (
+          <div style={{ marginBottom: 16 }}>
+            <div className="overline" style={{ marginBottom: 8 }}>◉ Dispatch Actions</div>
+            <ul className="briefing-action-list">
+              {zone.recommendations.slice(0, 4).map((r, i) => (
+                <li key={i} data-testid={`recommendation-${zone.zone_id}-${i}`}>{r}</li>
+              ))}
+            </ul>
           </div>
-        ))}
-      </div>
-
-      {/* Explain Risk Button */}
-      <button
-        className="explain-risk-btn"
-        onClick={handleExplain}
-        disabled={explaining}
-      >
-        {explaining ? (
-          <>
-            <Loader2 size={14} className="spin-icon" />
-            Generating AI Explanation...
-          </>
-        ) : explanation ? (
-          <>
-            <Sparkles size={14} />
-            {expanded ? 'Hide AI Explanation' : 'Show AI Explanation'}
-            {expanded ? <ChevronUp size={14} /> : <ChevronDown size={14} />}
-          </>
-        ) : (
-          <>
-            <Sparkles size={14} />
-            Explain Risk
-          </>
         )}
-      </button>
 
-      {/* AI Explanation */}
-      {expanded && (
-        <div className="ai-explanation">
-          {explaining && (
-            <div className="ai-loading">
-              <Loader2 size={20} className="spin-icon" />
-              <span>Gemini 2.5 Flash is analyzing this zone...</span>
+        {/* AI briefing */}
+        <div style={{
+          background: "var(--primary-tint)",
+          borderRadius: "var(--r-md)",
+          padding: "12px 14px",
+        }}>
+          {!ai && !loading && (
+            <button
+              onClick={fetchExplain}
+              className="explain-risk-btn"
+              data-testid={`explain-risk-${zone.zone_id}`}
+              style={{
+                display: "inline-flex", alignItems: "center", gap: 8,
+                color: "var(--primary)", fontWeight: 600, fontSize: 13,
+                cursor: "pointer", background: "transparent", border: "none",
+              }}
+            >
+              <Sparkles size={14} /> Generate AI Briefing
+            </button>
+          )}
+          {loading && (
+            <div style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--primary)", fontSize: 13 }}>
+              <LoaderCircle size={14} style={{ animation: "spin 1s linear infinite" }} />
+              Gemini analysing this zone…
             </div>
           )}
-
-          {explainError && (
-            <div className="ai-error">
-              ⚠ {explainError}
+          {err && <div style={{ color: "var(--signal-red)", fontSize: 12 }}>{err}</div>}
+          {ai && (
+            <div data-testid={`ai-briefing-${zone.zone_id}`} style={{ fontSize: 13, lineHeight: 1.55 }}>
+              <div className="overline" style={{ marginBottom: 6, color: "var(--primary)" }}>
+                <Sparkles size={11} style={{ verticalAlign: "middle", marginRight: 4 }} />
+                AI Briefing
+              </div>
+              <p style={{ margin: "0 0 8px", color: "var(--text-primary)" }}>{ai.risk_summary}</p>
+              {ai.key_risk_factors?.length > 0 && (
+                <ul style={{ margin: "8px 0 8px", paddingLeft: 18, color: "var(--text-secondary)" }}>
+                  {ai.key_risk_factors.map((f, i) => <li key={i} style={{ marginBottom: 2 }}>{f}</li>)}
+                </ul>
+              )}
+              <p style={{ margin: "8px 0 0", color: "var(--primary)", fontWeight: 500 }}>
+                <strong>Expected benefit:</strong> {ai.expected_benefit}
+              </p>
             </div>
-          )}
-
-          {explanation && (
-            <>
-              <div className="ai-section">
-                <div className="ai-section-title">
-                  <Sparkles size={13} /> Risk Summary
-                </div>
-                <p>{explanation.risk_summary}</p>
-              </div>
-
-              {explanation.key_risk_factors?.length > 0 && (
-                <div className="ai-section">
-                  <div className="ai-section-title">Key Risk Factors</div>
-                  <ul className="ai-factors">
-                    {explanation.key_risk_factors.map((f, i) => (
-                      <li key={i}>{f}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {(rec.recommendations || []).length > 0 && (
-                <div className="ai-section">
-                  <div className="ai-section-title">Recommended Actions</div>
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
-                    {rec.recommendations.map((r, i) => (
-                      <div key={i} className="zone-rec-action-item">
-                        <span className="zone-rec-check">✓</span>
-                        {r}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              <div className="ai-section">
-                <div className="ai-section-title">Recommendation Explanation</div>
-                <p>{explanation.recommendation_explanation}</p>
-              </div>
-
-              <div className="ai-section">
-                <div className="ai-section-title">Expected Benefit</div>
-                <p>{explanation.expected_benefit}</p>
-              </div>
-
-              <div className="ai-powered-tag">
-                <Sparkles size={11} /> Powered by Gemini 2.5 Flash
-              </div>
-            </>
           )}
         </div>
-      )}
+      </div>
     </div>
   );
 }
 
 export default function RecommendationPanel() {
   const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [activeFilter, setActiveFilter] = useState('All');
+  const [filter, setFilter] = useState("all");
+  const [openZoneId, setOpenZoneId] = useState(null);
+  const [openDetail, setOpenDetail] = useState(null);
+  const [openLoading, setOpenLoading] = useState(false);
 
   useEffect(() => {
-    async function load() {
-      try {
-        const res = await getRecommendations();
-        setData(res);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    load();
+    getRecommendations().then(setData).catch(() => {});
   }, []);
 
-  if (loading) {
+  const zones = useMemo(() => {
+    if (!data) return [];
+    if (filter === "all") return data.all || [];
+    return (data.all || []).filter((z) => z.zone_classification === filter);
+  }, [data, filter]);
+
+  async function openCase(zoneId) {
+    setOpenZoneId(zoneId);
+    setOpenLoading(true);
+    try {
+      const d = await getHotspotDetail(zoneId);
+      setOpenDetail(d);
+    } finally {
+      setOpenLoading(false);
+    }
+  }
+
+  if (!data) {
     return (
-      <div className="loading-state">
-        <div className="loading-spinner" />
-        <p>Loading recommendations...</p>
+      <div className="page-shell" data-testid="recommendations-loading">
+        <p style={{ color: "var(--text-muted)" }}>Loading dispatch center…</p>
       </div>
     );
   }
-
-  if (error) {
-    return (
-      <div className="loading-state">
-        <p style={{ color: 'var(--risk-critical)' }}>Error: {error}</p>
-      </div>
-    );
-  }
-
-  if (!data) return null;
-
-  // Filter by classification
-  let filteredRecs = data.all || [];
-  if (activeFilter !== 'All') {
-    filteredRecs = filteredRecs.filter(r => r.zone_classification === activeFilter);
-  }
-
-  // Sort: Critical first, then by impact score descending
-  const priorityOrder = { Critical: 0, High: 1, Medium: 2, Low: 3 };
-  filteredRecs = [...filteredRecs].sort((a, b) => {
-    const pa = priorityOrder[a.priority] ?? 4;
-    const pb = priorityOrder[b.priority] ?? 4;
-    if (pa !== pb) return pa - pb;
-    return (b.impact_score || 0) - (a.impact_score || 0);
-  });
 
   const counts = data.classification_counts || {};
-  const totalZones = data.total || 0;
-
-  // Classification filter buttons
-  const classifications = [
-    'All',
-    'Critical Zone',
-    'Hidden Risk Zone',
-    'Frequent Violation Zone',
-    'Moderate Zone',
-    'Stable Zone',
-  ];
 
   return (
-    <div className="rec-page">
-      <div className="rec-page-header">
-        <h2>Recommendation Center</h2>
-        <p>Zone classifications and rule-engine recommendations with AI-powered explanations</p>
+    <div className="page-shell" data-testid="recommendations-page">
+      <div className="section-head">
+        <div>
+          {/* <div className="overline overline-red">◉ Action Center · Dispatch Ready</div> */}
+          <h2 style={{ fontSize: 28, marginTop: 8 }}>{data.total} zones. One queue.</h2>
+          <p>Every zone arrives with a classification, dispatch-ready actions, and an AI briefing on tap.</p>
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-muted)" }}>
+          <Filter size={14} /> Filtering by classification
+        </div>
       </div>
 
-      {/* Classification summary cards */}
-      <div className="dashboard-grid" style={{ marginBottom: 20 }}>
-        {Object.entries(CLASSIFICATION_CONFIG).map(([cls, config]) => (
-          <div
-            className="kpi-card"
-            key={cls}
-            style={{ cursor: 'pointer', borderColor: activeFilter === cls ? config.color : undefined }}
-            onClick={() => setActiveFilter(activeFilter === cls ? 'All' : cls)}
-          >
-            <div className="kpi-icon" style={{ background: config.bg, color: config.color }}>
-              <span style={{ fontSize: 18 }}>{config.icon}</span>
-            </div>
-            <div className="kpi-value">{counts[cls] || 0}</div>
-            <div className="kpi-label">{cls.replace(' Zone', '')}</div>
-          </div>
-        ))}
-      </div>
-
-      {/* Filter buttons */}
-      <div className="rec-filters">
-        {classifications.map(cls => {
-          const config = CLASSIFICATION_CONFIG[cls];
-          const count = cls === 'All' ? totalZones : (counts[cls] || 0);
+      {/* KPI strip */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
+        gap: 12, marginBottom: 22,
+      }} className="stagger" data-testid="classification-summary">
+        {CLASSIFICATIONS.filter((c) => c.id !== "all").map((c) => {
+          const count = counts[c.id] || 0;
+          const Icon = c.icon;
+          const active = filter === c.id;
           return (
             <button
-              key={cls}
-              className={`rec-filter-btn ${activeFilter === cls ? 'active' : ''}`}
-              onClick={() => setActiveFilter(cls)}
-              style={activeFilter === cls && config ? { borderColor: config.color, color: config.color } : {}}
+              key={c.id}
+              onClick={() => setFilter(active ? "all" : c.id)}
+              className="card"
+              data-testid={`classification-card-${c.id.replace(/\s+/g, '-').toLowerCase()}`}
+              style={{
+                padding: 16, cursor: "pointer", textAlign: "left",
+                outline: active ? `2px solid ${c.color}` : "none",
+                outlineOffset: -2,
+              }}
             >
-              {config ? config.icon : '📋'} {cls.replace(' Zone', '')} ({count})
+              <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
+                <div style={{
+                  width: 28, height: 28, borderRadius: 8,
+                  background: `${c.color}20`, color: c.color,
+                  display: "grid", placeItems: "center",
+                }}>
+                  <Icon size={14} />
+                </div>
+                <span style={{
+                  fontFamily: "var(--font-mono)", fontSize: 10.5,
+                  letterSpacing: "0.16em", textTransform: "uppercase",
+                  color: "var(--text-muted)",
+                }}>{c.label}</span>
+              </div>
+              <div style={{
+                fontFamily: "var(--font-display)", fontWeight: 800,
+                fontSize: 30, color: c.color, lineHeight: 1,
+              }}>{count}</div>
+              <div style={{ fontSize: 11.5, color: "var(--text-muted)", marginTop: 4 }}>
+                {count === 1 ? "zone" : "zones"}
+              </div>
             </button>
           );
         })}
       </div>
 
-      {/* Zone recommendation cards */}
-      <div className="rec-list">
-        {filteredRecs.map((rec) => (
-          <ZoneRecCard key={rec.zone_id} rec={rec} />
-        ))}
+      {/* Filter pills */}
+      <div style={{
+        display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 22,
+      }} data-testid="filter-pills">
+        {CLASSIFICATIONS.map((c) => {
+          const Icon = c.icon;
+          const active = filter === c.id;
+          return (
+            <button
+              key={c.id}
+              onClick={() => setFilter(c.id)}
+              data-testid={`filter-${c.id.replace(/\s+/g, '-').toLowerCase()}`}
+              className={`nav-pill ${active ? "active" : ""}`}
+              style={active && c.id !== "all" ? { background: c.color, color: "white" } : {}}
+            >
+              <Icon size={13} />
+              {c.label}
+            </button>
+          );
+        })}
       </div>
 
-      {filteredRecs.length === 0 && (
-        <div className="empty-state">
-          <p>No zones found for the selected classification.</p>
-        </div>
+      {/* Zone cards */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(380px, 1fr))",
+        gap: 16,
+      }} className="stagger" data-testid="zone-cards">
+        {zones.map((z) => (
+          <ZoneCard key={z.zone_id} zone={z} onOpen={openCase} />
+        ))}
+        {zones.length === 0 && (
+          <div className="card card-pad" style={{ gridColumn: "1 / -1", textAlign: "center" }}>
+            <p style={{ color: "var(--text-muted)" }}>No zones in this classification right now.</p>
+          </div>
+        )}
+      </div>
+
+      {openZoneId !== null && (
+        <ZoneDetails
+          detail={openDetail}
+          loading={openLoading}
+          onClose={() => { setOpenZoneId(null); setOpenDetail(null); }}
+        />
       )}
     </div>
   );

@@ -97,6 +97,7 @@ async def get_hotspots():
             "total_violations": h["total_violations"],
             "violation_percentile": h["violation_percentile"],
             "police_station": h["police_station"],
+            "hourly_distribution": h.get("hourly_distribution", {}),
         })
     
     return result

@@ -1,0 +1,1326 @@
+[
+  {
+    "zone_id": 0,
+    "zone_name": "Tasker Town Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 1,
+    "impact_rank": 1,
+    "impact_score": 70.4,
+    "total_violations": 229872,
+    "violation_percentile": "P90",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Deploy Officers Near Junction",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Kamaraj Road",
+      "Dispensary Road",
+      "5th Main Road",
+      "Bellary Road",
+      "Main Guard Cross Road"
+    ]
+  },
+  {
+    "zone_id": 5,
+    "zone_name": "Begur Chikkanahalli - Unnamed Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 3,
+    "impact_rank": 2,
+    "impact_score": 25.4,
+    "total_violations": 5040,
+    "violation_percentile": "P90",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Unnamed Road",
+      "Beguru"
+    ]
+  },
+  {
+    "zone_id": 26,
+    "zone_name": "Mumbai Bengaluru Highway Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 55,
+    "impact_rank": 3,
+    "impact_score": 25.0,
+    "total_violations": 28,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "Mumbai Bengaluru Highway",
+      "Huskur Main Road"
+    ]
+  },
+  {
+    "zone_id": 51,
+    "zone_name": "Sowkar Nagar - Dr Ambedkar Medical College Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 42,
+    "impact_rank": 4,
+    "impact_score": 24.6,
+    "total_violations": 67,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "Dr Ambedkar Medical College Road",
+      "Shampura Main Road",
+      "Vinoba Nagar Main Road",
+      "2nd Main Road"
+    ]
+  },
+  {
+    "zone_id": 16,
+    "zone_name": "Sadahalli Gate Junction - Bengaluru Bellary Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 8,
+    "impact_rank": 5,
+    "impact_score": 23.4,
+    "total_violations": 945,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Bengaluru Bellary Road",
+      "Ronald Colaco Road",
+      "Shettigere",
+      "Drive Thru Road"
+    ]
+  },
+  {
+    "zone_id": 36,
+    "zone_name": "Arisinakunte Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 32,
+    "impact_rank": 6,
+    "impact_score": 20.8,
+    "total_violations": 106,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "Cargo Road",
+      "Airport City Avenue",
+      "Terminal 1 Departure Road"
+    ]
+  },
+  {
+    "zone_id": 1,
+    "zone_name": "Outer Ring Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 2,
+    "impact_rank": 7,
+    "impact_score": 20.3,
+    "total_violations": 40974,
+    "violation_percentile": "P90",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "New Horizon College Road",
+      "MBT Road",
+      "Outer Ring Road",
+      "Kadubeesanahalli Underpass"
+    ]
+  },
+  {
+    "zone_id": 28,
+    "zone_name": "Kodandaram - MBT Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 44,
+    "impact_rank": 8,
+    "impact_score": 19.7,
+    "total_violations": 63,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "MBT Road",
+      "Parvathi Nagar Main Road",
+      "BNE MD 233",
+      "Bhattarahalli Road",
+      "Shri Hans Ashram Road"
+    ]
+  },
+  {
+    "zone_id": 49,
+    "zone_name": "Kowdenahalli Extension - TC Palya Main Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 61,
+    "impact_rank": 9,
+    "impact_score": 19.0,
+    "total_violations": 21,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "TC Palya Main Road",
+      "Jayanthi Nagar Main Road",
+      "1st A Cross Road",
+      "Kalkere Road"
+    ]
+  },
+  {
+    "zone_id": 17,
+    "zone_name": "Subhams Antique City - MBT Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 15,
+    "impact_rank": 10,
+    "impact_score": 18.8,
+    "total_violations": 228,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "1st Cross Road",
+      "Konadasapura Cross Road",
+      "MBT Road",
+      "Bommanahalli Road"
+    ]
+  },
+  {
+    "zone_id": 2,
+    "zone_name": "Thalaghattapura - Konanakunte Main Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 13,
+    "impact_rank": 11,
+    "impact_score": 18.5,
+    "total_violations": 420,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "Konanakunte Main Road",
+      "Anjanapura Main Road"
+    ]
+  },
+  {
+    "zone_id": 23,
+    "zone_name": "Anjanapura Upavalaya - Bannerghatta Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 33,
+    "impact_rank": 12,
+    "impact_score": 18.4,
+    "total_violations": 104,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "Bannerghatta Main Road",
+      "SH 87"
+    ]
+  },
+  {
+    "zone_id": 31,
+    "zone_name": "Zero Tolerance Junction - MBT Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 34,
+    "impact_rank": 13,
+    "impact_score": 17.7,
+    "total_violations": 96,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team",
+      "Increase Towing Frequency"
+    ],
+    "top_roads": [
+      "MBT Road",
+      "Basavanapura Road",
+      "TC Palya Main Road"
+    ]
+  },
+  {
+    "zone_id": 48,
+    "zone_name": "Sarjapura Main Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 63,
+    "impact_rank": 14,
+    "impact_score": 16.7,
+    "total_violations": 20,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team"
+    ],
+    "top_roads": [
+      "Sarjapura Main Road",
+      "Chandapura Dommasandra Road"
+    ]
+  },
+  {
+    "zone_id": 35,
+    "zone_name": "Haralukunte Village - 27th Cross Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 51,
+    "impact_rank": 15,
+    "impact_score": 16.5,
+    "total_violations": 45,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team"
+    ],
+    "top_roads": [
+      "27th Cross Road",
+      "27th Main Road",
+      "Hosapalya Main Road",
+      "Somasundarapalya Main Road"
+    ]
+  },
+  {
+    "zone_id": 12,
+    "zone_name": "Hennur Main Road Zone",
+    "zone_classification": "Critical Zone",
+    "density_rank": 17,
+    "impact_rank": 16,
+    "impact_score": 16.4,
+    "total_violations": 190,
+    "violation_percentile": "P75",
+    "priority": "Critical",
+    "recommendations": [
+      "Immediate Enforcement Priority",
+      "Increase Officer Presence",
+      "Increase Towing Operations"
+    ],
+    "top_roads": [
+      "Doddagubbi Road",
+      "Byrathi Main Road",
+      "Hennur Main Road"
+    ]
+  },
+  {
+    "zone_id": 44,
+    "zone_name": "Dommansandra Circle - Varthur Main Road Zone",
+    "zone_classification": "Hidden Risk Zone",
+    "density_rank": 45,
+    "impact_rank": 17,
+    "impact_score": 16.2,
+    "total_violations": 54,
+    "violation_percentile": "P25",
+    "priority": "Critical",
+    "recommendations": [
+      "Targeted Enforcement",
+      "Junction Monitoring",
+      "Dedicated Patrol Team"
+    ],
+    "top_roads": [
+      "Varthur Main Road",
+      "Sarjapura Main Road",
+      "ANK MD 6"
+    ]
+  },
+  {
+    "zone_id": 47,
+    "zone_name": "Mohammad Sab Palya Circle - Hesarghatta Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 46,
+    "impact_rank": 18,
+    "impact_score": 16.0,
+    "total_violations": 54,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Hesarghatta Road",
+      "Singapura Main Road",
+      "MS Palaya Circle"
+    ]
+  },
+  {
+    "zone_id": 20,
+    "zone_name": "Rajath Greens - 5th Cross Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 7,
+    "impact_rank": 19,
+    "impact_score": 15.9,
+    "total_violations": 1411,
+    "violation_percentile": "P90",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "5th Cross Road",
+      "CMR Road",
+      "9th Main Road",
+      "Thanisandra Main Road"
+    ]
+  },
+  {
+    "zone_id": 7,
+    "zone_name": "Rayasandra Circle - Amrutha College Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 36,
+    "impact_rank": 20,
+    "impact_score": 15.5,
+    "total_violations": 80,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Amrutha College Road",
+      "Hosa Road",
+      "Rayasandra Main Road"
+    ]
+  },
+  {
+    "zone_id": 15,
+    "zone_name": "Kengeri Satellite Town Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 22,
+    "impact_rank": 21,
+    "impact_score": 15.4,
+    "total_violations": 143,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Kengeri Magadi Road",
+      "Kengeri Main Road",
+      "Mysore Road",
+      "Kommaghatta Road",
+      "Bangalore-Mysore Road"
+    ]
+  },
+  {
+    "zone_id": 45,
+    "zone_name": "Dr MD Nanjundaswamy Circle - Sulibele Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 29,
+    "impact_rank": 22,
+    "impact_score": 15.3,
+    "total_violations": 108,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Sulibele Road",
+      "Bangalore Bellary Road",
+      "Puttappana Gudi Veedhi"
+    ]
+  },
+  {
+    "zone_id": 60,
+    "zone_name": "Bangaranna Khanavali - Hosur Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 50,
+    "impact_rank": 23,
+    "impact_score": 15.2,
+    "total_violations": 46,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Hosur Road",
+      "Hennagara Main Road"
+    ]
+  },
+  {
+    "zone_id": 63,
+    "zone_name": "Choodasandra Circle - Silver County Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 57,
+    "impact_rank": 24,
+    "impact_score": 14.8,
+    "total_violations": 27,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Silver County Road",
+      "Amrutha College Road"
+    ]
+  },
+  {
+    "zone_id": 8,
+    "zone_name": "M Ramaiah Layout - Rajgopal Nagar Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 39,
+    "impact_rank": 25,
+    "impact_score": 14.7,
+    "total_violations": 75,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Rajgopal Nagar Main Road",
+      "Peenya 2nd Statge Bus Stop Road",
+      "Handrihalli Main Road",
+      "Hegganahalli Main Road",
+      "3rd Main Road"
+    ]
+  },
+  {
+    "zone_id": 9,
+    "zone_name": "Wynn Gate - Whitefield Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 14,
+    "impact_rank": 26,
+    "impact_score": 14.7,
+    "total_violations": 284,
+    "violation_percentile": "P75",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Whitefield Main Road",
+      "3rd Main Road"
+    ]
+  },
+  {
+    "zone_id": 62,
+    "zone_name": "Stage 2 - Thigalarapalya Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 43,
+    "impact_rank": 27,
+    "impact_score": 13.5,
+    "total_violations": 67,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Thigalarapalya Main Road",
+      "13th Cross Road"
+    ]
+  },
+  {
+    "zone_id": 59,
+    "zone_name": "Vidyanagar Junction - Bengaluru Bellary Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 54,
+    "impact_rank": 28,
+    "impact_score": 13.4,
+    "total_violations": 29,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Bengaluru Bellary Road",
+      "Vidya Nagar Cross Road"
+    ]
+  },
+  {
+    "zone_id": 10,
+    "zone_name": "Dr K Shivaramakarantha Circle - Rajatha Bhavana Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 11,
+    "impact_rank": 29,
+    "impact_score": 13.3,
+    "total_violations": 646,
+    "violation_percentile": "P75",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Rajatha Bhavana Road",
+      "Soniya Gandhi Road",
+      "Hesarghatta Road",
+      "Jalahalli Main Road"
+    ]
+  },
+  {
+    "zone_id": 33,
+    "zone_name": "Rajarajeshwari Layout - Kengeri Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 20,
+    "impact_rank": 30,
+    "impact_score": 13.3,
+    "total_violations": 151,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Kengeri Main Road"
+    ]
+  },
+  {
+    "zone_id": 61,
+    "zone_name": "Thimmaraya Gowda Layout - Ittamadu Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 58,
+    "impact_rank": 31,
+    "impact_score": 13.2,
+    "total_violations": 27,
+    "violation_percentile": "P25",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Ittamadu Road",
+      "15th Cross Road",
+      "Arehalli Main Road",
+      "Ittamadu"
+    ]
+  },
+  {
+    "zone_id": 3,
+    "zone_name": "Mumbai Bengaluru Highway - Jalahalli Cross Junction Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 5,
+    "impact_rank": 32,
+    "impact_score": 13.0,
+    "total_violations": 2031,
+    "violation_percentile": "P90",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Chikka Banavara RS Road",
+      "Mumbai Bengaluru Highway",
+      "Jalahalli Cross Road",
+      "Hesaraghatta Main Road"
+    ]
+  },
+  {
+    "zone_id": 22,
+    "zone_name": "Raitarasanthe - Jakkur Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 4,
+    "impact_rank": 33,
+    "impact_score": 12.5,
+    "total_violations": 2380,
+    "violation_percentile": "P90",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Jakkur Main Road",
+      "Allalasandra Main Road",
+      "3rd A Cross Road",
+      "Bellahali Main Road"
+    ]
+  },
+  {
+    "zone_id": 56,
+    "zone_name": "Jagadaapura - Kaggadaspura Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 53,
+    "impact_rank": 34,
+    "impact_score": 12.3,
+    "total_violations": 35,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Kaggadaspura Main Road",
+      "Mahadevapura Main Road",
+      "Sangama Ward",
+      "Nagappa Reddy Layout Main Road"
+    ]
+  },
+  {
+    "zone_id": 39,
+    "zone_name": "Patel Shamanna Layout - Abbigere Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 37,
+    "impact_rank": 35,
+    "impact_score": 12.2,
+    "total_violations": 78,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Abbigere Main Road",
+      "SM Road",
+      "Shettihalli",
+      "HMT Main Road"
+    ]
+  },
+  {
+    "zone_id": 37,
+    "zone_name": "Kempegowda Circle - KV Jairam Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 59,
+    "impact_rank": 36,
+    "impact_score": 12.0,
+    "total_violations": 27,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "KV Jairam Road",
+      "1st Main Road"
+    ]
+  },
+  {
+    "zone_id": 50,
+    "zone_name": "Hunasamaranahalli - Hosahalli Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 19,
+    "impact_rank": 37,
+    "impact_score": 11.7,
+    "total_violations": 155,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Hosahalli Main Road",
+      "Bengaluru Bellary Road",
+      "1st Main Road"
+    ]
+  },
+  {
+    "zone_id": 30,
+    "zone_name": "Byadrahalli - Magadi Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 25,
+    "impact_rank": 38,
+    "impact_score": 11.6,
+    "total_violations": 134,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Magadi Main Road"
+    ]
+  },
+  {
+    "zone_id": 52,
+    "zone_name": "Tippu Sultan Circle - Amruth Nagar Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 56,
+    "impact_rank": 39,
+    "impact_score": 11.5,
+    "total_violations": 28,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Amruth Nagar Main Road",
+      "1st Cross Road",
+      "Anjanapura Main Road"
+    ]
+  },
+  {
+    "zone_id": 29,
+    "zone_name": "Thanisandra Main Road Zone",
+    "zone_classification": "Frequent Violation Zone",
+    "density_rank": 16,
+    "impact_rank": 40,
+    "impact_score": 11.4,
+    "total_violations": 211,
+    "violation_percentile": "P75",
+    "priority": "High",
+    "recommendations": [
+      "Improve Parking Infrastructure",
+      "Install Additional Signage",
+      "Public Awareness Campaign"
+    ],
+    "top_roads": [
+      "Thanisandra Main Road",
+      "80 Feet Road"
+    ]
+  },
+  {
+    "zone_id": 19,
+    "zone_name": "Avalahalli South Taluka - MBT Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 30,
+    "impact_rank": 41,
+    "impact_score": 11.1,
+    "total_violations": 108,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "MBT Road",
+      "Rampura Main Road",
+      "Chinnagenahalli Main Road",
+      "Unnamed Road"
+    ]
+  },
+  {
+    "zone_id": 53,
+    "zone_name": "Brigade Golden Triangle - MBT Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 31,
+    "impact_rank": 42,
+    "impact_score": 11.1,
+    "total_violations": 108,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "MBT Road",
+      "Whitefield Main Road"
+    ]
+  },
+  {
+    "zone_id": 46,
+    "zone_name": "Nagarjuna Meadows - Doddaballapur Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 49,
+    "impact_rank": 43,
+    "impact_score": 11.0,
+    "total_violations": 50,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Doddaballapur Main Road",
+      "Dodda Ballapur Main Road",
+      "1st Main Road"
+    ]
+  },
+  {
+    "zone_id": 24,
+    "zone_name": "Kodathi Gate - Sarjapura Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 18,
+    "impact_rank": 44,
+    "impact_score": 10.4,
+    "total_violations": 174,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Sarjapura Main Road",
+      "Kodathi Village Road",
+      "Mullur Road",
+      "BNE MD 17"
+    ]
+  },
+  {
+    "zone_id": 58,
+    "zone_name": "Nanjuda Reddy Layout - Hosur Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 27,
+    "impact_rank": 45,
+    "impact_score": 10.3,
+    "total_violations": 121,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Hosur Road",
+      "Hewlett Packard Avenue",
+      "4th Cross Road",
+      "Kaviraja Marga Road"
+    ]
+  },
+  {
+    "zone_id": 34,
+    "zone_name": "HMT Layout - Vidyaranyapura Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 47,
+    "impact_rank": 46,
+    "impact_score": 9.8,
+    "total_violations": 53,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Vidyaranyapura Main Road"
+    ]
+  },
+  {
+    "zone_id": 4,
+    "zone_name": "Ajmera Annex - Neeladri Road Zone",
+    "zone_classification": "Frequent Violation Zone",
+    "density_rank": 6,
+    "impact_rank": 47,
+    "impact_score": 9.4,
+    "total_violations": 1959,
+    "violation_percentile": "P90",
+    "priority": "High",
+    "recommendations": [
+      "Improve Parking Infrastructure",
+      "Install Additional Signage",
+      "Public Awareness Campaign",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Neeladri Road"
+    ]
+  },
+  {
+    "zone_id": 14,
+    "zone_name": "Krishnappa Circle - Devasandra Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 40,
+    "impact_rank": 48,
+    "impact_score": 9.1,
+    "total_violations": 69,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Basavanapura Road",
+      "Hoodi Main Road",
+      "Devasandra Main Road",
+      "Kodigehalli Main Road"
+    ]
+  },
+  {
+    "zone_id": 42,
+    "zone_name": "Birla Circle - Haralur Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 23,
+    "impact_rank": 49,
+    "impact_score": 8.6,
+    "total_violations": 142,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Haralur Road",
+      "Sri Dinne Anjaneya Swamy Temple Road"
+    ]
+  },
+  {
+    "zone_id": 25,
+    "zone_name": "Soundarya Layout - Andhrahalli Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 41,
+    "impact_rank": 50,
+    "impact_score": 8.1,
+    "total_violations": 69,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Andhrahalli Main Road",
+      "1st Main Road",
+      "3rd Main Road"
+    ]
+  },
+  {
+    "zone_id": 21,
+    "zone_name": "Prisha Orchids - Munninarasimha Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 28,
+    "impact_rank": 51,
+    "impact_score": 7.6,
+    "total_violations": 115,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Munninarasimha Road",
+      "Thanisandra Main Road",
+      "Bhartiya City Road"
+    ]
+  },
+  {
+    "zone_id": 41,
+    "zone_name": "Vymac Circle - Forest Region Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 35,
+    "impact_rank": 52,
+    "impact_score": 7.6,
+    "total_violations": 92,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Forest Region Road",
+      "Lakshmipura Main Road",
+      "Kammagondanahalli Main Road"
+    ]
+  },
+  {
+    "zone_id": 64,
+    "zone_name": "KSSIDC Complex - 2nd Cross Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 64,
+    "impact_rank": 53,
+    "impact_score": 7.5,
+    "total_violations": 20,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "2nd Cross Road",
+      "1st Main Road",
+      "4th A Cross Road",
+      "4th Cross Road"
+    ]
+  },
+  {
+    "zone_id": 6,
+    "zone_name": "Hanumantharayan Palya - Magadi Main Road Zone",
+    "zone_classification": "Frequent Violation Zone",
+    "density_rank": 12,
+    "impact_rank": 54,
+    "impact_score": 7.2,
+    "total_violations": 484,
+    "violation_percentile": "P75",
+    "priority": "High",
+    "recommendations": [
+      "Improve Parking Infrastructure",
+      "Install Additional Signage",
+      "Public Awareness Campaign"
+    ],
+    "top_roads": [
+      "Magadi Main Road"
+    ]
+  },
+  {
+    "zone_id": 18,
+    "zone_name": "Salarpuria Sattva Alexandria Tech Park - Hosur Road Zone",
+    "zone_classification": "Frequent Violation Zone",
+    "density_rank": 10,
+    "impact_rank": 55,
+    "impact_score": 7.2,
+    "total_violations": 782,
+    "violation_percentile": "P75",
+    "priority": "High",
+    "recommendations": [
+      "Improve Parking Infrastructure",
+      "Install Additional Signage",
+      "Public Awareness Campaign",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Hosur Road"
+    ]
+  },
+  {
+    "zone_id": 27,
+    "zone_name": "Bannerghatta Main Road Zone",
+    "zone_classification": "Frequent Violation Zone",
+    "density_rank": 9,
+    "impact_rank": 56,
+    "impact_score": 7.0,
+    "total_violations": 871,
+    "violation_percentile": "P75",
+    "priority": "High",
+    "recommendations": [
+      "Improve Parking Infrastructure",
+      "Install Additional Signage",
+      "Public Awareness Campaign",
+      "Permanent Infrastructure Intervention"
+    ],
+    "top_roads": [
+      "Shri Ramalingeshwara Cave Temple Road",
+      "Bannerghatta Main Road"
+    ]
+  },
+  {
+    "zone_id": 40,
+    "zone_name": "Kasturi Nagar - 2nd Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 24,
+    "impact_rank": 57,
+    "impact_score": 6.2,
+    "total_violations": 137,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "2nd Main Road",
+      "5th Main Road",
+      "2nd H Main Road",
+      "Kasthuri Nagar Main Road",
+      "MBT Road"
+    ]
+  },
+  {
+    "zone_id": 55,
+    "zone_name": "Westend Avenue Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 38,
+    "impact_rank": 58,
+    "impact_score": 6.2,
+    "total_violations": 78,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Westend Avenue",
+      "Vishveswaraiah Road",
+      "1st Main Road"
+    ]
+  },
+  {
+    "zone_id": 57,
+    "zone_name": "Janapriya Nivas - Hesaraghatta Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 65,
+    "impact_rank": 59,
+    "impact_score": 6.0,
+    "total_violations": 18,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Hesaraghatta Main Road",
+      "9th Main Road"
+    ]
+  },
+  {
+    "zone_id": 38,
+    "zone_name": "Andhrahalli - Andrahalli Main Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 62,
+    "impact_rank": 60,
+    "impact_score": 3.1,
+    "total_violations": 21,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Andrahalli Main Road",
+      "Andhrahalli Main Road",
+      "Peenya Andhrahalli Main Road"
+    ]
+  },
+  {
+    "zone_id": 11,
+    "zone_name": "Subhash Chandrabose Nagar - Sri Sri Sri Tiruchi Mahaswamiji Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 52,
+    "impact_rank": 61,
+    "impact_score": 3.0,
+    "total_violations": 39,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Sri Sri Sri Tiruchi Mahaswamiji Road",
+      "2nd Main Road",
+      "2nd Cross Road"
+    ]
+  },
+  {
+    "zone_id": 43,
+    "zone_name": "BDA Layout - Mysore Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 60,
+    "impact_rank": 62,
+    "impact_score": 2.8,
+    "total_violations": 23,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Mysore Road",
+      "60 Feet Road",
+      "4th Main Road"
+    ]
+  },
+  {
+    "zone_id": 32,
+    "zone_name": "Aryav Greenfields - Kodigehalli Main Road Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 21,
+    "impact_rank": 63,
+    "impact_score": 2.3,
+    "total_violations": 146,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Kodigehalli Main Road"
+    ]
+  },
+  {
+    "zone_id": 54,
+    "zone_name": "Salarpuria Infozone - Road Number 1 Zone",
+    "zone_classification": "Moderate Zone",
+    "density_rank": 26,
+    "impact_rank": 64,
+    "impact_score": 1.0,
+    "total_violations": 122,
+    "violation_percentile": "P50",
+    "priority": "Medium",
+    "recommendations": [
+      "Schedule Periodic Enforcement Patrols",
+      "Monitor Trend for Escalation"
+    ],
+    "top_roads": [
+      "Road Number 1",
+      "Unnamed Road"
+    ]
+  },
+  {
+    "zone_id": 13,
+    "zone_name": "Elegant Esplande - Global City Tech Park Road Zone",
+    "zone_classification": "Stable Zone",
+    "density_rank": 48,
+    "impact_rank": 65,
+    "impact_score": 0.0,
+    "total_violations": 51,
+    "violation_percentile": "P25",
+    "priority": "Low",
+    "recommendations": [
+      "Routine Monitoring"
+    ],
+    "top_roads": [
+      "Global City Tech Park Road",
+      "1st Cross Road",
+      "Sattva Global City"
+    ]
+  }
+]
