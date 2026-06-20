@@ -284,7 +284,7 @@ def compute_cluster_analytics(df: pd.DataFrame) -> list:
         
         # Hourly distribution
         hourly_dist = group["hour"].value_counts().sort_index().to_dict()
-        hourly_dist = {str(k): int(v) for k, v in hourly_dist.items()}
+        hourly_dist = {str(int(float(k))): int(v) for k, v in hourly_dist.items()}
         
         # Police station (most common)
         police_station = group["police_station"].mode().iloc[0] if len(group["police_station"].mode()) > 0 else "Unknown"

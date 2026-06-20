@@ -170,7 +170,8 @@ export default function CityDashboard() {
     const sums = Array(24).fill(0);
     hotspots.forEach((h) => {
       Object.entries(h.hourly_distribution || {}).forEach(([hr, v]) => {
-        sums[Number(hr)] += Number(v) || 0;
+        const hour = Math.trunc(Number(hr));
+        if (hour >= 0 && hour < 24) sums[hour] += Number(v) || 0;
       });
     });
     return sums.map((v, h) => ({
@@ -328,7 +329,7 @@ export default function CityDashboard() {
           <div className="overline" style={{ marginBottom: 6 }}>◉ City Risk Distribution</div>
           <h3 style={{ fontSize: 18, marginBottom: 6 }}>Severity Mix</h3>
           <p style={{ color: "var(--text-muted)", fontSize: 12.5, marginBottom: 20 }}>
-            Every square = 1% of the city's risk footprint.
+            Every square = 1% of zones, bucketed by Operational Impact percentile (P90 → P25) — same scale as the Impact map.
           </p>
           <WaffleChart distribution={sev} />
         </div>

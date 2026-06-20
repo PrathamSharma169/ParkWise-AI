@@ -32,6 +32,19 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 HOTSPOTS = []
 RECOMMENDATIONS = []
 
+# Percentile bands shared by the Impact map and dashboard Severity Mix
+PERCENTILE_SEVERITY = {
+    "P90": ("Critical", "#EF4444"),
+    "P75": ("High", "#F97316"),
+    "P50": ("Moderate", "#EAB308"),
+    "P25": ("Low", "#22C55E"),
+}
+
+
+def severity_from_percentile(percentile: str) -> tuple[str, str]:
+    """Map P90/P75/P50/P25 percentile band to severity label and color."""
+    return PERCENTILE_SEVERITY.get(percentile, PERCENTILE_SEVERITY["P25"])
+
 
 def load_data():
     """Load processed data from JSON files."""
@@ -164,18 +177,7 @@ async def get_density_map():
     for h in HOTSPOTS:
         # Color based on percentile
         percentile = h.get("violation_percentile", "P25")
-        if percentile == "P90":
-            color = "#EF4444"    # Red - Critical
-            risk = "Critical"
-        elif percentile == "P75":
-            color = "#F97316"    # Orange - High
-            risk = "High"
-        elif percentile == "P50":
-            color = "#EAB308"    # Yellow - Moderate
-            risk = "Moderate"
-        else:
-            color = "#22C55E"    # Green - Low
-            risk = "Low"
+        risk, color = severity_from_percentile(percentile)
         
         result.append({
             "zone_id": h["cluster_id"],
@@ -205,18 +207,7 @@ async def get_impact_map():
     for h in HOTSPOTS:
         # Use impact_percentile for coloring (relative to data)
         impact_pct = h.get("impact_percentile", "P25")
-        if impact_pct == "P90":
-            color = "#EF4444"    # Red - Critical
-            severity = "Critical"
-        elif impact_pct == "P75":
-            color = "#F97316"    # Orange - High
-            severity = "High"
-        elif impact_pct == "P50":
-            color = "#EAB308"    # Yellow - Moderate
-            severity = "Moderate"
-        else:
-            color = "#22C55E"    # Green - Low
-            severity = "Low"
+        severity, color = severity_from_percentile(impact_pct)
         
         result.append({
             "zone_id": h["cluster_id"],
@@ -285,11 +276,11 @@ async def get_analytics():
         for s, c in sorted(station_counts.items(), key=lambda x: -x[1])[:10]
     ]
     
-    # Severity distribution
-    critical = sum(1 for h in HOTSPOTS if h["impact_score"] >= 75)
-    high = sum(1 for h in HOTSPOTS if 50 <= h["impact_score"] < 75)
-    moderate = sum(1 for h in HOTSPOTS if 25 <= h["impact_score"] < 50)
-    low = sum(1 for h in HOTSPOTS if h["impact_score"] < 25)
+    # Severity distribution — same percentile bands as the Operational Impact map
+    critical = sum(1 for h in HOTSPOTS if h.get("impact_percentile") == "P90")
+    high = sum(1 for h in HOTSPOTS if h.get("impact_percentile") == "P75")
+    moderate = sum(1 for h in HOTSPOTS if h.get("impact_percentile") == "P50")
+    low = sum(1 for h in HOTSPOTS if h.get("impact_percentile", "P25") == "P25")
     
     # Aggregate vehicle distribution
     all_vehicles = {}

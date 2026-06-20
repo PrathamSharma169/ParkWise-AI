@@ -18,8 +18,14 @@ const CLASSIFICATION_BADGE = {
   "Stable Zone":                 { bg: "var(--signal-green)",    fg: "white",                    icon: ShieldCheck },
 };
 
+function hourViolationCount(distribution, hour) {
+  const d = distribution || {};
+  const key = String(hour);
+  return Number(d[key] ?? d[`${key}.0`] ?? d[hour] ?? 0);
+}
+
 function MiniHourBars({ distribution = {} }) {
-  const entries = Array.from({ length: 24 }, (_, h) => Number(distribution[String(h)] || 0));
+  const entries = Array.from({ length: 24 }, (_, h) => hourViolationCount(distribution, h));
   const max = Math.max(1, ...entries);
   return (
     <div style={{ display: "flex", alignItems: "flex-end", gap: 2, height: 56 }}>
