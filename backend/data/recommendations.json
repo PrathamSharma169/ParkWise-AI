@@ -452,8 +452,8 @@
       "Monitor Trend for Escalation"
     ],
     "top_roads": [
-      "Kengeri Main Road",
       "Kengeri Magadi Road",
+      "Kengeri Main Road",
       "Mysore Road",
       "Kommaghatta Road",
       "Bangalore-Mysore Road"
@@ -891,8 +891,8 @@
     ],
     "top_roads": [
       "Doddaballapur Main Road",
-      "1st Main Road",
-      "Dodda Ballapur Main Road"
+      "Dodda Ballapur Main Road",
+      "1st Main Road"
     ]
   },
   {
@@ -934,8 +934,7 @@
       "Hosur Road",
       "Hewlett Packard Avenue",
       "4th Cross Road",
-      "Kaviraja Marga Road",
-      "Computerised Keys Locksmith"
+      "Kaviraja Marga Road"
     ]
   },
   {
@@ -1030,8 +1029,7 @@
     "top_roads": [
       "Andhrahalli Main Road",
       "1st Main Road",
-      "3rd Main Road",
-      "4th Cross Road"
+      "3rd Main Road"
     ]
   },
   {

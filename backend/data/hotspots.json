@@ -1849,6 +1849,10 @@
       {
         "name": "Amrutha College Road",
         "count": 4
+      },
+      {
+        "name": "Hosa Road",
+        "count": 3
       }
     ],
     "hourly_distribution": {
@@ -1923,11 +1927,11 @@
     "avg_resolution_time": 0.0,
     "top_locations": [
       {
-        "name": "Kengeri Main Road",
+        "name": "Kengeri Magadi Road",
         "count": 38
       },
       {
-        "name": "Kengeri Magadi Road",
+        "name": "Kengeri Main Road",
         "count": 38
       },
       {
@@ -3550,11 +3554,11 @@
         "count": 3
       },
       {
-        "name": "1st Cross Road",
+        "name": "Anjanapura Main Road",
         "count": 3
       },
       {
-        "name": "Anjanapura Main Road",
+        "name": "1st Cross Road",
         "count": 3
       },
       {
@@ -3931,11 +3935,11 @@
         "count": 5
       },
       {
-        "name": "1st Main Road",
+        "name": "Dodda Ballapur Main Road",
         "count": 3
       },
       {
-        "name": "Dodda Ballapur Main Road",
+        "name": "1st Main Road",
         "count": 3
       }
     ],
@@ -4109,10 +4113,6 @@
       {
         "name": "Kaviraja Marga Road",
         "count": 5
-      },
-      {
-        "name": "Computerised Keys Locksmith",
-        "count": 3
       }
     ],
     "hourly_distribution": {
@@ -4372,11 +4372,11 @@
         "count": 7
       },
       {
-        "name": "Kodigehalli Main Road",
+        "name": "Basavanapura Road",
         "count": 6
       },
       {
-        "name": "Basavanapura Road",
+        "name": "Kodigehalli Main Road",
         "count": 6
       }
     ],
@@ -4563,7 +4563,7 @@
         "count": 3
       },
       {
-        "name": "4th Cross Road",
+        "name": "Andhrahalli Main Road",
         "count": 3
       }
     ],
@@ -4641,11 +4641,11 @@
         "count": 8
       },
       {
-        "name": "Thanisandra Main Road",
+        "name": "Bhartiya City Road",
         "count": 7
       },
       {
-        "name": "Bhartiya City Road",
+        "name": "Thanisandra Main Road",
         "count": 7
       }
     ],
@@ -5513,7 +5513,7 @@
         "count": 2
       },
       {
-        "name": "Sri Sri Sri Tiruchi Mahaswamiji Road",
+        "name": "2nd Main Road",
         "count": 2
       }
     ],
