@@ -25,7 +25,7 @@ function severityColor(severity) {
 }
 
 export default function MapView() {
-  const [mode, setMode] = useState("impact"); // 'density' | 'impact'
+  const [mode, setMode] = useState("density"); // 'density' | 'impact'
   const [density, setDensity] = useState([]);
   const [impact, setImpact] = useState([]);
   const [search, setSearch] = useState("");
@@ -71,11 +71,10 @@ export default function MapView() {
       {/* Page header */}
       <div className="section-head">
         <div>
-          <div className="overline">◉ Live City Feed · Bengaluru</div>
           <h2 style={{ fontSize: 28, marginTop: 8 }}>
             {mode === "density"
               ? "Where the city breaks down."
-              : "Which break-down to fix first."}
+              : "Which break down to fix first."}
           </h2>
           <p>
             {mode === "density"
@@ -118,7 +117,7 @@ export default function MapView() {
       <div className="map-frame" data-testid="map-frame">
         <MapContainer
           center={BENGALURU_CENTER}
-          zoom={11.5}
+          zoom={10.8}
           scrollWheelZoom
           style={{ height: "100%", width: "100%" }}
         >

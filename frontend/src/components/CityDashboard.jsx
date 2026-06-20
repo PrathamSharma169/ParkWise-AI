@@ -207,7 +207,7 @@ export default function CityDashboard() {
     <div className="page-shell" data-testid="dashboard-page">
       <div className="section-head">
         <div>
-          <div className="overline">◉ City Pulse · Live across {analytics.total_zones} Zones</div>
+          {/* <div className="overline">◉ City Pulse · Live across {analytics.total_zones} Zones</div> */}
           <h2 style={{ fontSize: 28, marginTop: 8 }}>How Bengaluru is breathing today.</h2>
           <p>A consolidated read-out of the city's parking-pressure footprint, ranked &amp; visualised.</p>
         </div>

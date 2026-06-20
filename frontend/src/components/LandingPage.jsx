@@ -1,28 +1,48 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ArrowRight, Eye, Brain, Compass, Send, Activity,
   MapPin, ShieldCheck, AlertTriangle, Clock, Quote,
 } from "lucide-react";
-import MultilingualBengaluru, { SCRIPTS } from "@/components/MultilingualBengaluru";
+import MultilingualBengaluru from "@/components/MultilingualBengaluru";
 import Odometer from "@/components/Odometer";
 import { getAnalytics, getRecommendations } from "@/utils/api";
+import { ROUTES } from "@/constants/routes";
 
 const JOURNEY_STEPS = [
-  { id: 1, icon: Eye,     title: "Detect",  kn: "ಪತ್ತೆ",
+  { id: 1, icon: Eye,     title: "Detect",
     body: "Pull live violation density across 40+ Bengaluru zones — from Indiranagar's 100 Ft Road to Whitefield's ITPL corridor." },
-  { id: 2, icon: Brain,   title: "Analyse", kn: "ವಿಶ್ಲೇಷಣೆ",
+  { id: 2, icon: Brain,   title: "Analyse",
     body: "A composite Impact Score weighs vehicle mix, junction proximity and enforcement difficulty — not just raw counts." },
-  { id: 3, icon: Compass, title: "Decide",  kn: "ತೀರ್ಮಾನ",
+  { id: 3, icon: Compass, title: "Decide",
     body: "Rule + classification engine flags Critical, Hidden Risk, Frequent, Moderate or Stable. Gemini briefs the why." },
-  { id: 4, icon: Send,    title: "Deploy",  kn: "ನಿಯೋಜನೆ",
+  { id: 4, icon: Send,    title: "Deploy",
     body: "Time-windowed patrolling, towing routes, infrastructure intervention — each card is a dispatch-ready action." },
-  { id: 5, icon: Activity,title: "Reflect", kn: "ಪ್ರತಿಬಿಂಬ",
+  { id: 5, icon: Activity,title: "Reflect",
     body: "Track which zones are cooling, which are heating. Re-prioritise weekly. The city is a living organism." },
 ];
 
-export default function LandingPage({ onEnter }) {
-  const [active, setActive] = useState(SCRIPTS[0]);
+const HERO_GALLERY = [
+  {
+    src: "https://th-i.thgim.com/public/incoming/ve1j6z/article70296412.ece/alternates/FREE_1200/DSC_4456.JPG",
+    alt: "Bengaluru commuters going for their daily travel in the morning on the road.",
+    slot: "main",
+  },
+  {
+    src: "https://s3.ap-south-1.amazonaws.com/media.thesouthfirst.com/wp-content/uploads/2023/02/BTP.jpg",
+    alt: "A famous view point where a vehicle spends its maximum time in signals.",
+    slot: "top",
+  },
+  {
+    src: "https://cf-images.assettype.com/tnm%2Fimport%2Fsites%2Fdefault%2Ffiles%2FBengaluru_traffic_police_rep_270622_1200.jpg",
+    alt: "Bengaluru Traffic Police officer checking documents with a motorcyclist.",
+    slot: "bottom",
+  },
+];
+
+export default function LandingPage() {
+  const navigate = useNavigate();
   const [stats, setStats] = useState({ zones: 0, violations: 0, hidden: 0, critical: 0 });
 
   useEffect(() => {
@@ -42,120 +62,93 @@ export default function LandingPage({ onEnter }) {
   return (
     <div className="paper-grid" data-testid="landing-page">
       {/* ====================================================
-          HERO — multilingual Bengaluru
+          HERO — copy + traffic gallery
           ==================================================== */}
-      <section style={{
-        position: "relative",
-        padding: "72px 32px 96px",
-        maxWidth: 1280, margin: "0 auto",
-        overflow: "hidden",
-      }}>
-        {/* faded background motif */}
-        <div aria-hidden style={{
-          position: "absolute", inset: 0,
-          backgroundImage:
-            "radial-gradient(ellipse at 20% 30%, rgba(45,106,79,0.10), transparent 55%), " +
-            "radial-gradient(ellipse at 90% 70%, rgba(233,196,106,0.20), transparent 60%)",
-          pointerEvents: "none",
-        }} />
+      <section className="landing-hero" data-testid="landing-hero">
+        <div className="landing-hero-bg" aria-hidden />
+        <div className="landing-hero-watermark" aria-hidden>
+          <img
+            src={`${process.env.PUBLIC_URL}/logobengaluru.png`}
+            alt=""
+          />
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          style={{ position: "relative" }}
-        >
-          <div className="overline overline-red" style={{ marginBottom: 18 }}>
-            ◉ Bengaluru City Traffic Police · Intelligence Console
-          </div>
+        <div className="landing-hero-inner">
+          <motion.div
+            className="landing-hero-copy"
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
 
-          <h1 style={{
-            fontFamily: "var(--font-display)",
-            fontWeight: 800,
-            fontSize: "clamp(48px, 8vw, 124px)",
-            lineHeight: 1.02,
-            letterSpacing: "-0.04em",
-            margin: "0 0 14px",
-          }}>
-            Namma
-            <br />
-            <span style={{
-              fontFamily: active.fontFamily,
-              color: "var(--primary)",
-              dir: active.dir,
-            }}>
-              <MultilingualBengaluru onIndexChange={setActive} />
-            </span>
-          </h1>
+            <h1 className="landing-hero-title">
+              Namma
+              <br />
+              <span className="hero-bengaluru-line">
+                <MultilingualBengaluru />
+              </span>
+            </h1>
 
-          <p style={{
-            fontSize: 19,
-            lineHeight: 1.55,
-            maxWidth: 720,
-            color: "var(--text-secondary)",
-            margin: "20px 0 36px",
-          }}>
-            Bengaluru moves on auto-rickshaws, software engineers, and a stubborn refusal to honk less.
-            We can't fix the city overnight — but we can <strong style={{ color: "var(--text-primary)" }}>see it clearly</strong>,
-            block by block, hour by hour. <span style={{ color: "var(--primary)", fontWeight: 600 }}>
-            Namma {active.text}</span> is the operational brain for the Traffic Police —
-            turning a million parking violations into <em>where to stand, when, and why</em>.
-          </p>
+            <p className="landing-hero-lede">
+            Bengaluru runs on chai, chaos, and SUVs parked like they own the footpath. We can't un jam the city overnight, but we can tell you which junction to hit first.
+            </p>
 
-          <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-            <button
-              className="btn btn-primary"
-              onClick={onEnter}
-              data-testid="cta-enter-console"
-              style={{ padding: "16px 28px", fontSize: 15 }}
-            >
-              Enter Operations Console
-              <ArrowRight size={17} />
-            </button>
-            <a
-              className="btn btn-ghost"
-              href="#how-it-works"
-              data-testid="cta-how-it-works"
-              style={{ padding: "16px 24px", fontSize: 14 }}
-            >
-              See how it works
-            </a>
-          </div>
+            <div className="landing-hero-actions">
+              <button
+                className="btn btn-primary"
+                onClick={() => navigate(ROUTES.map)}
+                data-testid="cta-enter-console"
+              >
+                Enter Operations Console
+                <ArrowRight size={17} />
+              </button>
+              <a
+                className="btn btn-ghost"
+                href="#how-it-works"
+                data-testid="cta-how-it-works"
+              >
+                See how it works
+              </a>
+            </div>
+          </motion.div>
 
-          {/* live ticker strip */}
-          <div style={{
-            marginTop: 64,
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
-            gap: 1,
-            background: "var(--border)",
-            border: "1px solid var(--border)",
-            borderRadius: "var(--r-md)",
-            overflow: "hidden",
-            boxShadow: "var(--shadow-md)",
-          }} data-testid="landing-stats">
+          <motion.div
+            className="landing-hero-gallery"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.65, delay: 0.12 }}
+            aria-label="Traffic enforcement and city mobility"
+          >
+            {HERO_GALLERY.map((img, i) => (
+              <figure
+                key={img.slot}
+                className={`hero-gallery-frame hero-gallery-${img.slot}`}
+                style={{ animationDelay: `${0.08 + i * 0.06}s` }}
+              >
+                <img src={img.src} alt={img.alt} loading={i === 0 ? "eager" : "lazy"} />
+                <figcaption className="hero-gallery-caption">{img.alt}</figcaption>
+              </figure>
+            ))}
+          </motion.div>
+        </div>
+
+        <div className="landing-hero-stats-wrap" data-testid="landing-stats">
+          <div className="landing-hero-stats">
             {[
               { label: "Risk Zones Tracked", value: stats.zones, color: "var(--primary)" },
               { label: "Violations Mapped",  value: stats.violations, color: "var(--text-primary)" },
               { label: "Critical Hotspots",  value: stats.critical, color: "var(--signal-red)" },
               { label: "Hidden Risks Found", value: stats.hidden,  color: "var(--auto-yellow-deep)" },
             ].map((s) => (
-              <div key={s.label} style={{ background: "var(--bg-paper)", padding: "20px 22px" }}>
-                <div style={{
-                  fontFamily: "var(--font-mono)",
-                  fontSize: 10.5,
-                  letterSpacing: "0.18em",
-                  textTransform: "uppercase",
-                  color: "var(--text-muted)",
-                  marginBottom: 8,
-                }}>{s.label}</div>
-                <div style={{ fontSize: 34, fontWeight: 800, color: s.color }}>
+              <div key={s.label} className="landing-hero-stat">
+                <div className="landing-hero-stat-label">{s.label}</div>
+                <div className="landing-hero-stat-value" style={{ color: s.color }}>
                   <Odometer value={s.value} duration={1800} />
                 </div>
               </div>
             ))}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* ====================================================
@@ -277,11 +270,7 @@ export default function LandingPage({ onEnter }) {
                     color: "var(--text-muted)",
                   }}>0{step.id}</span>
                 </div>
-                <h3 style={{ fontSize: 20, marginBottom: 2 }}>{step.title}</h3>
-                <div style={{
-                  fontFamily: "var(--font-kannada)", fontSize: 14,
-                  color: "var(--primary)", marginBottom: 12, fontWeight: 500,
-                }}>{step.kn}</div>
+                <h3 style={{ fontSize: 20, marginBottom: 12 }}>{step.title}</h3>
                 <p style={{ color: "var(--text-secondary)", fontSize: 13.5, lineHeight: 1.55, margin: 0 }}>
                   {step.body}
                 </p>
@@ -372,7 +361,7 @@ export default function LandingPage({ onEnter }) {
           <div style={{ marginTop: 48, display: "flex", gap: 14, alignItems: "center", flexWrap: "wrap" }}>
             <button
               className="btn"
-              onClick={onEnter}
+              onClick={() => navigate(ROUTES.map)}
               data-testid="cta-enter-console-2"
               style={{
                 background: "var(--auto-yellow)",

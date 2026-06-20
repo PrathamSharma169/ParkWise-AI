@@ -209,7 +209,7 @@ export default function RecommendationPanel() {
     <div className="page-shell" data-testid="recommendations-page">
       <div className="section-head">
         <div>
-          <div className="overline overline-red">◉ Action Center · Dispatch Ready</div>
+          {/* <div className="overline overline-red">◉ Action Center · Dispatch Ready</div> */}
           <h2 style={{ fontSize: 28, marginTop: 8 }}>{data.total} zones. One queue.</h2>
           <p>Every zone arrives with a classification, dispatch-ready actions, and an AI briefing on tap.</p>
         </div>

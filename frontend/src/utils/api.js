@@ -1,11 +1,10 @@
 /**
  * ParkWise AI - API Client
- * Routes through REACT_APP_BACKEND_URL so requests work in both
- * local dev and the deployed Emergent environment.
+ * Routes through REACT_APP_BACKEND_URL for local and deployed environments.
  */
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API_BASE = `${BACKEND_URL}/api`;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
+const API_BASE = `${BACKEND_URL.replace(/\/$/, "")}/api`;
 
 async function fetchJSON(url) {
   const res = await fetch(`${API_BASE}${url}`);

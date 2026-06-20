@@ -13,7 +13,7 @@ City Traffic Police data. The Traffic Police don't lack effort — they lack
 ## Architecture
 - **Backend**: FastAPI (`/app/backend/main.py`), entry point `/app/backend/server.py`
 - **Persistence**: JSON files in `/app/backend/data/` (auto-seeded by `seed_data.py` — 40 realistic Bengaluru zones across 3 personas: Critical, Frequent Violation, Hidden Risk + standard zones)
-- **AI**: `gemini_engine.py` — Gemini 2.5 Flash via `emergentintegrations.LlmChat` (Emergent Universal Key) with deterministic fallback
+- **AI**: `gemini_engine.py` — Gemini 2.5 Flash via Google Generative AI API with deterministic fallback
 - **Frontend**: React (CRA + craco) + react-leaflet + recharts + framer-motion + lucide-react
 - **Routing**: All backend APIs `/api/*`; frontend uses `process.env.REACT_APP_BACKEND_URL`
 

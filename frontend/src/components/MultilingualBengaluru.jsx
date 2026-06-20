@@ -3,7 +3,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 /**
  * Animated "Bengaluru" rendered in the major languages spoken across the city.
- * Each language cross-fades into the next on a ~2.2s loop.
+ * Invisible sizers in a shared grid cell reserve max width/height so the
+ * cross-fade never shifts surrounding layout.
  */
 const SCRIPTS = [
   { label: "Kannada",     text: "ಬೆಂಗಳೂರು",  fontFamily: "var(--font-kannada)",    dir: "ltr" },
@@ -15,56 +16,51 @@ const SCRIPTS = [
   { label: "Malayalam",   text: "ബെംഗളൂരു",  fontFamily: "var(--font-malayalam)",   dir: "ltr" },
 ];
 
-export default function MultilingualBengaluru({ onIndexChange }) {
+export default function MultilingualBengaluru() {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
-      setIdx((i) => {
-        const next = (i + 1) % SCRIPTS.length;
-        onIndexChange && onIndexChange(SCRIPTS[next]);
-        return next;
-      });
-    }, 2200);
-    onIndexChange && onIndexChange(SCRIPTS[0]);
+      setIdx((i) => (i + 1) % SCRIPTS.length);
+    }, 3000);
     return () => clearInterval(id);
-  }, [onIndexChange]);
+  }, []);
 
   const active = SCRIPTS[idx];
 
   return (
-    <div
-      style={{
-        position: "relative",
-        height: "1.05em",
-        lineHeight: 1,
-        display: "inline-flex",
-        alignItems: "center",
-        minWidth: "0.5em",
-      }}
+    <span
+      className="multilingual-bengaluru-slot"
       aria-label={`Bengaluru in ${active.label}`}
       data-testid="multilingual-bengaluru"
     >
-      <AnimatePresence mode="popLayout">
-        <motion.span
-          key={active.label}
-          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
-          animate={{ opacity: 1, y: 0,  filter: "blur(0px)" }}
-          exit={{    opacity: 0, y: -30, filter: "blur(8px)" }}
-          transition={{ duration: 0.7, ease: [0.2, 0.7, 0.1, 1] }}
-          dir={active.dir}
-          style={{
-            fontFamily: active.fontFamily,
-            fontWeight: 800,
-            display: "inline-block",
-            whiteSpace: "nowrap",
-          }}
+      {SCRIPTS.map((script) => (
+        <span
+          key={script.label}
+          aria-hidden="true"
+          className="multilingual-bengaluru-sizer"
+          style={{ fontFamily: script.fontFamily }}
         >
-          {active.text}
-        </motion.span>
-      </AnimatePresence>
-    </div>
+          {script.text}
+        </span>
+      ))}
+
+      <span className="multilingual-bengaluru-stage">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.span
+            key={active.label}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: "easeInOut" }}
+            dir={active.dir}
+            className="multilingual-bengaluru-word"
+            style={{ fontFamily: active.fontFamily }}
+          >
+            {active.text}
+          </motion.span>
+        </AnimatePresence>
+      </span>
+    </span>
   );
 }
-
-export { SCRIPTS };

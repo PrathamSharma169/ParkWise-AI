@@ -2,7 +2,7 @@
 ParkWise AI — Gemini 2.5 Flash Explanation Engine
 
 Generates human-readable explanations for rule-engine recommendations
-using the Emergent Universal LLM Key via emergentintegrations.
+using the Google Gemini API.
 
 The LLM does NOT make decisions — it only explains decisions already
 produced by the Zone Classification Engine + Rule Engine.
@@ -10,13 +10,11 @@ produced by the Zone Classification Engine + Rule Engine.
 
 import os
 import json
-import asyncio
-import uuid
 from dotenv import load_dotenv
 
 load_dotenv()
 
-EMERGENT_LLM_KEY = os.environ.get("EMERGENT_LLM_KEY", "")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
 
 
 SYSTEM_PROMPT = """You are an urban traffic management expert.
@@ -84,43 +82,16 @@ Maximum 120 words."""
 
 
 def _call_gemini_sync(prompt: str) -> dict:
-    """Run the LlmChat call synchronously using a fresh event loop in a
-    background thread so it works even when called from inside FastAPI's
-    running event loop."""
-    import threading
+    """Call Gemini synchronously and parse the JSON response."""
+    import google.generativeai as genai
 
-    from emergentintegrations.llm.chat import LlmChat, UserMessage
-
-    result_box = {"text": None, "error": None}
-
-    def _worker():
-        try:
-            async def _run():
-                chat = LlmChat(
-                    api_key=EMERGENT_LLM_KEY,
-                    session_id=f"parkwise-{uuid.uuid4()}",
-                    system_message=SYSTEM_PROMPT,
-                ).with_model("gemini", "gemini-2.5-flash")
-                return await chat.send_message(UserMessage(text=prompt))
-
-            loop = asyncio.new_event_loop()
-            try:
-                result_box["text"] = loop.run_until_complete(_run())
-            finally:
-                loop.close()
-        except Exception as e:
-            result_box["error"] = e
-
-    t = threading.Thread(target=_worker)
-    t.start()
-    t.join(timeout=60)
-
-    if result_box["error"]:
-        raise result_box["error"]
-    if result_box["text"] is None:
-        raise TimeoutError("Gemini call timed out")
-
-    text = (result_box["text"] or "").strip()
+    genai.configure(api_key=GEMINI_API_KEY)
+    model = genai.GenerativeModel(
+        model_name="gemini-2.5-flash",
+        system_instruction=SYSTEM_PROMPT,
+    )
+    response = model.generate_content(prompt)
+    text = (response.text or "").strip()
 
     if text.startswith("```"):
         lines = [l for l in text.split("\n") if not l.strip().startswith("```")]
@@ -134,7 +105,7 @@ def generate_explanation(zone_rec: dict) -> dict:
     Generate an AI explanation for a zone's rule-engine recommendations.
     Returns a deterministic fallback if the API key is missing or call fails.
     """
-    if not EMERGENT_LLM_KEY:
+    if not GEMINI_API_KEY:
         return _fallback_explanation(zone_rec)
 
     try:
