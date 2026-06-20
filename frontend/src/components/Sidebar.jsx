@@ -1,10 +1,11 @@
 import React from 'react';
-import { Map, BarChart3, Shield, LayoutDashboard, Info } from 'lucide-react';
+import { Map, BarChart3, Shield, LayoutDashboard, Info, LineChart } from 'lucide-react';
 
 const navItems = [
   { id: 'map', icon: Map, label: 'Maps' },
   { id: 'dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { id: 'recommendations', icon: Shield, label: 'Recommendations' },
+  { id: 'trends', icon: LineChart, label: 'Trends' },
   { id: 'about', icon: Info, label: 'About' },
 ];
 

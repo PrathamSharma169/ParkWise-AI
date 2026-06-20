@@ -841,12 +841,12 @@ Impact Score =
 
 ## Severity Bands
 
-| Impact Score | Color  |
-| ------------ | ------ |
-| 0 - 25       | Green  |
-| 25 - 50      | Yellow |
-| 50 - 75      | Orange |
-| 75 - 100     | Red    |
+| Percentile Range | Color  | Risk     |
+| ---------------- | ------ | -------- |
+| < P50            | Green  | Low      |
+| P50 - P75        | Yellow | Moderate |
+| P75 - P90        | Orange | High     |
+| > P90            | Red    | Critical |
 
 ---
 

@@ -4,6 +4,7 @@ import MapView from './components/MapView';
 import CityDashboard from './components/CityDashboard';
 import RecommendationPanel from './components/RecommendationPanel';
 import DateSelector from './components/DateSelector';
+import TrendsDashboard from './components/TrendsDashboard';
 import { getHotspots } from './utils/api';
 import { MapPin, BarChart3, Shield } from 'lucide-react';
 
@@ -202,6 +203,7 @@ export default function App() {
     map: 'Parking Risk Maps',
     dashboard: 'City Intelligence Dashboard',
     recommendations: 'Recommendation Center',
+    trends: 'Trends & Comparison',
     about: 'About ParkWise AI',
   };
 
@@ -231,13 +233,16 @@ export default function App() {
         </header>
 
         {/* Date Selector */}
-        <DateSelector onFilterChange={(start, end) => { setStartDate(start); setEndDate(end); }} />
+        {activePage !== 'trends' && (
+          <DateSelector onFilterChange={(start, end) => { setStartDate(start); setEndDate(end); }} />
+        )}
 
         {/* Page Content */}
         <div className="page-content">
           {activePage === 'map' && <MapView startDate={startDate} endDate={endDate} />}
           {activePage === 'dashboard' && <CityDashboard startDate={startDate} endDate={endDate} />}
           {activePage === 'recommendations' && <RecommendationPanel startDate={startDate} endDate={endDate} />}
+          {activePage === 'trends' && <TrendsDashboard />}
           {activePage === 'about' && <AboutPage />}
         </div>
       </div>
