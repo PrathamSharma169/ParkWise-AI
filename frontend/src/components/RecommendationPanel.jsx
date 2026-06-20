@@ -167,7 +167,7 @@ function ZoneCard({ zone, onOpen }) {
   );
 }
 
-export default function RecommendationPanel() {
+export default function RecommendationPanel({ startDate, endDate }) {
   const [data, setData] = useState(null);
   const [filter, setFilter] = useState("all");
   const [openZoneId, setOpenZoneId] = useState(null);

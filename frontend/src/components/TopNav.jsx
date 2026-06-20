@@ -1,12 +1,13 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Map, LayoutDashboard, ListChecks, Info, ChevronDown } from "lucide-react";
+import { Map, LayoutDashboard, ListChecks, Info, ChevronDown, LineChart } from "lucide-react";
 import { ROUTES } from "@/constants/routes";
 
 const NAV = [
   { id: "map", path: ROUTES.map, label: "Live City Map", icon: Map },
   { id: "dashboard", path: ROUTES.dashboard, label: "City Pulse", icon: LayoutDashboard },
   { id: "recommendations", path: ROUTES.recommendations, label: "Action Center", icon: ListChecks },
+  { id: "trends", path: ROUTES.trends, label: "Trends", icon: LineChart },
   { id: "about", path: ROUTES.about, label: "About", icon: Info },
 ];
 
