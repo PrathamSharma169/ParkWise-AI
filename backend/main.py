@@ -73,11 +73,16 @@ def load_data():
 
 
 def init_violation_data():
-    """Initialize violation store and preload data into memory for fast filtering."""
+    """Initialize violation store and optionally preload data into memory for fast filtering."""
     try:
         from violation_store import init_violation_store, load_violations_df_to_memory
-        if init_violation_store():
+        if not init_violation_store():
+            return
+        preload = os.getenv("PRELOAD_VIOLATIONS", "true").lower() in ("1", "true", "yes")
+        if preload:
             load_violations_df_to_memory()
+        else:
+            print("PRELOAD_VIOLATIONS=false — date filters will query Supabase per request")
     except Exception as e:
         print(f"Error initializing violation store: {e}")
 
@@ -97,7 +102,8 @@ def _compute_filtered_data(start_date: str = None, end_date: str = None):
         print("Warning: violation store not ready. Falling back to full precomputed dataset.")
         return HOTSPOTS, RECOMMENDATIONS
 
-    if not is_violations_df_loaded():
+    preload = os.getenv("PRELOAD_VIOLATIONS", "true").lower() in ("1", "true", "yes")
+    if preload and not is_violations_df_loaded():
         load_violations_df_to_memory()
 
     filtered_df = load_violations_dataframe(start_date=start_date, end_date=end_date)
@@ -667,7 +673,8 @@ async def compare_zones_trends(zone_a: int, zone_b: int, start_hour: int, end_ho
             detail="Violation database not ready. Run import_violations.py first.",
         )
 
-    if not is_violations_df_loaded():
+    preload = os.getenv("PRELOAD_VIOLATIONS", "true").lower() in ("1", "true", "yes")
+    if preload and not is_violations_df_loaded():
         load_violations_df_to_memory()
 
     try:

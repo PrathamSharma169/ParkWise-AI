@@ -6,6 +6,17 @@
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:8000";
 const API_BASE = `${BACKEND_URL.replace(/\/$/, "")}/api`;
 
+/** Ping Render/backend on load so cold-start wake happens before user navigates. */
+export function wakeBackend() {
+  const base = BACKEND_URL.replace(/\/$/, "");
+  if (/localhost|127\.0\.0\.1/i.test(base)) {
+    return Promise.resolve(null);
+  }
+  return fetch(`${base}/`, { method: "GET" })
+    .then((res) => (res.ok ? res.json() : null))
+    .catch(() => null);
+}
+
 async function fetchJSON(url) {
   const res = await fetch(`${API_BASE}${url}`);
   if (!res.ok) {

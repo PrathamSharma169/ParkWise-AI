@@ -1,0 +1,22 @@
+# Render Blueprint — ParkWise AI Backend
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: parkwise-api
+    runtime: python
+    plan: starter
+    region: singapore
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.0"
+      - key: DATABASE_URL
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: PRELOAD_VIOLATIONS
+        value: "true"

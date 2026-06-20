@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Routes, Route, Navigate, useOutletContext } from "react-router-dom";
 import LandingPage from "@/components/LandingPage";
 import MapView from "@/components/MapView";
@@ -8,6 +8,7 @@ import TrendsDashboard from "@/components/TrendsDashboard";
 import AboutPage from "@/pages/AboutPage";
 import ConsoleLayout from "@/layouts/ConsoleLayout";
 import { ROUTES } from "@/constants/routes";
+import { wakeBackend } from "@/utils/api";
 
 function MapPage() {
   const { startDate, endDate } = useOutletContext() || {};
@@ -25,6 +26,10 @@ function RecommendationsPage() {
 }
 
 export default function App() {
+  useEffect(() => {
+    wakeBackend();
+  }, []);
+
   return (
     <Routes>
       <Route
