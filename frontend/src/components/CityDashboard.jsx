@@ -6,9 +6,8 @@ import {
   Activity, MapPin, TrendingUp, EyeOff, Sun, Moon, Building2,
 } from "lucide-react";
 import Odometer from "@/components/Odometer";
-import TemporalScopeBanner from "@/components/TemporalScopeBanner";
 import { getHotspots } from "@/utils/api";
-import { getDashboardHeadline, useConsoleScope } from "@/utils/useTemporalScope";
+import { useConsoleScope } from "@/utils/useTemporalScope";
 
 const SEVERITY_PALETTE = {
   critical: "#D90429",
@@ -157,7 +156,7 @@ function PoliceStationBar({ data }) {
 }
 
 export default function CityDashboard({ startDate, endDate }) {
-  const { analytics, scopeMeta, scopeLoading } = useConsoleScope();
+  const { analytics, scopeLoading } = useConsoleScope();
   const [hotspots, setHotspots] = useState([]);
   const [loadingHotspots, setLoadingHotspots] = useState(true);
 
@@ -218,31 +217,15 @@ export default function CityDashboard({ startDate, endDate }) {
   }
 
   const sev = analytics.severity_distribution || {};
-  const filtered = scopeMeta?.filtered;
-
-  const kpiDeltas = {
-    "Risk Zones": filtered && scopeMeta?.baselineZones
-      ? `${analytics.total_zones} of ${scopeMeta.baselineZones} zones active in this period`
-      : "Clustered hotspots",
-    "Total Violations": filtered && scopeMeta?.violationDelta
-      ? `${scopeMeta.violationDelta} vs full dataset`
-      : "Mapped across the city",
-    "Avg Impact Score": filtered && scopeMeta?.impactDelta
-      ? `${scopeMeta.impactDelta} vs full dataset avg`
-      : "Composite score / 100",
-    "Hidden Hotspots": "Low density, high impact",
-  };
 
   return (
     <div className="page-shell" data-testid="dashboard-page">
       <div className="section-head">
         <div>
-          <h2 style={{ fontSize: 28, marginTop: 8 }}>{getDashboardHeadline(scopeMeta)}</h2>
+          <h2 style={{ fontSize: 28, marginTop: 8 }}>How Bengaluru is breathing today.</h2>
           <p>A consolidated read-out of the city's parking-pressure footprint, ranked &amp; visualised.</p>
         </div>
       </div>
-
-      <TemporalScopeBanner scopeMeta={scopeMeta} />
 
       {/* KPI grid */}
       <div style={{
@@ -254,7 +237,7 @@ export default function CityDashboard({ startDate, endDate }) {
           {
             label: "Risk Zones",
             value: analytics.total_zones,
-            sub: kpiDeltas["Risk Zones"],
+            sub: "Clustered hotspots",
             icon: MapPin,
             color: "var(--primary)",
             tint: "var(--primary-tint)",
@@ -262,7 +245,7 @@ export default function CityDashboard({ startDate, endDate }) {
           {
             label: "Total Violations",
             value: analytics.total_violations,
-            sub: kpiDeltas["Total Violations"],
+            sub: "Mapped across the city",
             icon: Activity,
             color: "var(--signal-red)",
             tint: "var(--signal-red-tint)",
@@ -270,7 +253,7 @@ export default function CityDashboard({ startDate, endDate }) {
           {
             label: "Avg Impact Score",
             value: Number((analytics.avg_impact_score || 0).toFixed(1)),
-            sub: kpiDeltas["Avg Impact Score"],
+            sub: "Composite score / 100",
             icon: TrendingUp,
             color: "var(--auto-yellow-deep)",
             tint: "var(--auto-yellow-tint)",
@@ -279,7 +262,7 @@ export default function CityDashboard({ startDate, endDate }) {
           {
             label: "Hidden Hotspots",
             value: (analytics.overlooked_zones || []).length,
-            sub: kpiDeltas["Hidden Hotspots"],
+            sub: "Low density, high impact",
             icon: EyeOff,
             color: "var(--primary-light)",
             tint: "var(--primary-tint)",
@@ -301,7 +284,7 @@ export default function CityDashboard({ startDate, endDate }) {
               <div style={{ fontSize: 40, color: kpi.color, lineHeight: 1.05 }}>
                 <Odometer value={kpi.value} duration={1600} decimals={kpi.decimals || 0} />
               </div>
-              <div className={`kpi-sub ${filtered && kpi.label !== "Hidden Hotspots" ? "kpi-sub--delta" : ""}`}>
+              <div style={{ marginTop: 6, fontSize: 12.5, color: "var(--text-muted)" }}>
                 {kpi.sub}
               </div>
             </div>

@@ -4,8 +4,6 @@ import {
   Filter, Sparkles, LoaderCircle, ChevronRight, ListChecks,
 } from "lucide-react";
 import { getRecommendations, explainZoneRisk, getHotspotDetail } from "@/utils/api";
-import TemporalScopeBanner from "@/components/TemporalScopeBanner";
-import { getRecommendationsHeadline, useConsoleScope } from "@/utils/useTemporalScope";
 import ZoneDetails from "@/components/ZoneDetails";
 
 const CLASSIFICATIONS = [
@@ -170,7 +168,6 @@ function ZoneCard({ zone, onOpen, startDate, endDate }) {
 }
 
 export default function RecommendationPanel({ startDate, endDate }) {
-  const { scopeMeta } = useConsoleScope();
   const [data, setData] = useState(null);
   const [filter, setFilter] = useState("all");
   const [openZoneId, setOpenZoneId] = useState(null);
@@ -216,9 +213,7 @@ export default function RecommendationPanel({ startDate, endDate }) {
     <div className="page-shell" data-testid="recommendations-page">
       <div className="section-head">
         <div>
-          <h2 style={{ fontSize: 28, marginTop: 8 }}>
-            {getRecommendationsHeadline(data.total, scopeMeta)}
-          </h2>
+          <h2 style={{ fontSize: 28, marginTop: 8 }}>{data.total} zones. One queue.</h2>
           <p>Every zone arrives with a classification, dispatch-ready actions, and an AI briefing on tap.</p>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 8, fontSize: 12, color: "var(--text-muted)" }}>
@@ -226,7 +221,7 @@ export default function RecommendationPanel({ startDate, endDate }) {
         </div>
       </div>
 
-      <TemporalScopeBanner scopeMeta={scopeMeta} />
+      {/* KPI strip */}
       <div style={{
         display: "grid",
         gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
