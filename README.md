@@ -8,9 +8,8 @@
 
 | Service | URL |
 |---|---|
-| **Frontend** | [https://nammabgl.vercel.app](https://nammabgl.vercel.app) *(or your deployed URL)* |
-| **Backend API** | [https://parkwise-api-ecni.onrender.com](https://parkwise-api-ecni.onrender.com) *(or your deployed URL)* |
-| **API Docs** | `<backend-url>/docs` |
+| **Live Here** | [https://nammabgl.vercel.app](https://nammabgl.vercel.app) |
+
 
 > **Note for reviewers:** The backend runs on Render's free tier — it may take **15–20 seconds to wake up** on the first request. The frontend will display data once the backend responds.
 
