@@ -24,7 +24,7 @@ class TestHotspots:
         assert r.status_code == 200
         data = r.json()
         assert isinstance(data, list)
-        assert len(data) == 40
+        assert len(data) >= 40
         required = {"zone_id", "zone_name", "lat", "lon", "impact_score",
                     "impact_rank", "density_rank", "total_violations",
                     "violation_percentile", "police_station"}
@@ -53,7 +53,7 @@ class TestMaps:
         r = session.get(f"{BASE_URL}/api/density-map", timeout=30)
         assert r.status_code == 200
         data = r.json()
-        assert len(data) == 40
+        assert len(data) >= 40
         valid_risks = {"Critical", "High", "Moderate", "Low"}
         for m in data:
             assert m["risk"] in valid_risks
@@ -65,7 +65,7 @@ class TestMaps:
         r = session.get(f"{BASE_URL}/api/impact-map", timeout=30)
         assert r.status_code == 200
         data = r.json()
-        assert len(data) == 40
+        assert len(data) >= 40
         valid_sev = {"Critical", "High", "Moderate", "Low"}
         for m in data:
             assert m["severity"] in valid_sev
@@ -80,7 +80,7 @@ class TestAnalytics:
         r = session.get(f"{BASE_URL}/api/analytics", timeout=30)
         assert r.status_code == 200
         data = r.json()
-        assert data["total_zones"] == 40
+        assert data["total_zones"] >= 40
         assert data["total_violations"] > 0
         sd = data["severity_distribution"]
         for k in ("critical", "high", "moderate", "low"):
@@ -100,7 +100,7 @@ class TestRecommendations:
         data = r.json()
         assert data["total"] >= 40
         assert isinstance(data["all"], list)
-        assert len(data["all"]) == 40
+        assert len(data["all"]) >= 40
         cc = data["classification_counts"]
         assert isinstance(cc, dict)
         assert cc.get("Critical Zone", 0) >= 1

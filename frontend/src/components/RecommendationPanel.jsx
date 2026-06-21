@@ -111,7 +111,12 @@ function ZoneCard({ zone, onOpen, startDate, endDate }) {
             <div className="overline" style={{ marginBottom: 8 }}>◉ Dispatch Actions</div>
             <ul className="briefing-action-list">
               {zone.recommendations.slice(0, 4).map((r, i) => (
-                <li key={i} data-testid={`recommendation-${zone.zone_id}-${i}`}>{r}</li>
+                <li
+                  key={i}
+                  data-testid={`recommendation-${zone.zone_id}-${i}`}
+                >
+                  {r}
+                </li>
               ))}
             </ul>
           </div>
@@ -140,7 +145,7 @@ function ZoneCard({ zone, onOpen, startDate, endDate }) {
           {loading && (
             <div style={{ display: "flex", alignItems: "center", gap: 8, color: "var(--primary)", fontSize: 13 }}>
               <LoaderCircle size={14} style={{ animation: "spin 1s linear infinite" }} />
-              Gemini analysing this zone…
+              Namma AI analysing this zone…
             </div>
           )}
           {err && <div style={{ color: "var(--signal-red)", fontSize: 12 }}>{err}</div>}

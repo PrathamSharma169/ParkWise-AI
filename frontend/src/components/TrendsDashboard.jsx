@@ -502,7 +502,7 @@ export default function TrendsDashboard() {
             {generatingGemini ? (
               <>
                 <LoaderCircle size={14} className="spin" />
-                Gemini analyzing…
+                Namma AI analyzing…
               </>
             ) : (
               <>
@@ -534,7 +534,12 @@ export default function TrendsDashboard() {
                 <span className="overline" style={{ color: SIDE_A_COLOR, fontSize: 9.5 }}>Arm A suggestions · {dataA?.zone_name}</span>
                 <ul className="briefing-action-list" style={{ marginTop: 8 }}>
                   {geminiResult.zone_a_suggestions?.map((item, idx) => (
-                    <li key={idx} style={{ fontSize: 13, color: "var(--text-secondary)" }}>{item}</li>
+                    <li
+                      key={idx}
+                      style={{ fontSize: 13, color: "var(--text-secondary)" }}
+                    >
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -544,7 +549,12 @@ export default function TrendsDashboard() {
                 <span className="overline" style={{ color: SIDE_B_COLOR, fontSize: 9.5 }}>Arm B suggestions · {dataB?.zone_name}</span>
                 <ul className="briefing-action-list" style={{ marginTop: 8 }}>
                   {geminiResult.zone_b_suggestions?.map((item, idx) => (
-                    <li key={idx} style={{ fontSize: 13, color: "var(--text-secondary)" }}>{item}</li>
+                    <li
+                      key={idx}
+                      style={{ fontSize: 13, color: "var(--text-secondary)" }}
+                    >
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>

@@ -1,8 +1,39 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { MapContainer, TileLayer, CircleMarker, Popup, useMap } from "react-leaflet";
+import L from "leaflet";
+import { MapContainer, TileLayer, CircleMarker, Popup, useMap, Marker, Tooltip } from "react-leaflet";
 import { Activity, AlertTriangle, Search, X } from "lucide-react";
 import { getDensityMap, getImpactMap, getHotspotDetail } from "@/utils/api";
 import ZoneDetails from "@/components/ZoneDetails";
+
+// Patch Leaflet to avoid crash when map is unmounted during zoom transitions
+if (typeof window !== "undefined" && L && L.Map) {
+  if (L.Map.prototype._onZoomTransitionEnd) {
+    const originalOnZoomTransitionEnd = L.Map.prototype._onZoomTransitionEnd;
+    L.Map.prototype._onZoomTransitionEnd = function (...args) {
+      if (this._mapPane) {
+        originalOnZoomTransitionEnd.apply(this, args);
+      }
+    };
+  }
+  if (L.Map.prototype._getMapPanePos) {
+    const originalGetMapPanePos = L.Map.prototype._getMapPanePos;
+    L.Map.prototype._getMapPanePos = function (...args) {
+      if (this._mapPane) {
+        return originalGetMapPanePos.apply(this, args);
+      }
+      return new L.Point(0, 0);
+    };
+  }
+  if (L.Map.prototype.panBy) {
+    const originalPanBy = L.Map.prototype.panBy;
+    L.Map.prototype.panBy = function (...args) {
+      if (this._mapPane) {
+        return originalPanBy.apply(this, args);
+      }
+      return this;
+    };
+  }
+}
 
 const BENGALURU_CENTER = [12.9716, 77.5946];
 
@@ -12,6 +43,27 @@ function MapInvalidator() {
     const id = setTimeout(() => map.invalidateSize(), 150);
     return () => clearTimeout(id);
   }, [map]);
+  return null;
+}
+
+function MapBoundsFitter({ highlightedMarkers }) {
+  const map = useMap();
+
+  useEffect(() => {
+    if (!highlightedMarkers || highlightedMarkers.length === 0) return;
+
+    const points = highlightedMarkers.map((m) => [m.lat, m.lon]);
+    if (points.length > 0) {
+      const bounds = L.latLngBounds(points);
+      map.fitBounds(bounds, {
+        padding: [80, 80],
+        maxZoom: 12.5,
+        animate: true,
+        duration: 1.5,
+      });
+    }
+  }, [highlightedMarkers, map]);
+
   return null;
 }
 
@@ -83,6 +135,50 @@ export default function MapView({ startDate, endDate }) {
     );
   }, [markers, search]);
 
+  const highlightedMarkers = useMemo(() => {
+    if (!markers || markers.length === 0) return [];
+
+    const criticals = [];
+    const highs = [];
+    const moderates = [];
+
+    markers.forEach((m) => {
+      const cat = m.severity || m.risk || "Low";
+      if (cat === "Critical") {
+        criticals.push(m);
+      } else if (cat === "High") {
+        highs.push(m);
+      } else if (cat === "Moderate") {
+        moderates.push(m);
+      }
+    });
+
+    const sortFn = (a, b) => {
+      if (mode === "impact") {
+        return (b.impact_score || 0) - (a.impact_score || 0);
+      } else {
+        const valA = a.violations ?? a.total_violations ?? 0;
+        const valB = b.violations ?? b.total_violations ?? 0;
+        return valB - valA;
+      }
+    };
+
+    criticals.sort(sortFn);
+    highs.sort(sortFn);
+    moderates.sort(sortFn);
+
+    const result = [];
+    if (criticals.length > 0) result.push(criticals[0]);
+    if (highs.length > 0) result.push(highs[0]);
+    if (moderates.length > 0) result.push(moderates[0]);
+
+    return result;
+  }, [markers, mode]);
+
+  const highlightedIds = useMemo(() => {
+    return new Set(highlightedMarkers.map((m) => m.zone_id));
+  }, [highlightedMarkers]);
+
   async function openZone(zoneId) {
     setSelected(zoneId);
   }
@@ -143,11 +239,12 @@ export default function MapView({ startDate, endDate }) {
       <div className={`map-frame ${loadingMaps ? "map-frame--loading" : ""}`} data-testid="map-frame">
         <MapContainer
           center={BENGALURU_CENTER}
-          zoom={10.4}
+          zoom={10.6}
           scrollWheelZoom
           style={{ height: "100%", width: "100%" }}
         >
           <MapInvalidator />
+          <MapBoundsFitter highlightedMarkers={highlightedMarkers} />
           <TileLayer
             attribution='&copy; OpenStreetMap, &copy; CARTO'
             url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
@@ -158,61 +255,104 @@ export default function MapView({ startDate, endDate }) {
               mode === "impact"
                 ? Math.max(8, Math.min(24, (m.impact_score || 0) / 4))
                 : 10 + (m.impact_rank ? Math.max(0, 16 - m.impact_rank / 3) : 0);
+            const isHighlighted = highlightedIds.has(m.zone_id);
+
             return (
-              <CircleMarker
-                key={`${mode}-${m.zone_id}`}
-                center={[m.lat, m.lon]}
-                radius={radius}
-                pathOptions={{
-                  color,
-                  fillColor: color,
-                  fillOpacity: loadingMaps ? 0.35 : 0.72,
-                  weight: 2,
-                  className: loadingMaps ? "leaflet-marker-loading" : "leaflet-marker-pulse",
-                }}
-                eventHandlers={{
-                  click: () => openZone(m.zone_id),
-                }}
-              >
-                <Popup>
-                  <div style={{ minWidth: 200 }}>
-                    <div className="overline" style={{ marginBottom: 4 }}>
-                      Zone #{m.zone_id}
-                    </div>
-                    <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>
-                      {m.zone_name}
-                    </div>
-                    {(m.impact_score !== undefined) && (
-                      <div style={{
-                        display: "flex", justifyContent: "space-between",
-                        fontSize: 12, color: "var(--text-secondary)",
-                      }}>
-                        <span>Impact</span>
-                        <strong style={{ color: "var(--text-primary)" }}>{m.impact_score.toFixed(1)}</strong>
-                      </div>
-                    )}
-                    {(m.violations !== undefined || m.total_violations !== undefined) && (
-                      <div style={{
-                        display: "flex", justifyContent: "space-between",
-                        fontSize: 12, color: "var(--text-secondary)", marginBottom: 10,
-                      }}>
-                        <span>Violations</span>
-                        <strong style={{ color: "var(--text-primary)" }}>
-                          {(m.violations ?? m.total_violations).toLocaleString()}
-                        </strong>
-                      </div>
-                    )}
-                    <button
-                      className="btn btn-primary"
-                      style={{ padding: "8px 14px", fontSize: 12, width: "100%" }}
-                      onClick={() => openZone(m.zone_id)}
-                      data-testid={`open-zone-${m.zone_id}`}
+              <React.Fragment key={`${mode}-${m.zone_id}`}>
+                {isHighlighted && (
+                  <Marker
+                    position={[m.lat, m.lon]}
+                    icon={L.divIcon({
+                      className: "custom-wavy-marker",
+                      html: `
+                        <div class="wavy-ring" style="border-color: ${color}"></div>
+                        <div class="wavy-ring-outer" style="border-color: ${color}"></div>
+                        <div class="wavy-dot" style="background-color: ${color}"></div>
+                      `,
+                      iconSize: [24, 24],
+                      iconAnchor: [12, 12],
+                    })}
+                    eventHandlers={{
+                      click: () => openZone(m.zone_id),
+                    }}
+                  >
+                    <Tooltip 
+                      permanent 
+                      direction="top" 
+                      offset={[0, -12]}
+                      className="highlight-tooltip"
+                      interactive={true}
+                      eventHandlers={{
+                        click: () => openZone(m.zone_id),
+                      }}
                     >
-                      Open field briefing
-                    </button>
-                  </div>
-                </Popup>
-              </CircleMarker>
+                      <div 
+                        style={{ padding: "2px 4px", cursor: "pointer" }}
+                        onClick={() => openZone(m.zone_id)}
+                      >
+                        <div style={{ fontWeight: 700, fontSize: 10, lineHeight: 1.2 }}>{m.zone_name}</div>
+                        <div style={{ fontSize: 9, opacity: 0.9, whiteSpace: "nowrap", marginTop: 2 }}>
+                          {mode === "impact" ? `Impact: ${m.impact_score.toFixed(1)}` : `Violations: ${(m.violations ?? m.total_violations).toLocaleString()}`}
+                        </div>
+                      </div>
+                    </Tooltip>
+                  </Marker>
+                )}
+
+                <CircleMarker
+                  center={[m.lat, m.lon]}
+                  radius={radius}
+                  pathOptions={{
+                    color,
+                    fillColor: color,
+                    fillOpacity: loadingMaps ? 0.35 : isHighlighted ? 0.9 : 0.72,
+                    weight: isHighlighted ? 3 : 2,
+                    className: loadingMaps ? "leaflet-marker-loading" : "leaflet-marker-pulse",
+                  }}
+                  eventHandlers={{
+                    click: () => openZone(m.zone_id),
+                  }}
+                >
+                  <Popup>
+                    <div style={{ minWidth: 200 }}>
+                      <div className="overline" style={{ marginBottom: 4 }}>
+                        Zone #{m.zone_id}
+                      </div>
+                      <div style={{ fontWeight: 700, fontSize: 14, marginBottom: 8 }}>
+                        {m.zone_name}
+                      </div>
+                      {(m.impact_score !== undefined) && (
+                        <div style={{
+                          display: "flex", justifyContent: "space-between",
+                          fontSize: 12, color: "var(--text-secondary)",
+                        }}>
+                          <span>Impact</span>
+                          <strong style={{ color: "var(--text-primary)" }}>{m.impact_score.toFixed(1)}</strong>
+                        </div>
+                      )}
+                      {(m.violations !== undefined || m.total_violations !== undefined) && (
+                        <div style={{
+                          display: "flex", justifyContent: "space-between",
+                          fontSize: 12, color: "var(--text-secondary)", marginBottom: 10,
+                        }}>
+                          <span>Violations</span>
+                          <strong style={{ color: "var(--text-primary)" }}>
+                            {(m.violations ?? m.total_violations).toLocaleString()}
+                          </strong>
+                        </div>
+                      )}
+                      <button
+                        className="btn btn-primary"
+                        style={{ padding: "8px 14px", fontSize: 12, width: "100%" }}
+                        onClick={() => openZone(m.zone_id)}
+                        data-testid={`open-zone-${m.zone_id}`}
+                      >
+                        Open field briefing
+                      </button>
+                    </div>
+                  </Popup>
+                </CircleMarker>
+              </React.Fragment>
             );
           })}
         </MapContainer>

@@ -230,6 +230,30 @@ def extract_zone_name(locations: pd.Series) -> str:
     return f"{primary} Zone"
 
 
+_ZONE_INFO_CACHE = {}
+
+def _get_cached_zone_info(cluster_id: int):
+    global _ZONE_INFO_CACHE
+    if not _ZONE_INFO_CACHE:
+        try:
+            backend_dir = os.path.dirname(os.path.abspath(__file__))
+            hotspots_path = os.path.join(backend_dir, "data", "hotspots.json")
+            if os.path.exists(hotspots_path):
+                with open(hotspots_path, "r") as f:
+                    hotspots = json.load(f)
+                    for h in hotspots:
+                        cid = h.get("cluster_id") or h.get("zone_id")
+                        if cid is not None:
+                            _ZONE_INFO_CACHE[int(cid)] = {
+                                "zone_name": h["zone_name"],
+                                "center_lat": h["center_lat"],
+                                "center_lon": h["center_lon"],
+                                "police_station": h["police_station"]
+                            }
+        except Exception as e:
+            print(f"Error loading zone cache: {e}")
+    return _ZONE_INFO_CACHE.get(cluster_id)
+
 def compute_cluster_analytics(df: pd.DataFrame) -> list:
     """
     Step 3: Compute per-cluster analytics.
@@ -251,12 +275,17 @@ def compute_cluster_analytics(df: pd.DataFrame) -> list:
     clusters = []
     
     for cluster_id, group in clustered.groupby("cluster_id"):
-        # Center coordinates
-        center_lat = group["latitude"].mean()
-        center_lon = group["longitude"].mean()
-        
-        # Zone naming
-        zone_name = extract_zone_name(group["location"])
+        # Center coordinates & Zone naming from cache if available (instant speedup)
+        cached = _get_cached_zone_info(cluster_id)
+        if cached:
+            center_lat = cached["center_lat"]
+            center_lon = cached["center_lon"]
+            zone_name = cached["zone_name"]
+            police_station = cached["police_station"]
+        else:
+            center_lat = group["latitude"].mean()
+            center_lon = group["longitude"].mean()
+            zone_name = extract_zone_name(group["location"])
         
         # Total violations
         total_violations = len(group)
@@ -286,21 +315,26 @@ def compute_cluster_analytics(df: pd.DataFrame) -> list:
         hourly_dist = group["hour"].value_counts().sort_index().to_dict()
         hourly_dist = {str(int(float(k))): int(v) for k, v in hourly_dist.items()}
         
-        # Police station (most common)
-        police_station = group["police_station"].mode().iloc[0] if len(group["police_station"].mode()) > 0 else "Unknown"
+        # Police station (most common) - only computed if not retrieved from cache
+        if not cached:
+            police_station = group["police_station"].mode().iloc[0] if len(group["police_station"].mode()) > 0 else "Unknown"
         
-        # Violation types (parse from violation_type column)
+        # Violation types (parse from violation_type column - optimized with pre-parsed lists if available)
         violation_types = {}
-        for vt in group["violation_type"].dropna():
-            # Parse the JSON-like violation_type field
-            try:
-                types = json.loads(vt.replace('""', '"'))
-                if isinstance(types, list):
-                    for t in types:
-                        clean_type = t.strip().strip('"')
-                        violation_types[clean_type] = violation_types.get(clean_type, 0) + 1
-            except (json.JSONDecodeError, AttributeError):
-                pass
+        if "parsed_violation_types" in group.columns:
+            for types in group["parsed_violation_types"]:
+                for t in types:
+                    violation_types[t] = violation_types.get(t, 0) + 1
+        else:
+            for vt in group["violation_type"].dropna():
+                try:
+                    types = json.loads(vt.replace('""', '"'))
+                    if isinstance(types, list):
+                        for t in types:
+                            clean_type = t.strip().strip('"')
+                            violation_types[clean_type] = violation_types.get(clean_type, 0) + 1
+                except Exception:
+                    pass
         
         # Top vehicle types sorted
         top_vehicles = [

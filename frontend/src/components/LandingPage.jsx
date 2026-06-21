@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import {
   ArrowRight, Eye, Brain, Compass, Send, Activity,
   MapPin, ShieldCheck, AlertTriangle, Clock, Quote,
+  Github,
 } from "lucide-react";
 import MultilingualBengaluru from "@/components/MultilingualBengaluru";
 import Odometer from "@/components/Odometer";
@@ -12,13 +13,13 @@ import { ROUTES } from "@/constants/routes";
 
 const JOURNEY_STEPS = [
   { id: 1, icon: Eye,     title: "Detect",
-    body: "Pull live violation density across 40+ Bengaluru zones — from Indiranagar's 100 Ft Road to Whitefield's ITPL corridor." },
+    body: "Pull live violation density across 60+ Bengaluru zones from Indiranagar's 100 Ft Road to Whitefield's ITPL corridor." },
   { id: 2, icon: Brain,   title: "Analyse",
-    body: "A composite Impact Score weighs vehicle mix, junction proximity and enforcement difficulty — not just raw counts." },
+    body: "A composite Impact Score weighs vehicle mix, junction proximity and enforcement difficulty not just raw counts." },
   { id: 3, icon: Compass, title: "Decide",
-    body: "Rule + classification engine flags Critical, Hidden Risk, Frequent, Moderate or Stable. Gemini briefs the why." },
+    body: "Rule + classification engine flags Critical, Hidden Risk, Frequent, Moderate or Stable. Namma AI briefs the why." },
   { id: 4, icon: Send,    title: "Deploy",
-    body: "Time-windowed patrolling, towing routes, infrastructure intervention — each card is a dispatch-ready action." },
+    body: "Time windowed patrolling, towing routes, infrastructure intervention each card is a dispatch ready action." },
   { id: 5, icon: Activity,title: "Reflect",
     body: "Track which zones are cooling, which are heating. Re-prioritise weekly. The city is a living organism." },
 ];
@@ -167,16 +168,16 @@ export default function LandingPage() {
           <div>
             <div className="overline" style={{ marginBottom: 14 }}>The City We Live In</div>
             <h2 style={{ fontSize: 38, lineHeight: 1.1, marginBottom: 18, fontWeight: 800 }}>
-              A 90-minute commute should not be the city's love language.
+              A 90 minute commute should not be the city's love language.
             </h2>
             <p style={{ color: "var(--text-secondary)", fontSize: 16.5, lineHeight: 1.65, marginBottom: 18 }}>
-              Every evening between 6 PM and 9 PM, Outer Ring Road becomes a 22-kilometre parking lot.
-              Footpaths in Koramangala disappear under double-parked SUVs. An ambulance on
+              Every evening between 6 PM and 9 PM, Outer Ring Road becomes a 22 kilometre parking lot.
+              Footpaths in Koramangala disappear under double parked SUVs. An ambulance on
               Hosur Road waits behind a wedding convoy. Auto drivers know which junctions to
               avoid; the rest of us learn the hard way.
             </p>
             <p style={{ color: "var(--text-secondary)", fontSize: 16.5, lineHeight: 1.65 }}>
-              The Traffic Police don't lack effort — they lack <strong style={{ color: "var(--text-primary)" }}>
+              The Traffic Police don't lack effort, they lack <strong style={{ color: "var(--text-primary)" }}>
               where</strong>, <strong style={{ color: "var(--text-primary)" }}>when</strong>, and{" "}
               <strong style={{ color: "var(--text-primary)" }}>which one first</strong>.
               That's the entire mission of this console.
@@ -230,8 +231,7 @@ export default function LandingPage() {
           From a thousand violations to one clear next move.
         </h2>
         <p style={{ color: "var(--text-secondary)", fontSize: 16, maxWidth: 720, marginBottom: 48 }}>
-          Every officer's day on the console follows the same five beats. No dashboards full of noise —
-          just the next decision, surfaced clearly.
+          Every officer's day on the console follows the same five beats. No dashboards full of noise just the next decision, surfaced clearly.
         </p>
 
         <div style={{
@@ -293,7 +293,7 @@ export default function LandingPage() {
             What Officers Actually See
           </div>
           <h2 style={{ fontSize: 36, lineHeight: 1.1, marginBottom: 48, color: "var(--text-on-dark)", maxWidth: 780 }}>
-            Three views. One decision flow. Built for the briefing room — not the boardroom.
+            Three views. One decision flow. Built for the briefing room not the boardroom.
           </h2>
 
           <div style={{
@@ -305,21 +305,21 @@ export default function LandingPage() {
               {
                 tag: "Map 1 · Where",
                 title: "Violation Density Map",
-                body: "Color-graded markers across Bengaluru showing where violations cluster — by percentile, not raw count. Identical-looking junctions stop looking identical.",
+                body: "Color-graded markers across Bengaluru showing where violations cluster by percentile, not raw count. Identical looking junctions stop looking identical.",
                 icon: MapPin,
                 accent: "var(--auto-yellow)",
               },
               {
                 tag: "Map 2 · Which First",
                 title: "Operational Impact Map",
-                body: "Same city, re-ranked. Composite Impact Score factors in vehicle weight, junction proximity, and average resolution time so HSR Layout's deceptively-quiet streets stop slipping through.",
+                body: "Same city, re ranked. Composite Impact Score factors in vehicle weight, junction proximity, and average resolution time so HSR Layout's deceptively quiet streets stop slipping through.",
                 icon: AlertTriangle,
                 accent: "var(--signal-red-light)",
               },
               {
                 tag: "Action Center",
                 title: "Dispatch-Ready Cards",
-                body: "Each zone arrives with a classification, a rule-engine action list, and a Gemini-written briefing on why this matters today — read it like a case file, not a dashboard.",
+                body: "Each zone arrives with a classification, a rule engine action list, and a Namma AI written briefing on why this matters today read it like a case file, not a dashboard.",
                 icon: ShieldCheck,
                 accent: "var(--primary-light)",
               },
@@ -381,17 +381,42 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* ====================================================
-          FOOTER
-          ==================================================== */}
       <footer style={{
-        padding: "36px 32px",
-        textAlign: "center",
-        color: "var(--text-muted)",
-        fontSize: 12.5,
+        padding: "24px 48px",
+        color: "#000000",
+        fontSize: 11.5,
       }} data-testid="landing-footer">
-        <div style={{ fontFamily: "var(--font-mono)", letterSpacing: "0.16em", textTransform: "uppercase" }}>
-          Namma Bengaluru · Built for the men &amp; women in the white &amp; blue.
+        <div style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: 12,
+        }}>
+          <div style={{ fontFamily: "var(--font-mono)", fontWeight: 600 }}>
+            © {new Date().getFullYear()} ParkWise AI. All rights reserved.
+          </div>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <a 
+              href="https://github.com/PrathamSharma169/ParkWise-AI" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{
+                color: "#000000",
+                display: "inline-flex",
+                alignItems: "center",
+                transition: "transform 0.2s",
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.15)"}
+              onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1.0)"}
+            >
+              <Github size={18} />
+            </a>
+          </div>
+          <div style={{ fontFamily: "var(--font-mono)", fontWeight: 600 }}>
+            made with ❤️ for a Bengaluriga
+          </div>
         </div>
       </footer>
     </div>

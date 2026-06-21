@@ -148,7 +148,7 @@ export default function ZoneDetails({ detail, loading, onClose, startDate, endDa
         }}>
           <div className="briefing-block-label" style={{ display: "flex", alignItems: "center", gap: 8 }}>
             <Sparkles size={12} color="var(--primary)" />
-            AI Field Briefing · Gemini 2.5
+            AI Field Briefing · Namma AI
           </div>
 
           {!ai && !aiLoading && (
@@ -172,7 +172,7 @@ export default function ZoneDetails({ detail, loading, onClose, startDate, endDa
           {aiLoading && (
             <div style={{ display: "flex", alignItems: "center", gap: 10, color: "var(--text-secondary)", fontSize: 13 }}>
               <LoaderCircle size={16} style={{ animation: "spin 1s linear infinite", color: "var(--primary)" }} />
-              <span>Gemini is reading the case file…</span>
+              <span>Namma AI is reading the case file…</span>
             </div>
           )}
 
@@ -217,7 +217,9 @@ export default function ZoneDetails({ detail, loading, onClose, startDate, endDa
             </div>
             <ul className="briefing-action-list">
               {detail.recommendations.map((r, i) => (
-                <li key={i}>{r}</li>
+                <li key={i}>
+                  {r}
+                </li>
               ))}
             </ul>
           </div>
