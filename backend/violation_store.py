@@ -1,6 +1,11 @@
 """
 Load and persist raw violation rows from the database (Supabase/Postgres).
 Replaces in-memory CSV loading for date filtering and trends.
+
+Strategy:
+- On startup, all rows are loaded from Supabase into _violations_df once.
+- Subsequent requests filter the in-memory DataFrame locally (no DB round-trips).
+- No pickle file is ever created or read (removes disk I/O and ephemeral file risk).
 """
 
 from __future__ import annotations
@@ -385,14 +390,6 @@ def invalidate_violation_store_cache() -> None:
         _date_bounds = None
     with _violations_df_lock:
         _violations_df = None
-    try:
-        backend_dir = os.path.dirname(os.path.abspath(__file__))
-        cache_file = os.path.join(backend_dir, "data", "violations_cache.pkl")
-        if os.path.exists(cache_file):
-            os.remove(cache_file)
-            print("Cleared violations local pickle cache")
-    except Exception as e:
-        print(f"Failed to clear violations cache file: {e}")
 
 
 def is_violations_df_loaded() -> bool:
@@ -403,30 +400,16 @@ def load_violations_df_to_memory(force: bool = False) -> bool:
     """
     Load all violation rows into memory once via bulk SQL.
     Subsequent date/hour filters run locally without round-trips to Supabase.
+    No pickle file is created or read.
     """
     global _violations_df
 
     if not init_violation_store(force=force):
         return False
 
-    backend_dir = os.path.dirname(os.path.abspath(__file__))
-    cache_dir = os.path.join(backend_dir, "data")
-    cache_file = os.path.join(cache_dir, "violations_cache.pkl")
-
     with _violations_df_lock:
         if _violations_df is not None and not force:
             return True
-
-        # Check local pickle cache first
-        if not force and os.path.exists(cache_file):
-            try:
-                print(f"Loading violations from local cache file: {cache_file}...")
-                df = pd.read_pickle(cache_file)
-                _violations_df = df
-                print(f"Violation memory cache ready (loaded from pickle): {len(_violations_df):,} rows")
-                return True
-            except Exception as e:
-                print(f"Failed to load pickle cache ({e}), falling back to database query.")
 
         print("Loading violations into memory from database (one-time)...")
         import json
@@ -439,7 +422,7 @@ def load_violations_df_to_memory(force: bool = False) -> bool:
         df["created_datetime"] = pd.to_datetime(df["created_datetime"], errors="coerce", utc=True)
         df["closed_datetime"] = pd.to_datetime(df["closed_datetime"], errors="coerce", utc=True)
 
-        # Pre-parse violation types to list of strings
+        # Pre-parse violation types to list of strings (avoids repeating json.loads per request)
         def parse_vt(vt):
             if pd.isna(vt) or not vt:
                 return []
@@ -454,14 +437,6 @@ def load_violations_df_to_memory(force: bool = False) -> bool:
 
         print("Pre-parsing violation types...")
         df["parsed_violation_types"] = df["violation_type"].apply(parse_vt)
-
-        # Save to local cache
-        try:
-            os.makedirs(cache_dir, exist_ok=True)
-            df.to_pickle(cache_file)
-            print(f"Saved violations snapshot to local cache: {cache_file}")
-        except Exception as e:
-            print(f"Failed to save pickle cache: {e}")
 
         _violations_df = df
         print(f"Violation memory cache ready: {len(_violations_df):,} rows")

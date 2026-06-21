@@ -73,7 +73,7 @@ def load_data():
 
 
 def init_violation_data():
-    """Initialize violation store and optionally preload data into memory for fast filtering."""
+    """Initialize violation store and preload all rows into memory for fast local filtering."""
     try:
         from violation_store import init_violation_store, load_violations_df_to_memory
         if not init_violation_store():
@@ -99,7 +99,7 @@ def _compute_filtered_data(start_date: str = None, end_date: str = None):
         init_violation_data()
 
     if not is_violation_store_ready():
-        print("Warning: violation store not ready. Falling back to full precomputed dataset.")
+        print("Warning: violation store not ready. Falling back to precomputed JSON dataset.")
         return HOTSPOTS, RECOMMENDATIONS
 
     preload = os.getenv("PRELOAD_VIOLATIONS", "true").lower() in ("1", "true", "yes")
@@ -154,7 +154,7 @@ def get_filtered_data(start_date: str = None, end_date: str = None):
 
 @app.on_event("startup")
 async def startup():
-    """Load data on application startup."""
+    """Load JSON data on startup, then preload violation rows into memory in background."""
     load_data()
     threading.Thread(target=init_violation_data, daemon=True).start()
 
